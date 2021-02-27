@@ -49,7 +49,7 @@ for <- read_grid(city = 'for')
 
 -----
 
-# Citation <img align="right" src="r-package/man/figures/ipea_logo.png" alt="ipea" width="300">
+# Citation <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/ipea_logo.png?raw=true" alt="ipea" width="300">
 
 The R package **aopdata** is developed by a team at the Institute for Applied Economic Research (Ipea), Brazil. If you use this package in research publications, we please cite it as one of the publications below:
 
