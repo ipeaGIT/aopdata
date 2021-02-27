@@ -33,7 +33,7 @@ read_access <- function(city, mode, year, geometry = FALSE, showProgress=TRUE){
   file_url <- as.character(temp_meta$download_path)
 
   # download files
-  aop_df <- download_gpkg(file_url, progress_bar = showProgress)
+  aop_df <- download_data(file_url, progress_bar = showProgress)
 
   # without spatial data
   if(geometry == FALSE){return(aop_df)}

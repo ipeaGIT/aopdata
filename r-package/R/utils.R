@@ -154,7 +154,7 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 #' @export
 #' @family support functions
 #'
-download_gpkg <- function(file_url, progress_bar = showProgress){
+download_data <- function(file_url, progress_bar = showProgress){
 
   if( !(progress_bar %in% c(T, F)) ){ stop("Value to argument 'showProgress' has to be either TRUE or FALSE") }
 
@@ -167,7 +167,7 @@ download_gpkg <- function(file_url, progress_bar = showProgress){
     httr::GET(url=file_url, httr::progress(), httr::write_disk(temps, overwrite = T))
 
     # load gpkg
-    temp_sf <- load_gpkg(file_url, temps)
+    temp_sf <- load_data(file_url, temps)
     return(temp_sf)
 
 
@@ -180,7 +180,7 @@ download_gpkg <- function(file_url, progress_bar = showProgress){
     httr::GET(url=file_url, httr::write_disk(temps, overwrite = T))
 
     # load gpkg
-    temp_sf <- load_gpkg(file_url, temps)
+    temp_sf <- load_data(file_url, temps)
     return(temp_sf)
   }
 
@@ -205,7 +205,7 @@ download_gpkg <- function(file_url, progress_bar = showProgress){
     close(pb)
 
     # load gpkg
-    temp_sf <- load_gpkg(file_url)
+    temp_sf <- load_data(file_url)
     return(temp_sf)
 
 
@@ -221,7 +221,7 @@ download_gpkg <- function(file_url, progress_bar = showProgress){
 
 
     # load gpkg
-    temp_sf <- load_gpkg(file_url)
+    temp_sf <- load_data(file_url)
     return(temp_sf)
 
     }
@@ -237,7 +237,7 @@ download_gpkg <- function(file_url, progress_bar = showProgress){
 #' @export
 #' @family support functions
 #'
-load_gpkg <- function(file_url, temps=NULL){
+load_data <- function(file_url, temps=NULL){
 
   # check if .csv or geopackage
   if( file_url[1] %like% '.csv' ){ fformat<- 'csv'}
@@ -275,7 +275,7 @@ load_gpkg <- function(file_url, temps=NULL){
   }
 
   # load gpkg to memory
-  temp_sf <- load_gpkg(file_url, temps)
+  temp_sf <- load_data(file_url, temps)
   return(temp_sf)
 }
 

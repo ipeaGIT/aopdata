@@ -27,6 +27,6 @@ read_grid <- function(city, showProgress=TRUE){
   file_url <- as.character(temp_meta$download_path)
 
   # download files
-  aop_sf <- download_gpkg(file_url, progress_bar = showProgress)
+  aop_sf <- download_data(file_url, progress_bar = showProgress)
   return(aop_sf)
 }
