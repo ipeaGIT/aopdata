@@ -1,7 +1,5 @@
 # aop: Download Data from the Access to Opportunities Project (AOP)
 
-# geobr: Official Spatial Data Sets of Brazil 
-
 <img align="right" src="https://github.com/ipeaGIT/aop/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"> 
 
 R package to download data from the [Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/).
