@@ -1,50 +1,71 @@
-############# Support functions for geobr
+############# Support functions for aop
 # nocov start
 
 
-
-#' Select data type: 'original' or 'simplified' (default)
-#'
+#' Select city input
 #'
 #' @param temp_meta A dataframe with the file_url addresses of geobr datasets
-#' @param simplified Logical TRUE or FALSE indicating  whether the function returns the 'original' dataset with high resolution or a dataset with 'simplified' borders (Defaults to TRUE)
+#' @param city city input (passed from read_ function)
 #' @export
 #' @family support functions
 #'
-select_data_type <- function(temp_meta, simplified=NULL){
+select_city_input <- function(temp_meta, c=city){
 
-  if(isTRUE(simplified)){
-    temp_meta <- temp_meta[  grepl(pattern="simplified", temp_meta$download_path), ]
+  # NULL
+  if (is.null(c)){  stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
+                                paste(unique(temp_meta$name_muni),collapse = " | "))) }
+
+  # 3 letter-abbreviation
+  if (nchar(c)==3){
+
+      # valid input 'all'
+      if (c %in% 'all'){ return(temp_meta) }
+
+      # valid input
+      if (c %in% temp_meta$city){ temp_meta <- subset(temp_meta, city == c)
+                                  return(temp_meta) }
+
+      # invalid input
+      else { stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
+                         paste(unique(temp_meta$city), collapse = " | "))) }
+    }
+
+
+  # full name
+  if (nchar(c)>3){
+
+    c <- tolower(c)
+    c <- rm_accent(c)
+
+    # valid input
+    if (c %in% temp_meta$name_muni){ temp_meta <- subset(temp_meta, name_muni == c)
+    return(temp_meta) }
+
+    # invalid input
+    else { stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
+                       paste(unique(temp_meta$name_muni), collapse = " | "))) }
   }
-  else if(isFALSE(simplified)){
-    temp_meta <- temp_meta[  !(grepl(pattern="simplified", temp_meta$download_path)), ]
-  } else {  stop(paste0("Argument 'simplified' needs to be either TRUE or FALSE")) }
-
-  return(temp_meta)
 }
-
 
 
 
 
 #' Select year input
 #'
-#'
-#'
 #' @param temp_meta A dataframe with the file_url addresses of geobr datasets
-#' @param y Year of the dataset (passed by red_ function)
+#' @param year Year of the dataset (passed from read_ function)
 #' @export
 #' @family support functions
 #'
-select_year_input <- function(temp_meta, y=year){
+select_year_input <- function(temp_meta, year=y){
 
   # NULL
-  if (is.null(y)){  stop(paste0("Error: Invalid Value to argument 'year'. It must be one of the following: ",
+  if (is.null(year)){  stop(paste0("Error: Invalid Value to argument 'year'. It must be one of the following: ",
                                    paste(unique(temp_meta$year),collapse = " "))) }
 
   # invalid input
-  else if (y %in% temp_meta$year){ message(paste0("Using year ", y))
-                                  temp_meta <- temp_meta[temp_meta[,2] == y,]
+  else if (year %in% temp_meta$year){ message(paste0("Using year ", year))
+                                  temp_meta <- subset(temp_meta, year %in% year)
                                   return(temp_meta) }
 
   # invalid input
@@ -54,11 +75,42 @@ select_year_input <- function(temp_meta, y=year){
 }
 
 
+
+
+#' Select mode input
+#'
+#' @param temp_meta A dataframe with the file_url addresses of aop datasets
+#' @param m Transport mode (passed by read_ function)
+#' @export
+#' @family support functions
+#'
+select_mode_input <- function(temp_meta, m=mode){
+
+  # NULL
+  if (is.null(m)){  stop(paste0("Error: Invalid Value to argument 'mode'. It must be one of the following: ",
+                                paste(unique(temp_meta$mode),collapse = " "))) }
+
+  # invalid input
+  else if (m %in% temp_meta$mode){ message(paste0("Using mode ", m))
+    temp_meta <- subset(temp_meta, mode == m)
+    return(temp_meta) }
+
+  # invalid input
+  else { stop(paste0("Error: Invalid Value to argument 'mode'. It must be one of the following: ",
+                     paste(unique(temp_meta$mode), collapse = " ")))
+  }
+}
+
+
+
+
+
 #' Select metadata
 #'
-#' @param geography Which geography will be downloaded
-#' @param simplified Logical TRUE or FALSE indicating  whether the function returns the 'original' dataset with high resolution or a dataset with 'simplified' borders (Defaults to TRUE)
-#' @param year Year of the dataset (passed by red_ function)
+#' @param t Type of data: 'access' or 'grid' (passed from `read_` function)
+#' @param c City (passed from `read_` function)
+#' @param m Transport mode (passed from `read_` function)
+#' @param y Year of the dataset (passed from `read_` function)
 #'
 #' @export
 #' @family support functions
@@ -70,19 +122,23 @@ select_year_input <- function(temp_meta, y=year){
 #'
 #' }
 #'
-select_metadata <- function(geography, year=NULL, simplified=NULL){
+select_metadata <- function(t=NULL, c=NULL, m=NULL, y=NULL){
 
 # download metadata
   metadata <- download_metadata()
 
-  # Select geo
-  temp_meta <- subset(metadata, geo == geography)
-
-  # Select year input
-  temp_meta <- select_year_input(temp_meta, y=year)
-
   # Select data type
-  temp_meta <- select_data_type(temp_meta, simplified=simplified)
+  temp_meta <- subset(metadata, type == t)
+
+  # Select city input
+  temp_meta <- select_city_input(temp_meta, c=city)
+
+  if(t=='access'){
+
+    # Select mode and year
+    temp_meta <- select_year_input(temp_meta, year=y)
+    temp_meta <- select_mode_input(temp_meta, m=m)
+    }
 
   return(temp_meta)
 }
@@ -174,11 +230,7 @@ download_gpkg <- function(file_url, progress_bar = showProgress){
 
 
 
-
-
-
 #' Load geopackage from tempdir to global environment
-#'
 #'
 #' @param file_url A string with the file_url address of a geobr dataset
 #' @param temps The address of a gpkg file stored in tempdir. Defaults to NULL
@@ -209,6 +261,45 @@ load_gpkg <- function(file_url, temps=NULL){
   # load gpkg to memory
   temp_sf <- load_gpkg(file_url, temps)
   return(temp_sf)
+}
+
+
+
+
+#' Remove accents from string
+#'
+#' @param str A string
+#' @export
+#' @family support functions
+#'
+rm_accent <- function(str, pattern="all") {
+  if(!is.character(str))
+    str <- as.character(str)
+  pattern <- unique(pattern)
+  if(any(pattern=="Ç"))
+    pattern[pattern=="Ç"] <- "ç"
+  symbols <- c(
+    acute = "áéíóúÁÉÍÓÚýÝ",
+    grave = "àèìòùÀÈÌÒÙ",
+    circunflex = "âêîôûÂÊÎÔÛ",
+    tilde = "ãõÃÕñÑ",
+    umlaut = "äëïöüÄËÏÖÜÿ",
+    cedil = "çÇ"
+  )
+  nudeSymbols <- c(
+    acute = "aeiouAEIOUyY",
+    grave = "aeiouAEIOU",
+    circunflex = "aeiouAEIOU",
+    tilde = "aoAOnN",
+    umlaut = "aeiouAEIOUy",
+    cedil = "cC"
+  )
+  accentTypes <- c("´","`","^","~","¨","ç")
+  if(any(c("all","al","a","todos","t","to","tod","todo")%in%pattern)) # opcao retirar todos
+    return(chartr(paste(symbols, collapse=""), paste(nudeSymbols, collapse=""), str))
+  for(i in which(accentTypes%in%pattern))
+    str <- chartr(symbols[i],nudeSymbols[i], str)
+  return(str)
 }
 
 # nocov end

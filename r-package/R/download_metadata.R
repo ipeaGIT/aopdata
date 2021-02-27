@@ -1,4 +1,4 @@
-#' Support function to download metadata internally used in geobr
+#' Support function to download metadata internally used in aop
 #'
 #' @export
 #' @family general support functions
@@ -12,7 +12,7 @@ download_metadata <- function(){
 
   # check if metadata has already been downloaded
   if (file.exists(tempf)) {
-    metadata <- utils::read.csv(tempf, stringsAsFactors=F)
+    metadata <- data.table::fread(tempf, stringsAsFactors=F)
 
   } else {
 
@@ -21,7 +21,7 @@ download_metadata <- function(){
     options(warn = -1)
 
     # test server connection
-    metadata_link <- 'http://www.ipea.gov.br/geobr/metadata/metadata_gpkg.csv'
+    metadata_link <- 'http://www.ipea.gov.br/geobr/aop/metadata/metadata.csv'
     con <- url(metadata_link)
     t <- suppressWarnings({ try( open.connection(con, open="rt", timeout=2), silent=T)[1] })
     if("try-error" %in% class(t)){stop('Internet connection problem. If this is not a connection problem in your network, please try geobr again in a few minutes.')}
@@ -32,8 +32,7 @@ download_metadata <- function(){
 
     # download it and save to metadata
     httr::GET(url= metadata_link, httr::write_disk(tempf, overwrite = T))
-    metadata <- utils::read.csv(tempf, stringsAsFactors=F)
-
+    metadata <- data.table::fread(tempf, stringsAsFactors=F)
     }
 
 
