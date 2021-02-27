@@ -1,6 +1,6 @@
-# aop: Download Data from the Access to Opportunities Project (AOP)
+# aopdata: Download Data from the Access to Opportunities Project (AOP)
 
-<img align="right" src="https://github.com/ipeaGIT/aop/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"> 
+<img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"> 
 
 R package to download data from the [Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/).
 
@@ -10,8 +10,8 @@ R package to download data from the [Access to Opportunities Project (AOP)](http
 ```R
 
 # development version
-  devtools::install_github("ipeaGIT/aop", subdir = "r-package")
-  library(aop)
+  devtools::install_github("ipeaGIT/aopdata", subdir = "r-package")
+  library(aopdata)
 ```
 
 
@@ -20,7 +20,7 @@ R package to download data from the [Access to Opportunities Project (AOP)](http
 
 **Read accessibility estimates for a given transport mode**
 ```R
-library(aop)
+library(aopdata)
 
 # Without spatial geometry
 cur <- read_access(city = 'Curitiba', mode = 'walk', year = 2019)
@@ -34,7 +34,7 @@ cur <- read_access(city = 'Curitiba', mode = 'walk', year = 2019, geometry = TRU
 
 **Read only the spatial grid**
 ```R
-library(aop)
+library(aopdata)
 
 # Read specific city
 for <- read_grid(city = 'Fortaleza')
