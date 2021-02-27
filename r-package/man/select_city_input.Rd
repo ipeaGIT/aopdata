@@ -4,7 +4,7 @@
 \alias{select_city_input}
 \title{Select city input}
 \usage{
-select_city_input(temp_meta, c = city)
+select_city_input(temp_meta = temp_meta, city = NULL)
 }
 \arguments{
 \item{temp_meta}{A dataframe with the file_url addresses of geobr datasets}
@@ -16,6 +16,7 @@ Select city input
 }
 \seealso{
 Other support functions: 
+\code{\link{aop_spatial_join}()},
 \code{\link{download_gpkg}()},
 \code{\link{load_gpkg}()},
 \code{\link{rm_accent}()},

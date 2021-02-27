@@ -4,7 +4,7 @@
 \alias{select_year_input}
 \title{Select year input}
 \usage{
-select_year_input(temp_meta, year = y)
+select_year_input(temp_meta = temp_meta, year = NULL)
 }
 \arguments{
 \item{temp_meta}{A dataframe with the file_url addresses of geobr datasets}
@@ -16,6 +16,7 @@ Select year input
 }
 \seealso{
 Other support functions: 
+\code{\link{aop_spatial_join}()},
 \code{\link{download_gpkg}()},
 \code{\link{load_gpkg}()},
 \code{\link{rm_accent}()},

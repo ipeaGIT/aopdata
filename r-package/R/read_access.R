@@ -6,6 +6,9 @@
 #' @param city A city name or three-letter abbreviation
 #' @param mode A transport mode.
 #' @param year A date number in YYYY format.
+#' @param geometry if FALSE (the default), returns a regular data.table of aop
+#'                 data. if TRUE, returns a an `sf data.frame` with simple
+#'                 feature geometry of spatial hexagonal grid H3.
 #' @param showProgress Logical. Defaults to `TRUE` display progress bar
 #'
 #' @return A `data.frame` object
@@ -20,7 +23,7 @@
 #' # Read accessibility estimates of all cities in the project
 #' all_pt <- read_access(city = 'all', mode = 'public_transport', year = 2019)
 #'}
-read_access <- function(city, mode, year, showProgress=TRUE){
+read_access <- function(city, mode, year, geometry = FALSE, showProgress=TRUE){
 
   # Get metadata with data url addresses
   temp_meta <- select_metadata(t='access',
@@ -32,6 +35,17 @@ read_access <- function(city, mode, year, showProgress=TRUE){
   file_url <- as.character(temp_meta$download_path)
 
   # download files
-  temp_sf <- download_gpkg(file_url, progress_bar = showProgress)
-  return(temp_sf)
+  aop_df <- download_gpkg(file_url, progress_bar = showProgress)
+
+  # without spatial data
+  if(geometry == FALSE){return(aop_df)}
+
+  # with spatial data
+  if(geometry == TRUE){
+
+    aop_sf <- read_grid(city=city, showProgress=showProgress)
+    aop <- aop_spatial_join(aop_df, aop_sf)
+    return(aop)
+
+    }
 }

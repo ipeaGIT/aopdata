@@ -4,12 +4,10 @@
 \alias{read_grid}
 \title{Download spatial hexagonal grid}
 \usage{
-read_grid(city, t, showProgress = TRUE)
+read_grid(city, showProgress = TRUE)
 }
 \arguments{
 \item{city}{A city name or three-letter abbreviation}
-
-\item{t}{Data type}
 
 \item{showProgress}{Logical. Defaults to \code{TRUE} display progress bar}
 }

@@ -9,6 +9,15 @@ library(ggplot2)
 library(mapview)
 
 
+bho <- read_access(city = 'Belo Horizonte', mode = 'walk', year = 2019)
+head(bho)
+
+g <- read_grid(city = 'bho')
+head(g)
+
+aop <- read_access(city = 'Belo Horizonte', mode = 'walk', year = 2019, geometry = T)
+head(aop)
+
 ### Install package
 install.packages("aop")
 library(aop)

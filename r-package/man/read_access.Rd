@@ -4,7 +4,7 @@
 \alias{read_access}
 \title{Download accessibility estimates}
 \usage{
-read_access(city, mode, year, showProgress = TRUE)
+read_access(city, mode, year, geometry = FALSE, showProgress = TRUE)
 }
 \arguments{
 \item{city}{A city name or three-letter abbreviation}
@@ -12,6 +12,10 @@ read_access(city, mode, year, showProgress = TRUE)
 \item{mode}{A transport mode.}
 
 \item{year}{A date number in YYYY format.}
+
+\item{geometry}{if FALSE (the default), returns a regular data.table of aop
+data. if TRUE, returns a an \verb{sf data.frame} with simple
+feature geometry of spatial hexagonal grid H3.}
 
 \item{showProgress}{Logical. Defaults to \code{TRUE} display progress bar}
 }

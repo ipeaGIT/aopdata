@@ -4,7 +4,7 @@
 \alias{select_mode_input}
 \title{Select mode input}
 \usage{
-select_mode_input(temp_meta, m = mode)
+select_mode_input(temp_meta = temp_meta, mode = NULL)
 }
 \arguments{
 \item{temp_meta}{A dataframe with the file_url addresses of aop datasets}
@@ -16,6 +16,7 @@ Select mode input
 }
 \seealso{
 Other support functions: 
+\code{\link{aop_spatial_join}()},
 \code{\link{download_gpkg}()},
 \code{\link{load_gpkg}()},
 \code{\link{rm_accent}()},

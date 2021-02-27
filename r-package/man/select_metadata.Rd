@@ -30,6 +30,7 @@ df <- download_metadata()
 }
 \seealso{
 Other support functions: 
+\code{\link{aop_spatial_join}()},
 \code{\link{download_gpkg}()},
 \code{\link{load_gpkg}()},
 \code{\link{rm_accent}()},

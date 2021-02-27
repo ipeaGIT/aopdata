@@ -9,21 +9,22 @@
 #' @export
 #' @family support functions
 #'
-select_city_input <- function(temp_meta, c=city){
+select_city_input <- function(temp_meta=temp_meta, city=NULL){
 
   # NULL
-  if (is.null(c)){  stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
+  if (is.null(city)){  stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
                                 paste(unique(temp_meta$name_muni),collapse = " | "))) }
 
   # 3 letter-abbreviation
-  if (nchar(c)==3){
+  if (nchar(city)==3) {
 
       # valid input 'all'
-      if (c %in% 'all'){ return(temp_meta) }
+      if (city %in% 'all'){ return(temp_meta) }
 
       # valid input
-      if (c %in% temp_meta$city){ temp_meta <- subset(temp_meta, city == c)
+      if (city %in% temp_meta$city){ temp_meta <- temp_meta[ temp_meta$city == city, ]
                                   return(temp_meta) }
+
 
       # invalid input
       else { stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
@@ -32,14 +33,15 @@ select_city_input <- function(temp_meta, c=city){
 
 
   # full name
-  if (nchar(c)>3){
+  if (nchar(city)>3) {
 
-    c <- tolower(c)
-    c <- rm_accent(c)
+    city <- tolower(city)
+    city <- rm_accent(city)
 
     # valid input
-    if (c %in% temp_meta$name_muni){ temp_meta <- subset(temp_meta, name_muni == c)
-    return(temp_meta) }
+    if (city %in% temp_meta$name_muni){ temp_meta <- temp_meta[ temp_meta$name_muni == city, ]
+                                        return(temp_meta)
+                                      }
 
     # invalid input
     else { stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
@@ -57,7 +59,7 @@ select_city_input <- function(temp_meta, c=city){
 #' @export
 #' @family support functions
 #'
-select_year_input <- function(temp_meta, year=y){
+select_year_input <- function(temp_meta=temp_meta, year=NULL){
 
   # NULL
   if (is.null(year)){  stop(paste0("Error: Invalid Value to argument 'year'. It must be one of the following: ",
@@ -65,7 +67,7 @@ select_year_input <- function(temp_meta, year=y){
 
   # invalid input
   else if (year %in% temp_meta$year){ message(paste0("Using year ", year))
-                                  temp_meta <- subset(temp_meta, year %in% year)
+                                  temp_meta <- temp_meta[ temp_meta$year == year, ]
                                   return(temp_meta) }
 
   # invalid input
@@ -84,15 +86,15 @@ select_year_input <- function(temp_meta, year=y){
 #' @export
 #' @family support functions
 #'
-select_mode_input <- function(temp_meta, m=mode){
+select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 
   # NULL
-  if (is.null(m)){  stop(paste0("Error: Invalid Value to argument 'mode'. It must be one of the following: ",
+  if (is.null(mode)){  stop(paste0("Error: Invalid Value to argument 'mode'. It must be one of the following: ",
                                 paste(unique(temp_meta$mode),collapse = " "))) }
 
   # invalid input
-  else if (m %in% temp_meta$mode){ message(paste0("Using mode ", m))
-    temp_meta <- subset(temp_meta, mode == m)
+  else if (mode %in% temp_meta$mode){ message(paste0("Using mode ", mode))
+    temp_meta <- temp_meta[ temp_meta$mode == mode, ]
     return(temp_meta) }
 
   # invalid input
@@ -125,19 +127,19 @@ select_mode_input <- function(temp_meta, m=mode){
 select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 
 # download metadata
-  metadata <- download_metadata()
+  metadata <- as.data.frame(download_metadata())
 
   # Select data type
   temp_meta <- subset(metadata, type == t)
 
   # Select city input
-  temp_meta <- select_city_input(temp_meta, c=city)
+  temp_meta <- select_city_input(temp_meta, city=c)
 
   if(t=='access'){
 
     # Select mode and year
     temp_meta <- select_year_input(temp_meta, year=y)
-    temp_meta <- select_mode_input(temp_meta, m=m)
+    temp_meta <- select_mode_input(temp_meta, mode=m)
     }
 
   return(temp_meta)
@@ -301,5 +303,31 @@ rm_accent <- function(str, pattern="all") {
     str <- chartr(symbols[i],nudeSymbols[i], str)
   return(str)
 }
+
+
+#' Spatial join of AOP data
+#'
+#' @param aop_df A `data.frame` of aop data
+#' @param aop_sf A spatial `sf` of aop data
+#' @export
+#' @family support functions
+#'
+aop_spatial_join <- function(aop_df, aop_sf){
+
+  data.table::setDT(aop_df)
+  data.table::setDT(aop_sf)
+  data.table::setkeyv(aop_df, c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
+
+  # merge
+    # slower # aop <- data.table::merge.data.table(aop_df, aop_sf, by = 'id_hex')
+    aop_df[aop_sf, on = 'id_hex', geometry := i.geom]
+
+  # back to sf
+  aop <- sf::st_sf(aop_df)
+
+  return(aop)
+
+  }
+
 
 # nocov end

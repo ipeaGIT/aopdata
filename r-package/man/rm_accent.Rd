@@ -14,6 +14,7 @@ Remove accents from string
 }
 \seealso{
 Other support functions: 
+\code{\link{aop_spatial_join}()},
 \code{\link{download_gpkg}()},
 \code{\link{load_gpkg}()},
 \code{\link{select_city_input}()},
