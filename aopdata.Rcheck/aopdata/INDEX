@@ -1,0 +1,13 @@
+aop_spatial_join        Spatial join of AOP data
+download_data           Download geopackage to tempdir
+download_metadata       Support function to download metadata
+                        internally used in aop
+load_data               Load geopackage from tempdir to global
+                        environment
+read_access             Download accessibility estimates
+read_grid               Download spatial hexagonal grid
+rm_accent               Remove accents from string
+select_city_input       Select city input
+select_metadata         Select metadata
+select_mode_input       Select mode input
+select_year_input       Select year input

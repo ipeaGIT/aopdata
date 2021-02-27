@@ -1,7 +1,7 @@
 #### testing functions of aop
 
 #library(magrittr)
-library(aop)
+library(aopdata)
 library(sf)
 library(dplyr)
 library(data.table)
@@ -66,6 +66,18 @@ gc(reset = T,full = T)
 
 system.time(cc <- fread('test.csv'))
 system.time(dd <- read_feather('test.feather'))
+
+
+
+library(stringi)
+
+stringi::stri_escape_unicode("çÇ")
+666
+
+read_access(city='são paulo', mode='walk', year=2019)
+
+
+
 
 ### Test examples  ----------------
 library(devtools)

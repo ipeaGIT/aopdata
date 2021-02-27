@@ -8,25 +8,20 @@ Authors@R: c(
             )
 Description: Download data from the Access to Opportunities Project (AOP).
 URL: https://github.com/ipeaGIT/aop
-BugReports: https://github.com/ipeaGIT/aop/issues 
+BugReports: https://github.com/ipeaGIT/aop/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Depends:
-    R (>= 3.5.0)
-Suggests:
-    covr,
-    dplyr (>= 0.8-3),
-    ggplot2 (>= 3.3.1),
-    knitr,
-    magrittr,
-    mapview,
-    rmarkdown (>= 2.6),
-    testthat
-Imports:
-      data.table,
-      httr (>= 1.4.1),
-      sf (>= 0.9-3),
-      utils
+Depends: R (>= 3.5.0)
+Suggests: covr, dplyr (>= 0.8-3), ggplot2 (>= 3.3.1), knitr, magrittr,
+        mapview, rmarkdown (>= 2.6), testthat
+Imports: data.table, httr (>= 1.4.1), sf (>= 0.9-3), utils
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+NeedsCompilation: no
+Packaged: 2021-02-27 19:02:03 UTC; user
+Author: Rafael H. M. Pereira [aut, cre]
+    (<https://orcid.org/0000-0003-2125-7465>),
+  Ipea - Institue for Applied Economic Research [cph, fnd]
+Maintainer: Rafael H. M. Pereira <rafa.pereira.br@gmail.com>
+Built: R 4.0.2; ; 2021-02-27 19:02:09 UTC; windows
