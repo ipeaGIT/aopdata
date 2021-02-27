@@ -74,3 +74,8 @@ purrr::walk2(.x = combinations$V1,
 
 
 
+# dictionary -------------------------------------
+dic_port <- xlsx::read.xlsx('C:/Users/user/Downloads/dicionario2019_v1.0_20200116 (2).xlsx',
+                            sheetName = 'Port',startRow = 4,encoding = 'UTF-8')
+
+head(dic_port)
