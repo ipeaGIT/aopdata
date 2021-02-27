@@ -8,6 +8,8 @@ rm_accent(str, pattern = "all")
 }
 \arguments{
 \item{str}{A string}
+
+\item{pattern}{A pattern}
 }
 \description{
 Remove accents from string

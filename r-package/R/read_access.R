@@ -20,8 +20,6 @@
 #' bho <- read_access(city = 'Belo Horizonte', mode = 'walk', year = 2019)
 #' bho <- read_access(city = 'bho', mode = 'walk', year = 2019)
 #'
-#' # Read accessibility estimates of all cities in the project
-#' all_pt <- read_access(city = 'all', mode = 'public_transport', year = 2019)
 #'}
 read_access <- function(city, mode, year, geometry = FALSE, showProgress=TRUE){
 

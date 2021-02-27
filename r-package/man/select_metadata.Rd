@@ -21,8 +21,6 @@ Select metadata
 \examples{
 \donttest{
 
-library(aop)
-
 df <- download_metadata()
 
 }

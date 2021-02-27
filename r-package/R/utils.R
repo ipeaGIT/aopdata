@@ -82,7 +82,7 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
 #' Select mode input
 #'
 #' @param temp_meta A dataframe with the file_url addresses of aop datasets
-#' @param m Transport mode (passed by read_ function)
+#' @param mode Transport mode (passed by read_ function)
 #' @export
 #' @family support functions
 #'
@@ -117,8 +117,6 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 #' @export
 #' @family support functions
 #' @examples \donttest{
-#'
-#' library(aop)
 #'
 #' df <- download_metadata()
 #'
@@ -271,6 +269,7 @@ load_gpkg <- function(file_url, temps=NULL){
 #' Remove accents from string
 #'
 #' @param str A string
+#' @param pattern A pattern
 #' @export
 #' @family support functions
 #'
