@@ -172,7 +172,7 @@ devtools::spell_check(pkg = ".", vignettes = TRUE, use_wordlist = TRUE)
 
 
 ### update pkgdown website ----------------
-    library(aop)
+    library(aopdata)
     library(pkgdown)
 
 # # Run once to configure your package to use pkgdown

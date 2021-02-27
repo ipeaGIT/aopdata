@@ -1,3 +1,6 @@
 ^aop\.Rproj$
 ^\.Rproj\.user$
 ^prep_data$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
