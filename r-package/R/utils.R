@@ -239,13 +239,17 @@ download_gpkg <- function(file_url, progress_bar = showProgress){
 #'
 load_gpkg <- function(file_url, temps=NULL){
 
-  ### one single file
+  # check if .csv or geopackage
+  if( file_url[1] %like% '.csv' ){ fformat<- 'csv'}
+  if( file_url[1] %like% '.gpkg' ){ fformat<- 'gpkg'}
 
+  ### one single file
   if(length(file_url)==1){
 
-    # read sf
-    temp_sf <- sf::st_read(temps, quiet=T)
-    return(temp_sf)
+    # read file
+    if( fformat=='csv' ){ temp <- data.table::fread(temps) }
+    if( fformat=='gpkg' ){ temp <- sf::st_read(temps, quiet=T) }
+    return(temp)
   }
 
   else if(length(file_url) > 1){
@@ -253,9 +257,21 @@ load_gpkg <- function(file_url, temps=NULL){
     # read files and pile them up
     files <- unlist(lapply(strsplit(file_url,"/"), tail, n = 1L))
     files <- paste0(tempdir(),"/",files)
-    files <- lapply(X=files, FUN= sf::st_read, quiet=T)
-    temp_sf <- sf::st_as_sf(data.table::rbindlist(files, fill = TRUE)) # do.call('rbind', files)
-    return(temp_sf)
+
+    # access csv
+    if( fformat=='csv' ){
+      files <- lapply(X=files, FUN= data.table::fread)
+      temp <- data.table::rbindlist(files, fill = TRUE)
+    }
+
+    # grid geopackage
+    if( fformat=='gpkg' ){
+      files <- lapply(X=files, FUN= sf::st_read, quiet=T)
+      temp <- sf::st_as_sf(data.table::rbindlist(files, fill = TRUE))
+    }
+
+
+    return(temp)
   }
 
   # load gpkg to memory
