@@ -7,7 +7,7 @@
 download_gpkg(file_url, progress_bar = showProgress)
 }
 \arguments{
-\item{file_url}{A string with the file_url address of a geobr dataset}
+\item{file_url}{A string with the file_url address of a aop dataset}
 
 \item{progress_bar}{Logical. Defaults to (TRUE) display progress bar}
 }

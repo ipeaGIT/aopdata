@@ -21,7 +21,7 @@ Select metadata
 \examples{
 \donttest{
 
-library(geobr)
+library(aop)
 
 df <- download_metadata()
 

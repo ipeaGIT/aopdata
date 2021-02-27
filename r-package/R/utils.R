@@ -4,7 +4,7 @@
 
 #' Select city input
 #'
-#' @param temp_meta A dataframe with the file_url addresses of geobr datasets
+#' @param temp_meta A dataframe with the file_url addresses of aop datasets
 #' @param city city input (passed from read_ function)
 #' @export
 #' @family support functions
@@ -54,7 +54,7 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
 
 #' Select year input
 #'
-#' @param temp_meta A dataframe with the file_url addresses of geobr datasets
+#' @param temp_meta A dataframe with the file_url addresses of aop datasets
 #' @param year Year of the dataset (passed from read_ function)
 #' @export
 #' @family support functions
@@ -118,7 +118,7 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 #' @family support functions
 #' @examples \donttest{
 #'
-#' library(geobr)
+#' library(aop)
 #'
 #' df <- download_metadata()
 #'
@@ -151,7 +151,7 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 #' Download geopackage to tempdir
 #'
 #'
-#' @param file_url A string with the file_url address of a geobr dataset
+#' @param file_url A string with the file_url address of a aop dataset
 #' @param progress_bar Logical. Defaults to (TRUE) display progress bar
 #' @export
 #' @family support functions
@@ -234,7 +234,7 @@ download_gpkg <- function(file_url, progress_bar = showProgress){
 
 #' Load geopackage from tempdir to global environment
 #'
-#' @param file_url A string with the file_url address of a geobr dataset
+#' @param file_url A string with the file_url address of a aop dataset
 #' @param temps The address of a gpkg file stored in tempdir. Defaults to NULL
 #' @export
 #' @family support functions
