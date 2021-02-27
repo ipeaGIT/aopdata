@@ -6,7 +6,6 @@
 #' @param city A city name or three-letter abbreviation
 #' @param mode A transport mode.
 #' @param year A date number in YYYY format.
-#' @param t Data type. Either "access' or 'grid'
 #' @param showProgress Logical. Defaults to `TRUE` display progress bar
 #'
 #' @return A `data.frame` object
@@ -15,18 +14,19 @@
 #' @family accessibility data functions
 #' @examples \donttest{
 #' # Read accessibility estimates of a single city
-#' spo <- read_access(city = 'sao paulo', mode = 'walk', year = 2019)
+#' bho <- read_access(city = 'Belo Horizonte', mode = 'walk', year = 2019)
+#' bho <- read_access(city = 'bho', mode = 'walk', year = 2019)
 #'
 #' # Read accessibility estimates of all cities in the project
 #' all_pt <- read_access(city = 'all', mode = 'public_transport', year = 2019)
 #'}
-read_access <- function(city, mode, year, t, showProgress=TRUE){
+read_access <- function(city, mode, year, showProgress=TRUE){
 
   # Get metadata with data url addresses
-  temp_meta <- select_metadata(c=city,
-                               m=mode,
+  temp_meta <- select_metadata(t='access',
+                               c=city,
                                y=year,
-                               t='access')
+                               m=mode)
 
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)

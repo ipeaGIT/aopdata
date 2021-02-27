@@ -4,6 +4,7 @@
 #' Download spatial hexagonal grid
 #'
 #' @param city A city name or three-letter abbreviation
+#' @param t Data type
 #' @param showProgress Logical. Defaults to `TRUE` display progress bar
 #'
 #' @return An `sd data.frame` object
@@ -18,7 +19,7 @@
 #' # Read spatial grid of all cities in the project
 #' all <- read_grid(city = 'all')
 #'}
-read_grid <- function(city, showProgress=TRUE){
+read_grid <- function(city, t, showProgress=TRUE){
 
   # Get metadata with data url addresses
   temp_meta <- select_metadata(t="grid", c=city)

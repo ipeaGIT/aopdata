@@ -4,16 +4,16 @@
 \alias{select_metadata}
 \title{Select metadata}
 \usage{
-select_metadata(t = NULL, c = NULL, m = NULL, y = NULL)
+select_metadata(t = NULL, c = NULL, y = NULL, m = NULL)
 }
 \arguments{
 \item{t}{Type of data: 'access' or 'grid' (passed from \code{read_} function)}
 
 \item{c}{City (passed from \code{read_} function)}
 
-\item{m}{Transport mode (passed from \code{read_} function)}
-
 \item{y}{Year of the dataset (passed from \code{read_} function)}
+
+\item{m}{Transport mode (passed from \code{read_} function)}
 }
 \description{
 Select metadata

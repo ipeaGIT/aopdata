@@ -122,7 +122,7 @@ select_mode_input <- function(temp_meta, m=mode){
 #'
 #' }
 #'
-select_metadata <- function(t=NULL, c=NULL, m=NULL, y=NULL){
+select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 
 # download metadata
   metadata <- download_metadata()
