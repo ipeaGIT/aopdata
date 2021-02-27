@@ -27,7 +27,6 @@ Imports:
       checkmate,
       data.table,
       httr (>= 1.4.1),
-      readr,
       sf (>= 0.9-3),
       utils
 Roxygen: list(markdown = TRUE)
