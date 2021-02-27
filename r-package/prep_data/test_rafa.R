@@ -1,32 +1,32 @@
-#### testing functions of geobr
+#### testing functions of aop
 
 #library(magrittr)
+library(aop)
 library(sf)
 library(dplyr)
 library(data.table)
-library(geobr)
 library(ggplot2)
 library(mapview)
 
 
 ### Install package
-install.packages("geobr")
-library(geobr)
+install.packages("aop")
+library(aop)
 
-  # or use development version of geobr
-    # devtools::install_github("ipeaGIT/geobr")
+  # or use development version of aop
+    # devtools::install_github("ipeaGIT/aop")
 
 
 # Rafael
-devtools::load_all('R:/Dropbox/git_projects/geobr')
-devtools::load_all('C:/Users/r1701707/Desktop/geobr')
+devtools::load_all('R:/Dropbox/git_projects/aop')
+devtools::load_all('C:/Users/r1701707/Desktop/aop')
 
 
 
-### Uninstall geobr
+### Uninstall aop
 
-utils::remove.packages("geobr")
-devtools::uninstall(pkg = "geobr")
+utils::remove.packages("aop")
+devtools::uninstall(pkg = "aop")
 
 
 
@@ -42,140 +42,21 @@ data("brazil_2010")
 head(brazil_2010)
 
 
+### Test file size  ----------------
 
+a <- aop::read_access(city='all',
+                      mode = 'walk',
+                      year = 2019)
 
-### 1. read_region -------------------------
+a <- rbind(a,a,a,a,a,a)
+library(feather)
+system.time(fwrite(a, 'test.csv'))
+system.time(write_feather(a, 'test.feather'))
+rm(a,b)
+gc(reset = T,full = T)
 
-
-ufs <- select(ufs, 'code_region', 'geometry')
-ufs$s <- 1
-
-ufs <- lwgeom::st_make_valid(ufs)
-ufs <- ufs %>% st_buffer(0)
-plot(ufs)
-
-system.time(sumar <- ufs %>% group_by(code_region) %>% summarise()) # 21sec
-head(sumar)
-plot(sumar)
-
-
-system.time( union <- ufs %>% group_by(code_region) %>% st_union() ) # 37 sec
-
-head(union)
-plot(union)
-
-
-object.size(sumar) -
-  object.size(union) # union ganha
-
-df <- as.data.frame(ufs)
-
-dt <- setDT(df)[, .(name_region= name_region[1L],
-                     geo= sf::st_union(geometry)), by=code_region]
-head(dt)
-
-
-setDT(ufs)[, list(geom = st_union(geometry)), by = "code_region"]
-
-
-library(mapview)
-library(sf)
-library(data.table)
-brew = st_join(breweries, franconia["district"])
-dt = data.table(brew)
-union = dt[, list(geom = st_union(geometry)), by = "district"]
-mapview(st_as_sf(union))
-
-
-library(sf)
-# data
- demo(nc, ask = FALSE, echo = FALSE)
-
-# create new id columns
-  nc$newid <- substr(nc$CNTY_ID, 1, 2)
-
-
-# st_union
-  dt <- data.table(nc)
-  union = setDT(dt)[, list(geom = st_union(geom)), by = "newid"]
-  mapview(st_as_sf(union))
-
-
-  shape$newid <- sample(1:4, size = nrow(shape), replace = T)
-  dt <- data.table(shape)
-  union = setDT(dt)[, list(geometry = st_union(geometry)), by = "newid"]
-  mapview(st_as_sf(union))
-
-  readr::write_rds(shape, path = "shape.rds", compress = 'gz')
-  shape <- readr::read_rds(path = "shape.rds")
-
-  ufdt <- data.table(uf)
-  union = setDT(ufdt)[, list(geom = st_union(geometry)), by = "code_region"]
-  mapview(st_as_sf(union))
-
-
-
-
-
-
-
-
-
-###### recode column codes -------------------------
-gc(reset = T)
-
-
-
-system.time( d <- read_municipality(code_muni="all" ))
-head(d)
-
-setDT(d)
-d[, code_state := as.numeric(substr(code_muni, 1, 2))]
-d[, code_region := as.numeric(substr(code_muni, 1, 1))]
-d[, name_region := ifelse(code_region==1, 'Norte',
-                   ifelse(code_region==2, 'Nordeste',
-                   ifelse(code_region==3, 'Sudeste',
-                   ifelse(code_region==4, 'Sul',
-                   ifelse(code_region==5, 'Centro Oeste', NA)))))]
-
-
-d[, abbrev_state := ifelse(code_state== 11, "RO",
-                    ifelse(code_state== 12, "AC",
-                    ifelse(code_state== 13, "AM",
-                    ifelse(code_state== 14, "RR",
-                    ifelse(code_state== 15, "PA",
-                    ifelse(code_state== 16, "AP",
-                    ifelse(code_state== 17, "TO",
-                    ifelse(code_state== 21, "MA",
-                    ifelse(code_state== 22, "PI",
-                    ifelse(code_state== 23, "CE",
-                    ifelse(code_state== 24, "RN",
-                    ifelse(code_state== 25, "PB",
-                    ifelse(code_state== 26, "PE",
-                    ifelse(code_state== 27, "AL",
-                    ifelse(code_state== 28, "SE",
-                    ifelse(code_state== 29, "BA",
-                    ifelse(code_state== 31, "MG",
-                    ifelse(code_state== 32, "ES",
-                    ifelse(code_state== 33, "RJ",
-                    ifelse(code_state== 35, "SP",
-                    ifelse(code_state== 41, "PR",
-                    ifelse(code_state== 42, "SC",
-                    ifelse(code_state== 43, "RS",
-                    ifelse(code_state== 50, "MS",
-                    ifelse(code_state== 51, "MT",
-                    ifelse(code_state== 52, "GO",
-                    ifelse(code_state== 53, "DF",NA)))))))))))))))))))))))))))]
-
-
-
-setcolorder(d, c('code_muni', 'name_muni', 'code_state', 'abbrev_state', 'code_region', 'name_region', 'geometry'))
-
-
-
-
-
-
+system.time(cc <- fread('test.csv'))
+system.time(dd <- read_feather('test.feather'))
 
 ### Test examples  ----------------
 library(devtools)
@@ -185,28 +66,18 @@ devtools::run_examples(pkg = ".", test = T, run = T)
 
 
 
-a <- geobr::download_metadata()
-s <- geobr::read_state()
-
-
 ### Test coverage  ----------------
 
 # TRAVIS
-#  https://travis-ci.org/ipeaGIT/geobr
+#  https://travis-ci.org/ipeaGIT/aop
 
 library(covr)
 library(testthat)
-library(geobr)
+library(aop)
 Sys.setenv(NOT_CRAN = "true")
 
 
 function_coverage(fun='download_metadata', test_file("tests/testthat/test-download_metadata.R"))
-function_coverage(fun='list_geobr', test_file("tests/testthat/test-list_geobr.R"))
-function_coverage(fun='lookup_muni', test_file("tests/testthat/test-lookup_muni.R"))
-function_coverage(fun='grid_state_correspondence_table', test_file("tests/testthat/test-grid_state_correspondence_table.R"))
-function_coverage(fun='cep_to_state', test_file("tests/testthat/test-cep_to_state.R"))
-
-
 
 function_coverage(fun='read_schools', test_file("tests/testthat/test-read_schools.R"))
 function_coverage(fun='read_neighborhood', test_file("tests/testthat/test-read_neighborhood.R"))
@@ -217,46 +88,17 @@ function_coverage(fun= 'read_semiarid', test_file("tests/testthat/test-read_semi
 function_coverage(fun= 'read_metro_area', test_file("tests/testthat/test-read_metro_area.R"))
 function_coverage(fun= 'read_conservation_units', test_file("tests/testthat/test-read_conservation_units.R"))
 
-
-function_coverage(fun='read_health_facilities', test_file("tests/testthat/test-read_health_facilities.R"))
-function_coverage(fun='read_municipal_seat', test_file("tests/testthat/test-read_municipal_seat.R"))
-
-function_coverage(fun='read_comparable_areas', test_file("tests/testthat/test-read_comparable_areas.R"))
-
-
-
-function_coverage(fun='read_meso_region', test_file("tests/testthat/test-read_meso_region.R"))
-function_coverage(fun='read_micro_region', test_file("tests/testthat/test-read_micro_region.R"))
-function_coverage(fun='read_state', test_file("tests/testthat/test-read_state.R"))
-function_coverage(fun='read_urban_area', test_file("tests/testthat/test-read_urban_area.R"))
-
-function_coverage(fun='read_indigenous_land', test_file("tests/testthat/test-read_indigenous_land.R"))
-function_coverage(fun='read_disaster_risk_area', test_file("tests/testthat/test-read_disaster_risk_area.R"))
-function_coverage(fun='read_health_region', test_file("tests/testthat/test-read_health_region.R"))
-
-
-function_coverage(fun='read_intermediate_region', test_file("tests/testthat/test-read_intermediate_region.R"))
-function_coverage(fun='read_immediate_region', test_file("tests/testthat/test-read_immediate_region.R"))
-
-
-
-function_coverage(fun='read_municipality', test_file("tests/testthat/test-read_municipality.R"))
-function_coverage(fun='read_census_tract', test_file("tests/testthat/test-read_census_tract.R"))
-function_coverage(fun='read_weighting_area', test_file("tests/testthat/test-read_weighting_area.R"))
-function_coverage(fun='read_statistical_grid', test_file("tests/testthat/test-read_statistical_grid.R"))
-
-
 # create githubl shield with code coverage
   # usethis::use_coverage( type = c("codecov"))
 
 # update Package coverage
   Sys.setenv(NOT_CRAN = "true")
-  system.time(  geobr_cov <- covr::package_coverage() )
-  geobr_cov
+  system.time(  aop_cov <- covr::package_coverage() )
+  aop_cov
   beepr::beep()
 
-  x <- as.data.frame(geobr_cov)
-  covr::codecov( coverage = geobr_cov, token ='e3532778-1d8d-4605-a151-2a88593e1612' )
+  x <- as.data.frame(aop_cov)
+#  covr::codecov( coverage = aop_cov, token ='e3532778-1d8d-4605-a151-2a88593e1612' )
 
 
 
@@ -277,8 +119,8 @@ library(usethis)
 
 
 
-setwd("C:/Users/r1701707/Desktop/git/geobr")
-setwd("R:/Dropbox/git/geobr")
+setwd("C:/Users/r1701707/Desktop/git/aop")
+setwd("R:/Dropbox/git/aop")
 setwd("..")
 
 # update `NEWS.md` file
@@ -291,21 +133,21 @@ library(spelling)
 devtools::spell_check(pkg = ".", vignettes = TRUE, use_wordlist = TRUE)
 
 # Write package manual.pdf
-  system("R CMD Rd2pdf --title=Package geobr --output=./geobr/manual.pdf")
-  # system("R CMD Rd2pdf geobr")
+  system("R CMD Rd2pdf --title=Package aop --output=./aop/manual.pdf")
+  # system("R CMD Rd2pdf aop")
 
 
 
 
 # Ignore these files/folders when building the package (but keep them on github)
-  setwd("R:/Dropbox/git/geobr")
+  setwd("R:/Dropbox/git/aop")
 
 
   usethis::use_build_ignore(".travis.yml")
   usethis::use_build_ignore("prep_data")
   usethis::use_build_ignore("manual.pdf")
   usethis::use_build_ignore("README.md")
-  usethis::use_build_ignore("geobr_logo_b.svg")
+  usethis::use_build_ignore("aop_logo_b.svg")
 
 
 
@@ -321,7 +163,7 @@ devtools::spell_check(pkg = ".", vignettes = TRUE, use_wordlist = TRUE)
 
 
 ### update pkgdown website ----------------
-    library(geobr)
+    library(aop)
     library(pkgdown)
 
 # # Run once to configure your package to use pkgdown

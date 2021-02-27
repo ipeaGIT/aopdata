@@ -4,7 +4,7 @@
 \alias{read_access}
 \title{Download accessibility estimates}
 \usage{
-read_access(city, mode, year = 2019, showProgress = TRUE)
+read_access(city, mode, year, t, showProgress = TRUE)
 }
 \arguments{
 \item{city}{A city name or three-letter abbreviation}
@@ -12,6 +12,8 @@ read_access(city, mode, year = 2019, showProgress = TRUE)
 \item{mode}{A transport mode.}
 
 \item{year}{A date number in YYYY format.}
+
+\item{t}{Data type. Either "access' or 'grid'}
 
 \item{showProgress}{Logical. Defaults to \code{TRUE} display progress bar}
 }
@@ -27,7 +29,7 @@ Download accessibility estimates
 spo <- read_access(city = 'sao paulo', mode = 'walk', year = 2019)
 
 # Read accessibility estimates of all cities in the project
-spo <- read_access(city = 'all', mode = 'public_transport', year = 2019)
+all_pt <- read_access(city = 'all', mode = 'public_transport', year = 2019)
 }
 }
 \concept{accessibility data functions}
