@@ -2,8 +2,9 @@
 
 # geobr: Official Spatial Data Sets of Brazil 
 
-<img align="right" src="https://github.com/ipeaGIT/aop/blob/master/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"> 
-[Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/)
+<img align="right" src="https://github.com/ipeaGIT/aop/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"> 
+
+R package to download data from the [Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/).
 
 
 ## Installation R
@@ -23,17 +24,18 @@
 ```R
 library(aop)
 
-# Read specific city
+# Without spatial geometry
 cur <- read_access(city = 'Curitiba', mode = 'walk', year = 2019)
-cur <- read_access(city = 'cur', mode = 'public_transport', year = 2019)
 
-# Read all cities
-all <- read_access(city = 'all', mode = 'walk', year = 2019)
+# With spatial geometry
+cur <- read_access(city = 'Curitiba', mode = 'walk', year = 2019, geometry = TRUE)
+
+cur <- read_access(city = 'cur', mode = 'public_transport', year = 2019)
 
 ```
 
 
-## Read spatial hexagonal grid
+## Read only the spatial grid
 ```R
 library(aop)
 
