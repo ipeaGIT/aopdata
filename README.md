@@ -18,7 +18,7 @@ R package to download data from the [Access to Opportunities Project (AOP)](http
 
 # Basic Usage
 
-## Read accessibility estimates for a given transport mode
+**Read accessibility estimates for a given transport mode**
 ```R
 library(aop)
 
@@ -28,16 +28,21 @@ cur <- read_access(city = 'Curitiba', mode = 'walk', year = 2019)
 # With spatial geometry
 cur <- read_access(city = 'Curitiba', mode = 'walk', year = 2019, geometry = TRUE)
 
-cur <- read_access(city = 'cur', mode = 'public_transport', year = 2019)
 
 ```
 
 
-## Read only the spatial grid
+**Read only the spatial grid**
 ```R
 library(aop)
 
 # Read specific city
 for <- read_grid(city = 'Fortaleza')
+```
+
+Note that the `city` parameter can also be a 3-letter abbreviation of the city.
+```R
+cur <- read_access(city = 'cur', mode = 'public_transport', year = 2019)
 for <- read_grid(city = 'for')
 ```
+
