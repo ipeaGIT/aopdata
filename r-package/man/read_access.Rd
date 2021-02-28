@@ -2,20 +2,30 @@
 % Please edit documentation in R/read_access.R
 \name{read_access}
 \alias{read_access}
-\title{Download accessibility estimates}
+\title{Download accessibility estimates, population and land use data}
 \usage{
-read_access(city, mode, year, geometry = FALSE, showProgress = TRUE)
+read_access(
+  city,
+  mode = "walk",
+  year = 2019,
+  geometry = FALSE,
+  showProgress = TRUE
+)
 }
 \arguments{
-\item{city}{A city name or three-letter abbreviation}
+\item{city}{Character. A city name or three-letter abbreviation. If
+\code{city="all"}, results for all cities are loaded.}
 
-\item{mode}{A transport mode.}
+\item{mode}{Character. A transport mode. Modes available include
+'public_transport', 'bicycle', or 'walk' (the default).}
 
-\item{year}{A date number in YYYY format.}
+\item{year}{Numeric. A year number in YYYY format. Default set to 2019, the
+only year currently available.}
 
-\item{geometry}{if FALSE (the default), returns a regular data.table of aop
-data. if TRUE, returns a an \verb{sf data.frame} with simple
-feature geometry of spatial hexagonal grid H3.}
+\item{geometry}{Logical. if FALSE (the default), returns a regular data.table
+of aop data. if TRUE, returns a an \verb{sf data.frame} with simple
+feature geometry of spatial hexagonal grid H3. See details in
+\link{read_grid}.}
 
 \item{showProgress}{Logical. Defaults to \code{TRUE} display progress bar}
 }
@@ -23,7 +33,10 @@ feature geometry of spatial hexagonal grid H3.}
 A \code{data.frame} object
 }
 \description{
-Download accessibility estimates
+Download annual estimates of access to employment, health and education
+services by transport mode, as well as data on the spatial distribution of
+population, schools and healthcare facilities at a fine spatial resolution
+for all cities included in the study.
 }
 \examples{
 \donttest{
@@ -31,6 +44,8 @@ Download accessibility estimates
 bho <- read_access(city = 'Belo Horizonte', mode = 'walk', year = 2019)
 bho <- read_access(city = 'bho', mode = 'walk', year = 2019)
 
+# Read accessibility estimates for all cities
+all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
 }
 }
 \concept{accessibility data functions}

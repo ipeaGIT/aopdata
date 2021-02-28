@@ -119,9 +119,7 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 #' @examples \donttest{
 #'
 #' df <- download_metadata()
-#'
 #' }
-#'
 select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 
 # download metadata
@@ -148,7 +146,6 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 
 #' Download geopackage to tempdir
 #'
-#'
 #' @param file_url A string with the file_url address of a aop dataset
 #' @param progress_bar Logical. Defaults to (TRUE) display progress bar
 #' @export
@@ -166,11 +163,9 @@ download_data <- function(file_url, progress_bar = showProgress){
     temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(file_url,"/"),tail,n=1L)))
     httr::GET(url=file_url, httr::progress(), httr::write_disk(temps, overwrite = T))
 
-    # load gpkg
-    temp_sf <- load_data(file_url, temps)
-    return(temp_sf)
-
-
+    # load data
+    temp_data <- load_data(file_url, temps)
+    return(temp_data)
     }
 
   else if(length(file_url)==1 & progress_bar == FALSE){
@@ -179,12 +174,10 @@ download_data <- function(file_url, progress_bar = showProgress){
     temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(file_url,"/"),tail,n=1L)))
     httr::GET(url=file_url, httr::write_disk(temps, overwrite = T))
 
-    # load gpkg
-    temp_sf <- load_data(file_url, temps)
-    return(temp_sf)
+    # load data
+    temp_data <- load_data(file_url, temps)
+    return(temp_data)
   }
-
-
 
 ## multiple files
 
@@ -204,11 +197,9 @@ download_data <- function(file_url, progress_bar = showProgress){
     # closing progress bar
     close(pb)
 
-    # load gpkg
-    temp_sf <- load_data(file_url)
-    return(temp_sf)
-
-
+    # load data
+    temp_data <- load_data(file_url)
+    return(temp_data)
     }
 
   else if(length(file_url) > 1 & progress_bar == FALSE) {
@@ -219,11 +210,9 @@ download_data <- function(file_url, progress_bar = showProgress){
       httr::GET(url=x, #httr::progress(),
                 httr::write_disk(paste0(tempdir(),"/", unlist(lapply(strsplit(x,"/"),tail,n=1L))), overwrite = T))})
 
-
-    # load gpkg
-    temp_sf <- load_data(file_url)
-    return(temp_sf)
-
+    # load data
+    temp_data <- load_data(file_url)
+    return(temp_data)
     }
 }
 
@@ -233,7 +222,7 @@ download_data <- function(file_url, progress_bar = showProgress){
 #' Load geopackage from tempdir to global environment
 #'
 #' @param file_url A string with the file_url address of a aop dataset
-#' @param temps The address of a gpkg file stored in tempdir. Defaults to NULL
+#' @param temps The address of a data file stored in tempdir. Defaults to NULL
 #' @export
 #' @family support functions
 #'
@@ -274,9 +263,9 @@ load_data <- function(file_url, temps=NULL){
     return(temp)
   }
 
-  # load gpkg to memory
-  temp_sf <- load_data(file_url, temps)
-  return(temp_sf)
+  # load data to memory
+  temp_data <- load_data(file_url, temps)
+  return(temp_data)
 }
 
 

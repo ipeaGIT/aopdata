@@ -2,20 +2,24 @@
 % Please edit documentation in R/read_grid.R
 \name{read_grid}
 \alias{read_grid}
-\title{Download spatial hexagonal grid}
+\title{Download spatial hexagonal grid H3}
 \usage{
 read_grid(city, showProgress = TRUE)
 }
 \arguments{
-\item{city}{A city name or three-letter abbreviation}
+\item{city}{Character. A city name or three-letter abbreviation. If
+\code{city="all"}, results for all cities are loaded.}
 
 \item{showProgress}{Logical. Defaults to \code{TRUE} display progress bar}
 }
 \value{
-An \verb{sd data.frame} object
+An \verb{sf data.frame} object
 }
 \description{
-Download spatial hexagonal grid
+Results of the AOP project are spatially aggregated on a hexagonal grid based
+on the global H3 index at resolution 8, with a size of 357 meters (short
+diagonal) and an area of 0.74 km<sup>2</sup>. More infor about H3 at
+\url{https://h3geo.org/docs/core-library/restable}.
 }
 \examples{
 \donttest{
@@ -27,4 +31,4 @@ nat <- read_grid(city = 'nat')
 all <- read_grid(city = 'all')
 }
 }
-\concept{spatial grid data functions}
+\concept{spatial data functions}

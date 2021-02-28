@@ -1,15 +1,19 @@
-#' Download spatial hexagonal grid
+#' Download spatial hexagonal grid H3
 #'
 #' @description
-#' Download spatial hexagonal grid
+#' Results of the AOP project are spatially aggregated on a hexagonal grid based
+#' on the global H3 index at resolution 8, with a size of 357 meters (short
+#' diagonal) and an area of 0.74 km<sup>2</sup>. More infor about H3 at
+#' \url{https://h3geo.org/docs/core-library/restable}.
 #'
-#' @param city A city name or three-letter abbreviation
+#' @param city Character. A city name or three-letter abbreviation. If
+#'             `city="all"`, results for all cities are loaded.
 #' @param showProgress Logical. Defaults to `TRUE` display progress bar
 #'
-#' @return An `sd data.frame` object
+#' @return An `sf data.frame` object
 #'
 #' @export
-#' @family spatial grid data functions
+#' @family spatial data functions
 #' @examples \donttest{
 #' # Read spatial grid of a single city
 #' nat <- read_grid(city = 'natal')
@@ -18,7 +22,7 @@
 #' # Read spatial grid of all cities in the project
 #' all <- read_grid(city = 'all')
 #'}
-read_grid <- function(city, showProgress=TRUE){
+read_grid <- function(city, showProgress = TRUE){
 
   # Get metadata with data url addresses
   temp_meta <- select_metadata(t="grid", c=city)

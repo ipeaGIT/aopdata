@@ -22,9 +22,7 @@ Select metadata
 \donttest{
 
 df <- download_metadata()
-
 }
-
 }
 \seealso{
 Other support functions: 

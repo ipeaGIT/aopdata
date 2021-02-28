@@ -9,7 +9,7 @@ load_data(file_url, temps = NULL)
 \arguments{
 \item{file_url}{A string with the file_url address of a aop dataset}
 
-\item{temps}{The address of a gpkg file stored in tempdir. Defaults to NULL}
+\item{temps}{The address of a data file stored in tempdir. Defaults to NULL}
 }
 \description{
 Load geopackage from tempdir to global environment
