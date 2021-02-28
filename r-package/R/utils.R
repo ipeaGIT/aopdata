@@ -67,7 +67,7 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
 
   # invalid input
   else if (year %in% temp_meta$year){ message(paste0("Using year ", year))
-                                  temp_meta <- temp_meta[ temp_meta$year == year, ]
+                                  temp_meta <- temp_meta[ temp_meta$year %in% year, ]
                                   return(temp_meta) }
 
   # invalid input
@@ -94,7 +94,7 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 
   # invalid input
   else if (mode %in% temp_meta$mode){ message(paste0("Using mode ", mode))
-    temp_meta <- temp_meta[ temp_meta$mode == mode, ]
+    temp_meta <- temp_meta[ temp_meta$mode %in% mode, ]
     return(temp_meta) }
 
   # invalid input
