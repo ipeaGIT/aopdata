@@ -3,8 +3,8 @@
 #' @description
 #' Results of the AOP project are spatially aggregated on a hexagonal grid based
 #' on the global H3 index at resolution 8, with a size of 357 meters (short
-#' diagonal) and an area of 0.74 km<sup>2</sup>. More infor about H3 at
-#' \url{https://h3geo.org/docs/core-library/restable}.
+#' diagonal) and an area of 0.74 km2. More infor about H3 at
+#' \url{https://h3geo.org/docs/core-library/restable/}.
 #'
 #' @param city Character. A city name or three-letter abbreviation. If
 #'             `city="all"`, results for all cities are loaded.
