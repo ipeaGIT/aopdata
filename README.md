@@ -1,8 +1,11 @@
-# aopdata: Download Data from the Access to Opportunities Project (AOP)
+# aopdata: Data from the Access to Opportunities Project
 
 <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"> 
 
-R package to download data from the [Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/).
+**`aopdata`** is an R package to download data from the [Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/). The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport accessibility and inequalities in access to opportunities in Brazilian cities. 
+
+The **`aopdata`** package brings annual estimates of access to employment, health and education services by transport mode, as well as data on the spatial distribution of population, schools and healthcare facilities at a fine spatial resolution for all cities included in the study. Data for 2019 are already available, and cover accessibility estimates by active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for 7 major cities. For more information on the [AOP website](https://www.ipea.gov.br/acessooportunidades/en/).
+
 
 
 ## Installation R
@@ -22,20 +25,20 @@ R package to download data from the [Access to Opportunities Project (AOP)](http
 ```R
 library(aopdata)
 
-# Without spatial geometry
+# Just a data.frame, without spatial geometry
 cur <- read_access(city = 'Curitiba', mode = 'walk', year = 2019)
 
-# With spatial geometry
+# An df dataframe, with spatial geometry
 cur <- read_access(city = 'Curitiba', mode = 'walk', year = 2019, geometry = TRUE)
 
-
 ```
-
+One can also download the data for all cities of thee project at once:
+```R
+all <- read_access(city = 'all', mode = 'walk', year = 2019)
+```
 
 **Read only the spatial grid**
 ```R
-library(aopdata)
-
 # Read specific city
 for <- read_grid(city = 'Fortaleza')
 ```
