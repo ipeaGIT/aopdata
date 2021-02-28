@@ -1,4 +1,4 @@
-# aopdata: Data from the Access to Opportunities Project (AOP)
+# aopdata: Data from the Access to Opportunities Project
 
 <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"> 
 
