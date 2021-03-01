@@ -9,7 +9,7 @@ library(data.table)
 library(purrr)
 
 # read data -------------------------------------
-df <- readr::read_rds('\\\\storage1\\geobr\\aop\\data\\dados2019_v1.0_20200116.rds')
+df <- readr::read_rds('\\\\storage1\\geobr\\aop\\dados2019_v1.0_20200116.rds')
 head(df)
 
 # rename columns
@@ -40,6 +40,7 @@ setorderv(df, cols = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
   dir.create(path = paste0('./grid'))
   save_gpkg <- function(city){ # city='for'
     temp <- subset(spatial_df, abbrev_muni  == city)
+    temp <- distinct(temp)
     dir.create(path = paste0('./grid/',city),recursive = T)
     st_write(temp, paste0('./grid/',city,'/hex_grid_',city,'.gpkg'), overwrite=T)
   }
