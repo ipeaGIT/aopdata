@@ -1,3 +1,28 @@
+---
+title: 'aopdata ineq... '
+author: "Rafael H. M. Pereira .."
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+abstract: " abstract ... "
+urlcolor: blue
+vignette: >
+  %\VignetteIndexEntry{aopdata ineq...} 
+  %\VignetteEngine{knitr::rmarkdown} 
+  \usepackage[utf8]{inputenc}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+```
+
+
+
+
+```{r, message = FALSE}
 
 library(aopdata)
 library(sf)
@@ -8,7 +33,8 @@ library(data.table)
 # Download
 df2 <- aop::read_access(city='bho',
                        mode='public_transport',
-                       year=2019)
+                       year=2019,
+                       showProgress = F)
 
 ggplot() +
   geom_boxplot(data=subset(df2, !is.na(R003)),
@@ -21,20 +47,6 @@ ggplot() +
   scale_y_continuous(labels = scales::percent) +
   theme_minimal()
 
-weight=P001
-summary(df2$P001)
 
-
-
-
-
-
-
-library(aopdata)
-library(data.table)
-
-df <- aop::read_access(city='all', mode='walk', year=2019)
-
-df[, round(weighted.mean(x = CMATT30, w=P001),3), by=name_muni]
-
+```
 

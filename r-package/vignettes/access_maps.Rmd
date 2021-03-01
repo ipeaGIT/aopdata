@@ -1,0 +1,68 @@
+---
+title: 'aopdata ... '
+author: "Rafael H. M. Pereira .."
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+abstract: " abstract ... "
+urlcolor: blue
+vignette: >
+  %\VignetteIndexEntry{aopdata....} 
+  %\VignetteEngine{knitr::rmarkdown} 
+  \usepackage[utf8]{inputenc}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+```
+
+
+
+# accessibility
+
+```{r, message = FALSE}
+
+library(aopdata)
+library(sf)
+library(ggplot2)
+library(data.table)
+
+# download aop data
+df <- aop::read_access(city='bho',
+                       mode='public_transport',
+                      year=2019,
+                      geometry = T,
+                      showProgress = F)
+
+
+# plot map accessibility
+ggplot() +
+  geom_sf(data=df, aes(fill=CMATT60), color=NA, alpha=.9) +
+  scale_fill_viridis_c(option = "inferno", labels=scales::percent) +
+  labs(title='Proportion of jobs accessible', fill="Accessibility",
+       subtitle='by public transport in less than 60 min.') +
+  theme_void()
+
+
+```
+
+# schools
+
+```{r, message = FALSE}
+
+# plot map Schools
+ggplot() +
+  geom_sf(data=df, aes(fill=S001), color=NA, alpha=.7) +
+  scale_fill_viridis_c(option = "inferno") +
+  labs(title='Spatial distribution of public schools', fill="N. of schools") +
+  theme_void()
+
+ggplot() +
+  geom_sf(data=df, aes(fill=df$S001), color=NA, alpha=.7) +
+  scale_fill_viridis_c(option = "inferno") +
+  labs(title='Spatial distribution of public schools', fill="N. of schools") +
+  theme_void()
+```

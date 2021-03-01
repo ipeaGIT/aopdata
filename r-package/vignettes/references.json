@@ -1,0 +1,40 @@
+[
+	{
+		"id": "pereiradesigualdades2019",
+		"type": "report",
+		"collection-title": "Texto para Discussão IPEA",
+		"event-place": "Brasilia",
+		"language": "Portuguese",
+		"number": "2535",
+		"publisher": "Instituto de Pesquisa Econômica Aplicada - Ipea",
+		"publisher-place": "Brasilia",
+		"title": "Desigualdades socioespaciais de acesso a oportunidades nas cidades brasileiras, 2019",
+		"URL": "http://www.ipea.gov.br/portal/images/stories/PDFs/TDs/td_2535.pdf",
+		"author": [
+			{
+				"family": "Pereira",
+				"given": "Rafael H. M."
+			},
+			{
+				"family": "Braga",
+				"given": "Carlos Kaue Vieira"
+			},
+			{
+				"family": "Serra",
+				"given": "",
+				"suffix": "Bernardo"
+			},
+			{
+				"family": "Nadalin",
+				"given": "Vanessa"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2019"
+				]
+			]
+		}
+	}
+]
