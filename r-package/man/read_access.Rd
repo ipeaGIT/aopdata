@@ -7,6 +7,7 @@
 read_access(
   city,
   mode = "walk",
+  peak = TRUE,
   year = 2019,
   geometry = FALSE,
   showProgress = TRUE
@@ -19,11 +20,16 @@ read_access(
 \item{mode}{Character. A transport mode. Modes available include
 'public_transport', 'bicycle', or 'walk' (the default).}
 
+\item{peak}{Logical. If \code{TRUE} (the default), returns accessibility estimates
+during peak time, between 6am and 8am. If \code{FALSE}, returns
+accessibility during off-peak, between 2pm and 4am. This argument
+only takes effect when \code{mode = public_transport}.}
+
 \item{year}{Numeric. A year number in YYYY format. Default set to 2019, the
 only year currently available.}
 
-\item{geometry}{Logical. if FALSE (the default), returns a regular data.table
-of aop data. if TRUE, returns a an \verb{sf data.frame} with simple
+\item{geometry}{Logical. If \code{FALSE} (the default), returns a regular data.table
+of aop data. If \code{TRUE}, returns a an \verb{sf data.frame} with simple
 feature geometry of spatial hexagonal grid H3. See details in
 \link{read_grid}.}
 
