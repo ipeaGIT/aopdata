@@ -8,7 +8,7 @@
 download_metadata <- function(){
 
   # create tempfile to save metadata
-  tempf <- file.path(tempdir(), "metadata.csv")
+  tempf <- file.path(tempdir(), "metadata_aopdata.csv")
 
   # check if metadata has already been downloaded
   if (file.exists(tempf)) {
