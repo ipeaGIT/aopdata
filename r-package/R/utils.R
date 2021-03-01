@@ -16,13 +16,13 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
                                 paste(unique(temp_meta$name_muni),collapse = " | "))) }
 
   # 3 letter-abbreviation
-  if (nchar(city)==3) {
+  if (nchar(city)[1]==3) {
 
       # valid input 'all'
       if (city %in% 'all'){ return(temp_meta) }
 
       # valid input
-      if (city %in% temp_meta$city){ temp_meta <- temp_meta[ temp_meta$city == city, ]
+      if (city %in% temp_meta$city){ temp_meta <- temp_meta[ temp_meta$city %in% city, ]
                                   return(temp_meta) }
 
 
@@ -33,13 +33,13 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
 
 
   # full name
-  if (nchar(city)>3) {
+  if (nchar(city)[1]>3) {
 
     city <- tolower(city)
     city <- rm_accent(city)
 
     # valid input
-    if (city %in% temp_meta$name_muni){ temp_meta <- temp_meta[ temp_meta$name_muni == city, ]
+    if (city %in% temp_meta$name_muni){ temp_meta <- temp_meta[ temp_meta$name_muni %in% city, ]
                                         return(temp_meta)
                                       }
 
