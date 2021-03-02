@@ -1,12 +1,12 @@
 ---
-title: 'AOP maps'
+title: 'Mapping urban accessibility'
 author: "Rafael H. M. Pereira .."
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
-abstract: " abstract ... "
+abstract: "Mapping urban accessibility "
 urlcolor: blue
 vignette: >
-  %\VignetteIndexEntry{AOP maps} 
+  %\VignetteIndexEntry{Mapping urban accessibility} 
   %\VignetteEngine{knitr::rmarkdown} 
   \usepackage[utf8]{inputenc}
 ---

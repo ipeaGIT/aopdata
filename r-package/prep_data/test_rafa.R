@@ -8,6 +8,13 @@ library(data.table)
 library(ggplot2)
 library(mapview)
 
+df <- aopdata::read_access(city='bho',
+                           mode='public_transport',
+                           year=2019,
+                           geometry = T,
+                           showProgress = T)
+
+
 
 bho <- read_access(city = 'Belo Horizonte', mode = 'walk', year = 2019)
 head(bho)
