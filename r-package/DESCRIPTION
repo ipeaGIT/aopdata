@@ -1,5 +1,5 @@
 Package: aopdata
-Title: Data from the Access to Opportunities Project (AOP)
+Title: Data from the 'Access to Opportunities Project (AOP)'
 Version: 0.0.1
 Date: 2021-02-28
 Authors@R: c(
@@ -12,12 +12,12 @@ Authors@R: c(
                    role = c("cph", "fnd")
                    )
                 )
-Description: Download data from the Access to Opportunities Project (AOP). The 
-             aopdata package brings annual estimates of access to employment, 
+Description: Download data from the 'Access to Opportunities Project (AOP)'. The 
+             'aopdata' package brings annual estimates of access to employment, 
              health and education services by transport mode, as well as data 
              on the spatial distribution of population, schools and healthcare 
              facilities at a fine spatial resolution for all cities included in 
-             the study. More info on the AOP website <https://www.ipea.gov.br/acessooportunidades/en/>.
+             the study. More info on the 'AOP' website <https://www.ipea.gov.br/acessooportunidades/en/>.
 URL: https://github.com/ipeaGIT/aopdata
 BugReports: https://github.com/ipeaGIT/aopdata/issues
 License: MIT + file LICENSE
