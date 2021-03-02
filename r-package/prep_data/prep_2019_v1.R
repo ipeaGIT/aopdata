@@ -38,9 +38,11 @@ setorderv(df, cols = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
 
   # fun
   dir.create(path = paste0('./grid'))
-  save_gpkg <- function(city){ # city='for'
+  save_gpkg <- function(city){ # city='bho'
     temp <- subset(spatial_df, abbrev_muni  == city)
-    temp <- distinct(temp)
+    temp <- setDT(temp)[order(id_hex)]
+    temp <- unique(temp, by ='id_hex')
+    temp <- st_sf(temp)
     dir.create(path = paste0('./grid/',city),recursive = T)
     st_write(temp, paste0('./grid/',city,'/hex_grid_',city,'.gpkg'), overwrite=T)
   }
