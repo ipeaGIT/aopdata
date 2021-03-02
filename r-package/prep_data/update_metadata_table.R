@@ -3,6 +3,7 @@
 library(qdapRegex)
 library(data.table)
 library(pbapply)
+library(dplyr)
 
 ######### Etapa 1 - bases padrao ( geo/ano/arquivo) ----------------------
 
@@ -75,6 +76,7 @@ head(metadata)
 table(metadata$type )
 subset(metadata, type=="grid")
 subset(metadata, mode=="bicycle")
+subset(metadata, type=="traveltime")
 
 
 # to avoid conflict with data.table
