@@ -1,12 +1,12 @@
 ---
-title: 'aopdata ineq... '
+title: 'AOP inequality datasets'
 author: "Rafael H. M. Pereira .."
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 abstract: " abstract ... "
 urlcolor: blue
 vignette: >
-  %\VignetteIndexEntry{aopdata ineq...} 
+  %\VignetteIndexEntry{AOP inequality datasets} 
   %\VignetteEngine{knitr::rmarkdown} 
   \usepackage[utf8]{inputenc}
 ---
