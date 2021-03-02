@@ -10,8 +10,7 @@ download_metadata()
 Support function to download metadata internally used in aop
 }
 \examples{
-\donttest{
 df <- download_metadata()
-}
+
 }
 \concept{general support functions}

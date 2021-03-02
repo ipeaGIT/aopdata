@@ -1,12 +1,12 @@
 ---
-title: 'aopdata ... '
+title: 'AOP maps'
 author: "Rafael H. M. Pereira .."
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 abstract: " abstract ... "
 urlcolor: blue
 vignette: >
-  %\VignetteIndexEntry{aopdata....} 
+  %\VignetteIndexEntry{AOP maps} 
   %\VignetteEngine{knitr::rmarkdown} 
   \usepackage[utf8]{inputenc}
 ---
@@ -31,7 +31,7 @@ library(ggplot2)
 library(data.table)
 
 # download aop data
-df <- aop::read_access(city='bho',
+df <- aopdata::read_access(city='bho',
                        mode='public_transport',
                       year=2019,
                       geometry = T,

@@ -26,15 +26,14 @@
 #'
 #' @export
 #' @family accessibility data functions
-#' @examples \donttest{
+#' @examples
 #' # Read accessibility estimates of a single city
 #' bho <- read_access(city = 'Belo Horizonte', mode = 'walk', year = 2019)
 #' bho <- read_access(city = 'bho', mode = 'walk', year = 2019)
 #'
 #' # Read accessibility estimates for all cities
 #' all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
-
-#'}
+#'
 read_access <- function(city, mode = 'walk', peak = TRUE, year = 2019, geometry = FALSE, showProgress = TRUE){
 
   # Get metadata with data url addresses

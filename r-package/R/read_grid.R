@@ -14,14 +14,14 @@
 #'
 #' @export
 #' @family spatial data functions
-#' @examples \donttest{
+#' @examples
 #' # Read spatial grid of a single city
 #' nat <- read_grid(city = 'natal')
 #' nat <- read_grid(city = 'nat')
 #'
 #' # Read spatial grid of all cities in the project
 #' all <- read_grid(city = 'all')
-#'}
+#'
 read_grid <- function(city, showProgress = TRUE){
 
   # Get metadata with data url addresses
