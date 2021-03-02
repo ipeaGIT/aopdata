@@ -31,7 +31,7 @@ library(data.table)
 
 
 # Download
-df2 <- aop::read_access(city='bho',
+df2 <- aopdata::read_access(city='bho',
                        mode='public_transport',
                        year=2019,
                        showProgress = F)

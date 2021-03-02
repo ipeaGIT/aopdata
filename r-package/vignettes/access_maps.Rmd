@@ -31,7 +31,7 @@ library(ggplot2)
 library(data.table)
 
 # download aop data
-df <- aop::read_access(city='bho',
+df <- aopdata::read_access(city='bho',
                        mode='public_transport',
                       year=2019,
                       geometry = T,
