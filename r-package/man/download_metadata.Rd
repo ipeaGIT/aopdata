@@ -2,7 +2,7 @@
 % Please edit documentation in R/download_metadata.R
 \name{download_metadata}
 \alias{download_metadata}
-\title{Support function to download metadata internally used in aop}
+\title{Support function to download metadata internally used in 'aopdata'}
 \usage{
 download_metadata()
 }
@@ -10,7 +10,7 @@ download_metadata()
 A \code{data.frame} object with metadata and url of data sets
 }
 \description{
-Support function to download metadata internally used in aop
+Support function to download metadata internally used in 'aopdata'
 }
 \examples{
 df <- download_metadata()

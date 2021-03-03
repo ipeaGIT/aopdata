@@ -94,8 +94,7 @@ read_access(city='são paulo', mode='walk', year=2019)
 ### Test examples  ----------------
 library(devtools)
 
-
-devtools::run_examples(pkg = ".", test = T, run = T)
+devtools::run_examples(pkg = ".", run = T)
 
 
 

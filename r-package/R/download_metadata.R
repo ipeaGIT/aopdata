@@ -1,4 +1,4 @@
-#' Support function to download metadata internally used in aop
+#' Support function to download metadata internally used in 'aopdata'
 #'
 #' @return A `data.frame` object with metadata and url of data sets
 #'
@@ -18,9 +18,9 @@ download_metadata <- function(){
 
   } else {
 
-    #supress warnings
-    oldw <- getOption("warn")
-    options(warn = -1)
+# #supress warnings
+# oldw <- getOption("warn")
+# options(warn = -1)
 
     # test server connection
     metadata_link <- 'http://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'
@@ -29,8 +29,8 @@ download_metadata <- function(){
     if("try-error" %in% class(t)){stop('Internet connection problem. If this is not a connection problem in your network, please try aop again in a few minutes.')}
     suppressWarnings({ try(close.connection(con), silent=T) })
 
-    # return with warnings
-    options(warn = oldw)
+# # return with warnings
+# options(warn = oldw)
 
     # download it and save to metadata
     httr::GET(url= metadata_link, httr::write_disk(tempf, overwrite = T))
