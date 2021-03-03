@@ -372,4 +372,30 @@ aop_spatial_join <- function(aop_df, aop_sf){
   }
 
 
+
+
+#' Merge land use and access data
+#'
+#' @description Merges landuse and access data
+#'
+#' @param aop_landuse A `data.frame` of aop land use data
+#' @param aop_access A `data.frame` of aop access data
+#'
+#' @return Returns a `data.frame sf` with landuse and access data
+#' @export
+#' @family support functions
+#'
+aop_merge <- function(aop_landuse, aop_access){
+
+  data.table::setDT(aop_landuse)
+  data.table::setDT(aop_access)
+  data.table::setkeyv(aop_landuse, c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
+  data.table::setkeyv(aop_access, c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
+
+  # merge
+  aop <- data.table::merge.data.table(aop_landuse, aop_access, by = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
+
+  return(aop)
+}
+
 # nocov end

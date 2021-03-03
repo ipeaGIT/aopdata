@@ -52,7 +52,7 @@ read_landuse <- function(city='bel', year = 2019, geometry = FALSE, showProgress
                         aop_grid <- read_grid(city=city, showProgress=showProgress)
 
                         # create function aop_join to bring in land use info
-                        aop <- aop_spatial_join(aop_landuse, aop_grid)
-                        return(aop)
+                        aop_sf <- aop_spatial_join(aop_landuse, aop_grid)
+                        return(aop_sf)
                         }
   }

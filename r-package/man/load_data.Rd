@@ -20,6 +20,7 @@ Reads data from tempdir to global environment.
 }
 \seealso{
 Other support functions: 
+\code{\link{aop_merge}()},
 \code{\link{aop_spatial_join}()},
 \code{\link{download_data}()},
 \code{\link{rm_accent}()},

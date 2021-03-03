@@ -57,18 +57,20 @@ read_access <- function(city, mode = 'walk', peak = TRUE, year = 2019, geometry 
                   aop_access <- subset(aop_access, peak == 1)
                 }
 
- # include here aop_df_join
+ # Download and merge land use data
+  aop_landuse <- read_landuse(city=city, year=year, showProgress=showProgress)
+  aop <- aop_merge(aop_landuse, aop_access)
 
   # with Vs without spatial data
   if(geometry == FALSE){
                         # return df
-                        return(aop_access)
+                        return(aop)
 
                         } else {
 
                         # return sf
                         aop_grid <- read_grid(city=city, showProgress=showProgress)
-                        aop <- aop_spatial_join(aop_access, aop_grid)
-                        return(aop)
+                        aop_sf <- aop_spatial_join(aop, aop_grid)
+                        return(aop_sf)
                         }
   }

@@ -65,9 +65,10 @@ head(brazil_2010)
 
 ### Test file size  ----------------
 
-a <- aop::read_access(city='all',
+b <- aopdata::read_access(city='all',
                       mode = 'walk',
-                      year = 2019)
+                      year = 2019,
+                      geometry = T)
 
 a <- rbind(a,a,a,a,a,a)
 library(feather)
