@@ -34,6 +34,7 @@ library(data.table)
 df <- aopdata::read_access(city='bho',
                        mode='public_transport',
                       year=2019,
+                      peak = F,
                       geometry = T,
                       showProgress = F)
 
@@ -54,15 +55,15 @@ ggplot() +
 ```{r, message = FALSE, eval=FALSE}
 
 # plot map Schools
-ggplot() +
-  geom_sf(data=df, aes(fill=S001), color=NA, alpha=.7) +
-  scale_fill_viridis_c(option = "inferno") +
-  labs(title='Spatial distribution of public schools', fill="N. of schools") +
-  theme_void()
-
-ggplot() +
-  geom_sf(data=df, aes(fill=df$S001), color=NA, alpha=.7) +
-  scale_fill_viridis_c(option = "inferno") +
-  labs(title='Spatial distribution of public schools', fill="N. of schools") +
-  theme_void()
+#ggplot() +
+#  geom_sf(data=df, aes(fill=S001), color=NA, alpha=.7) +
+#  scale_fill_viridis_c(option = "inferno") +
+#  labs(title='Spatial distribution of public schools', fill="N. of schools") +
+#  theme_void()
+#
+#ggplot() +
+#  geom_sf(data=df, aes(fill=df$S001), color=NA, alpha=.7) +
+#  scale_fill_viridis_c(option = "inferno") +
+#  labs(title='Spatial distribution of public schools', fill="N. of schools") +
+#  theme_void()
 ```
