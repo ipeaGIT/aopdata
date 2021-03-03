@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Download geopackage to tempdir — download_data • aopdata</title>
+<title>Download data to temporary directory. — download_data • aopdata</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Download geopackage to tempdir — download_data" />
-<meta property="og:description" content="Download geopackage to tempdir" />
+<meta property="og:title" content="Download data to temporary directory. — download_data" />
+<meta property="og:description" content="Save requested data (either an sf or a data.frame)
+to a temporary directory." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -134,13 +135,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Download geopackage to tempdir</h1>
+    <h1>Download data to temporary directory.</h1>
     <small class="dont-index">Source: <a href='https://github.com/ipeaGIT/aopdata/tree/master/r-package/R/utils.R'><code>R/utils.R</code></a></small>
     <div class="hidden name"><code>download_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Download geopackage to tempdir</p>
+    <p>Save requested data (either an <code>sf</code> or a <code>data.frame</code>)
+to a temporary directory.</p>
     </div>
 
     <pre class="usage"><span class='fu'>download_data</span><span class='op'>(</span><span class='va'>file_url</span>, progress_bar <span class='op'>=</span> <span class='va'>showProgress</span><span class='op'>)</span></pre>
@@ -158,6 +160,10 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>No visible output. The downloaded file (either an <code>sf</code> or a
+<code>data.frame</code>) is saved to a temporary directory.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other support functions: 
