@@ -1,10 +1,7 @@
 #### testing functions of aop
 
-2752 +
-3156 +
-2752 +
-1616
-10276-13500
+
+
 
 #library(magrittr)
 library(aopdata)
@@ -14,14 +11,16 @@ library(data.table)
 library(ggplot2)
 library(mapview)
 
-df <- aopdata::read_access(city='bho',
+a <- read_access(city='bho',
                            mode='public_transport',
                            year=2019,
-                           geometry = T,
+                           peak=F,
+                           geometry = F,
                            showProgress = T)
 
+read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
 
-
+for <- read_access(city = 'for', mode = 'walk', year = 2019, showProgress = FALSE)
 bho <- read_access(city = 'Belo Horizonte', mode = 'walk', year = 2019)
 head(bho)
 

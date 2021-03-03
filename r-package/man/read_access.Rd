@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_access.R
 \name{read_access}
 \alias{read_access}
-\title{Download accessibility estimates, population and land use data}
+\title{Download accessibility estimates}
 \usage{
 read_access(
   city,
@@ -40,14 +40,12 @@ A \code{data.frame} object
 }
 \description{
 Download annual estimates of access to employment, health and education
-services by transport mode, as well as data on the spatial distribution of
-population, schools and healthcare facilities at a fine spatial resolution
-for all cities included in the study.
+services by transport mode and time of the day
 }
 \examples{
 # Read accessibility estimates of a single city
-for <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
-for <- read_access(city = 'for', mode = 'walk', year = 2019, showProgress = FALSE)
+df <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
+df <- read_access(city = 'for', mode = 'walk', year = 2019, showProgress = FALSE)
 
 # Read accessibility estimates for all cities
 # all <- read_access(city = 'all', mode = 'public_transport', year = 2019)

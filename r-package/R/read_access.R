@@ -1,10 +1,8 @@
-#' Download accessibility estimates, population and land use data
+#' Download accessibility estimates
 #'
 #' @description
 #' Download annual estimates of access to employment, health and education
-#' services by transport mode, as well as data on the spatial distribution of
-#' population, schools and healthcare facilities at a fine spatial resolution
-#' for all cities included in the study.
+#' services by transport mode and time of the day
 #'
 #' @param city Character. A city name or three-letter abbreviation. If
 #'             `city="all"`, results for all cities are loaded.
@@ -28,8 +26,8 @@
 #' @family accessibility data functions
 #' @examples
 #' # Read accessibility estimates of a single city
-#' for <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
-#' for <- read_access(city = 'for', mode = 'walk', year = 2019, showProgress = FALSE)
+#' df <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
+#' df <- read_access(city = 'for', mode = 'walk', year = 2019, showProgress = FALSE)
 #'
 #' # Read accessibility estimates for all cities
 #' # all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
@@ -46,25 +44,31 @@ read_access <- function(city, mode = 'walk', peak = TRUE, year = 2019, geometry 
   file_url <- as.character(temp_meta$download_path)
 
   # download files
-  aop_df <- download_data(file_url, progress_bar = showProgress)
+  aop_access <- download_data(file_url, progress_bar = showProgress)
 
   # peak Vs off-peak
-  if(peak==TRUE){
-                 aop_df <- subset(aop_df, peak == 1)
+  cities_with_pt <- (city %in% c('for', 'rec', 'bho', 'rio', 'spo', 'cur', 'poa') |
+                    city %in% c('Fortaleza', 'Recife', 'Belo Horizonte',
+                                'Rio de Janeiro', 'S\u00e3o Paulo', 'Curitiba', 'Porto Alegre'))
+
+  if(peak==FALSE & mode == 'public_transport' & cities_with_pt){
+                  aop_access <- subset(aop_access, peak == 0)
                 } else {
-                 aop_df <- subset(aop_df, peak == 0)
+                  aop_access <- subset(aop_access, peak == 1)
                 }
+
+ # include here aop_df_join
 
   # with Vs without spatial data
   if(geometry == FALSE){
                         # return df
-                        return(aop_df)
+                        return(aop_access)
 
                         } else {
 
                         # return sf
-                        aop_sf <- read_grid(city=city, showProgress=showProgress)
-                        aop <- aop_spatial_join(aop_df, aop_sf)
+                        aop_grid <- read_grid(city=city, showProgress=showProgress)
+                        aop <- aop_spatial_join(aop_access, aop_grid)
                         return(aop)
                         }
   }
