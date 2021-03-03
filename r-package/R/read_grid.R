@@ -4,13 +4,22 @@
 #' Results of the AOP project are spatially aggregated on a hexagonal grid based
 #' on the global H3 index at resolution 8, with a size of 357 meters (short
 #' diagonal) and an area of 0.74 km2. More infor about H3 at
-#' \url{https://h3geo.org/docs/core-library/restable/}.
+#' \url{https://h3geo.org/docs/core-library/restable/}.  See documentation
+#' 'Details' for the data dictionary.
 #'
 #' @param city Character. A city name or three-letter abbreviation. If
 #'             `city="all"`, results for all cities are loaded.
 #' @param showProgress Logical. Defaults to `TRUE` display progress bar
 #'
 #' @return An `sf data.frame` object
+#' @details
+#' # Data dictionary:
+#' |Data type|column|Description|
+#' |-----|-----|-----|
+#' | geographic	| abbrev_muni|	Abbreviation of city name (3 letters)	|
+#' | geographic	| name_muni  | City name	|
+#' | geographic	| code_muni	 | 7-digit code of each city	| |
+#' | geographic	| id_hex	   | Unique id of hexagonal cell	|
 #'
 #' @export
 #' @family spatial data functions
