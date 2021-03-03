@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
       </span>
     </div>
 
@@ -117,22 +117,22 @@
 
 
 <span class="co"># Download</span>
-<span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu">aopdata</span><span class="fu">::</span><span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city<span class="op">=</span><span class="st">'bho'</span>,
-                       mode<span class="op">=</span><span class="st">'public_transport'</span>,
-                       year<span class="op">=</span><span class="fl">2019</span>,
-                       showProgress <span class="op">=</span> <span class="cn">F</span><span class="op">)</span>
+<span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city<span class="op">=</span><span class="st">'bho'</span>,
+                   mode<span class="op">=</span><span class="st">'public_transport'</span>,
+                   peak <span class="op">=</span> <span class="cn">F</span>,
+                   year<span class="op">=</span><span class="fl">2019</span>,
+                   showProgress <span class="op">=</span> <span class="cn">F</span><span class="op">)</span>
 
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://Rdatatable.gitlab.io/data.table/reference/subset.data.table.html">subset</a></span><span class="op">(</span><span class="va">df2</span>, <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">R003</span><span class="op">)</span><span class="op">)</span>,
-               <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">R003</span><span class="op">)</span>, y<span class="op">=</span><span class="va">CMAET30</span>, color<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">R003</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_color_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">'RdBu'</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">'Distribution of the proportion of jobs accessible'</span>, color<span class="op">=</span><span class="st">"Income\ndecile"</span>,
-       subtitle<span class="op">=</span><span class="st">'by public transport in less than 30 min. by income decile'</span>,
-       x<span class="op">=</span><span class="st">'Income decile'</span>, y<span class="op">=</span><span class="st">"Accessibility"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"D1 Poorest"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">'D'</span>, <span class="fl">2</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span>, <span class="st">"D10 Wealthiest"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p><img src="access_inequality_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<span class="co"># ggplot() +</span>
+<span class="co">#   geom_boxplot(data=subset(df2, !is.na(R003)),</span>
+<span class="co">#                aes(x = factor(R003), y=CMAET30, color=factor(R003))) +</span>
+<span class="co">#   scale_color_brewer(palette = 'RdBu') +</span>
+<span class="co">#   labs(title='Distribution of the proportion of jobs accessible', color="Income\ndecile",</span>
+<span class="co">#        subtitle='by public transport in less than 30 min. by income decile',</span>
+<span class="co">#        x='Income decile', y="Accessibility") +</span>
+<span class="co">#   scale_x_discrete(labels=c("D1 Poorest", paste0('D', 2:9), "D10 Wealthiest")) +</span>
+<span class="co">#   scale_y_continuous(labels = scales::percent) +</span>
+<span class="co">#   theme_minimal()</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

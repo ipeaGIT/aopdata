@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Download accessibility estimates, population and land use data — read_access • aopdata</title>
+<title>Download accessibility estimates — read_access • aopdata</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,11 +46,9 @@
 
 
 
-<meta property="og:title" content="Download accessibility estimates, population and land use data — read_access" />
+<meta property="og:title" content="Download accessibility estimates — read_access" />
 <meta property="og:description" content="Download annual estimates of access to employment, health and education
-services by transport mode, as well as data on the spatial distribution of
-population, schools and healthcare facilities at a fine spatial resolution
-for all cities included in the study." />
+services by transport mode and time of the day" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -83,7 +81,7 @@ for all cities included in the study." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.2</span>
       </span>
     </div>
 
@@ -137,16 +135,14 @@ for all cities included in the study." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Download accessibility estimates, population and land use data</h1>
+    <h1>Download accessibility estimates</h1>
     <small class="dont-index">Source: <a href='https://github.com/ipeaGIT/aopdata/tree/master/r-package/R/read_access.R'><code>R/read_access.R</code></a></small>
     <div class="hidden name"><code>read_access.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Download annual estimates of access to employment, health and education
-services by transport mode, as well as data on the spatial distribution of
-population, schools and healthcare facilities at a fine spatial resolution
-for all cities included in the study.</p>
+services by transport mode and time of the day</p>
     </div>
 
     <pre class="usage"><span class='fu'>read_access</span><span class='op'>(</span>
@@ -201,7 +197,14 @@ feature geometry of spatial hexagonal grid H3. See details in
     <p>A <code>data.frame</code> object</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
+    <pre class="examples"><div class='input'><span class='co'># Read accessibility estimates of a single city</span>
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>read_access</span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>'Fortaleza'</span>, mode <span class='op'>=</span> <span class='st'>'walk'</span>, year <span class='op'>=</span> <span class='fl'>2019</span>, showProgress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Using year 2019</span></div><div class='output co'>#&gt; <span class='message'>Using mode walk</span></div><div class='input'><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'>read_access</span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>'for'</span>, mode <span class='op'>=</span> <span class='st'>'walk'</span>, year <span class='op'>=</span> <span class='fl'>2019</span>, showProgress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Using year 2019</span></div><div class='output co'>#&gt; <span class='message'>Using mode walk</span></div><div class='input'>
+<span class='co'># Read accessibility estimates for all cities</span>
+<span class='co'># all &lt;- read_access(city = 'all', mode = 'public_transport', year = 2019)</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
