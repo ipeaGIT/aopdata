@@ -16,11 +16,10 @@
 #' @family spatial data functions
 #' @examples
 #' # Read spatial grid of a single city
-#' nat <- read_grid(city = 'natal')
-#' nat <- read_grid(city = 'nat')
+#' nat <- read_grid(city = 'Natal', showProgress = FALSE)
 #'
 #' # Read spatial grid of all cities in the project
-#' all <- read_grid(city = 'all')
+#' # all <- read_grid(city = 'all')
 #'
 read_grid <- function(city, showProgress = TRUE){
 

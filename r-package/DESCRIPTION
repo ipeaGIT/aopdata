@@ -33,6 +33,7 @@ Suggests:
     magrittr,
     mapview,
     rmarkdown (>= 2.6),
+    scales,
     testthat
 Imports:
       data.table,

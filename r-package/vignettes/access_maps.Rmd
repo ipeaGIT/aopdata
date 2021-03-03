@@ -51,7 +51,7 @@ ggplot() +
 
 # schools
 
-```{r, message = FALSE}
+```{r, message = FALSE, eval=FALSE}
 
 # plot map Schools
 ggplot() +

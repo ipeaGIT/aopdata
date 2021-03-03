@@ -46,11 +46,11 @@ for all cities included in the study.
 }
 \examples{
 # Read accessibility estimates of a single city
-bho <- read_access(city = 'Belo Horizonte', mode = 'walk', year = 2019)
-bho <- read_access(city = 'bho', mode = 'walk', year = 2019)
+for <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
+for <- read_access(city = 'for', mode = 'walk', year = 2019, showProgress = FALSE)
 
 # Read accessibility estimates for all cities
-all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
+# all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
 
 }
 \concept{accessibility data functions}

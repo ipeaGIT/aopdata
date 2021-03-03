@@ -1,5 +1,11 @@
 #### testing functions of aop
 
+2752 +
+3156 +
+2752 +
+1616
+10276-13500
+
 #library(magrittr)
 library(aopdata)
 library(sf)
