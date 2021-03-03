@@ -13,7 +13,7 @@ metadata <- data.frame(matrix(ncol = 5, nrow = 0))
 colnames(metadata) <- c("type","city","year","mode","download_path")
 
 # list all files
-files = list.files("//storage1/geobr/aop/data", full.names = T, recursive = T)
+files = list.files("//storage1/geobr/aopdata/data", full.names = T, recursive = T)
 
 # function to update metadata
 update_metadata <- function(f){ # f <- files[1]; f <- files[80]
@@ -85,7 +85,7 @@ metadata <- as.data.frame(metadata)
 
 
 # save updated metadata table
-# data.table::fwrite(metadata,"//storage1/geobr/aop/metadata/metadata.csv")
+# data.table::fwrite(metadata,"//storage1/geobr/aopdata/metadata/metadata.csv")
 
 
 

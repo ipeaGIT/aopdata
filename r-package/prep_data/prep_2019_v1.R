@@ -9,7 +9,7 @@ library(data.table)
 library(purrr)
 
 # read data -------------------------------------
-df <- readr::read_rds('\\\\storage1\\geobr\\aop\\dados2019_v1.0_20200116.rds')
+df <- readr::read_rds('\\\\storage1\\geobr\\aopdata\\dados2019_v1.0_20200116.rds')
 head(df)
 
 # rename columns
@@ -28,6 +28,7 @@ setDT(df)[, mode := fcase(mode=='bicicleta', 'bicycle',
 
 # reorder
 setorderv(df, cols = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
+
 
 # save grid -------------------------------------
 
@@ -51,19 +52,43 @@ setorderv(df, cols = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
   pblapply(X=unique(spatial_df$abbrev_muni), FUN=save_gpkg)
 
 
+
+# save landuse -------------------------------------
+  # drop spatial data
+  df$geometry <- NULL
+  head(df)
+
+  # subset columns
+  cols_landuse <- names(df)[1:20]
+  df_landuse <- select(df, cols_landuse)
+
+  # fun
+  dir.create(path = paste0('./landuse'))
+  save_landuse <- function(city){ # city='for'
+    temp <- subset(df_landuse, abbrev_muni  == city)
+    temp <- unique(temp, by ='id_hex')
+    dir.create(path = paste0('./landuse/', city, '/2019') ,recursive = T)
+    setorderv(temp, cols = names(temp))
+    fwrite(temp, paste0('./landuse/', city, '/2019/landuse_2019_',city,'.csv'))
+  }
+
+  pblapply(X=unique(df$abbrev_muni), FUN=save_landuse)
+
+
 # save access data  -------------------------------------
 
-# drop spatial data
-df$geometry <- NULL
-head(df)
+  # subset columns
+  cols_access <- names(df)[c(1:4,21:96)]
+  df_access <- select(df, cols_access)
 
 # fun
 dir.create(path = paste0('./access'))
 save_acces <- function(city, mmode){ # city='for'; mmode='walk'
-  temp <- subset(df, abbrev_muni  == city)
+  temp <- subset(df_access, abbrev_muni  == city)
   temp <- subset(temp, mode  == mmode)
+  temp <- unique(temp, by ='id_hex')
   dir.create(path = paste0('./access/', city, '/2019/', mmode) ,recursive = T)
-  setorderv(df, cols = names(df))
+  setorderv(temp, cols = names(temp))
   fwrite(temp, paste0('./access/', city, '/2019/', mmode,'/access_2019_',city,'.csv'))
 }
 
