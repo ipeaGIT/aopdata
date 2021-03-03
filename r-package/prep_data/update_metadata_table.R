@@ -16,7 +16,10 @@ colnames(metadata) <- c("type","city","year","mode","download_path")
 files = list.files("//storage1/geobr/aopdata/data", full.names = T, recursive = T)
 
 # function to update metadata
-update_metadata <- function(f){ # f <- files[1]; f <- files[80]
+update_metadata <- function(f){
+  # f <- files[1]  # access
+  # f <- files[80] # grid
+  # f <- files[100] # landuse
 
   # file index
   i <- qdapRegex::rm_between(f, "/", "/", extract = T)
@@ -34,10 +37,12 @@ update_metadata <- function(f){ # f <- files[1]; f <- files[80]
   }
 
   # update meta data table
-  if(type=='grid'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aop/data",type,city,name,sep="/"))
-  } else {
-    metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aop/data",type,city,year,mode,name,sep="/"))
-  }
+  # grid
+  if(type=='grid'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aopdata/data",type,city,name,sep="/")) }
+
+  if(type=='access'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aopdata/data",type,city,year,mode,name,sep="/") ) }
+
+  if(type=='landuse'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aopdata/data",type,city,year,name,sep="/") ) }
 
   return(metadata)
 }
