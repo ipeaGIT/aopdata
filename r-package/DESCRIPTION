@@ -29,7 +29,8 @@ Suggests:
     mapview,
     rmarkdown (>= 2.6),
     scales,
-    testthat
+    testthat,
+    units
 Imports:
       data.table,
       httr (>= 1.4.1),
