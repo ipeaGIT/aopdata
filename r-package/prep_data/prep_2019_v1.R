@@ -83,10 +83,10 @@ setorderv(df, cols = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
 
 # fun
 dir.create(path = paste0('./access'))
-save_acces <- function(city, mmode){ # city='for'; mmode='walk'
+save_acces <- function(city, mmode){ # city='for'; mmode='public_transport'
   temp <- subset(df_access, abbrev_muni  == city)
   temp <- subset(temp, mode  == mmode)
-  temp <- unique(temp, by ='id_hex')
+  temp <- unique(temp, by =c('id_hex', 'peak'))
   dir.create(path = paste0('./access/', city, '/2019/', mmode) ,recursive = T)
   setorderv(temp, cols = names(temp))
   fwrite(temp, paste0('./access/', city, '/2019/', mmode,'/access_2019_',city,'.csv'))
