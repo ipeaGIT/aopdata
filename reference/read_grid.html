@@ -50,7 +50,8 @@
 <meta property="og:description" content="Results of the AOP project are spatially aggregated on a hexagonal grid based
 on the global H3 index at resolution 8, with a size of 357 meters (short
 diagonal) and an area of 0.74 km2. More infor about H3 at
-https://h3geo.org/docs/core-library/restable/." />
+https://h3geo.org/docs/core-library/restable/.  See documentation
+'Details' for the data dictionary." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -146,7 +147,8 @@ https://h3geo.org/docs/core-library/restable/." />
     <p>Results of the AOP project are spatially aggregated on a hexagonal grid based
 on the global H3 index at resolution 8, with a size of 357 meters (short
 diagonal) and an area of 0.74 km2. More infor about H3 at
-<a href='https://h3geo.org/docs/core-library/restable/'>https://h3geo.org/docs/core-library/restable/</a>.</p>
+<a href='https://h3geo.org/docs/core-library/restable/'>https://h3geo.org/docs/core-library/restable/</a>.  See documentation
+'Details' for the data dictionary.</p>
     </div>
 
     <pre class="usage"><span class='fu'>read_grid</span><span class='op'>(</span><span class='va'>city</span>, showProgress <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
@@ -168,6 +170,18 @@ diagonal) and an area of 0.74 km2. More infor about H3 at
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An <code>sf data.frame</code> object</p>
+    <h2 class="hasAnchor" id="data-dictionary-"><a class="anchor" href="#data-dictionary-"></a>Data dictionary:</h2>
+
+    
+<table class='table'>
+<tr><td><strong>Data type</strong></td><td><strong>column</strong></td><td><strong>Description</strong></td></tr>
+<tr><td>geographic</td><td><code>abbrev_muni</code></td><td>Abbreviation of city name (3 letters)</td></tr>
+<tr><td>geographic</td><td><code>name_muni</code></td><td>City name</td></tr>
+<tr><td>geographic</td><td><code>code_muni</code></td><td>7-digit code of each city</td></tr>
+<tr><td>geographic</td><td><code>id_hex</code></td><td>Unique id of hexagonal cell</td></tr>
+</table>
+
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Read spatial grid of a single city</span>

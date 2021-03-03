@@ -48,7 +48,8 @@
 
 <meta property="og:title" content="Download accessibility estimates — read_access" />
 <meta property="og:description" content="Download annual estimates of access to employment, health and education
-services by transport mode and time of the day" />
+services by transport mode and time of the day.  See documentation 'Details'
+for the data dictionary." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -142,7 +143,8 @@ services by transport mode and time of the day" />
 
     <div class="ref-description">
     <p>Download annual estimates of access to employment, health and education
-services by transport mode and time of the day</p>
+services by transport mode and time of the day.  See documentation 'Details'
+for the data dictionary.</p>
     </div>
 
     <pre class="usage"><span class='fu'>read_access</span><span class='op'>(</span>
@@ -195,6 +197,53 @@ feature geometry of spatial hexagonal grid H3. See details in
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>data.frame</code> object</p>
+    <h2 class="hasAnchor" id="data-dictionary-"><a class="anchor" href="#data-dictionary-"></a>Data dictionary:</h2>
+
+    <p>The name of the columns with accessibility estimates are the
+junction of three components: 1) Indicator 2) Type of opportunity
+3) Time thresold (if applicable)</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>1) Indicator</h3>
+<table class='table'>
+<tr><td><strong>Indicator</strong></td><td><strong>Description</strong></td><td><strong>Note</strong></td></tr>
+<tr><td><code>CMA</code></td><td>Cumulative opportunity measure (active)</td><td></td></tr>
+<tr><td><code>TMI</code></td><td>Travel time to closest opportunity</td><td>Value = Inf when travel time is longer than 2h (public transport) or 1,5h (walking or bicycle)</td></tr>
+</table>
+
+
+
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>2) Type of opportunity</h3>
+<table class='table'>
+<tr><td><strong>Indicator</strong></td><td><strong>Description</strong></td><td><strong>Note</strong></td></tr>
+<tr><td><code>TT</code></td><td>All jobs</td><td></td></tr>
+<tr><td><code>TQ</code></td><td>Total jobs with partial match between job education and income quintile</td><td></td></tr>
+<tr><td><code>TD</code></td><td>Total jobs with partial match between job education and income decile</td><td></td></tr>
+<tr><td><code>ST</code></td><td>All healthcare facilities</td><td></td></tr>
+<tr><td><code>SB</code></td><td>Healthcare facilities - Low complexity</td><td></td></tr>
+<tr><td><code>SM</code></td><td>Healthcare facilities - Medium complexity</td><td></td></tr>
+<tr><td><code>SA</code></td><td>Healthcare facilities - High complexity</td><td></td></tr>
+<tr><td><code>ET</code></td><td>All public schools</td><td></td></tr>
+<tr><td><code>EI</code></td><td>Public schools - early childhood</td><td></td></tr>
+<tr><td><code>EF</code></td><td>Public schools - elementary schools</td><td></td></tr>
+<tr><td><code>EM</code></td><td>Public schools - high schools</td><td></td></tr>
+</table>
+
+
+
+
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>3) Time thresold (only applicable to CMA estimates)y</h3>
+<table class='table'>
+<tr><td><strong>Time thresold</strong></td><td><strong>Description</strong></td><td><strong>Note - Only applicable to:</strong></td></tr>
+<tr><td><code>15</code></td><td>Opportunities accessible within 15 min.</td><td>Active transport modes</td></tr>
+<tr><td><code>30</code></td><td>Opportunities accessible within 30 min.</td><td>All transport modes</td></tr>
+<tr><td><code>45</code></td><td>Opportunities accessible within 45 min.</td><td>Active transport modes</td></tr>
+<tr><td><code>60</code></td><td>Opportunities accessible within 60 min.</td><td>All transport modes</td></tr>
+<tr><td><code>90</code></td><td>Opportunities accessible within 90 min.</td><td>Public transport</td></tr>
+<tr><td><code>120</code></td><td>Opportunities accessible within 120 min.</td><td>Public transport</td></tr>
+</table>
+
+
+
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Read accessibility estimates of a single city</span>
