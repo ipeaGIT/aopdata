@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Select metadata — select_metadata • aopdata</title>
+<title>Merge land use and access data — aop_merge • aopdata</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="Select metadata — select_metadata" />
-<meta property="og:description" content="Subsets the metadata table by data 'type', 'city', 'year' and
-'mode'" />
+<meta property="og:title" content="Merge land use and access data — aop_merge" />
+<meta property="og:description" content="Merges landuse and access data" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -135,61 +134,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Select metadata</h1>
+    <h1>Merge land use and access data</h1>
     <small class="dont-index">Source: <a href='https://github.com/ipeaGIT/aopdata/tree/master/r-package/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>select_metadata.Rd</code></div>
+    <div class="hidden name"><code>aop_merge.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Subsets the metadata table by data 'type', 'city', 'year' and
-'mode'</p>
+    <p>Merges landuse and access data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>select_metadata</span><span class='op'>(</span>t <span class='op'>=</span> <span class='cn'>NULL</span>, c <span class='op'>=</span> <span class='cn'>NULL</span>, y <span class='op'>=</span> <span class='cn'>NULL</span>, m <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>aop_merge</span><span class='op'>(</span><span class='va'>aop_landuse</span>, <span class='va'>aop_access</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>t</th>
-      <td><p>Type of data: 'access' or 'grid' (passed from <code>read_</code> function)</p></td>
+      <th>aop_landuse</th>
+      <td><p>A <code>data.frame</code> of aop land use data</p></td>
     </tr>
     <tr>
-      <th>c</th>
-      <td><p>City (passed from <code>read_</code> function)</p></td>
-    </tr>
-    <tr>
-      <th>y</th>
-      <td><p>Year of the dataset (passed from <code>read_</code> function)</p></td>
-    </tr>
-    <tr>
-      <th>m</th>
-      <td><p>Transport mode (passed from <code>read_</code> function)</p></td>
+      <th>aop_access</th>
+      <td><p>A <code>data.frame</code> of aop access data</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>data.frame</code> object with metadata subsetted by data type,
-'city', 'year' and 'mode'</p>
+    <p>Returns a <code>data.frame sf</code> with landuse and access data</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other support functions: 
-<code><a href='aop_merge.html'>aop_merge</a>()</code>,
 <code><a href='aop_spatial_join.html'>aop_spatial_join</a>()</code>,
 <code><a href='download_data.html'>download_data</a>()</code>,
 <code><a href='load_data.html'>load_data</a>()</code>,
 <code><a href='rm_accent.html'>rm_accent</a>()</code>,
 <code><a href='select_city_input.html'>select_city_input</a>()</code>,
+<code><a href='select_metadata.html'>select_metadata</a>()</code>,
 <code><a href='select_mode_input.html'>select_mode_input</a>()</code>,
 <code><a href='select_year_input.html'>select_year_input</a>()</code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-
-<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='download_metadata.html'>download_metadata</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='co'># }</span>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
