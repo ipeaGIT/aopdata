@@ -14,12 +14,12 @@
 #' @return An `sf data.frame` object
 #' @details
 #' # Data dictionary:
-#' |Data type|column|Description|
+#' |**Data type**|**column**|**Description**|
 #' |-----|-----|-----|
-#' | geographic	| abbrev_muni|	Abbreviation of city name (3 letters)	|
-#' | geographic	| name_muni  | City name	|
-#' | geographic	| code_muni	 | 7-digit code of each city	| |
-#' | geographic	| id_hex	   | Unique id of hexagonal cell	|
+#' | geographic	| `abbrev_muni`| Abbreviation of city name (3 letters)	|
+#' | geographic	| `name_muni`  | City name	|
+#' | geographic	| `code_muni`	 | 7-digit code of each city	| |
+#' | geographic	| `id_hex`	   | Unique id of hexagonal cell	|
 #'
 #' @export
 #' @family spatial data functions

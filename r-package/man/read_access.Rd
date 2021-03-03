@@ -48,7 +48,7 @@ The name of the columns with accessibility estimates are the
 junction of three components: 1) Indicator 2) Type of opportunity
 3) Time thresold (if applicable)
 \subsection{1) Indicator}{\tabular{lll}{
-   Indicator \tab Description \tab Note \cr
+   \strong{Indicator} \tab \strong{Description} \tab \strong{Note} \cr
    \code{CMA} \tab Cumulative opportunity measure (active) \tab  \cr
    \code{TMI} \tab Travel time to closest opportunity \tab Value = Inf when travel time is longer than 2h (public transport) or 1,5h (walking or bicycle) \cr
 }
@@ -56,31 +56,30 @@ junction of three components: 1) Indicator 2) Type of opportunity
 }
 
 \subsection{2) Type of opportunity}{\tabular{lll}{
-   Indicator \tab Description \tab Note \cr
-   TT \tab All jobs \tab  \cr
-   TQ \tab Total jobs with partial match between job education and income quintile \tab  \cr
-   TD \tab Total jobs with partial match between job education and income decile \tab  \cr
-   ST \tab All healthcare facilities \tab  \cr
-   SB \tab Healthcare facilities - Low complexity \tab  \cr
-   SM \tab Healthcare facilities - Medium complexity \tab  \cr
-   SA \tab Healthcare facilities - High complexity \tab  \cr
-   ET \tab All public schools \tab  \cr
-   EI \tab Public schools - early childhood \tab  \cr
-   EF \tab Public schools - elementary schools \tab  \cr
-   EM \tab Public schools - high schools \tab  \cr
+   \strong{Indicator} \tab \strong{Description} \tab \strong{Note} \cr
+   \code{TT} \tab All jobs \tab  \cr
+   \code{TQ} \tab Total jobs with partial match between job education and income quintile \tab  \cr
+   \code{TD} \tab Total jobs with partial match between job education and income decile \tab  \cr
+   \code{ST} \tab All healthcare facilities \tab  \cr
+   \code{SB} \tab Healthcare facilities - Low complexity \tab  \cr
+   \code{SM} \tab Healthcare facilities - Medium complexity \tab  \cr
+   \code{SA} \tab Healthcare facilities - High complexity \tab  \cr
+   \code{ET} \tab All public schools \tab  \cr
+   \code{EI} \tab Public schools - early childhood \tab  \cr
+   \code{EF} \tab Public schools - elementary schools \tab  \cr
+   \code{EM} \tab Public schools - high schools \tab  \cr
 }
 
 }
 
 \subsection{3) Time thresold (only applicable to CMA estimates)y}{\tabular{lll}{
-   Time thresold \tab Description \tab Note - Only applicable to: \cr
-   TT \tab All jobs \tab  \cr
-   15 \tab Opportunities accessible within 15 min. \tab Active transport modes \cr
-   30 \tab Opportunities accessible within 30 min. \tab All transport modes \cr
-   45 \tab Opportunities accessible within 45 min. \tab Active transport modes \cr
-   60 \tab Opportunities accessible within 60 min. \tab All transport modes \cr
-   90 \tab Opportunities accessible within 90 min. \tab Public transport \cr
-   120 \tab Opportunities accessible within 120 min. \tab Public transport \cr
+   \strong{Time thresold} \tab \strong{Description} \tab \strong{Note - Only applicable to:} \cr
+   \code{15} \tab Opportunities accessible within 15 min. \tab Active transport modes \cr
+   \code{30} \tab Opportunities accessible within 30 min. \tab All transport modes \cr
+   \code{45} \tab Opportunities accessible within 45 min. \tab Active transport modes \cr
+   \code{60} \tab Opportunities accessible within 60 min. \tab All transport modes \cr
+   \code{90} \tab Opportunities accessible within 90 min. \tab Public transport \cr
+   \code{120} \tab Opportunities accessible within 120 min. \tab Public transport \cr
 }
 
 }

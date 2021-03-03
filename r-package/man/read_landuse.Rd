@@ -30,31 +30,31 @@ study. See documentation 'Details' for the data dictionary.
 }
 \section{Data dictionary:}{
 \tabular{llll}{
-   Data type \tab column \tab Description \tab Value \cr
-   geographic \tab abbrev_muni \tab Abbreviation of city name (3 letters) \tab  \cr
-   geographic \tab name_muni \tab City name \tab  \cr
-   geographic \tab code_muni \tab 7-digit code of each city \tab  \cr
-   geographic \tab id_hex \tab Unique id of hexagonal cell \tab  \cr
-   sociodemographic \tab P001 \tab Total number of residents \tab  \cr
-   sociodemographic \tab P002 \tab Number of white residents \tab  \cr
-   sociodemographic \tab P003 \tab Number of black residents \tab  \cr
-   sociodemographic \tab P004 \tab Number of indiginous residents \tab  \cr
-   sociodemographic \tab P005 \tab Number of asian-descendents residents \tab  \cr
-   sociodemographic \tab R001 \tab Average household income per capita \tab R$ (Brazilian Reais), values in 2010 \cr
-   sociodemographic \tab R002 \tab Income quintile group \tab 1 (poorest), 2, 3, 4, 5 (richest) \cr
-   sociodemographic \tab R003 \tab Income decile group \tab 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) \cr
-   land use \tab T001 \tab Total number of formal jobs \tab  \cr
-   land use \tab T002 \tab Total number of formal jobs with primary education \tab  \cr
-   land use \tab T003 \tab Number of formal jobs with secundary education \tab  \cr
-   land use \tab T004 \tab Number of formal jobs with tertiary education \tab  \cr
-   land use \tab E001 \tab Total number of public schools \tab  \cr
-   land use \tab E002 \tab Number of public schools - early childhood \tab  \cr
-   land use \tab E003 \tab Number of public schools - elementary schools \tab  \cr
-   land use \tab E004 \tab Number of public schools - high schools \tab  \cr
-   land use \tab S001 \tab Total number of healthcare facilities \tab  \cr
-   land use \tab S002 \tab Number of healthcare facilities - low complexity \tab  \cr
-   land use \tab S003 \tab Number of healthcare facilities - medium complexity \tab  \cr
-   land use \tab S004 \tab Number of healthcare facilities - high complexity \tab  \cr
+   \strong{Data type} \tab \strong{column} \tab \strong{Description} \tab \strong{Value} \cr
+   geographic \tab \code{abbrev_muni} \tab Abbreviation of city name (3 letters) \tab  \cr
+   geographic \tab \code{name_muni} \tab City name \tab  \cr
+   geographic \tab \code{code_muni} \tab 7-digit code of each city \tab  \cr
+   geographic \tab \code{id_hex} \tab Unique id of hexagonal cell \tab  \cr
+   sociodemographic \tab \code{P001} \tab Total number of residents \tab  \cr
+   sociodemographic \tab \code{P002} \tab Number of white residents \tab  \cr
+   sociodemographic \tab \code{P003} \tab Number of black residents \tab  \cr
+   sociodemographic \tab \code{P004} \tab Number of indiginous residents \tab  \cr
+   sociodemographic \tab \code{P005} \tab Number of asian-descendents residents \tab  \cr
+   sociodemographic \tab \code{R001} \tab Average household income per capita \tab R$ (Brazilian Reais), values in 2010 \cr
+   sociodemographic \tab \code{R002} \tab Income quintile group \tab 1 (poorest), 2, 3, 4, 5 (richest) \cr
+   sociodemographic \tab \code{R003} \tab Income decile group \tab 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) \cr
+   land use \tab \code{T001} \tab Total number of formal jobs \tab  \cr
+   land use \tab \code{T002} \tab Total number of formal jobs with primary education \tab  \cr
+   land use \tab \code{T003} \tab Number of formal jobs with secundary education \tab  \cr
+   land use \tab \code{T004} \tab Number of formal jobs with tertiary education \tab  \cr
+   land use \tab \code{E001} \tab Total number of public schools \tab  \cr
+   land use \tab \code{E002} \tab Number of public schools - early childhood \tab  \cr
+   land use \tab \code{E003} \tab Number of public schools - elementary schools \tab  \cr
+   land use \tab \code{E004} \tab Number of public schools - high schools \tab  \cr
+   land use \tab \code{S001} \tab Total number of healthcare facilities \tab  \cr
+   land use \tab \code{S002} \tab Number of healthcare facilities - low complexity \tab  \cr
+   land use \tab \code{S003} \tab Number of healthcare facilities - medium complexity \tab  \cr
+   land use \tab \code{S004} \tab Number of healthcare facilities - high complexity \tab  \cr
 }
 }
 
