@@ -21,7 +21,7 @@ download_metadata <- function(){
     options(warn = -1)
 
     # test server connection
-    metadata_link <- 'http://www.ipea.gov.br/geobr/aop/metadata/metadata.csv'
+    metadata_link <- 'http://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'
     con <- url(metadata_link)
     t <- suppressWarnings({ try( open.connection(con, open="rt", timeout=2), silent=T)[1] })
     if("try-error" %in% class(t)){stop('Internet connection problem. If this is not a connection problem in your network, please try aop again in a few minutes.')}
