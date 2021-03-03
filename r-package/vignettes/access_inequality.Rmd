@@ -20,26 +20,35 @@ knitr::opts_chunk$set(
 ```
 
 
-
+Social and racial inequalities in access to opportunities
 
 ```{r, message = FALSE}
-
+# load libraries
 library(aopdata)
 library(sf)
 library(ggplot2)
 library(data.table)
+```
 
 
-# Download
-df2 <- read_access(city='bho',
+**Download accessibility data**
+
+```{r, message = FALSE}
+
+df <- read_access(city='bho',
                    mode='public_transport',
                    peak = F,
                    year=2019,
                    showProgress = F)
+```
+
+
+
+```{r, message = FALSE}
 
 ggplot() +
-  geom_boxplot(data=subset(df2, !is.na(abbrev_muni)),
-               aes(x = factor(abbrev_muni), y=CMAET30, color=factor(abbrev_muni))) +
+  geom_boxplot(data=subset(df, !is.na(R003)),
+               aes(x = factor(R003), y=CMAET30, color=factor(R003))) +
   scale_color_brewer(palette = 'RdBu') +
   labs(title='Distribution of the proportion of jobs accessible', color="Income\ndecile",
        subtitle='by public transport in less than 30 min. by income decile',

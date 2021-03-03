@@ -1,0 +1,78 @@
+---
+title: 'Mapping population and land use'
+author: "Rafael H. M. Pereira .."
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+abstract: "Mapping population and land use"
+urlcolor: blue
+vignette: >
+  %\VignetteIndexEntry{Mapping population and land use} 
+  %\VignetteEngine{knitr::rmarkdown} 
+  \usepackage[utf8]{inputenc}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+```
+
+Spatial distribution of population and activities
+
+
+```{r, message = FALSE}
+# load libraries
+library(aopdata)
+library(data.table)
+library(ggplot2)
+library(sf)
+```
+
+**Download land use data**
+```{r, message = FALSE}
+
+# download aop data
+df <- read_landuse(city='bho',
+                   year=2019,
+                   geometry = T,
+                   showProgress = F)
+
+```
+
+## Population
+Spatial distribution population by income decile
+
+```{r, message = FALSE}
+ggplot() +
+  geom_sf(data=subset(df, P001>0), aes(fill=P001), color=NA, alpha=.7) +
+  scale_fill_distiller(palette = "YlOrRd", direction = 1)+
+  labs(title='Population distribution', fill="Total population") +
+  theme_void()
+
+```
+
+## Income
+Spatial distribution population by income decile
+
+```{r, message = FALSE}
+ggplot() +
+  geom_sf(data=subset(df, !is.na(R002)), aes(fill=factor(R003)), color=NA, alpha=.7) +
+  scale_fill_brewer(palette = "RdBu") +
+  labs(title='Average household income per capita', fill="Income decile") +
+  theme_void()
+
+```
+
+## Schools
+Spatial distribution of schools
+
+```{r, message = FALSE, eval=FALSE}
+ggplot() +
+  geom_sf(data=df, aes(fill=S001), color=NA, alpha=.7) +
+  scale_fill_viridis_c(option = "inferno") +
+  labs(title='Spatial distribution of public schools', fill="N. of schools") +
+  theme_void()
+
+```
