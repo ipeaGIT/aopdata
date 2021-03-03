@@ -15,8 +15,13 @@ select_metadata(t = NULL, c = NULL, y = NULL, m = NULL)
 
 \item{m}{Transport mode (passed from \code{read_} function)}
 }
+\value{
+A \code{data.frame} object with metadata subsetted by data type,
+'city', 'year' and 'mode'
+}
 \description{
-Select metadata
+Subsets the metadata table by data 'type', 'city', 'year' and
+'mode'
 }
 \examples{
 \donttest{

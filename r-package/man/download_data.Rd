@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{download_data}
 \alias{download_data}
-\title{Download geopackage to tempdir}
+\title{Download data to temporary directory.}
 \usage{
 download_data(file_url, progress_bar = showProgress)
 }
@@ -11,8 +11,13 @@ download_data(file_url, progress_bar = showProgress)
 
 \item{progress_bar}{Logical. Defaults to (TRUE) display progress bar}
 }
+\value{
+No visible output. The downloaded file (either an \code{sf} or a
+\code{data.frame}) is saved to a temporary directory.
+}
 \description{
-Download geopackage to tempdir
+Save requested data (either an \code{sf} or a \code{data.frame})
+to a temporary directory.
 }
 \seealso{
 Other support functions: 

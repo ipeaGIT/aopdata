@@ -1,5 +1,7 @@
 #' Support function to download metadata internally used in aop
 #'
+#' @return A `data.frame` object with metadata and url of data sets
+#'
 #' @export
 #' @family general support functions
 #' @examples

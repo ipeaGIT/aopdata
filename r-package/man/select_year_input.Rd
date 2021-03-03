@@ -11,8 +11,11 @@ select_year_input(temp_meta = temp_meta, year = NULL)
 
 \item{year}{Year of the dataset (passed from read_ function)}
 }
+\value{
+A \code{data.frame} object with metadata subsetted by 'year'
+}
 \description{
-Select year input
+Subsets the metadata table by 'year'.
 }
 \seealso{
 Other support functions: 

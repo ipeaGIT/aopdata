@@ -11,8 +11,11 @@ aop_spatial_join(aop_df, aop_sf)
 
 \item{aop_sf}{A spatial \code{sf} of aop data}
 }
+\value{
+Returns a \verb{data.frame sf} with access/landuse data and grid geometries
+}
 \description{
-Spatial join of AOP data
+Merges landuse or access data with H3 grid geometries
 }
 \seealso{
 Other support functions: 

@@ -11,8 +11,11 @@ select_mode_input(temp_meta = temp_meta, mode = NULL)
 
 \item{mode}{Transport mode (passed by read_ function)}
 }
+\value{
+A \code{data.frame} object with metadata subsetted by 'mode'
+}
 \description{
-Select mode input
+Subsets the metadata table by 'mode'.
 }
 \seealso{
 Other support functions: 

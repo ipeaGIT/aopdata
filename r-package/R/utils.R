@@ -4,8 +4,12 @@
 
 #' Select city input
 #'
+#' @description Subsets the metadata table by 'city'.
+#'
 #' @param temp_meta A dataframe with the file_url addresses of aop datasets
 #' @param city city input (passed from read_ function)
+#'
+#' @return A `data.frame` object with metadata subsetted by 'city'
 #' @export
 #' @family support functions
 #'
@@ -54,8 +58,12 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
 
 #' Select year input
 #'
+#' @description Subsets the metadata table by 'year'.
+#'
 #' @param temp_meta A dataframe with the file_url addresses of aop datasets
 #' @param year Year of the dataset (passed from read_ function)
+#'
+#' @return A `data.frame` object with metadata subsetted by 'year'
 #' @export
 #' @family support functions
 #'
@@ -81,8 +89,12 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
 
 #' Select mode input
 #'
+#' @description Subsets the metadata table by 'mode'.
+#'
 #' @param temp_meta A dataframe with the file_url addresses of aop datasets
 #' @param mode Transport mode (passed by read_ function)
+#'
+#' @return A `data.frame` object with metadata subsetted by 'mode'
 #' @export
 #' @family support functions
 #'
@@ -109,11 +121,16 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 
 #' Select metadata
 #'
+#' @description Subsets the metadata table by data 'type', 'city', 'year' and
+#'              'mode'
+#'
 #' @param t Type of data: 'access' or 'grid' (passed from `read_` function)
 #' @param c City (passed from `read_` function)
 #' @param m Transport mode (passed from `read_` function)
 #' @param y Year of the dataset (passed from `read_` function)
 #'
+#' @return A `data.frame` object with metadata subsetted by data type,
+#'        'city', 'year' and 'mode'
 #' @export
 #' @family support functions
 #' @examples \donttest{
@@ -144,10 +161,16 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 
 
 
-#' Download geopackage to tempdir
+#' Download data to temporary directory.
+#'
+#' @description Save requested data (either an `sf` or a `data.frame`)
+#'              to a temporary directory.
 #'
 #' @param file_url A string with the file_url address of a aop dataset
 #' @param progress_bar Logical. Defaults to (TRUE) display progress bar
+#'
+#' @return No visible output. The downloaded file (either an `sf` or a
+#'         `data.frame`) is saved to a temporary directory.
 #' @export
 #' @family support functions
 #'
@@ -219,10 +242,15 @@ download_data <- function(file_url, progress_bar = showProgress){
 
 
 
-#' Load geopackage from tempdir to global environment
+#' Load data from tempdir to global environment
+#'
+#' @description Reads data from tempdir to global environment.
 #'
 #' @param file_url A string with the file_url address of a aop dataset
 #' @param temps The address of a data file stored in tempdir. Defaults to NULL
+#'
+#' @return Returns either an `sf` or a `data.frame`, dependeding of the data set
+#'         that was downloaded
 #' @export
 #' @family support functions
 #'
@@ -259,7 +287,6 @@ load_data <- function(file_url, temps=NULL){
       temp <- sf::st_as_sf(data.table::rbindlist(files, fill = TRUE))
     }
 
-
     return(temp)
   }
 
@@ -273,40 +300,16 @@ load_data <- function(file_url, temps=NULL){
 
 #' Remove accents from string
 #'
+#' @description Removes non-ASCII characters from a string.
+#'
 #' @param str A string
 #' @param pattern A pattern
+#'
+#' @return Returns a string with non-ASCII characters replaced with "\'uxxxx" escapes
+#'
 #' @export
 #' @family support functions
 #'
-# rm_accent <- function(str, pattern="all") {
-#   if(!is.character(str))
-#     str <- as.character(str)
-#   pattern <- unique(pattern)
-#   if(any(pattern=="Ç"))
-#     pattern[pattern=="Ç"] <- "ç"
-#   symbols <- c(
-#     acute = "áéíóúÁÉÍÓÚýÝ",
-#     grave = "àèìòùÀÈÌÒÙ",
-#     circunflex = "âêîôûÂÊÎÔÛ",
-#     tilde = "ãõÃÕñÑ",
-#     umlaut = "äëïöüÄËÏÖÜÿ",
-#     cedil = "çÇ"
-#   )
-#   nudeSymbols <- c(
-#     acute = "aeiouAEIOUyY",
-#     grave = "aeiouAEIOU",
-#     circunflex = "aeiouAEIOU",
-#     tilde = "aoAOnN",
-#     umlaut = "aeiouAEIOUy",
-#     cedil = "cC"
-#   )
-#   accentTypes <- c("´","`","^","~","¨","ç")
-#   if(any(c("all","al","a","todos","t","to","tod","todo")%in%pattern)) # opcao retirar todos
-#     return(chartr(paste(symbols, collapse=""), paste(nudeSymbols, collapse=""), str))
-#   for(i in which(accentTypes%in%pattern))
-#     str <- chartr(symbols[i],nudeSymbols[i], str)
-#   return(str)
-# }
 rm_accent <- function(str, pattern="all") {
   if(!is.character(str))
     str <- as.character(str)
@@ -337,10 +340,17 @@ rm_accent <- function(str, pattern="all") {
   return(str)
 }
 
+
+
+
 #' Spatial join of AOP data
+#'
+#' @description Merges landuse or access data with H3 grid geometries
 #'
 #' @param aop_df A `data.frame` of aop data
 #' @param aop_sf A spatial `sf` of aop data
+#'
+#' @return Returns a `data.frame sf` with access/landuse data and grid geometries
 #' @export
 #' @family support functions
 #'

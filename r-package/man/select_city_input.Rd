@@ -11,8 +11,11 @@ select_city_input(temp_meta = temp_meta, city = NULL)
 
 \item{city}{city input (passed from read_ function)}
 }
+\value{
+A \code{data.frame} object with metadata subsetted by 'city'
+}
 \description{
-Select city input
+Subsets the metadata table by 'city'.
 }
 \seealso{
 Other support functions: 

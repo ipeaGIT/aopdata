@@ -11,8 +11,11 @@ rm_accent(str, pattern = "all")
 
 \item{pattern}{A pattern}
 }
+\value{
+Returns a string with non-ASCII characters replaced with "\'uxxxx" escapes
+}
 \description{
-Remove accents from string
+Removes non-ASCII characters from a string.
 }
 \seealso{
 Other support functions: 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{load_data}
 \alias{load_data}
-\title{Load geopackage from tempdir to global environment}
+\title{Load data from tempdir to global environment}
 \usage{
 load_data(file_url, temps = NULL)
 }
@@ -11,8 +11,12 @@ load_data(file_url, temps = NULL)
 
 \item{temps}{The address of a data file stored in tempdir. Defaults to NULL}
 }
+\value{
+Returns either an \code{sf} or a \code{data.frame}, dependeding of the data set
+that was downloaded
+}
 \description{
-Load geopackage from tempdir to global environment
+Reads data from tempdir to global environment.
 }
 \seealso{
 Other support functions: 

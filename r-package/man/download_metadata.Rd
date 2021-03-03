@@ -6,6 +6,9 @@
 \usage{
 download_metadata()
 }
+\value{
+A \code{data.frame} object with metadata and url of data sets
+}
 \description{
 Support function to download metadata internally used in aop
 }
