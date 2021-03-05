@@ -62,15 +62,20 @@
 #'
 #' @export
 #' @family accessibility data functions
-#' @examples
+#' @examples \donttest{
 #' # Read accessibility estimates of a single city
 #' df <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
 #' df <- read_access(city = 'for', mode = 'walk', year = 2019, showProgress = FALSE)
 #'
 #' # Read accessibility estimates for all cities
-#' # all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
-#'
+#' all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
+#'}
 read_access <- function(city, mode = 'walk', peak = TRUE, year = 2019, geometry = FALSE, showProgress = TRUE){
+
+  # checks
+  if(! is.logical(geometry) ){stop("The 'geometry' argument must either be TRUE or FALSE")}
+  if(! is.logical(showProgress) ){stop("The 'showProgress' argument must either be TRUE or FALSE")}
+  if(! is.logical(peak) ){stop("The 'peak' argument must either be TRUE or FALSE")}
 
   # Get metadata with data url addresses
   temp_meta <- select_metadata(t='access',

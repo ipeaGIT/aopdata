@@ -48,15 +48,19 @@
 #'
 #' @export
 #' @family land use data functions
-#' @examples
+#' @examples \donttest{
 #' # a single city
 #' bho <- read_landuse(city = 'Belo Horizonte', year = 2019, showProgress = FALSE)
 #' bho <- read_landuse(city = 'bho', year = 2019, showProgress = FALSE)
 #'
 #' # all cities
-#' # all <- read_landuse(city = 'all', year = 2019)
-#'
+#' all <- read_landuse(city = 'all', year = 2019)
+#'}
 read_landuse <- function(city='bel', year = 2019, geometry = FALSE, showProgress = TRUE){
+
+  # checks
+  if(! is.logical(geometry) ){stop("The 'geometry' argument must either be TRUE or FALSE")}
+  if(! is.logical(showProgress) ){stop("The 'showProgress' argument must either be TRUE or FALSE")}
 
   # Get metadata with data url addresses
   temp_meta <- select_metadata(t='landuse',

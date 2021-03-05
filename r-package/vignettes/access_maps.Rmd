@@ -21,23 +21,29 @@ knitr::opts_chunk$set(
 
 
 
-# accessibility
+**Load libraries**
 
 ```{r, message = FALSE}
-
 library(aopdata)
 library(sf)
 library(ggplot2)
 library(data.table)
+```
 
+**Download accessibility data**
+
+```{r, message = FALSE}
 # download aop data
-df <- aopdata::read_access(city='bho',
+df <- aopdata::read_access(city='Curitiba',
                        mode='public_transport',
                       year=2019,
                       peak = F,
                       geometry = T,
                       showProgress = F)
+```
 
+**Plot map with spatial distribution of access to job opportunities**
+```{r, message = FALSE}
 
 # plot map accessibility
 ggplot() +
@@ -50,20 +56,20 @@ ggplot() +
 
 ```
 
-# schools
+**Map access to Schools**
 
 ```{r, message = FALSE, eval=FALSE}
 
 # plot map Schools
-#ggplot() +
-#  geom_sf(data=df, aes(fill=S001), color=NA, alpha=.7) +
-#  scale_fill_viridis_c(option = "inferno") +
-#  labs(title='Spatial distribution of public schools', fill="N. of schools") +
-#  theme_void()
-#
-#ggplot() +
-#  geom_sf(data=df, aes(fill=df$S001), color=NA, alpha=.7) +
-#  scale_fill_viridis_c(option = "inferno") +
-#  labs(title='Spatial distribution of public schools', fill="N. of schools") +
-#  theme_void()
+ggplot() +
+  geom_sf(data=df, aes(fill=S001), color=NA, alpha=.7) +
+  scale_fill_viridis_c(option = "inferno") +
+  labs(title='Spatial distribution of public schools', fill="N. of schools") +
+  theme_void()
+
+ggplot() +
+  geom_sf(data=df, aes(fill=df$S001), color=NA, alpha=.7) +
+  scale_fill_viridis_c(option = "inferno") +
+  labs(title='Spatial distribution of public schools', fill="N. of schools") +
+  theme_void()
 ```

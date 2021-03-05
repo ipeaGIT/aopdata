@@ -4,9 +4,9 @@
 #'
 #' @export
 #' @family general support functions
-#' @examples
+#' @examples \donttest{
 #' df <- download_metadata()
-#'
+#'}
 download_metadata <- function(){
 
   # create tempfile to save metadata

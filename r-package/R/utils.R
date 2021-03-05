@@ -134,7 +134,6 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 #' @export
 #' @family support functions
 #' @examples \donttest{
-#'
 #' df <- download_metadata()
 #' }
 select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){

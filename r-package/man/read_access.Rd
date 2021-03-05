@@ -86,12 +86,13 @@ junction of three components: 1) Indicator 2) Type of opportunity
 }
 
 \examples{
+\donttest{
 # Read accessibility estimates of a single city
 df <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
 df <- read_access(city = 'for', mode = 'walk', year = 2019, showProgress = FALSE)
 
 # Read accessibility estimates for all cities
-# all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
-
+all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
+}
 }
 \concept{accessibility data functions}

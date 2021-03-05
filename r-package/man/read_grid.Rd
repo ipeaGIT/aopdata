@@ -33,11 +33,12 @@ diagonal) and an area of 0.74 km2. More infor about H3 at
 }
 
 \examples{
+\donttest{
 # Read spatial grid of a single city
 nat <- read_grid(city = 'Natal', showProgress = FALSE)
 
 # Read spatial grid of all cities in the project
 # all <- read_grid(city = 'all')
-
+}
 }
 \concept{spatial data functions}

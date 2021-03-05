@@ -23,14 +23,17 @@
 #'
 #' @export
 #' @family spatial data functions
-#' @examples
+#' @examples \donttest{
 #' # Read spatial grid of a single city
 #' nat <- read_grid(city = 'Natal', showProgress = FALSE)
 #'
 #' # Read spatial grid of all cities in the project
 #' # all <- read_grid(city = 'all')
-#'
+#'}
 read_grid <- function(city, showProgress = TRUE){
+
+  # checks
+  if(! is.logical(showProgress) ){stop("The 'showProgress' argument must either be TRUE or FALSE")}
 
   # Get metadata with data url addresses
   temp_meta <- select_metadata(t="grid", c=city)
