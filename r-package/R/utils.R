@@ -147,10 +147,13 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
   # Select city input
   temp_meta <- select_city_input(temp_meta, city=c)
 
-  if(t=='access'){
-
-    # Select mode and year
+  # select year input
+  if(t %in% c('access','landuse')){
     temp_meta <- select_year_input(temp_meta, year=y)
+  }
+
+  # select mode input
+  if(t=='access'){
     temp_meta <- select_mode_input(temp_meta, mode=m)
     }
 

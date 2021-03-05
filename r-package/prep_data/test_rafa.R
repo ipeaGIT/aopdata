@@ -117,16 +117,12 @@ function_coverage(fun='read_access', test_file("tests/testthat/test_read_access.
 
 
 
-# create githubl shield with code coverage
-  # usethis::use_coverage( type = c("codecov"))
-
 # update Package coverage
   Sys.setenv(NOT_CRAN = "true")
   system.time(  aop_cov <- covr::package_coverage() )
   aop_cov
   beepr::beep()
 
-  x <- as.data.frame(aop_cov)
 #  covr::codecov( coverage = aop_cov, token ='f09e3b22-d365-4239-8dd3-55a6c921d31b' )
 
 

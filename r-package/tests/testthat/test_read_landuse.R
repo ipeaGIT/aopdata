@@ -1,7 +1,5 @@
 
 
-# read_landuse <- function(city='bel', year = 2019, geometry = FALSE, showProgress = TRUE)
-
 ### expected behavior ----------------
   test_that("read_landuse expected behavior", {
 
@@ -19,7 +17,7 @@ test_that("read_landuse errors and messages", {
   testthat::expect_error(read_landuse(city = 'abc'))
 
   # Wrong year
-  # testthat::expect_error(read_landuse(city = 'nat', year=1500))
+  testthat::expect_error(read_landuse(city = 'nat', year=1500))
 
   # Wrong geometry or showProgress
   testthat::expect_error(read_landuse(city = 'nat', year=2019, geometry = 'aaa'))
