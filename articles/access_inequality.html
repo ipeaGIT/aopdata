@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -121,11 +121,12 @@
 <p><strong>Download accessibility data</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city<span class="op">=</span><span class="st">'bho'</span>,
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city<span class="op">=</span><span class="st">'Rio de Janeiro'</span>,
                    mode<span class="op">=</span><span class="st">'public_transport'</span>,
-                   peak <span class="op">=</span> <span class="cn">F</span>,
+                   peak <span class="op">=</span> <span class="cn">T</span>,
                    year<span class="op">=</span><span class="fl">2019</span>,
                    showProgress <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></code></pre></div>
+<p><strong>Inequality in access to job opportunities by income decile</strong></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -139,6 +140,15 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="access_inequality_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<p><strong>Palma ratio</strong></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="va">avg_access_10p_wealthiest</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span> <span class="va">R003</span><span class="op">==</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">CMATT60</span>, w<span class="op">=</span><span class="va">P001</span><span class="op">)</span><span class="op">]</span>
+<span class="va">avg_access_40p_poorest</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span> <span class="va">R003</span><span class="op">&lt;=</span><span class="fl">4</span>, <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html">weighted.mean</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">CMATT60</span>, w<span class="op">=</span><span class="va">P001</span><span class="op">)</span><span class="op">]</span>
+<span class="va">palma_ratio</span> <span class="op">&lt;-</span> <span class="va">avg_access_10p_wealthiest</span> <span class="op">/</span> <span class="va">avg_access_40p_poorest</span>                
+
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">'In less than 60 min. by public transport, the 10% wealthiest population could access on average '</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">palma_ratio</span>,<span class="fl">2</span><span class="op">)</span>, <span class="st">' times more job opportunites than the 40% poorest people'</span><span class="op">)</span> <span class="op">)</span>
+<span class="co">#&gt; [1] "In less than 60 min. by public transport, the 10% wealthiest population could access on average 2.41 times more job opportunites than the 40% poorest people"</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
