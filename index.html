@@ -110,33 +110,44 @@
 <h2 class="hasAnchor">
 <a href="#installation-r" class="anchor"></a>Installation R</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R">
-<span class="co"># development version</span>
-  <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ipeaGIT/aopdata"</span>, subdir <span class="op">=</span> <span class="st">"r-package"</span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/aopdata">aopdata</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># From CRAN</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"aopdata"</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/aopdata">aopdata</a></span><span class="op">)</span>
+  </code></pre></div>
 </div>
 </div>
 <div id="basic-usage" class="section level1">
 <h1 class="hasAnchor">
 <a href="#basic-usage" class="anchor"></a>Basic Usage</h1>
-<p><strong>Read accessibility estimates for a given transport mode</strong></p>
+<p><strong>Read <em>accessibility</em> estimates</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/aopdata">aopdata</a></span><span class="op">)</span>
-
-<span class="co"># Just a data.frame, without spatial geometry</span>
+<code class="sourceCode R"><span class="co"># Just a data.frame, without spatial geometry</span>
 <span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Curitiba'</span>, mode <span class="op">=</span> <span class="st">'walk'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span>
 
-<span class="co"># An df dataframe, with spatial geometry</span>
+<span class="co"># An sf dataframe, with spatial geometry</span>
 <span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Curitiba'</span>, mode <span class="op">=</span> <span class="st">'walk'</span>, year <span class="op">=</span> <span class="fl">2019</span>, geometry <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>One can also download the data for all cities of thee project at once:</p>
+<p><strong>Read only population and land use data</strong></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, mode <span class="op">=</span> <span class="st">'walk'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="co"># Just a data.frame, without spatial geometry</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_landuse.html">read_landuse</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span>
+
+<span class="co"># An sf dataframe, with spatial geometry</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_landuse.html">read_landuse</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span>, year <span class="op">=</span> <span class="fl">2019</span>, geometry <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><strong>Read only the spatial grid</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Read specific city</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="cf">for</span> &lt;-<span class="st"> </span><span class="kw">read_grid</span>(<span class="dt">city =</span> <span class="st">'Fortaleza'</span>)</span></code></pre></div>
-<p>Note that the <code>city</code> parameter can also be a 3-letter abbreviation of the city.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Read specific city</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span><span class="op">)</span></code></pre></div>
+<p>For all of the functions above, note that:</p>
+<ul>
+<li>The <code>city</code> parameter can also be a 3-letter abbreviation of the city.</li>
+</ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>cur &lt;-<span class="st"> </span><span class="kw">read_access</span>(<span class="dt">city =</span> <span class="st">'cur'</span>, <span class="dt">mode =</span> <span class="st">'public_transport'</span>, <span class="dt">year =</span> <span class="dv">2019</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="cf">for</span> &lt;-<span class="st"> </span><span class="kw">read_grid</span>(<span class="dt">city =</span> <span class="st">'for'</span>)</span></code></pre></div>
+<ul>
+<li>You may also download the data for all cities of the project at once using <code>city = 'all'</code>:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_landuse.html">read_landuse</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></code></pre></div>
 <hr>
 </div>
 <div id="citation-" class="section level1">
