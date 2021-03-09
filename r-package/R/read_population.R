@@ -18,6 +18,23 @@
 #'
 #' @return A `data.frame` object or an `sf data.frame` object
 #'
+#' @details
+#' # Data dictionary:
+#' |**Data type**|**column**|**Description**|**Value**|
+#' |-----|-----|-----|-----|
+#' | geographic	| `abbrev_muni`|	Abbreviation of city name (3 letters)	| |
+#' | geographic	| `name_muni`  | City name	| |
+#' | geographic	| `code_muni`	 | 7-digit code of each city	| |
+#' | geographic	| `id_hex`	   | Unique id of hexagonal cell	| |
+#' | sociodemographic | `P001` | Total number of residents	| |
+#' | sociodemographic | `P002` | Number of white residents	| |
+#' | sociodemographic | `P003` | Number of black residents	| |
+#' | sociodemographic | `P004` | Number of indiginous residents | |
+#' | sociodemographic | `P005` | Number of asian-descendents residents | |
+#' | sociodemographic | `R001` | Average household income per capita	| R$ (Brazilian Reais), values in 2010 |
+#' | sociodemographic | `R002` | Income quintile group	| 1 (poorest), 2, 3, 4, 5 (richest) |
+#' | sociodemographic | `R003` | Income decile group	| 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) |
+#'
 #' @export
 #' @family population data functions
 #' @examples \donttest{
@@ -27,9 +44,8 @@
 #'
 #' # all cities
 #' all <- read_population(city = 'all', year = 2010)
-
 #'}
-read_landuse <- function(city='bel', year = 2010, geometry = FALSE, showProgress = TRUE){
+read_population <- function(city='bel', year = 2010, geometry = FALSE, showProgress = TRUE){
 
   # Get metadata with data url addresses
   temp_meta <- select_metadata(t='population',
@@ -40,12 +56,12 @@ read_landuse <- function(city='bel', year = 2010, geometry = FALSE, showProgress
   file_url <- as.character(temp_meta$download_path)
 
   # download files
-  aop_landuse <- download_data(file_url, progress_bar = showProgress)
+  aop_population <- download_data(file_url, progress_bar = showProgress)
 
   # with Vs without spatial data
   if(geometry == FALSE){
                         # return df
-                        return(aop_landuse)
+                        return(aop_population)
 
                         } else {
 
@@ -53,7 +69,7 @@ read_landuse <- function(city='bel', year = 2010, geometry = FALSE, showProgress
                         aop_grid <- read_grid(city=city, showProgress=showProgress)
 
                         # create function aop_join to bring in land use info
-                        aop_sf <- aop_spatial_join(aop_landuse, aop_grid)
+                        aop_sf <- aop_spatial_join(aop_population, aop_grid)
                         return(aop_sf)
                         }
   }

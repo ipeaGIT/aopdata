@@ -1,9 +1,13 @@
-#' Download population and land use data
+#' Download land use and population data
 #'
 #' @description
 #' Download data on the spatial distribution of population, schools and
 #' healthcare facilities at a fine spatial resolution for cities included in the
-#' study. See documentation 'Details' for the data dictionary.
+#' study. The data comes aggregated on a hexagonal grid based on the global H3
+#' index at resolution 8, with a size of 357 meters (short diagonal) and an area
+#' of 0.74 km2. More information about H3 at \url{https://h3geo.org/docs/core-library/restable/}.
+#'
+#' See documentation 'Details' for the data dictionary.
 #'
 #' @param city Character. A city name or three-letter abbreviation. If
 #'             `city="all"`, results for all cities are loaded.
@@ -63,7 +67,7 @@ read_landuse <- function(city='bel', year = 2019, geometry = FALSE, showProgress
   if(! is.logical(showProgress) ){stop("The 'showProgress' argument must either be TRUE or FALSE")}
 
   # Get metadata with data url addresses
-  temp_meta <- select_metadata(t='landuse',
+  temp_meta <- select_metadata(t='land_use',
                                c=city,
                                y=year)
 
@@ -73,10 +77,14 @@ read_landuse <- function(city='bel', year = 2019, geometry = FALSE, showProgress
   # download files
   aop_landuse <- download_data(file_url, progress_bar = showProgress)
 
+  # Download and merge population data
+  aop_population <- read_population(city=city, showProgress = showProgress)
+  aop <- data.table::merge.data.table(aop_population, aop_landuse, by = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'), all = TRUE)
+
   # with Vs without spatial data
   if(geometry == FALSE){
                         # return df
-                        return(aop_landuse)
+                        return(aop)
 
                         } else {
 
@@ -84,7 +92,7 @@ read_landuse <- function(city='bel', year = 2019, geometry = FALSE, showProgress
                         aop_grid <- read_grid(city=city, showProgress=showProgress)
 
                         # create function aop_join to bring in land use info
-                        aop_sf <- aop_spatial_join(aop_landuse, aop_grid)
+                        aop_sf <- aop_spatial_join(aop, aop_grid)
                         return(aop_sf)
                         }
   }
