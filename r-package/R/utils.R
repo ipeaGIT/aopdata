@@ -148,7 +148,7 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
   temp_meta <- select_city_input(temp_meta, city=c)
 
   # select year input
-  if(t %in% c('access','landuse')){
+  if(t %in% c('access','landuse', 'land_use', 'population')){
     temp_meta <- select_year_input(temp_meta, year=y)
   }
 

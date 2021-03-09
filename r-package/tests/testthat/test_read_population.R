@@ -4,8 +4,8 @@
   test_that("read_population expected behavior", {
 
     # whole file
-    testthat::expect_output(object = read_population(city='nat', geometry = T))
-    testthat::expect_output(object = read_population(city='nat', geometry = F))
+    testthat::expect_output(object = read_population(city='nat', geometry = TRUE))
+    testthat::expect_output(object = read_population(city='nat', geometry = FALSE))
   })
 
 ### expected errors and messages ----------------
@@ -20,7 +20,7 @@ test_that("read_population errors and messages", {
   testthat::expect_error(read_population(city = 'nat', year=1500))
 
   # Wrong geometry or showProgress
-  testthat::expect_error(read_population(city = 'nat', year=2019, geometry = 'aaa'))
-  testthat::expect_error(read_population(city = 'nat', year=2019, showProgress = 'aaa'))
+  testthat::expect_error(read_population(city = 'nat', year=2010, geometry = 'aaa'))
+  testthat::expect_error(read_population(city = 'nat', year=2010, showProgress = 'aaa'))
 
 })

@@ -5,6 +5,7 @@ test_that("read_grid expected behavior", {
 
   # whole file
   testthat::expect_output(object = read_grid(city='nat'))
+  # testthat::expect_output(object = read_grid(city='nat', showProgress = FALSE))
   # testthat::expect_output(object = read_grid(city=c('all')))
 
 })

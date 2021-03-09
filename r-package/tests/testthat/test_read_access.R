@@ -5,7 +5,7 @@
 
     # whole file
     testthat::expect_output(object = read_access(city='nat', year=2019))
-    testthat::expect_output(object = read_access(city='nat', geometry = T))
+    testthat::expect_output(object = read_access(city='nat', geometry = TRUE))
 
   })
 
