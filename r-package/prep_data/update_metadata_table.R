@@ -20,6 +20,7 @@ update_metadata <- function(f){
   # f <- files[1]  # access
   # f <- files[80] # grid
   # f <- files[100] # landuse
+  # f <- files[120] # population
 
   # file index
   i <- qdapRegex::rm_between(f, "/", "/", extract = T)
@@ -43,6 +44,8 @@ update_metadata <- function(f){
   if(type=='access'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aopdata/data",type,city,year,mode,name,sep="/") ) }
 
   if(type=='landuse'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aopdata/data",type,city,year,name,sep="/") ) }
+
+  if(type=='population'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aopdata/data",type,city,year,name,sep="/") ) }
 
   return(metadata)
 }
@@ -79,6 +82,7 @@ metadata[, name_muni := tolower(name_muni) ]
 head(metadata)
 
 table(metadata$type )
+table(metadata$year )
 subset(metadata, type=="grid")
 subset(metadata, mode=="bicycle")
 subset(metadata, type=="traveltime")

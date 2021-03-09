@@ -1,9 +1,10 @@
-#' Download population and land use data
+#' Download population and socioeconomic data
 #'
 #' @description
-#' Download data on the spatial distribution of population, schools and
-#' healthcare facilities at a fine spatial resolution for cities included in the
-#' study.
+#' Download population and socioeconomic data from the Brazilian Census aggregated
+#' on a hexagonal grid based on the global H3 index at resolution 8, with a size of
+#' 357 meters (short diagonal) and an area of 0.74 km2. More information about H3 at
+#' \url{https://h3geo.org/docs/core-library/restable/}.
 #'
 #' @param city Character. A city name or three-letter abbreviation. If
 #'             `city="all"`, results for all cities are loaded.
@@ -18,20 +19,20 @@
 #' @return A `data.frame` object or an `sf data.frame` object
 #'
 #' @export
-#' @family land use data functions
+#' @family population data functions
 #' @examples \donttest{
 #' # a single city
-#' bho <- read_landuse(city = 'Belo Horizonte', year = 2019)
-#' bho <- read_landuse(city = 'bho', year = 2019)
+#' bho <- read_population(city = 'Belo Horizonte', year = 2010)
+#' bho <- read_population(city = 'bho', year = 2010)
 #'
 #' # all cities
-#' all <- read_landuse(city = 'all', year = 2019)
+#' all <- read_population(city = 'all', year = 2010)
 
 #'}
-read_landuse <- function(city='bel', year = 2019, geometry = FALSE, showProgress = TRUE){
+read_landuse <- function(city='bel', year = 2010, geometry = FALSE, showProgress = TRUE){
 
   # Get metadata with data url addresses
-  temp_meta <- select_metadata(t='landuse',
+  temp_meta <- select_metadata(t='population',
                                c=city,
                                y=year)
 

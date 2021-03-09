@@ -53,13 +53,49 @@ setorderv(df, cols = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
 
 
 
-# save landuse -------------------------------------
+
+
+
+
+### save population data -------------------------------------
+
   # drop spatial data
   df$geometry <- NULL
   head(df)
 
+  # keep only hexagons with any activity
+  df <- subset(df, P001 > 0 | S001 > 0 | E001 > 0 | S001 > 0)
+  df <- data.table::setorderv(df, cols = names(df))
+
   # subset columns
-  cols_landuse <- names(df)[1:20]
+  cols_population <- names(df)[1:12]
+  df_population <- select(df, cols_population)
+  head(df_population)
+
+  # sort and remove duplicates
+  df_population <- data.table::setorderv(df_population, cols = names(df_population))
+  df_population <- unique(df_population, cols = names(df_population))
+
+
+  # fun
+  dir.create(path = paste0('./population'))
+  save_population <- function(city){ # city='for'
+    temp <- subset(df_population, abbrev_muni  == city)
+    dir.create(path = paste0('./population/', city, '/2010') ,recursive = T)
+    setorderv(temp, cols = names(temp))
+    fwrite(temp, paste0('./population/', city, '/2010/population_2010_',city,'.csv'))
+  }
+
+  pblapply(X=unique(df$abbrev_muni), FUN=save_population)
+
+
+
+
+
+# save landuse -------------------------------------
+
+  # subset columns
+  cols_landuse <- names(df)[c(1,2,3,4,13:20)]
   df_landuse <- select(df, cols_landuse)
 
   # fun
