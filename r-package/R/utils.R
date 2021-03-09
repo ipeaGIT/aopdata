@@ -15,8 +15,8 @@
 #'
 select_city_input <- function(temp_meta=temp_meta, city=NULL){
 
-  # NULL
-  if (is.null(city)){  stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
+  # NULL or numeric
+  if(! is.character(city) ){stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
                                 paste(unique(temp_meta$name_muni),collapse = " | "))) }
 
   # 3 letter-abbreviation
@@ -380,10 +380,10 @@ aop_spatial_join <- function(aop_df, aop_sf){
 #'
 #' @description Merges landuse and access data
 #'
-#' @param aop_landuse A `data.frame` of aop land use data
-#' @param aop_access A `data.frame` of aop access data
+#' @param aop_landuse A `data.table` of aop land use data
+#' @param aop_access A `data.table` of aop access data
 #'
-#' @return Returns a `data.frame sf` with landuse and access data
+#' @return Returns a `data.table` with landuse and access data
 #' @export
 #' @family support functions
 #'
@@ -395,7 +395,7 @@ aop_merge <- function(aop_landuse, aop_access){
   data.table::setkeyv(aop_access, c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
 
   # merge
-  aop <- data.table::merge.data.table(aop_landuse, aop_access, by = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
+  aop <- data.table::merge.data.table(aop_landuse, aop_access, by = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'), all = TRUE)
 
   return(aop)
 }

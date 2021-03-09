@@ -4,6 +4,9 @@
 
 # aopdata v0.2.0 (dev)
 
+**Major changes**
+* New function read_population. Closes ##21
+
 
 **Major changes**
 * New parameter `peak` added to `read_access()` function. Closes #17.
