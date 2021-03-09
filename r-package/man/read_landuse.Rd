@@ -26,13 +26,43 @@ A \code{data.frame} object
 \description{
 Download data on the spatial distribution of population, schools and
 healthcare facilities at a fine spatial resolution for cities included in the
-study.
+study. See documentation 'Details' for the data dictionary.
 }
+\section{Data dictionary:}{
+\tabular{llll}{
+   \strong{Data type} \tab \strong{column} \tab \strong{Description} \tab \strong{Value} \cr
+   geographic \tab \code{abbrev_muni} \tab Abbreviation of city name (3 letters) \tab  \cr
+   geographic \tab \code{name_muni} \tab City name \tab  \cr
+   geographic \tab \code{code_muni} \tab 7-digit code of each city \tab  \cr
+   geographic \tab \code{id_hex} \tab Unique id of hexagonal cell \tab  \cr
+   sociodemographic \tab \code{P001} \tab Total number of residents \tab  \cr
+   sociodemographic \tab \code{P002} \tab Number of white residents \tab  \cr
+   sociodemographic \tab \code{P003} \tab Number of black residents \tab  \cr
+   sociodemographic \tab \code{P004} \tab Number of indiginous residents \tab  \cr
+   sociodemographic \tab \code{P005} \tab Number of asian-descendents residents \tab  \cr
+   sociodemographic \tab \code{R001} \tab Average household income per capita \tab R$ (Brazilian Reais), values in 2010 \cr
+   sociodemographic \tab \code{R002} \tab Income quintile group \tab 1 (poorest), 2, 3, 4, 5 (richest) \cr
+   sociodemographic \tab \code{R003} \tab Income decile group \tab 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) \cr
+   land use \tab \code{T001} \tab Total number of formal jobs \tab  \cr
+   land use \tab \code{T002} \tab Total number of formal jobs with primary education \tab  \cr
+   land use \tab \code{T003} \tab Number of formal jobs with secundary education \tab  \cr
+   land use \tab \code{T004} \tab Number of formal jobs with tertiary education \tab  \cr
+   land use \tab \code{E001} \tab Total number of public schools \tab  \cr
+   land use \tab \code{E002} \tab Number of public schools - early childhood \tab  \cr
+   land use \tab \code{E003} \tab Number of public schools - elementary schools \tab  \cr
+   land use \tab \code{E004} \tab Number of public schools - high schools \tab  \cr
+   land use \tab \code{S001} \tab Total number of healthcare facilities \tab  \cr
+   land use \tab \code{S002} \tab Number of healthcare facilities - low complexity \tab  \cr
+   land use \tab \code{S003} \tab Number of healthcare facilities - medium complexity \tab  \cr
+   land use \tab \code{S004} \tab Number of healthcare facilities - high complexity \tab  \cr
+}
+}
+
 \examples{
 \donttest{
 # a single city
-bho <- read_landuse(city = 'Belo Horizonte', year = 2019)
-bho <- read_landuse(city = 'bho', year = 2019)
+bho <- read_landuse(city = 'Belo Horizonte', year = 2019, showProgress = FALSE)
+bho <- read_landuse(city = 'bho', year = 2019, showProgress = FALSE)
 
 # all cities
 all <- read_landuse(city = 'all', year = 2019)

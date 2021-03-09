@@ -20,26 +20,36 @@ knitr::opts_chunk$set(
 ```
 
 
-
+Social and racial inequalities in access to opportunities
 
 ```{r, message = FALSE}
-
+# load libraries
 library(aopdata)
 library(sf)
 library(ggplot2)
 library(data.table)
+```
 
 
-# Download
-df2 <- read_access(city='bho',
+**Download accessibility data**
+
+```{r, message = FALSE}
+
+df <- read_access(city='Rio de Janeiro',
                    mode='public_transport',
-                   peak = F,
+                   peak = T,
                    year=2019,
                    showProgress = F)
+```
+
+
+**Inequality in access to job opportunities by income decile**
+
+```{r, message = FALSE}
 
 ggplot() +
-  geom_boxplot(data=subset(df2, !is.na(abbrev_muni)),
-               aes(x = factor(abbrev_muni), y=CMAET30, color=factor(abbrev_muni))) +
+  geom_boxplot(data=subset(df, !is.na(R003)),
+               aes(x = factor(R003), y=CMAET30, color=factor(R003))) +
   scale_color_brewer(palette = 'RdBu') +
   labs(title='Distribution of the proportion of jobs accessible', color="Income\ndecile",
        subtitle='by public transport in less than 30 min. by income decile',
@@ -51,3 +61,14 @@ ggplot() +
 
 ```
 
+**Palma ratio**
+
+```{r, message = FALSE}
+
+avg_access_10p_wealthiest <- df[ R003==10, weighted.mean(x=CMATT60, w=P001)]
+avg_access_40p_poorest <- df[ R003<=4, weighted.mean(x=CMATT60, w=P001)]
+palma_ratio <- avg_access_10p_wealthiest / avg_access_40p_poorest                
+
+print( paste0('In less than 60 min. by public transport, the 10% wealthiest population could access on average ', round(palma_ratio,2), ' times more job opportunites than the 40% poorest people') )
+
+```

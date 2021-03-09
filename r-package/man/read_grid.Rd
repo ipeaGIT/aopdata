@@ -19,14 +19,26 @@ An \verb{sf data.frame} object
 Results of the AOP project are spatially aggregated on a hexagonal grid based
 on the global H3 index at resolution 8, with a size of 357 meters (short
 diagonal) and an area of 0.74 km2. More infor about H3 at
-\url{https://h3geo.org/docs/core-library/restable/}.
+\url{https://h3geo.org/docs/core-library/restable/}.  See documentation
+'Details' for the data dictionary.
 }
+\section{Data dictionary:}{
+\tabular{lll}{
+   \strong{Data type} \tab \strong{column} \tab \strong{Description} \cr
+   geographic \tab \code{abbrev_muni} \tab Abbreviation of city name (3 letters) \cr
+   geographic \tab \code{name_muni} \tab City name \cr
+   geographic \tab \code{code_muni} \tab 7-digit code of each city \cr
+   geographic \tab \code{id_hex} \tab Unique id of hexagonal cell \cr
+}
+}
+
 \examples{
+\donttest{
 # Read spatial grid of a single city
 nat <- read_grid(city = 'Natal', showProgress = FALSE)
 
 # Read spatial grid of all cities in the project
 # all <- read_grid(city = 'all')
-
+}
 }
 \concept{spatial data functions}

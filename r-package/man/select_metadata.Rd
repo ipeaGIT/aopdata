@@ -25,7 +25,6 @@ Subsets the metadata table by data 'type', 'city', 'year' and
 }
 \examples{
 \donttest{
-
 df <- download_metadata()
 }
 }

@@ -2,7 +2,8 @@
 #'
 #' @description
 #' Download annual estimates of access to employment, health and education
-#' services by transport mode and time of the day
+#' services by transport mode and time of the day.  See documentation 'Details'
+#' for the data dictionary.
 #'
 #' @param city Character. A city name or three-letter abbreviation. If
 #'             `city="all"`, results for all cities are loaded.
@@ -22,17 +23,59 @@
 #'
 #' @return A `data.frame` object
 #'
+#' @details
+#' # Data dictionary:
+#' The name of the columns with accessibility estimates are the
+#' junction of three components: 1) Indicator 2) Type of opportunity
+#' 3) Time thresold (if applicable)
+#'
+#' ## 1) Indicator
+#' |**Indicator**|**Description**|**Note**|
+#' |-----|-----|-----|
+#' |`CMA`| Cumulative opportunity measure (active) |  |
+#' |`TMI`| Travel time to closest opportunity | Value = Inf when travel time is longer than 2h (public transport) or 1,5h (walking or bicycle) |
+#'
+#' ## 2) Type of opportunity
+#' |**Indicator**|**Description**|**Note**|
+#' |-----|-----|-----|
+#' | `TT`	| All jobs | |
+#' | `TQ`	| Total jobs with partial match between job education and income quintile | |
+#' | `TD`	| Total jobs with partial match between job education and income decile | |
+#' | `ST`	| All healthcare facilities | |
+#' | `SB`	| Healthcare facilities - Low complexity | |
+#' | `SM`	| Healthcare facilities - Medium complexity | |
+#' | `SA`	| Healthcare facilities - High complexity | |
+#' | `ET`	| All public schools | |
+#' | `EI`	| Public schools - early childhood | |
+#' | `EF`	| Public schools - elementary schools | |
+#' | `EM`	| Public schools - high schools | |
+#'
+#' ## 3) Time thresold (only applicable to CMA estimates)y
+#' | **Time thresold**|**Description**|**Note - Only applicable to:**|
+#' |-----|-----|-----|
+#' | `15`| Opportunities accessible within 15 min.	| Active transport modes |
+#' | `30`| Opportunities accessible within 30 min.	| All transport modes |
+#' | `45`| Opportunities accessible within 45 min.	| Active transport modes |
+#' | `60`| Opportunities accessible within 60 min.	| All transport modes |
+#' | `90`| Opportunities accessible within 90 min.	| Public transport |
+#' |`120`| Opportunities accessible within 120 min.| Public transport |
+#'
 #' @export
 #' @family accessibility data functions
-#' @examples
+#' @examples \donttest{
 #' # Read accessibility estimates of a single city
 #' df <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
 #' df <- read_access(city = 'for', mode = 'walk', year = 2019, showProgress = FALSE)
 #'
 #' # Read accessibility estimates for all cities
-#' # all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
-#'
+#' all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
+#'}
 read_access <- function(city, mode = 'walk', peak = TRUE, year = 2019, geometry = FALSE, showProgress = TRUE){
+
+  # checks
+  if(! is.logical(geometry) ){stop("The 'geometry' argument must either be TRUE or FALSE")}
+  if(! is.logical(showProgress) ){stop("The 'showProgress' argument must either be TRUE or FALSE")}
+  if(! is.logical(peak) ){stop("The 'peak' argument must either be TRUE or FALSE")}
 
   # Get metadata with data url addresses
   temp_meta <- select_metadata(t='access',

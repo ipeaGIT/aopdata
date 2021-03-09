@@ -65,10 +65,11 @@ head(brazil_2010)
 
 ### Test file size  ----------------
 
-b <- aopdata::read_access(city='all',
+b <- aopdata::read_access(city='for',
                       mode = 'walk',
-                      year = 2019,
-                      geometry = T)
+                      peak=F)
+
+table(b$peak)
 
 a <- rbind(a,a,a,a,a,a)
 library(feather)
@@ -106,23 +107,15 @@ devtools::run_examples(pkg = ".", run = T)
 
 library(covr)
 library(testthat)
-library(aop)
+library(aopdata)
 Sys.setenv(NOT_CRAN = "true")
 
+function_coverage(fun='read_grid', test_file("tests/testthat/test_read_grid.R"))
+function_coverage(fun='read_landuse', test_file("tests/testthat/test_read_landuse.R"))
+function_coverage(fun='read_access', test_file("tests/testthat/test_read_access.R"))
 
-function_coverage(fun='download_metadata', test_file("tests/testthat/test-download_metadata.R"))
 
-function_coverage(fun='read_schools', test_file("tests/testthat/test-read_schools.R"))
-function_coverage(fun='read_neighborhood', test_file("tests/testthat/test-read_neighborhood.R"))
-function_coverage(fun='read_biomes', test_file("tests/testthat/test-read_biomes.R"))
-function_coverage(fun='read_region', test_file("tests/testthat/test-read_region.R"))
-function_coverage(fun= 'read_amazon', test_file("tests/testthat/test-read_amazon.R"))
-function_coverage(fun= 'read_semiarid', test_file("tests/testthat/test-read_semiarid.R"))
-function_coverage(fun= 'read_metro_area', test_file("tests/testthat/test-read_metro_area.R"))
-function_coverage(fun= 'read_conservation_units', test_file("tests/testthat/test-read_conservation_units.R"))
 
-# create githubl shield with code coverage
-  # usethis::use_coverage( type = c("codecov"))
 
 # update Package coverage
   Sys.setenv(NOT_CRAN = "true")
@@ -130,8 +123,7 @@ function_coverage(fun= 'read_conservation_units', test_file("tests/testthat/test
   aop_cov
   beepr::beep()
 
-  x <- as.data.frame(aop_cov)
-#  covr::codecov( coverage = aop_cov, token ='e3532778-1d8d-4605-a151-2a88593e1612' )
+#  covr::codecov( coverage = aop_cov, token ='f09e3b22-d365-4239-8dd3-55a6c921d31b' )
 
 
 

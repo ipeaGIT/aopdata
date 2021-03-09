@@ -40,15 +40,59 @@ A \code{data.frame} object
 }
 \description{
 Download annual estimates of access to employment, health and education
-services by transport mode and time of the day
+services by transport mode and time of the day.  See documentation 'Details'
+for the data dictionary.
 }
+\section{Data dictionary:}{
+The name of the columns with accessibility estimates are the
+junction of three components: 1) Indicator 2) Type of opportunity
+3) Time thresold (if applicable)
+\subsection{1) Indicator}{\tabular{lll}{
+   \strong{Indicator} \tab \strong{Description} \tab \strong{Note} \cr
+   \code{CMA} \tab Cumulative opportunity measure (active) \tab  \cr
+   \code{TMI} \tab Travel time to closest opportunity \tab Value = Inf when travel time is longer than 2h (public transport) or 1,5h (walking or bicycle) \cr
+}
+
+}
+
+\subsection{2) Type of opportunity}{\tabular{lll}{
+   \strong{Indicator} \tab \strong{Description} \tab \strong{Note} \cr
+   \code{TT} \tab All jobs \tab  \cr
+   \code{TQ} \tab Total jobs with partial match between job education and income quintile \tab  \cr
+   \code{TD} \tab Total jobs with partial match between job education and income decile \tab  \cr
+   \code{ST} \tab All healthcare facilities \tab  \cr
+   \code{SB} \tab Healthcare facilities - Low complexity \tab  \cr
+   \code{SM} \tab Healthcare facilities - Medium complexity \tab  \cr
+   \code{SA} \tab Healthcare facilities - High complexity \tab  \cr
+   \code{ET} \tab All public schools \tab  \cr
+   \code{EI} \tab Public schools - early childhood \tab  \cr
+   \code{EF} \tab Public schools - elementary schools \tab  \cr
+   \code{EM} \tab Public schools - high schools \tab  \cr
+}
+
+}
+
+\subsection{3) Time thresold (only applicable to CMA estimates)y}{\tabular{lll}{
+   \strong{Time thresold} \tab \strong{Description} \tab \strong{Note - Only applicable to:} \cr
+   \code{15} \tab Opportunities accessible within 15 min. \tab Active transport modes \cr
+   \code{30} \tab Opportunities accessible within 30 min. \tab All transport modes \cr
+   \code{45} \tab Opportunities accessible within 45 min. \tab Active transport modes \cr
+   \code{60} \tab Opportunities accessible within 60 min. \tab All transport modes \cr
+   \code{90} \tab Opportunities accessible within 90 min. \tab Public transport \cr
+   \code{120} \tab Opportunities accessible within 120 min. \tab Public transport \cr
+}
+
+}
+}
+
 \examples{
+\donttest{
 # Read accessibility estimates of a single city
 df <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
 df <- read_access(city = 'for', mode = 'walk', year = 2019, showProgress = FALSE)
 
 # Read accessibility estimates for all cities
-# all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
-
+all <- read_access(city = 'all', mode = 'public_transport', year = 2019)
+}
 }
 \concept{accessibility data functions}

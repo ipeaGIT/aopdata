@@ -13,7 +13,8 @@ A \code{data.frame} object with metadata and url of data sets
 Support function to download metadata internally used in 'aopdata'
 }
 \examples{
+\donttest{
 df <- download_metadata()
-
+}
 }
 \concept{general support functions}
