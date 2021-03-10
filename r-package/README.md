@@ -49,8 +49,8 @@ For all of the functions above, note that:
 
 - The `city` parameter can also be a 3-letter abbreviation of the city.
 ```R
-cur <- read_access(city = 'cur', mode = 'public_transport', year = 2019)
-for <- read_grid(city = 'for')
+df <- read_access(city = 'cur', mode = 'public_transport', year = 2019)
+df <- read_grid(city = 'for')
 ```
 - You may also download the data for all cities of the project at once using `city = 'all'`:
 ```R
@@ -62,7 +62,7 @@ all <- read_landuse(city = 'all', year = 2019)
 
 # Citation <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/ipea_logo.png?raw=true" alt="ipea" width="300">
 
-The R package **aopdata** is developed by a team at the Institute for Applied Economic Research (Ipea), Brazil. If you use this package in research publications, we please cite it as one of the publications below:
+The R package **aopdata** is developed by a team at the Institute for Applied Economic Research (Ipea), Brazil. If you use this package in research publications, please cite it as one of the publications below:
 
 * Pereira, R. H. M., Braga, C. K. V., Serra, Bernardo, & Nadalin, V. (2019). Desigualdades socioespaciais de acesso a oportunidades nas cidades brasileiras, 2019. Texto para Discussão Ipea, 2535. Instituto de Pesquisa Econômica Aplicada (Ipea). Disponível em http://repositorio.ipea.gov.br/handle/11058/9586
 * Pereira, R. H. M.; Braga, C. K. V.; Servo, L. M.; Serra, B.; Amaral, P.; Gouveia, N.; Paez, A. (2021) Geographic access to COVID-19 healthcare in Brazil using a balanced float catchment area approach. Social Science & Medicine. https://doi.org/10.1016/j.socscimed.2021.113773
