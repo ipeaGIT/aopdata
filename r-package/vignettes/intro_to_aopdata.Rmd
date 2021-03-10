@@ -1,0 +1,195 @@
+---
+title: "Introduction to `aopdata`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to `aopdata`}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+**`aopdata`** is an R package that makes it easy to download data from the 
+[Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/). 
+AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) 
+that aims to study transport accessibility and inequalities in access to opportunities 
+in Brazilian cities. You can access more information about the project on the [AOP website](https://www.ipea.gov.br/acessooportunidades/en/).
+
+
+## Installation
+
+You can install `aopdata` from CRAN, or the development version from GitHub.
+
+```{r, eval = FALSE}
+# CRAN
+install.packages('aopdata')
+
+# github
+devtools::install_github("ipeaGIT/aopdata", subdir = "r-package")
+```
+
+## Usage
+
+After installation, you can easily download accessibility estimates, as well as 
+population and land use data, from 20 major Brazilian cities. Those cities are:
+
+| **Abbreviation** | **City Name**       |
+|--------------|-----------------|
+| bel          | Belem           |
+| bho          | Belo Horizonte  |
+| bsb          | Brasilia        |
+| cam          | Campinas        |
+| cgr          | Campo Grande    |
+| cur          | Curitiba        |
+| duq          | Duque de Caxias |
+| for          | Fortaleza       |
+| goi          | Goiania         |
+| gua          | Guarulhos       |
+| mac          | Maceio          |
+| man          | Manaus          |
+| nat          | Natal           |
+| poa          | Porto Alegre    |
+| rec          | Recife          |
+| rio          | Rio de Janeiro  |
+| sal          | Salvador        |
+| sgo          | Sao Gonçalo     |
+| slz          | Sao Luis        |
+| spo          | Sao Paulo       |
+
+**Read *accessibility* estimates**
+
+To download accessibility estimates, you can use the `read_access()` function. The
+example below downloads data on accessibility by walking for the city of Curitiba, 
+in Southern Brazil. The function will download data for the year 2019, which is the 
+one currently available.
+
+`read_access()` can also download the spatial geometry of each city by setting
+`geometry = TRUE`, which can be used to map accessibility levels across the
+city. Refer to the [mapping population and land use](landuse_maps.html) and
+[mapping urban accessibility](access_maps.html) vignettes for examples of how
+to use the spatial geometry information. For now, we'll set `geometry = FALSE` to 
+download a dataframe with no spatial information. 
+
+```{r include=FALSE}
+# load the aopdata package
+library(aopdata)
+
+# A dataframe, with no spatial geometry
+cur <- read_access(city = 'Curitiba', mode = 'public_transport', year = 2019, geometry = FALSE)
+```
+
+Let's check the results:
+
+```{r}
+dplyr::glimpse(cur )
+```
+
+As you can see, a lot of data has been returned from `read_access()`. The dataframe's
+columns can be classified into 4 groups, according to the data they contain: _geographic_,
+_sociodemographic_, _land use_, and _accessibility_. The following section explains 
+the contents of each column.
+
+## Data dictionary
+
+### **Geographic** variables
+
+|**column**|**Description**|**Value**|
+|-----|-----|
+| `abbrev_muni`|	Abbreviation of city name (3 letters)	|
+| `name_muni`  | City name	|
+| `code_muni`	 | 7-digit code of each city	|
+| `id_hex`	   | Unique id of hexagonal cell	|
+
+### **Sociodemographic** variables
+
+|**column**|**Description**|**Value**|
+|-----|-----|
+| `P001` | Total number of residents	|
+| `P002` | Number of white residents	|
+| `P003` | Number of black residents	|
+| `P004` | Number of indiginous residents |
+| `P005` | Number of asian-descendents residents |
+| `R001` | Average household income per capita	| R$ (Brazilian Reais), values in 2010 |
+| `R002` | Income quintile group	| 1 (poorest), 2, 3, 4, 5 (richest) |
+| `R003` | Income decile group	| 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) |
+
+### **Land use** variables
+
+|**column**|**Description**|**Value**|
+|-----|-----|
+|	`T001` | Total number of formal jobs |
+|	`T002` | Total number of formal jobs with primary education |
+|	`T003` | Number of formal jobs with secundary education |
+|	`T004` | Number of formal jobs with tertiary education |
+|	`E001` | Total number of public schools |
+|	`E002` | Number of public schools - early childhood |
+|	`E003` | Number of public schools - elementary schools |
+|	`E004` | Number of public schools - high schools |
+|	`S001` | Total number of healthcare facilities |
+|	`S002` | Number of healthcare facilities - low complexity |
+|	`S003` | Number of healthcare facilities - medium complexity |
+|	`S004` | Number of healthcare facilities - high complexity |
+
+
+### **Accessibility** variables
+
+The name of the columns with accessibility estimates are the junction of three 
+components: 
+
+1) Indicator 
+
+2) Type of opportunity 
+
+3) Time thresold (if applicable)
+
+**1) Indicator**
+
+|**Indicator**|**Description**|**Note**|
+|-----|-----|-----|
+|`CMA`| Cumulative opportunity measure (active) |  |
+|`TMI`| Travel time to closest opportunity | Value = Inf when travel time is longer 
+than 2h (public transport) or 1,5h (walking or bicycle) |
+
+**2) Type of opportunity**
+
+|**Indicator**|**Description**|
+|-----|-----|
+| `TT`	| All jobs |
+| `TQ`	| Total jobs with partial match between job education and income quintile |
+| `TD`	| Total jobs with partial match between job education and income decile |
+| `ST`	| All healthcare facilities |
+| `SB`	| Healthcare facilities - Low complexity |
+| `SM`	| Healthcare facilities - Medium complexity |
+| `SA`	| Healthcare facilities - High complexity |
+| `ET`	| All public schools |
+| `EI`	| Public schools - early childhood |
+| `EF`	| Public schools - elementary schools |
+| `EM`	| Public schools - high schools |
+
+** 3) Time thresold (only applicable to CMA estimates) **
+
+| **Time thresold**|**Description**|**Note - Only applicable to:**|
+|-----|-----|-----|
+| `15`| Opportunities accessible within 15 min.	| Active transport modes |
+| `30`| Opportunities accessible within 30 min.	| All transport modes |
+| `45`| Opportunities accessible within 45 min.	| Active transport modes |
+| `60`| Opportunities accessible within 60 min.	| All transport modes |
+| `90`| Opportunities accessible within 90 min.	| Public transport |
+|`120`| Opportunities accessible within 120 min.| Public transport |
+
+## Next Steps
+
+Now, check the next vignettes for demonstrations on how to use `aopdata` to produce 
+[land use](landuse_maps.html) and [accessibility](access_maps.html) maps, as well 
+as to analyse [accessibility inequalities](access_inequality.html).
+
+
+
+
+
