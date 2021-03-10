@@ -1,12 +1,16 @@
 ---
 title: "Introduction to `aopdata`"
+author: "Marcus Saraiva"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
+abstract: "This vignette introduces the `aopdata` package, lists the cities for which data are available for download, and presents the data dictionary."
+urlcolor: blue
 vignette: >
   %\VignetteIndexEntry{Introduction to `aopdata`}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-
+  
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -172,7 +176,7 @@ than 2h (public transport) or 1,5h (walking or bicycle) |
 | `EF`	| Public schools - elementary schools |
 | `EM`	| Public schools - high schools |
 
-** 3) Time thresold (only applicable to CMA estimates) **
+**3) Time thresold (only applicable to CMA estimates)**
 
 | **Time thresold**|**Description**|**Note - Only applicable to:**|
 |-----|-----|-----|
