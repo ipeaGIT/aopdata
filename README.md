@@ -1,10 +1,10 @@
 # aopdata: Data from the Access to Opportunities Project
 <!-- badges: start -->
 [![CRAN/METACRAN Version](https://www.r-pkg.org/badges/version/aopdata)](https://CRAN.R-project.org/package=aopdata)
+[![CRAN/METACRAN Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/aopdata?color=blue)](https://CRAN.R-project.org/package=aopdata)
 [![codecov](https://codecov.io/gh/ipeaGIT/aopdata/branch/main/graph/badge.svg?token=UQZLSRZ02E)](https://codecov.io/gh/ipeaGIT/aopdata)
 [![R build status](https://github.com/ipeaGIT/aopdata/workflows/R-CMD-check/badge.svg)](https://github.com/ipeaGIT/aopdata/actions)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) 
-
 
 <!-- badges: end -->
 
