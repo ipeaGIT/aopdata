@@ -99,13 +99,13 @@ setorderv(df, cols = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
   df_landuse <- select(df, cols_landuse)
 
   # fun
-  dir.create(path = paste0('./landuse'))
+  dir.create(path = paste0('./land_use'))
   save_landuse <- function(city){ # city='for'
     temp <- subset(df_landuse, abbrev_muni  == city)
     temp <- unique(temp, by ='id_hex')
-    dir.create(path = paste0('./landuse/', city, '/2019') ,recursive = T)
+    dir.create(path = paste0('./land_use/', city, '/2019') ,recursive = T)
     setorderv(temp, cols = names(temp))
-    fwrite(temp, paste0('./landuse/', city, '/2019/landuse_2019_',city,'.csv'))
+    fwrite(temp, paste0('./land_use/', city, '/2019/landuse_2019_',city,'.csv'))
   }
 
   pblapply(X=unique(df$abbrev_muni), FUN=save_landuse)
