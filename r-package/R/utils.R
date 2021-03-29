@@ -400,4 +400,51 @@ aop_merge <- function(aop_landuse, aop_access){
   return(aop)
 }
 
+
+
+
+#' Check internet connection with Ipea server
+#'
+#' @description
+#' Checks if there is internet connection to Ipea server to download aop data.
+#'
+#' @param file_url A string with the file_url address of an aop dataset
+#'
+#' @return Logic `TRUE or `FALSE`.
+#'
+#' @export
+#' @family support functions
+#'
+is_online <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'){
+
+ # check <-  tryCatch({
+ #    readLines(file_url, n=1)
+ #    TRUE
+ #  },
+ #  warning = function(w) invokeRestart("muffleWarning"),
+ #  error = function(e) FALSE)
+ #
+ # # error message
+ # if(check==FALSE){stop('Internet connection problem. If this is not a connection
+ #                       problem in your network, please try aop again in a few
+ #                       minutes.')}
+
+  #supress warnings
+  oldw <- getOption("warn")
+  options(warn = -1)
+
+  # test server connection
+  con <- url(file_url)
+  t <- suppressWarnings({ try( open.connection(con, open="rt", timeout=2), silent=T)[1] })
+  if(is.null(t)){t <- 'Ok'}
+  if ("try-error" %in% class(t) | t %like% 'Error'){
+     stop('Internet connection problem. If this is not a connection problem in your network, please try aopdata again in a few minutes.')
+    }
+  suppressWarnings({ try(close.connection(con), silent=TRUE) })
+
+  # return with warnings
+  options(warn = oldw)
+}
+
+
 # nocov end

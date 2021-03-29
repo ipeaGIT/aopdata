@@ -23,6 +23,7 @@ to a temporary directory.
 Other support functions: 
 \code{\link{aop_merge}()},
 \code{\link{aop_spatial_join}()},
+\code{\link{is_online}()},
 \code{\link{load_data}()},
 \code{\link{rm_accent}()},
 \code{\link{select_city_input}()},
