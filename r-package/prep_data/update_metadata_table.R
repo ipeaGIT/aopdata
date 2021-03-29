@@ -19,8 +19,9 @@ files = list.files("//storage1/geobr/aopdata/data", full.names = T, recursive = 
 update_metadata <- function(f){
   # f <- files[1]  # access
   # f <- files[80] # grid
-  # f <- files[100] # landuse
-  # f <- files[120] # population
+  # f <- files[100] # land_use
+  # f <- files[120] # landuse
+  # f <- files[140] # population
 
   # file index
   i <- qdapRegex::rm_between(f, "/", "/", extract = T)
@@ -39,13 +40,14 @@ update_metadata <- function(f){
 
   # update meta data table
   # grid
-  if(type=='grid'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aopdata/data",type,city,name,sep="/")) }
+  if(type=='grid'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("https://www.ipea.gov.br/geobr/aopdata/data",type,city,name,sep="/")) }
 
-  if(type=='access'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aopdata/data",type,city,year,mode,name,sep="/") ) }
+  if(type=='access'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("https://www.ipea.gov.br/geobr/aopdata/data",type,city,year,mode,name,sep="/") ) }
 
-  if(type=='landuse'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aopdata/data",type,city,year,name,sep="/") ) }
+  if(type=='landuse'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("https://www.ipea.gov.br/geobr/aopdata/data",type,city,year,name,sep="/") ) }
+  if(type=='land_use'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("https://www.ipea.gov.br/geobr/aopdata/data",type,city,year,name,sep="/") ) }
 
-  if(type=='population'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("http://www.ipea.gov.br/geobr/aopdata/data",type,city,year,name,sep="/") ) }
+  if(type=='population'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("https://www.ipea.gov.br/geobr/aopdata/data",type,city,year,name,sep="/") ) }
 
   return(metadata)
 }
