@@ -113,7 +113,7 @@ Sys.setenv(NOT_CRAN = "true")
 function_coverage(fun='read_grid', test_file("tests/testthat/test_read_grid.R"))
 function_coverage(fun='read_landuse', test_file("tests/testthat/test_read_landuse.R"))
 function_coverage(fun='read_access', test_file("tests/testthat/test_read_access.R"))
-
+function_coverage(fun='read_population', test_file("tests/testthat/test_read_population.R"))
 
 
 

@@ -7,12 +7,12 @@
 aop_merge(aop_landuse, aop_access)
 }
 \arguments{
-\item{aop_landuse}{A \code{data.frame} of aop land use data}
+\item{aop_landuse}{A \code{data.table} of aop land use data}
 
-\item{aop_access}{A \code{data.frame} of aop access data}
+\item{aop_access}{A \code{data.table} of aop access data}
 }
 \value{
-Returns a \verb{data.frame sf} with landuse and access data
+Returns a \code{data.table} with landuse and access data
 }
 \description{
 Merges landuse and access data

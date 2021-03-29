@@ -4,8 +4,8 @@
   test_that("read_landuse expected behavior", {
 
     # whole file
-    testthat::expect_output(object = read_landuse(city='nat', geometry = T))
-    testthat::expect_output(object = read_landuse(city='nat', geometry = F))
+    testthat::expect_output(object = read_landuse(city='nat', geometry = TRUE))
+    testthat::expect_output(object = read_landuse(city='nat', geometry = FALSE))
   })
 
 ### expected errors and messages ----------------
