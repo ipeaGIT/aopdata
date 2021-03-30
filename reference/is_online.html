@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Select city input — select_city_input • aopdata</title>
+<title>Check internet connection with Ipea server — is_online • aopdata</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Select city input — select_city_input" />
-<meta property="og:description" content="Subsets the metadata table by 'city'." />
+<meta property="og:title" content="Check internet connection with Ipea server — is_online" />
+<meta property="og:description" content="Checks if there is internet connection to Ipea server to download aop data." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -140,42 +140,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Select city input</h1>
+    <h1>Check internet connection with Ipea server</h1>
     <small class="dont-index">Source: <a href='https://github.com/ipeaGIT/aopdata/tree/main/r-package/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>select_city_input.Rd</code></div>
+    <div class="hidden name"><code>is_online.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Subsets the metadata table by 'city'.</p>
+    <p>Checks if there is internet connection to Ipea server to download aop data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>select_city_input</span><span class='op'>(</span>temp_meta <span class='op'>=</span> <span class='va'>temp_meta</span>, city <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>is_online</span><span class='op'>(</span>
+  file_url <span class='op'>=</span> <span class='st'>"https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>temp_meta</th>
-      <td><p>A dataframe with the file_url addresses of aop datasets</p></td>
-    </tr>
-    <tr>
-      <th>city</th>
-      <td><p>city input (passed from read_ function)</p></td>
+      <th>file_url</th>
+      <td><p>A string with the file_url address of an aop dataset</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>data.frame</code> object with metadata subsetted by 'city'</p>
+    <p>Logic <code>TRUE or </code>FALSE`.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other support functions: 
 <code><a href='aop_merge.html'>aop_merge</a>()</code>,
 <code><a href='aop_spatial_join.html'>aop_spatial_join</a>()</code>,
 <code><a href='download_data.html'>download_data</a>()</code>,
-<code><a href='is_online.html'>is_online</a>()</code>,
 <code><a href='load_data.html'>load_data</a>()</code>,
 <code><a href='rm_accent.html'>rm_accent</a>()</code>,
+<code><a href='select_city_input.html'>select_city_input</a>()</code>,
 <code><a href='select_metadata.html'>select_metadata</a>()</code>,
 <code><a href='select_mode_input.html'>select_mode_input</a>()</code>,
 <code><a href='select_year_input.html'>select_year_input</a>()</code></p></div>
