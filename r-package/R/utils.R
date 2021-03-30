@@ -417,21 +417,10 @@ aop_merge <- function(aop_landuse, aop_access){
 #'
 is_online <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'){
 
- # check <-  tryCatch({
- #    readLines(file_url, n=1)
- #    TRUE
- #  },
- #  warning = function(w) invokeRestart("muffleWarning"),
- #  error = function(e) FALSE)
- #
- # # error message
- # if(check==FALSE){stop('Internet connection problem. If this is not a connection
- #                       problem in your network, please try aop again in a few
- #                       minutes.')}
-
-  #supress warnings
+  # suppress warnings
   oldw <- getOption("warn")
   options(warn = -1)
+  on.exit(options(warn = oldw))
 
   # test server connection
   con <- url(file_url)
@@ -442,8 +431,6 @@ is_online <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata
     }
   suppressWarnings({ try(close.connection(con), silent=TRUE) })
 
-  # return with warnings
-  options(warn = oldw)
 }
 
 
