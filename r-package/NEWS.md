@@ -6,8 +6,8 @@
 
 **Major changes**
 * New function read_population. Closes #21
-* New parameter `peak` added to `read_access()` function. Closes #17.
-* New internal support function to alert for possible internet connection problem. Closes #26.
+* New parameter `peak` added to `read_access()` function. Closes #17
+* New internal support function `is_online()` to alert for possible internet connection problem. Closes #26
 
 **Minor changes**
 * Downloads two or more cities at the same time. Closes #3.
