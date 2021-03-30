@@ -184,7 +184,10 @@ download_data <- function(file_url, progress_bar = showProgress){
 
   if(length(file_url)==1 & progress_bar == TRUE){
 
-    # download file
+    # test server connection
+    is_online(file_url[1])
+
+    # download data
     temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(file_url,"/"),tail,n=1L)))
     httr::GET(url=file_url, httr::progress(), httr::write_disk(temps, overwrite = T))
 
@@ -195,7 +198,10 @@ download_data <- function(file_url, progress_bar = showProgress){
 
   else if(length(file_url)==1 & progress_bar == FALSE){
 
-    # download file
+    # test server connection
+    is_online(file_url[1])
+
+    # download data
     temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(file_url,"/"),tail,n=1L)))
     httr::GET(url=file_url, httr::write_disk(temps, overwrite = T))
 
@@ -207,6 +213,9 @@ download_data <- function(file_url, progress_bar = showProgress){
 ## multiple files
 
   else if(length(file_url) > 1 & progress_bar == TRUE) {
+
+    # test server connection
+    is_online(file_url[1])
 
     # input for progress bar
     total <- length(file_url)
@@ -229,7 +238,10 @@ download_data <- function(file_url, progress_bar = showProgress){
 
   else if(length(file_url) > 1 & progress_bar == FALSE) {
 
-    # download files
+    # test server connection
+    is_online(file_url[1])
+
+    # download data
     lapply(X=file_url, function(x){
       i <- match(c(x),file_url)
       httr::GET(url=x, #httr::progress(),
