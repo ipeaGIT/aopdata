@@ -17,18 +17,11 @@ download_metadata <- function(){
 
   } else {
 
-# #supress warnings
-# oldw <- getOption("warn")
-# options(warn = -1)
-
     # test server connection
     metadata_link <- 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'
     is_online(metadata_link)
 
-# # return with warnings
-# options(warn = oldw)
-
-    # download it and save to metadata
+    # download metadata to temp file
     httr::GET(url= metadata_link, httr::write_disk(tempf, overwrite = T))
   }
 
