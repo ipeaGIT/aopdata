@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Download data to temporary directory. — download_data • aopdata</title>
+<title>Check internet connection with Ipea server — check_connection • aopdata</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,9 +46,8 @@
 
 
 
-<meta property="og:title" content="Download data to temporary directory. — download_data" />
-<meta property="og:description" content="Save requested data (either an sf or a data.frame)
-to a temporary directory." />
+<meta property="og:title" content="Check internet connection with Ipea server — check_connection" />
+<meta property="og:description" content="Checks if there is internet connection to Ipea server to download aop data." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -141,41 +140,37 @@ to a temporary directory." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Download data to temporary directory.</h1>
+    <h1>Check internet connection with Ipea server</h1>
     <small class="dont-index">Source: <a href='https://github.com/ipeaGIT/aopdata/tree/main/r-package/R/utils.R'><code>R/utils.R</code></a></small>
-    <div class="hidden name"><code>download_data.Rd</code></div>
+    <div class="hidden name"><code>check_connection.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Save requested data (either an <code>sf</code> or a <code>data.frame</code>)
-to a temporary directory.</p>
+    <p>Checks if there is internet connection to Ipea server to download aop data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>download_data</span><span class='op'>(</span><span class='va'>file_url</span>, progress_bar <span class='op'>=</span> <span class='va'>showProgress</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>check_connection</span><span class='op'>(</span>
+  file_url <span class='op'>=</span> <span class='st'>"https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>file_url</th>
-      <td><p>A string with the file_url address of a aop dataset</p></td>
-    </tr>
-    <tr>
-      <th>progress_bar</th>
-      <td><p>Logical. Defaults to (TRUE) display progress bar</p></td>
+      <td><p>A string with the file_url address of an aop dataset</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>No visible output. The downloaded file (either an <code>sf</code> or a
-<code>data.frame</code>) is saved to a temporary directory.</p>
+    <p>Logic <code>TRUE or </code>FALSE`.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other support functions: 
 <code><a href='aop_merge.html'>aop_merge</a>()</code>,
 <code><a href='aop_spatial_join.html'>aop_spatial_join</a>()</code>,
-<code><a href='check_connection.html'>check_connection</a>()</code>,
+<code><a href='download_data.html'>download_data</a>()</code>,
 <code><a href='load_data.html'>load_data</a>()</code>,
 <code><a href='rm_accent.html'>rm_accent</a>()</code>,
 <code><a href='select_city_input.html'>select_city_input</a>()</code>,
