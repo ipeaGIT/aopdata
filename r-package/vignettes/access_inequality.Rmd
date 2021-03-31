@@ -1,9 +1,7 @@
 ---
 title: 'Analyzing inequality in access to opportunities'
-author: "Rafael H. M. Pereira .."
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
-abstract: "Analyzing inequality in access to opportunities"
 urlcolor: blue
 vignette: >
   %\VignetteIndexEntry{Analyzing inequality in access to opportunities} 

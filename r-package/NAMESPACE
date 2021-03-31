@@ -2,9 +2,9 @@
 
 export(aop_merge)
 export(aop_spatial_join)
+export(check_connection)
 export(download_data)
 export(download_metadata)
-export(is_online)
 export(load_data)
 export(read_access)
 export(read_grid)

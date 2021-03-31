@@ -1,9 +1,7 @@
 ---
 title: "Introduction to `aopdata`"
-author: "Marcus Saraiva"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
-abstract: "This vignette introduces the `aopdata` package, lists the cities for which data are available for download, and presents the data dictionary."
 urlcolor: blue
 vignette: >
   %\VignetteIndexEntry{Introduction to `aopdata`}
@@ -18,6 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
+This vignette introduces the **`aopdata`** package, lists the cities for which data are available for download, and presents the data dictionary.
 
 **`aopdata`** is an R package that makes it easy to download data from the 
 [Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/). 

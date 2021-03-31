@@ -185,7 +185,7 @@ download_data <- function(file_url, progress_bar = showProgress){
   if(length(file_url)==1 & progress_bar == TRUE){
 
     # test server connection
-    is_online(file_url[1])
+    check_connection(file_url[1])
 
     # download data
     temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(file_url,"/"),tail,n=1L)))
@@ -199,7 +199,7 @@ download_data <- function(file_url, progress_bar = showProgress){
   else if(length(file_url)==1 & progress_bar == FALSE){
 
     # test server connection
-    is_online(file_url[1])
+    check_connection(file_url[1])
 
     # download data
     temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(file_url,"/"),tail,n=1L)))
@@ -215,7 +215,7 @@ download_data <- function(file_url, progress_bar = showProgress){
   else if(length(file_url) > 1 & progress_bar == TRUE) {
 
     # test server connection
-    is_online(file_url[1])
+    check_connection(file_url[1])
 
     # input for progress bar
     total <- length(file_url)
@@ -239,7 +239,7 @@ download_data <- function(file_url, progress_bar = showProgress){
   else if(length(file_url) > 1 & progress_bar == FALSE) {
 
     # test server connection
-    is_online(file_url[1])
+    check_connection(file_url[1])
 
     # download data
     lapply(X=file_url, function(x){
@@ -328,15 +328,15 @@ rm_accent <- function(str, pattern="all") {
   if(!is.character(str))
     str <- as.character(str)
   pattern <- unique(pattern)
-  if(any(pattern=="\u00c7")) # "Ç"
-    pattern[pattern=="\u00c7"] <- "\u00e7" # "Ç"] <- "ç"
+  if(any(pattern=="\u00c7"))
+    pattern[pattern=="\u00c7"] <- "\u00e7"
   symbols <- c(
-    acute = "\u00e1\u00e9\u00ed\u00f3\u00fa\u00c1\u00c9\u00cd\u00d3\u00da\u00fd\u00dd", # "áéíóúÁÉÍÓÚýÝ",
-    grave = "\u00e0\u00e8\u00ec\u00f2\u00f9\u00c0\u00c8\u00cc\u00d2\u00d9", # "àèìòùÀÈÌÒÙ",
-    circunflex = "\u00e2\u00ea\u00ee\u00f4\u00fb\u00c2\u00ca\u00ce\u00d4\u00db", # "âêîôûÂÊÎÔÛ",
-    tilde = "\u00e3\u00f5\u00c3\u00d5\u00f1\u00d1", # "ãõÃÕñÑ",
-    umlaut = "\u00e4\u00eb\u00ef\u00f6\u00fc\u00c4\u00cb\u00cf\u00d6\u00dc\u00ff", # "äëïöüÄËÏÖÜÿ",
-    cedil = "\u00e7\u00c7" # "çÇ"
+    acute = "\u00e1\u00e9\u00ed\u00f3\u00fa\u00c1\u00c9\u00cd\u00d3\u00da\u00fd\u00dd",
+    grave = "\u00e0\u00e8\u00ec\u00f2\u00f9\u00c0\u00c8\u00cc\u00d2\u00d9",
+    circunflex = "\u00e2\u00ea\u00ee\u00f4\u00fb\u00c2\u00ca\u00ce\u00d4\u00db",
+    tilde = "\u00e3\u00f5\u00c3\u00d5\u00f1\u00d1",
+    umlaut = "\u00e4\u00eb\u00ef\u00f6\u00fc\u00c4\u00cb\u00cf\u00d6\u00dc\u00ff",
+    cedil = "\u00e7\u00c7"
   )
   nudeSymbols <- c(
     acute = "aeiouAEIOUyY",
@@ -347,7 +347,7 @@ rm_accent <- function(str, pattern="all") {
     cedil = "cC"
   )
   accentTypes <- c("\u00b4", "`", "^", "~", "\u00a8", "\u00e7") # c("´","`","^","~","¨","ç")
-  if(any(c("all","al","a","todos","t","to","tod","todo")%in%pattern)) # opcao retirar todos
+  if(any(c("all","al","a","todos","t","to","tod","todo")%in%pattern))
     return(chartr(paste(symbols, collapse=""), paste(nudeSymbols, collapse=""), str))
   for(i in which(accentTypes%in%pattern))
     str <- chartr(symbols[i],nudeSymbols[i], str)
@@ -427,23 +427,66 @@ aop_merge <- function(aop_landuse, aop_access){
 #' @export
 #' @family support functions
 #'
-is_online <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'){
+check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'){
 
-  # suppress warnings
-  oldw <- getOption("warn")
-  options(warn = -1)
-  on.exit(options(warn = oldw))
+  # check internet connection
+  if (!curl::has_internet()) {
+    message("No internet connection.")
+    return(invisible(NULL))
+  }
 
   # test server connection
-  con <- url(file_url)
-  t <- suppressWarnings({ try( open.connection(con, open="rt", timeout=2), silent=T)[1] })
-  if(is.null(t)){t <- 'Ok'}
-  if ("try-error" %in% class(t) | t %like% 'Error'){
-     stop('Internet connection problem. If this is not a connection problem in your network, please try aopdata again in a few minutes.')
+    # crul::ok(file_url)
+  if (httr::http_error(httr::GET(file_url))) {
+    message("Problem connecting to data server. Please try aopdata again in a few minutes.")
+    return(invisible(NULL))
     }
-  suppressWarnings({ try(close.connection(con), silent=TRUE) })
-
 }
+
+# #' Fail gracefully if Ipea server is not available
+# #'
+# #' The function allows to fail gracefully with an informative message
+# #' if the Wikisource resource is not available (and not give a check warning nor error).
+# #'
+# #' @details See full discussion to be compliante with the CRAN policy
+# #' <https://community.rstudio.com/t/internet-resources-should-fail-gracefully/49199>
+# #'
+# #' @param file_url A remote URL.
+# #' @return Message.
+# #'
+# #' @export
+# #' @family support functions
+# #'
+# gracefully_fail <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv') {
+#   try_GET <- function(x, ...) {
+#     tryCatch(
+#       httr::GET(url = x, httr::timeout(600), ...), #timeout 10 minutes
+#       error = function(e) conditionMessage(e),
+#       warning = function(w) conditionMessage(w)
+#     )
+#   }
+#   is_response <- function(x) {
+#     class(x) == "response"
+#   }
+#
+#   # First check internet connection
+#   if (!curl::has_internet()) {
+#     message("No internet connection.")
+#     return(invisible(NULL))
+#   }
+#   # Then try for timeout problems
+#   resp <- try_GET(file_url)
+#   if (!is_response(resp)) {
+#     message(resp)
+#     return(invisible(NULL))
+#   }
+#   # Then stop if status > 400
+#   if (httr::http_error(resp)) {
+#     httr::message_for_status(resp)
+#     return(invisible(NULL))
+#   }
+#
+# }
 
 
 # nocov end
