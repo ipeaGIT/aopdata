@@ -180,79 +180,112 @@ download_data <- function(file_url, progress_bar = showProgress){
 
   if( !(progress_bar %in% c(T, F)) ){ stop("Value to argument 'showProgress' has to be either TRUE or FALSE") }
 
-## one single file
+  ## one single file
 
-  if(length(file_url)==1 & progress_bar == TRUE){
+  if (length(file_url)==1 & progress_bar == TRUE) {
 
-    # test server connection
-    check_connection(file_url[1])
-
-    # download data
+    # location of temp_file
     temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(file_url,"/"),tail,n=1L)))
-    httr::GET(url=file_url, httr::progress(), httr::write_disk(temps, overwrite = T))
 
-    # load data
-    temp_data <- load_data(file_url, temps)
-    return(temp_data)
+    # check if file has not been downloaded already. If not, download it
+    if (!file.exists(temps)) {
+
+      # test server connection
+      check_connection(file_url[1])
+
+      # download data
+      httr::GET(url=file_url, httr::progress(), httr::write_disk(temps, overwrite = T))
     }
 
-  else if(length(file_url)==1 & progress_bar == FALSE){
-
-    # test server connection
-    check_connection(file_url[1])
-
-    # download data
-    temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(file_url,"/"),tail,n=1L)))
-    httr::GET(url=file_url, httr::write_disk(temps, overwrite = T))
-
-    # load data
-    temp_data <- load_data(file_url, temps)
-    return(temp_data)
+    # load gpkg to memory
+    temp_sf <- load_data(file_url, temps)
+    return(temp_sf)
   }
 
-## multiple files
+  else if (length(file_url)==1 & progress_bar == FALSE) {
+
+    # location of temp_file
+    temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(file_url,"/"),tail,n=1L)))
+
+    # check if file has not been downloaded already. If not, download it
+    if (!file.exists(temps)) {
+
+      # test server connection
+      check_connection(file_url[1])
+
+      # download data
+      httr::GET(url=file_url, httr::progress(), httr::write_disk(temps, overwrite = T))
+    }
+
+    # load gpkg to memory
+    temp_sf <- load_data(file_url, temps)
+    return(temp_sf)
+  }
+
+
+
+  ## multiple files
 
   else if(length(file_url) > 1 & progress_bar == TRUE) {
-
-    # test server connection
-    check_connection(file_url[1])
 
     # input for progress bar
     total <- length(file_url)
     pb <- utils::txtProgressBar(min = 0, max = total, style = 3)
 
+    # test server connection
+    check_connection(file_url[1])
+
     # download files
     lapply(X=file_url, function(x){
-      i <- match(c(x),file_url)
-      httr::GET(url=x, #httr::progress(),
-                httr::write_disk(paste0(tempdir(),"/", unlist(lapply(strsplit(x,"/"),tail,n=1L))), overwrite = T))
-      utils::setTxtProgressBar(pb, i)})
+
+      # location of temp_file
+      temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(x,"/"),tail,n=1L)))
+
+      # check if file has not been downloaded already. If not, download it
+      if (!file.exists(temps)) {
+        i <- match(c(x),file_url)
+        httr::GET(url=x, #httr::progress(),
+                  httr::write_disk(temps, overwrite = T))
+        utils::setTxtProgressBar(pb, i)
+      }
+    })
 
     # closing progress bar
     close(pb)
 
-    # load data
-    temp_data <- load_data(file_url)
-    return(temp_data)
-    }
+    # load gpkg
+    temp_sf <- load_data(file_url)
+    return(temp_sf)
+
+
+  }
 
   else if(length(file_url) > 1 & progress_bar == FALSE) {
 
     # test server connection
     check_connection(file_url[1])
 
-    # download data
+    # download files
     lapply(X=file_url, function(x){
-      i <- match(c(x),file_url)
-      httr::GET(url=x, #httr::progress(),
-                httr::write_disk(paste0(tempdir(),"/", unlist(lapply(strsplit(x,"/"),tail,n=1L))), overwrite = T))})
 
-    # load data
-    temp_data <- load_data(file_url)
-    return(temp_data)
-    }
+      # location of temp_file
+      temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(x,"/"),tail,n=1L)))
+
+      # check if file has not been downloaded already. If not, download it
+      if (!file.exists(temps)) {
+        i <- match(c(x),file_url)
+        httr::GET(url=x, #httr::progress(),
+                  httr::write_disk(temps, overwrite = T))
+      }
+    })
+
+
+    # load gpkg
+    temp_sf <- load_data(file_url)
+    return(temp_sf)
+
+  }
 }
-
 
 
 

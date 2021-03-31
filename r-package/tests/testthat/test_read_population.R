@@ -5,8 +5,9 @@ context("read_population")
   test_that("read_population expected behavior", {
 
     # whole file
-    testthat::expect_output(object = read_population(city='nat', geometry = TRUE))
-    testthat::expect_output(object = read_population(city='nat', geometry = FALSE))
+    expect_true(is(  read_population(city='nat', geometry = TRUE), 'sf'))
+    expect_true(is(  read_population(city='nat', geometry = FALSE), 'data.frame'))
+
   })
 
 ### expected errors and messages ----------------

@@ -8,6 +8,7 @@
 * New function read_population. Closes #21
 * New parameter `peak` added to `read_access()` function. Closes #17
 * New internal support function `is_online()` to alert for possible internet connection problem. Closes #26
+* Chache downloaded data in tempdir. Closes #28
 
 **Minor changes**
 * Downloads two or more cities at the same time. Closes #3.
