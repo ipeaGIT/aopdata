@@ -28,7 +28,7 @@
 #' nat <- read_grid(city = 'Natal', showProgress = FALSE)
 #'
 #' # Read spatial grid of all cities in the project
-#' # all <- read_grid(city = 'all')
+#' # all <- read_grid(city = 'all', showProgress = TRUE)
 #'}
 read_grid <- function(city, showProgress = TRUE){
 
