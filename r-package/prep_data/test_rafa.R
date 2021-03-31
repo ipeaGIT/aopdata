@@ -18,17 +18,18 @@ a <- read_access(city='bho',
                            geometry = F,
                            showProgress = T)
 
-read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
+a <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
+a <- read_access(city = c('Fortaleza', 'Recife'), mode = 'public_transport', year = 2019, showProgress = FALSE)
 
-for <- read_access(city = 'for', mode = 'walk', year = 2019, showProgress = FALSE)
-bho <- read_access(city = 'Belo Horizonte', mode = 'walk', year = 2019)
-head(bho)
+table(a$abbrev_muni)
+table(a$mode)
 
-g <- read_grid(city = 'bho')
-head(g)
 
-aop <- read_access(city = 'Belo Horizonte', mode = 'walk', year = 2019, geometry = T)
-head(aop)
+
+
+
+
+
 
 ### Install package
 install.packages("aop")
@@ -83,14 +84,26 @@ system.time(dd <- read_feather('test.feather'))
 
 
 
-library(stringi)
-
-stringi::stri_escape_unicode("çÇ")
-666
-
-read_access(city='são paulo', mode='walk', year=2019)
+library(aopdata)
 
 
+a <- read_access(city='são paulo', mode='public_transport', year=2019)
+table(a$name_muni)
+table(a$mode)
+
+system.time(read_access(city='po', geometry = T,year =2019))
+
+system.time(a <- read_access(city=c('spo', 'nat'), geometry = T,year =2019))
+table(a$name_muni)
+table(a$mode)
+
+system.time(a <- read_access(city=c('rec', 'bho'), mode='public_transport', geometry = T,year =2019))
+table(a$name_muni)
+table(a$mode)
+
+system.time(a <- read_access(city=c('rec', 'nat'), mode='public_transport', geometry = F,year =2019))
+table(a$name_muni)
+table(a$mode)
 
 
 ### fun remove accents  ----------------
@@ -153,8 +166,8 @@ Sys.setenv(NOT_CRAN = "true")
 
 function_coverage(fun='read_grid', test_file("tests/testthat/test_read_grid.R"))
 function_coverage(fun='read_landuse', test_file("tests/testthat/test_read_landuse.R"))
-function_coverage(fun='read_access', test_file("tests/testthat/test_read_access.R"))
 function_coverage(fun='read_population', test_file("tests/testthat/test_read_population.R"))
+function_coverage(fun='read_access', test_file("tests/testthat/test_read_access.R"))
 
 
 

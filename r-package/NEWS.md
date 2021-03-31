@@ -2,7 +2,17 @@
 
 -------------------------------------------------------
 
-# aopdata v0.2.0 (dev)
+
+# aopdata v0.3.0 (dev)
+
+**Major changes**
+* Allow for user to download data few selected cities. Closes #29
+
+
+
+-------------------------------------------------------
+
+# aopdata v0.2.0
 
 **Major changes**
 * New function read_population. Closes #21

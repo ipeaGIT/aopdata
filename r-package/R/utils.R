@@ -16,17 +16,17 @@
 select_city_input <- function(temp_meta=temp_meta, city=NULL){
 
   # NULL or numeric
-  if(! is.character(city) ){stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
+  if( !is.character(city) | any(nchar(city)<3) ){stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
                                 paste(unique(temp_meta$name_muni),collapse = " | "))) }
 
   # 3 letter-abbreviation
-  if (nchar(city)[1]==3) {
+  if (all(nchar(city)==3)) {
 
       # valid input 'all'
-      if (city %in% 'all'){ return(temp_meta) }
+      if (length(city)==1 & city[1] %in% 'all') { return(temp_meta) }
 
       # valid input
-      if (city %in% temp_meta$city){ temp_meta <- temp_meta[ temp_meta$city %in% city, ]
+      if (all(city %in% temp_meta$city)) { temp_meta <- temp_meta[ temp_meta$city %in% city, ]
                                   return(temp_meta) }
 
 
@@ -37,13 +37,13 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
 
 
   # full name
-  if (nchar(city)[1]>3) {
+  if (all(nchar(city)>3)) {
 
     city <- tolower(city)
     city <- rm_accent(city)
 
     # valid input
-    if (city %in% temp_meta$name_muni){ temp_meta <- temp_meta[ temp_meta$name_muni %in% city, ]
+    if (all(city %in% temp_meta$name_muni)) { temp_meta <- temp_meta[ temp_meta$name_muni %in% city, ]
                                         return(temp_meta)
                                       }
 
@@ -226,7 +226,7 @@ download_data <- function(file_url, progress_bar = showProgress){
 
   ## multiple files
 
-  else if(length(file_url) > 1 & progress_bar == TRUE) {
+  else if (length(file_url) > 1 & progress_bar == TRUE) {
 
     # input for progress bar
     total <- length(file_url)
@@ -308,7 +308,7 @@ load_data <- function(file_url, temps=NULL){
   if( file_url[1] %like% '.gpkg' ){ fformat<- 'gpkg'}
 
   ### one single file
-  if(length(file_url)==1){
+  if (length(file_url)==1) {
 
     # read file
     if( fformat=='csv' ){ temp <- data.table::fread(temps) }
@@ -316,7 +316,7 @@ load_data <- function(file_url, temps=NULL){
     return(temp)
   }
 
-  else if(length(file_url) > 1){
+  else if (length(file_url) > 1) {
 
     # read files and pile them up
     files <- unlist(lapply(strsplit(file_url,"/"), tail, n = 1L))
