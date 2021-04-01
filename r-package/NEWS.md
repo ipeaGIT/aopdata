@@ -9,6 +9,9 @@
 * Allow for user to download data few selected cities. Closes #29
 
 
+**Minor changes**
+* Fix  progress bar even when showProgress = F. Closes #30
+
 
 -------------------------------------------------------
 

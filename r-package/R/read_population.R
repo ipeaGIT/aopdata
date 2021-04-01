@@ -39,8 +39,8 @@
 #' @family population data functions
 #' @examples \donttest{
 #' # a single city
-#' bho <- read_population(city = 'Belo Horizonte', year = 2010, showProgress = TRUE)
-#' bho <- read_population(city = 'bho', year = 2010, showProgress = TRUE)
+#' bho <- read_population(city = 'Belo Horizonte', year = 2010, showProgress = FALSE)
+#' bho <- read_population(city = 'bho', year = 2010, showProgress = FALSE)
 #'
 #' # all cities
 #' all <- read_population(city = 'all', year = 2010)
