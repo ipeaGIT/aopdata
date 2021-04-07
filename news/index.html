@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -143,17 +143,15 @@
       <small>Source: <a href='https://github.com/ipeaGIT/aopdata/tree/main/r-package/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="aopdata-v030-dev" class="section level1">
-<h1 class="page-header" data-toc-text="0.3.0">
-<a href="#aopdata-v030-dev" class="anchor"></a>aopdata v0.3.0 (dev)<small> Unreleased </small>
+    <div id="aopdata-v021-dev" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.1">
+<a href="#aopdata-v021-dev" class="anchor"></a>aopdata v0.2.1 (dev)<small> Unreleased </small>
 </h1>
-<p><strong>Major changes</strong></p>
-<ul>
-<li>Allow for user to download data few selected cities. Closes #29</li>
-</ul>
 <p><strong>Minor changes</strong></p>
 <ul>
+<li>Allow for user to download data few selected cities. Closes #29</li>
 <li>Fix progress bar even when showProgress = F. Closes #30</li>
+<li>Fix encoding issues using <code><a href="https://rdrr.io/r/base/iconv.html">base::iconv(city, to="ASCII//TRANSLIT")</a></code>. Closes #31</li>
 </ul>
 <hr>
 </div>
