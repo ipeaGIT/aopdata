@@ -93,12 +93,13 @@ read_access <- function(city, mode = 'walk', peak = TRUE, year = 2019, geometry 
   aop_access <- download_data(file_url, progress_bar = showProgress)
 
   # peak Vs off-peak
-  city <- tolower(city)
-  city <- rm_accent(city)
+    city <- tolower(city)
+    # remove accents
+    city <- base::iconv(city, to="ASCII//TRANSLIT")
 
   cities_with_pt <- ( all(city %in% c('for', 'rec', 'bho', 'rio', 'spo', 'cur', 'poa')) |
                     all(city %in% c('fortaleza', 'recife', 'belo horizonte',
-                                'rio de janeiro', 's\u00e3o paulo', 'sao paulo', 'curitiba', 'porto alegre')) )
+                                'rio de janeiro', 'sao paulo', 'curitiba', 'porto alegre')) )
 
   if (isFALSE(cities_with_pt) & mode == 'public_transport') {stop("One of the selected cities does not have public transport data for that year.")}
 

@@ -24,7 +24,6 @@ Other support functions:
 \code{\link{check_connection}()},
 \code{\link{download_data}()},
 \code{\link{load_data}()},
-\code{\link{rm_accent}()},
 \code{\link{select_city_input}()},
 \code{\link{select_metadata}()},
 \code{\link{select_mode_input}()}

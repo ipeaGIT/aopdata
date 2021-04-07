@@ -3,14 +3,12 @@
 -------------------------------------------------------
 
 
-# aopdata v0.3.0 (dev)
-
-**Major changes**
-* Allow for user to download data few selected cities. Closes #29
-
+# aopdata v0.2.1 (dev)
 
 **Minor changes**
+* Allow for user to download data few selected cities. Closes #29
 * Fix  progress bar even when showProgress = F. Closes #30
+* Fix  encoding issues using `base::iconv(city, to="ASCII//TRANSLIT")`. Closes #31
 
 
 -------------------------------------------------------
