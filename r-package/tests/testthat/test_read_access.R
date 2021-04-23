@@ -8,9 +8,9 @@ context("read_access")
     # testthat::expect_output(object = read_access(city='nat', year=2019))
     # testthat::expect_output(object = read_access(city='nat', geometry = TRUE))
 
-    expect_true(is(  read_access(city='nat', geometry = TRUE), 'sf'))
-    expect_true(is(  read_access(city='nat', geometry = FALSE), 'data.frame'))
-    expect_true(is(  read_access(city='nat', geometry = FALSE, peak=FALSE), 'data.frame'))
+    expect_true(is(  read_access(city='nat', geometry = TRUE, showProgress = FALSE), 'sf'))
+    expect_true(is(  read_access(city='nat', geometry = FALSE, showProgress = FALSE), 'data.frame'))
+    expect_true(is(  read_access(city='nat', geometry = FALSE, peak=FALSE, showProgress = FALSE), 'data.frame'))
     expect_true(is(  read_access(city='nat', geometry = FALSE, peak=FALSE, showProgress = FALSE), 'data.frame'))
   })
 
@@ -21,14 +21,14 @@ test_that("read_access expected behavior multiple cities", {
   # testthat::expect_output(object = read_access(city='nat', year=2019))
   # testthat::expect_output(object = read_access(city='nat', geometry = TRUE))
 
-  test_walk <- read_access(city=c('nat', 'for'), mode= 'walk', geometry = FALSE)
+  test_walk <- read_access(city=c('nat', 'for'), mode= 'walk', geometry = FALSE, showProgress = FALSE)
   test_walk <- subset(test_walk, !is.na(mode))
   expect_true(is(  test_walk, 'data.frame'))
   expect_equal(  length(unique(test_walk$abbrev_muni)) , 2)
   expect_equal(  unique(test_walk$mode) , 'walk')
 
 
-  test_pt <- read_access(city=c('rec', 'for'), mode= 'public_transport', geometry = FALSE)
+  test_pt <- read_access(city=c('rec', 'for'), mode= 'public_transport', geometry = FALSE, showProgress = FALSE)
   test_pt <- subset(test_pt, !is.na(mode))
   expect_true(is(  test_pt, 'data.frame'))
   expect_equal(  length(unique(test_pt$abbrev_muni)) , 2)
@@ -44,16 +44,16 @@ test_that("read_access expected behavior multiple cities", {
 test_that("read_access errors and messages", {
 
   # Wrong city
-  testthat::expect_error(read_access(city = 'abcdefg'))
-  testthat::expect_error(read_access(city = 'abc'))
-  testthat::expect_error(read_access())
+  testthat::expect_error(read_access(city = 'abcdefg', showProgress = FALSE))
+  testthat::expect_error(read_access(city = 'abc', showProgress = FALSE))
+  testthat::expect_error(read_access( showProgress = FALSE))
 
   # Wrong year
-  testthat::expect_error(read_access(city = 'nat', year=1500))
+  testthat::expect_error(read_access(city = 'nat', year=1500, showProgress = FALSE))
 
    # Wrong mode
-   testthat::expect_error( read_access(city=c('nat', 'for'), mode= 'public_transport', geometry = FALSE) )
-   testthat::expect_error( read_access(city='nat', mode= 'public_transport', geometry = FALSE) )
+   testthat::expect_error( read_access(city=c('nat', 'for'), mode= 'public_transport', geometry = FALSE, showProgress = FALSE) )
+   testthat::expect_error( read_access(city='nat', mode= 'public_transport', geometry = FALSE, showProgress = FALSE) )
 
     # Wrong geometry, peak, showProgress
    testthat::expect_error(read_access(city = 'nat', year=2019, geometry = 'aaa'))

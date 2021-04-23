@@ -2,8 +2,17 @@
 
 -------------------------------------------------------
 
+# aopdata v0.2.2 (dev)
 
-# aopdata v0.2.1 (dev)
+**Minor changes**
+* Adds `crul` as a package dependency. Now aoptadata fails gracefully when there is internet connection problems. Closes #32.
+* `showProgress` now sets to `FALSE` in all tests and exaples. Closes #32.
+
+
+
+-------------------------------------------------------
+
+# aopdata v0.2.1
 
 **Minor changes**
 * Allow for user to download data few selected cities. Closes #29

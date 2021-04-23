@@ -4,7 +4,7 @@
 \alias{read_grid}
 \title{Download spatial hexagonal grid H3}
 \usage{
-read_grid(city, showProgress = TRUE)
+read_grid(city, showProgress = FALSE)
 }
 \arguments{
 \item{city}{Character. A city name or three-letter abbreviation. If

@@ -424,57 +424,11 @@ check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/m
   }
 
   # test server connection
-    # crul::ok(file_url)
-  if (httr::http_error(httr::GET(file_url))) {
+  if (! crul::ok(file_url, verbose=FALSE) ) {
     message("Problem connecting to data server. Please try aopdata again in a few minutes.")
     return(invisible(NULL))
     }
 }
-
-# #' Fail gracefully if Ipea server is not available
-# #'
-# #' The function allows to fail gracefully with an informative message
-# #' if the Wikisource resource is not available (and not give a check warning nor error).
-# #'
-# #' @details See full discussion to be compliante with the CRAN policy
-# #' <https://community.rstudio.com/t/internet-resources-should-fail-gracefully/49199>
-# #'
-# #' @param file_url A remote URL.
-# #' @return Message.
-# #'
-# #' @export
-# #' @family support functions
-# #'
-# gracefully_fail <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv') {
-#   try_GET <- function(x, ...) {
-#     tryCatch(
-#       httr::GET(url = x, httr::timeout(600), ...), #timeout 10 minutes
-#       error = function(e) conditionMessage(e),
-#       warning = function(w) conditionMessage(w)
-#     )
-#   }
-#   is_response <- function(x) {
-#     class(x) == "response"
-#   }
-#
-#   # First check internet connection
-#   if (!curl::has_internet()) {
-#     message("No internet connection.")
-#     return(invisible(NULL))
-#   }
-#   # Then try for timeout problems
-#   resp <- try_GET(file_url)
-#   if (!is_response(resp)) {
-#     message(resp)
-#     return(invisible(NULL))
-#   }
-#   # Then stop if status > 400
-#   if (httr::http_error(resp)) {
-#     httr::message_for_status(resp)
-#     return(invisible(NULL))
-#   }
-#
-# }
 
 
 # nocov end
