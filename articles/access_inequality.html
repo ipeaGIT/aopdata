@@ -100,7 +100,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Analyzing inequality in access to opportunities</h1>
             
-            <h4 class="date">2021-04-23</h4>
+            <h4 class="date">2021-04-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/tree/main/r-package/../vignettes/access_inequality.Rmd"><code>../vignettes/access_inequality.Rmd</code></a></small>
       <div class="hidden name"><code>access_inequality.Rmd</code></div>
@@ -120,7 +120,7 @@
 <p><strong>Download accessibility data</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city<span class="op">=</span><span class="st">'Rio de Janeiro'</span>,
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city<span class="op">=</span><span class="st">'Curitiba'</span>,
                    mode<span class="op">=</span><span class="st">'public_transport'</span>,
                    peak <span class="op">=</span> <span class="cn">T</span>,
                    year<span class="op">=</span><span class="fl">2019</span>,
@@ -147,7 +147,7 @@
 <span class="va">palma_ratio</span> <span class="op">&lt;-</span> <span class="va">avg_access_10p_wealthiest</span> <span class="op">/</span> <span class="va">avg_access_40p_poorest</span>                
 
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">'In less than 60 min. by public transport, the 10% wealthiest population could access on average '</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">palma_ratio</span>,<span class="fl">2</span><span class="op">)</span>, <span class="st">' times more job opportunites than the 40% poorest people'</span><span class="op">)</span> <span class="op">)</span>
-<span class="co">#&gt; [1] "In less than 60 min. by public transport, the 10% wealthiest population could access on average 2.41 times more job opportunites than the 40% poorest people"</span></code></pre></div>
+<span class="co">#&gt; [1] "In less than 60 min. by public transport, the 10% wealthiest population could access on average 2.65 times more job opportunites than the 40% poorest people"</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
