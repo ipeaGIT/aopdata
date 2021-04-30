@@ -269,6 +269,8 @@ devtools::check_win_devel(pkg = ".")
 beepr::beep()
 
 
+devtools::build_vignettes()
+
 ####################################################3
 a <- grid_state_correspondence_table
 names(a)[2] <- 'abbrev_state'

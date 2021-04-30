@@ -1,5 +1,7 @@
 context("read_access")
 
+# skip tests because they take too much time
+testthat::skip_on_cran()
 
 ### expected behavior ----------------
   test_that("read_access expected behavior", {
@@ -49,15 +51,15 @@ test_that("read_access errors and messages", {
   testthat::expect_error(read_access( showProgress = FALSE))
 
   # Wrong year
-  testthat::expect_error(read_access(city = 'nat', year=1500, showProgress = FALSE))
+  testthat::expect_error(read_access(city = 'rec', year=1500, showProgress = FALSE))
 
    # Wrong mode
-   testthat::expect_error( read_access(city=c('nat', 'for'), mode= 'public_transport', geometry = FALSE, showProgress = FALSE) )
+   testthat::expect_error( read_access(city=c('nat', 'poa'), mode= 'public_transport', geometry = FALSE, showProgress = FALSE) )
    testthat::expect_error( read_access(city='nat', mode= 'public_transport', geometry = FALSE, showProgress = FALSE) )
 
     # Wrong geometry, peak, showProgress
-   testthat::expect_error(read_access(city = 'nat', year=2019, geometry = 'aaa'))
-   testthat::expect_error(read_access(city = 'nat', year=2019, showProgress = 'aaa'))
-   testthat::expect_error(read_access(city = 'nat', year=2019, peak = 'aaa'))
+   testthat::expect_error(read_access(city = 'rec', year=2019, geometry = 'aaa'))
+   testthat::expect_error(read_access(city = 'rec', year=2019, showProgress = 'aaa'))
+   testthat::expect_error(read_access(city = 'rec', year=2019, peak = 'aaa'))
 
 })

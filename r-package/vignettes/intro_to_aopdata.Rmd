@@ -84,13 +84,17 @@ download a dataframe with no spatial information.
 library(aopdata)
 
 # A dataframe, with no spatial geometry
-cur <- read_access(city = 'Curitiba', mode = 'public_transport', year = 2019, geometry = FALSE)
+cur <- read_access(city = 'Curitiba', 
+                   mode = 'public_transport', 
+                   year = 2019, 
+                   geometry = FALSE,
+                   showProgress = FALSE)
 ```
 
 Let's check the results:
 
 ```{r}
-dplyr::glimpse(cur )
+dplyr::glimpse(cur)
 ```
 
 As you can see, a lot of data has been returned from `read_access()`. The dataframe's
