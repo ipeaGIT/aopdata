@@ -1,4 +1,12 @@
 # aopdata: Data from the Access to Opportunities Project
+<!-- badges: start -->
+[![CRAN/METACRAN Version](https://www.r-pkg.org/badges/version/aopdata)](https://CRAN.R-project.org/package=aopdata)
+[![CRAN/METACRAN Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/aopdata?color=blue)](https://CRAN.R-project.org/package=aopdata)
+[![codecov](https://codecov.io/gh/ipeaGIT/aopdata/branch/main/graph/badge.svg?token=UQZLSRZ02E)](https://codecov.io/gh/ipeaGIT/aopdata)
+[![R build status](https://github.com/ipeaGIT/aopdata/workflows/R-CMD-check/badge.svg)](https://github.com/ipeaGIT/aopdata/actions)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) 
+
+<!-- badges: end -->
 
 <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"> 
 
@@ -16,7 +24,6 @@ The **`aopdata`** package brings annual estimates of access to employment, healt
   library(aopdata)
   
 ```
-
 
 # Basic Usage
 
@@ -56,7 +63,6 @@ df <- read_grid(city = 'for')
 ```R
 all <- read_landuse(city = 'all', year = 2019)
 ```
-
 
 -----
 
