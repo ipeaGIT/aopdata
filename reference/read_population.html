@@ -48,7 +48,7 @@
 
 <meta property="og:title" content="Download population and socioeconomic data — read_population" />
 <meta property="og:description" content="Download population and socioeconomic data from the Brazilian Census aggregated
-on a hexagonal grid based on the global H3 index at resolution 8, with a size of
+on a hexagonal grid based on the global H3 index at resolution 9, with a size of
 357 meters (short diagonal) and an area of 0.74 km2. More information about H3 at
 https://h3geo.org/docs/core-library/restable/." />
 <meta property="og:image" content="/logo.png" />
@@ -150,7 +150,7 @@ https://h3geo.org/docs/core-library/restable/." />
 
     <div class="ref-description">
     <p>Download population and socioeconomic data from the Brazilian Census aggregated
-on a hexagonal grid based on the global H3 index at resolution 8, with a size of
+on a hexagonal grid based on the global H3 index at resolution 9, with a size of
 357 meters (short diagonal) and an area of 0.74 km2. More information about H3 at
 <a href='https://h3geo.org/docs/core-library/restable/'>https://h3geo.org/docs/core-library/restable/</a>.</p>
     </div>
@@ -213,15 +213,19 @@ feature geometry of spatial hexagonal grid H3. See details in
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='co'># a single city</span>
-<span class='va'>bho</span> <span class='op'>&lt;-</span> <span class='fu'>read_population</span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>'Belo Horizonte'</span>, year <span class='op'>=</span> <span class='fl'>2010</span>, showProgress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Using year 2010</span></div><div class='input'><span class='va'>bho</span> <span class='op'>&lt;-</span> <span class='fu'>read_population</span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>'bho'</span>, year <span class='op'>=</span> <span class='fl'>2010</span>, showProgress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Using year 2010</span></div><div class='input'>
-<span class='co'># all cities</span>
-<span class='va'>all</span> <span class='op'>&lt;-</span> <span class='fu'>read_population</span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>'all'</span>, year <span class='op'>=</span> <span class='fl'>2010</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Using year 2010</span></div><div class='output co'>#&gt;   |                                                                              |                                                                      |   0%</div><div class='input'><span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='co'># a single city</span></span>
+<span class='r-in'><span class='va'>bho</span> <span class='op'>&lt;-</span> <span class='fu'>read_population</span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>'Belo Horizonte'</span>, year <span class='op'>=</span> <span class='fl'>2010</span>, showProgress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Using year 2010</span>
+<span class='r-in'><span class='va'>bho</span> <span class='op'>&lt;-</span> <span class='fu'>read_population</span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>'bho'</span>, year <span class='op'>=</span> <span class='fl'>2010</span>, showProgress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Using year 2010</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># all cities</span></span>
+<span class='r-in'><span class='va'>all</span> <span class='op'>&lt;-</span> <span class='fu'>read_population</span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>'all'</span>, year <span class='op'>=</span> <span class='fl'>2010</span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Using year 2010</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   |                                                                              |                                                                      |   0%</span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -48,7 +48,7 @@
 
 <meta property="og:title" content="Download spatial hexagonal grid H3 — read_grid" />
 <meta property="og:description" content="Results of the AOP project are spatially aggregated on a hexagonal grid based
-on the global H3 index at resolution 8, with a size of 357 meters (short
+on the global H3 index at resolution 9, with a size of 357 meters (short
 diagonal) and an area of 0.74 km2. More information about H3 at
 https://h3geo.org/docs/core-library/restable/.  See documentation
 'Details' for the data dictionary." />
@@ -151,7 +151,7 @@ https://h3geo.org/docs/core-library/restable/.  See documentation
 
     <div class="ref-description">
     <p>Results of the AOP project are spatially aggregated on a hexagonal grid based
-on the global H3 index at resolution 8, with a size of 357 meters (short
+on the global H3 index at resolution 9, with a size of 357 meters (short
 diagonal) and an area of 0.74 km2. More information about H3 at
 <a href='https://h3geo.org/docs/core-library/restable/'>https://h3geo.org/docs/core-library/restable/</a>.  See documentation
 'Details' for the data dictionary.</p>
@@ -190,14 +190,14 @@ diagonal) and an area of 0.74 km2. More information about H3 at
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='co'># Read spatial grid of a single city</span>
-<span class='va'>nat</span> <span class='op'>&lt;-</span> <span class='fu'>read_grid</span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>'Natal'</span>, showProgress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='co'># Read spatial grid of all cities in the project</span>
-<span class='co'># all &lt;- read_grid(city = 'all', showProgress = FALSE)</span>
-<span class='co'># }</span>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># \donttest{</span></span>
+<span class='r-in'><span class='co'># Read spatial grid of a single city</span></span>
+<span class='r-in'><span class='va'>nat</span> <span class='op'>&lt;-</span> <span class='fu'>read_grid</span><span class='op'>(</span>city <span class='op'>=</span> <span class='st'>'Natal'</span>, showProgress <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Read spatial grid of all cities in the project</span></span>
+<span class='r-in'><span class='co'># all &lt;- read_grid(city = 'all', showProgress = FALSE)</span></span>
+<span class='r-in'><span class='co'># }</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
