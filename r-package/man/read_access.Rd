@@ -42,7 +42,7 @@ A \code{data.frame} object
 Download annual estimates of access to employment, health and education
 services by transport mode and time of the day. See documentation 'Details'
 for the data dictionary. The data comes aggregated on a hexagonal grid based
-on the global H3 index at resolution 8, with a size of 357 meters (short
+on the global H3 index at resolution 9, with a size of 357 meters (short
 diagonal) and an area of 0.74 km2. More information about H3 at
 \url{https://h3geo.org/docs/core-library/restable/}.
 }

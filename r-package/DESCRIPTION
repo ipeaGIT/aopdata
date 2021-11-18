@@ -39,5 +39,5 @@ Imports:
       sf (>= 0.9-3),
       utils
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
