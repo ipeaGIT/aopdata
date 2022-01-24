@@ -12,10 +12,10 @@ check_connection(
 \item{file_url}{A string with the file_url address of an aop dataset}
 }
 \value{
-Logic \verb{TRUE or }FALSE`.
+Logical. \code{TRUE} if url is working, \code{FALSE} if not.
 }
 \description{
-Checks if there is internet connection to Ipea server to download aop data.
+Checks if there is internet connection with Ipea server to download aop data.
 }
 \seealso{
 Other support functions: 

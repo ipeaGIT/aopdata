@@ -169,6 +169,8 @@ function_coverage(fun='read_landuse', test_file("tests/testthat/test_read_landus
 function_coverage(fun='read_population', test_file("tests/testthat/test_read_population.R"))
 function_coverage(fun='read_access', test_file("tests/testthat/test_read_access.R"))
 
+function_coverage(fun='check_connection', test_file("tests/testthat/test_check_connection.R"))
+
 
 
 # update Package coverage

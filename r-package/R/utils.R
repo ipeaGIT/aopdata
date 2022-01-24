@@ -140,7 +140,7 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 
 # download metadata
-  metadata <- as.data.frame(download_metadata())
+  metadata <- as.data.frame(aopdata::download_metadata())
 
   # Select data type
   temp_meta <- subset(metadata, type == t)
@@ -192,7 +192,8 @@ download_data <- function(file_url, progress_bar = showProgress){
     if (!file.exists(temps)) {
 
       # test server connection
-      check_connection(file_url[1])
+      check_con <- check_connection(file_url[1])
+      if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
 
       # download data
       httr::GET(url=file_url, httr::progress(), httr::write_disk(temps, overwrite = T))
@@ -212,7 +213,8 @@ download_data <- function(file_url, progress_bar = showProgress){
     if (!file.exists(temps)) {
 
       # test server connection
-      check_connection(file_url[1])
+      check_con <- check_connection(file_url[1])
+      if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
 
       # download data
       httr::GET(url=file_url, httr::write_disk(temps, overwrite = T))
@@ -234,7 +236,8 @@ download_data <- function(file_url, progress_bar = showProgress){
     pb <- utils::txtProgressBar(min = 0, max = total, style = 3)
 
     # test server connection
-    check_connection(file_url[1])
+    check_con <- check_connection(file_url[1])
+    if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
 
     # download files
     lapply(X=file_url, function(x){
@@ -264,7 +267,8 @@ download_data <- function(file_url, progress_bar = showProgress){
   else if(length(file_url) > 1 & progress_bar == FALSE) {
 
     # test server connection
-    check_connection(file_url[1])
+    check_con <- check_connection(file_url[1])
+    if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
 
     # download files
     lapply(X=file_url, function(x){
@@ -406,29 +410,54 @@ aop_merge <- function(aop_landuse, aop_access){
 #' Check internet connection with Ipea server
 #'
 #' @description
-#' Checks if there is internet connection to Ipea server to download aop data.
+#' Checks if there is internet connection with Ipea server to download aop data.
 #'
 #' @param file_url A string with the file_url address of an aop dataset
 #'
-#' @return Logic `TRUE or `FALSE`.
+#' @return Logical. `TRUE` if url is working, `FALSE` if not.
 #'
 #' @export
 #' @family support functions
 #'
 check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'){
 
-  # check internet connection
-  if (!curl::has_internet()) {
-    message("No internet connection.")
-    return(invisible(NULL))
+  # file_url <- 'http://google.com/'               # ok
+  # file_url <- 'http://www.google.com:81/'   # timeout
+  # file_url <- 'http://httpbin.org/status/300' # error
+
+  # check if user has internet connection
+  if (!curl::has_internet()) { message("No internet connection.")
+    return(FALSE)
   }
 
-  # test server connection
-  if (! crul::ok(file_url, verbose=FALSE) ) {
-    message("Problem connecting to data server. Please try aopdata again in a few minutes.")
-    return(invisible(NULL))
-    }
-}
+  # message
+  msg <- "Problem connecting to data server. Please try geobr again in a few minutes."
 
+  # test server connection
+  x <- try(silent = TRUE,
+           httr::GET(file_url, # timeout(5),
+                     config = httr::config(ssl_verifypeer = FALSE)))
+  # link offline
+  if (class(x)=="try-error") {
+    message( msg )
+    return(FALSE)
+  }
+
+  # link working fine
+  else if ( identical(httr::status_code(x), 200L)) {
+    return(TRUE)
+  }
+
+  # link not working or timeout
+  else if (! identical(httr::status_code(x), 200L)) {
+    message(msg )
+    return(FALSE)
+
+  } else if (httr::http_error(x) == TRUE) {
+    message(msg)
+    return(FALSE)
+  }
+
+}
 
 # nocov end

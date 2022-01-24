@@ -33,7 +33,6 @@ Suggests:
     units
 Imports:
       curl,
-      crul,
       data.table,
       httr (>= 1.4.1),
       sf (>= 0.9-3),
