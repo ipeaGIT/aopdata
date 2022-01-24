@@ -71,11 +71,19 @@ read_landuse <- function(city='bel', year = 2019, geometry = FALSE, showProgress
                                c=city,
                                y=year)
 
+  # check if download failed
+  if (is.null(temp_meta)) { return(invisible(NULL)) }
+
+  message(paste0("Downloading land use data from year ", year))
+
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)
 
   # download files
   aop_landuse <- download_data(file_url, progress_bar = showProgress)
+
+  # check if download failed
+  if (is.null(aop_landuse)) { return(invisible(NULL)) }
 
   # Download and merge population data
   aop_population <- read_population(city=city, showProgress = showProgress)

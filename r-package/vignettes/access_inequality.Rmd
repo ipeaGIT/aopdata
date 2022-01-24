@@ -32,13 +32,13 @@ library(units)
 
 **Download accessibility data**
 
-```{r, message = FALSE}
+```{r, message = TRUE}
 
 df <- read_access(city='Curitiba',
                    mode='public_transport',
-                   peak = T,
+                   peak = TRUE,
                    year=2019,
-                   showProgress = F)
+                   showProgress = FALSE)
 ```
 
 

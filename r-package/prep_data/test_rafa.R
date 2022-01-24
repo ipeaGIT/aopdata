@@ -312,11 +312,13 @@ grid_state_correspondence_table
  # devtools::build(pkg = ".", binary = T, manual=T) # build .zip
 
 
+library(aopdata)
+
 url_ok <- 'http://google.com/'
 url_timeout <- 'http://www.google.com:81/'
 url_error <- 'http://httpbin.org/status/300'
 
-test <- function(x, url){
+test1 <- function(x, url){
 
   check_con <- aopdata::check_connection(url)
   if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
@@ -325,4 +327,49 @@ test <- function(x, url){
   return(x)
 }
 
-test(2, url_error)
+# this should work and return output.
+test(2, url_ok )
+
+# these should NOT work and return a message.
+test(2, url_timeout )
+test(2, url_error )
+
+
+library(aopdata)
+d <- read_population(city = 'bel', year = 2010, geometry = F, showProgress = T)
+d <- read_landuse(city = 'bel',  geometry = F, showProgress = T)
+d <- read_access(city = 'bel',  geometry = F, showProgress = T)
+
+d <- read_grid(city = c('bel','bho'), showProgress=T)
+
+
+inception <- function(url){
+
+  check_con <- aopdata::check_connection(url)
+  if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
+
+}
+
+test2 <- function(x, url){
+
+a <- inception(url)
+  x <- x+2
+  return(x)
+}
+
+inception(url_ok)
+
+test2(2, url_ok )
+test2(2, url_timeout )
+test2(2, url_error )
+
+
+df <- read_access(city=c('poa'),
+                  mode='public_transport',
+                  peak = TRUE,
+                  year=2019,
+                  showProgress = T)
+
+read_population(city=c('poa'))
+read_grid(city=c('poa'))
+read_landuse(city=c('poa'))

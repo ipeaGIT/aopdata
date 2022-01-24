@@ -75,7 +75,7 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
                                    paste(unique(temp_meta$year),collapse = " "))) }
 
   # invalid input
-  else if (year %in% temp_meta$year){ message(paste0("Using year ", year))
+  else if (year %in% temp_meta$year){
                                   temp_meta <- temp_meta[ temp_meta$year %in% year, ]
                                   return(temp_meta) }
 
@@ -142,6 +142,14 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 # download metadata
   metadata <- as.data.frame(aopdata::download_metadata())
 
+  # check if download failed
+  msg <- "Problem connecting to data server. Please try it again in a few minutes."
+  if (nrow(metadata)==0) { message(msg); return(invisible(NULL)) }
+
+  # # check if download failed 666
+  # msg <- "Problem connecting to data server. Please try it again in a few minutes."
+  # if (nrow(metadata)==0 | is.null(metadata)) { message(msg); return(invisible(NULL)) }
+
   # Select data type
   temp_meta <- subset(metadata, type == t)
 
@@ -189,7 +197,7 @@ download_data <- function(file_url, progress_bar = showProgress){
     temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(file_url,"/"),tail,n=1L)))
 
     # check if file has not been downloaded already. If not, download it
-    if (!file.exists(temps)) {
+    if (!file.exists(temps) | file.info(temps)$size == 0) {
 
       # test server connection
       check_con <- check_connection(file_url[1])
@@ -198,6 +206,7 @@ download_data <- function(file_url, progress_bar = showProgress){
       # download data
       httr::GET(url=file_url, httr::progress(), httr::write_disk(temps, overwrite = T))
     }
+
 
     # load gpkg to memory
     temp_sf <- load_data(file_url, temps)
@@ -210,7 +219,7 @@ download_data <- function(file_url, progress_bar = showProgress){
     temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(file_url,"/"),tail,n=1L)))
 
     # check if file has not been downloaded already. If not, download it
-    if (!file.exists(temps)) {
+    if (!file.exists(temps) | file.info(temps)$size == 0) {
 
       # test server connection
       check_con <- check_connection(file_url[1])
@@ -246,7 +255,7 @@ download_data <- function(file_url, progress_bar = showProgress){
       temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(x,"/"),tail,n=1L)))
 
       # check if file has not been downloaded already. If not, download it
-      if (!file.exists(temps)) {
+      if (!file.exists(temps) | file.info(temps)$size == 0) {
         i <- match(c(x),file_url)
         httr::GET(url=x, #httr::progress(),
                   httr::write_disk(temps, overwrite = T))
@@ -277,7 +286,7 @@ download_data <- function(file_url, progress_bar = showProgress){
       temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(x,"/"),tail,n=1L)))
 
       # check if file has not been downloaded already. If not, download it
-      if (!file.exists(temps)) {
+      if (!file.exists(temps) | file.info(temps)$size == 0) {
         i <- match(c(x),file_url)
         httr::GET(url=x, #httr::progress(),
                   httr::write_disk(temps, overwrite = T))

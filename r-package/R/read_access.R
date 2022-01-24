@@ -86,11 +86,19 @@ read_access <- function(city, mode = 'walk', peak = TRUE, year = 2019, geometry 
                                y=year,
                                m=mode)
 
+  # check if download failed
+  if (is.null(temp_meta)) { return(invisible(NULL)) }
+
+  message(paste0("Downloading accessibility data from year ", year))
+
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)
 
   # download files
   aop_access <- download_data(file_url, progress_bar = showProgress)
+
+  # check if download failed
+  if (is.null(aop_access)) { return(invisible(NULL)) }
 
   # peak Vs off-peak
     city <- tolower(city)

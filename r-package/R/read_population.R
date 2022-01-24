@@ -56,11 +56,19 @@ read_population <- function(city='bel', year = 2010, geometry = FALSE, showProgr
                                c=city,
                                y=year)
 
+  # check if download failed
+  if (is.null(temp_meta)) { return(invisible(NULL)) }
+
+  message(paste0("Downloading population data from year ", year))
+
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)
 
   # download files
   aop_population <- download_data(file_url, progress_bar = showProgress)
+
+  # check if download failed
+  if (is.null(aop_population)) { return(invisible(NULL)) }
 
   # with Vs without spatial data
   if(geometry == FALSE){
