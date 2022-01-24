@@ -312,4 +312,17 @@ grid_state_correspondence_table
  # devtools::build(pkg = ".", binary = T, manual=T) # build .zip
 
 
+url_ok <- 'http://google.com/'
+url_timeout <- 'http://www.google.com:81/'
+url_error <- 'http://httpbin.org/status/300'
 
+test <- function(x, url){
+
+  check_con <- aopdata::check_connection(url)
+  if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
+
+  x <- x+2
+  return(x)
+}
+
+test(2, url_error)

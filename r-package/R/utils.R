@@ -149,12 +149,12 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
   temp_meta <- select_city_input(temp_meta, city=c)
 
   # select year input
-  if(t %in% c('access','landuse', 'land_use', 'population')){
+  if (t %in% c('access','landuse', 'land_use', 'population')) {
     temp_meta <- select_year_input(temp_meta, year=y)
   }
 
   # select mode input
-  if(t=='access'){
+  if (t=='access') {
     temp_meta <- select_mode_input(temp_meta, mode=m)
     }
 
@@ -431,7 +431,7 @@ check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/m
   }
 
   # message
-  msg <- "Problem connecting to data server. Please try geobr again in a few minutes."
+  msg <- "Problem connecting to data server. Please try it again in a few minutes."
 
   # test server connection
   x <- try(silent = TRUE,
