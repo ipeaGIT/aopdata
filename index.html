@@ -31,6 +31,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -43,18 +45,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -85,7 +81,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ipeaGIT/aopdata/">
+  <a href="https://github.com/ipeaGIT/aopdata/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -103,28 +99,28 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="aopdata-data-from-the-access-to-opportunities-project" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#aopdata-data-from-the-access-to-opportunities-project" class="anchor"></a>aopdata: Data from the Access to Opportunities Project</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="aopdata-data-from-the-access-to-opportunities-project">aopdata: Data from the Access to Opportunities Project<a class="anchor" aria-label="anchor" href="#aopdata-data-from-the-access-to-opportunities-project"></a>
+</h1></div>
 <!-- badges: start -->
 
 <!-- badges: end -->
 <p><img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"></p>
-<p><strong><code>aopdata</code></strong> is an R package to download data from the <a href="https://www.ipea.gov.br/acessooportunidades/en/">Access to Opportunities Project (AOP)</a>. The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport accessibility and inequalities in access to opportunities in Brazilian cities.</p>
-<p>The <strong><code>aopdata</code></strong> package brings annual estimates of access to employment, health and education services by transport mode, as well as data on the spatial distribution of population, schools and healthcare facilities at a fine spatial resolution for all cities included in the study. Data for 2019 are already available, and cover accessibility estimates by active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for 7 major cities. For more information on the <a href="https://www.ipea.gov.br/acessooportunidades/en/">AOP website</a>.</p>
-<div id="installation-r" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation-r" class="anchor"></a>Installation R</h2>
+<p><strong><code>aopdata</code></strong> is an R package to download data from the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">Access to Opportunities Project (AOP)</a>. The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport accessibility and inequalities in access to opportunities in Brazilian cities.</p>
+<p>The <strong><code>aopdata</code></strong> package brings annual estimates of access to employment, health and education services by transport mode, as well as data on the spatial distribution of population, schools and healthcare facilities at a fine spatial resolution for all cities included in the study. Data for 2019 are already available, and cover accessibility estimates by active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for 7 major cities. For more information on the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">AOP website</a>.</p>
+<div class="section level2">
+<h2 id="installation-r">Installation R<a class="anchor" aria-label="anchor" href="#installation-r"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># From CRAN</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"aopdata"</span><span class="op">)</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/aopdata">aopdata</a></span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"aopdata"</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/aopdata" class="external-link">aopdata</a></span><span class="op">)</span>
   </code></pre></div>
 </div>
 </div>
-<div id="basic-usage" class="section level1">
-<h1 class="hasAnchor">
-<a href="#basic-usage" class="anchor"></a>Basic Usage</h1>
+<div class="section level1">
+<h1 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
+</h1>
 <p><strong>Read <em>accessibility</em> estimates</strong></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Just a data.frame, without spatial geometry</span>
@@ -157,15 +153,14 @@
 <code class="sourceCode R"><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_landuse.html">read_landuse</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></code></pre></div>
 <hr>
 </div>
-<div id="citation-" class="section level1">
-<h1 class="hasAnchor">
-<a href="#citation-" class="anchor"></a>Citation <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/ipea_logo.png?raw=true" alt="ipea" width="300">
+<div class="section level1">
+<h1 id="citation-">Citation <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/ipea_logo.png?raw=true" alt="ipea" width="300"><a class="anchor" aria-label="anchor" href="#citation-"></a>
 </h1>
 <p>The R package <strong>aopdata</strong> is developed by a team at the Institute for Applied Economic Research (Ipea), Brazil. If you use this package in research publications, please cite it as one of the publications below:</p>
 <ul>
-<li>Pereira, R. H. M., Braga, C. K. V., Serra, Bernardo, &amp; Nadalin, V. (2019). Desigualdades socioespaciais de acesso a oportunidades nas cidades brasileiras, 2019. Texto para Discussão Ipea, 2535. Instituto de Pesquisa Econômica Aplicada (Ipea). Disponível em <a href="http://repositorio.ipea.gov.br/handle/11058/9586" class="uri">http://repositorio.ipea.gov.br/handle/11058/9586</a>
+<li>Pereira, R. H. M., Braga, C. K. V., Serra, Bernardo, &amp; Nadalin, V. (2019). Desigualdades socioespaciais de acesso a oportunidades nas cidades brasileiras, 2019. Texto para Discussão Ipea, 2535. Instituto de Pesquisa Econômica Aplicada (Ipea). Disponível em <a href="http://repositorio.ipea.gov.br/handle/11058/9586" class="external-link uri">http://repositorio.ipea.gov.br/handle/11058/9586</a>
 </li>
-<li>Pereira, R. H. M.; Braga, C. K. V.; Servo, L. M.; Serra, B.; Amaral, P.; Gouveia, N.; Paez, A. (2021) Geographic access to COVID-19 healthcare in Brazil using a balanced float catchment area approach. Social Science &amp; Medicine. <a href="https://doi.org/10.1016/j.socscimed.2021.113773" class="uri">https://doi.org/10.1016/j.socscimed.2021.113773</a>
+<li>Pereira, R. H. M.; Braga, C. K. V.; Servo, L. M.; Serra, B.; Amaral, P.; Gouveia, N.; Paez, A. (2021) Geographic access to COVID-19 healthcare in Brazil using a balanced float catchment area approach. Social Science &amp; Medicine. <a href="https://doi.org/10.1016/j.socscimed.2021.113773" class="external-link uri">https://doi.org/10.1016/j.socscimed.2021.113773</a>
 </li>
 </ul>
 </div>
@@ -174,54 +169,64 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=aopdata">https://​cloud.r-project.org/​package=aopdata</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/ipeaGIT/aopdata/">https://​github.com/​ipeaGIT/​aopdata/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/ipeaGIT/aopdata/issues">https://​github.com/​ipeaGIT/​aopdata/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=aopdata" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/ipeaGIT/aopdata/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/ipeaGIT/aopdata/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
 </li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Rafael H. M. Pereira <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2125-7465" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Daniel Herszenhut <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-8066-1105" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Marcus Saraiva <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-6218-2338" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing aopdata</a></li>
+</ul>
+</div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Rafael H. M. Pereira <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2125-7465" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Daniel Herszenhut <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-8066-1105" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Marcus Saraiva <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-6218-2338" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Ipea - Institue for Applied Economic Research <br><small class="roles"> Copyright holder, funder </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=aopdata"><img src="https://www.r-pkg.org/badges/version/aopdata" alt="CRAN/METACRAN Version"></a></li>
-<li><a href="https://CRAN.R-project.org/package=aopdata"><img src="http://cranlogs.r-pkg.org/badges/grand-total/aopdata?color=blue" alt="CRAN/METACRAN Total downloads"></a></li>
-<li><a href="https://codecov.io/gh/ipeaGIT/aopdata"><img src="https://codecov.io/gh/ipeaGIT/aopdata/branch/main/graph/badge.svg?token=UQZLSRZ02E" alt="codecov"></a></li>
-<li><a href="https://github.com/ipeaGIT/aopdata/actions"><img src="https://github.com/ipeaGIT/aopdata/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://CRAN.R-project.org/package=aopdata" class="external-link"><img src="https://www.r-pkg.org/badges/version/aopdata" alt="CRAN/METACRAN Version"></a></li>
+<li><a href="https://CRAN.R-project.org/package=aopdata" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/aopdata?color=blue" alt="CRAN/METACRAN Total downloads"></a></li>
+<li><a href="https://codecov.io/gh/ipeaGIT/aopdata" class="external-link"><img src="https://codecov.io/gh/ipeaGIT/aopdata/branch/main/graph/badge.svg?token=UQZLSRZ02E" alt="codecov"></a></li>
+<li><a href="https://github.com/ipeaGIT/aopdata/actions" class="external-link"><img src="https://github.com/ipeaGIT/aopdata/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Rafael H. M. Pereira, Daniel Herszenhut, Marcus Saraiva, Ipea - Institue for Applied Economic Research.</p>
+  <p></p>
+<p>Developed by Rafael H. M. Pereira, Daniel Herszenhut, Marcus Saraiva, Ipea - Institue for Applied Economic Research.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -229,6 +234,8 @@
 
   
 
+
+  
 
   </body>
 </html>

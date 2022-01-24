@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,18 +40,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -80,7 +76,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ipeaGIT/aopdata/">
+  <a href="https://github.com/ipeaGIT/aopdata/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -101,9 +97,9 @@
       <h1 data-toc-skip>Introduction to <code>aopdata</code>
 </h1>
             
-            <h4 class="date">2021-11-18</h4>
+            <h4 data-toc-skip class="date">2022-01-24</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/tree/main/r-package/../vignettes/intro_to_aopdata.Rmd"><code>../vignettes/intro_to_aopdata.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/tree/main/r-package/../vignettes/intro_to_aopdata.Rmd" class="external-link"><code>../vignettes/intro_to_aopdata.Rmd</code></a></small>
       <div class="hidden name"><code>intro_to_aopdata.Rmd</code></div>
 
     </div>
@@ -111,21 +107,21 @@
     
     
 <p>This vignette introduces the <strong><code>aopdata</code></strong> package, lists the cities for which data are available for download, and presents the data dictionary.</p>
-<p><strong><code>aopdata</code></strong> is an R package that makes it easy to download data from the <a href="https://www.ipea.gov.br/acessooportunidades/en/">Access to Opportunities Project (AOP)</a>. AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) that aims to study transport accessibility and inequalities in access to opportunities in Brazilian cities. You can access more information about the project on the <a href="https://www.ipea.gov.br/acessooportunidades/en/">AOP website</a>.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<p><strong><code>aopdata</code></strong> is an R package that makes it easy to download data from the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">Access to Opportunities Project (AOP)</a>. AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) that aims to study transport accessibility and inequalities in access to opportunities in Brazilian cities. You can access more information about the project on the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">AOP website</a>.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>You can install <code>aopdata</code> from CRAN, or the development version from GitHub.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># CRAN</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'aopdata'</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'aopdata'</span><span class="op">)</span>
 
 <span class="co"># github</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ipeaGIT/aopdata"</span>, subdir <span class="op">=</span> <span class="st">"r-package"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="usage" class="section level2">
-<h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
+<div class="section level2">
+<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h2>
 <p>After installation, you can easily download accessibility estimates, as well as population and land use data, from 20 major Brazilian cities. Those cities are:</p>
 <table class="table">
 <thead><tr class="header">
@@ -220,113 +216,114 @@
 <p><code><a href="../reference/read_access.html">read_access()</a></code> can also download the spatial geometry of each city by setting <code>geometry = TRUE</code>, which can be used to map accessibility levels across the city. Refer to the <a href="landuse_maps.html">mapping population and land use</a> and <a href="access_maps.html">mapping urban accessibility</a> vignettes for examples of how to use the spatial geometry information. For now, we’ll set <code>geometry = FALSE</code> to download a dataframe with no spatial information.</p>
 <p>Let’s check the results:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">cur</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">cur</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 4,683</span>
 <span class="co">#&gt; Columns: 96</span>
-<span class="co">#&gt; $ abbrev_muni &lt;chr&gt; "cur", "cur", "cur", "cur", "cur", "cur", "cur", "cur", "c…</span>
-<span class="co">#&gt; $ name_muni   &lt;chr&gt; "Curitiba", "Curitiba", "Curitiba", "Curitiba", "Curitiba"…</span>
-<span class="co">#&gt; $ code_muni   &lt;int&gt; 4106902, 4106902, 4106902, 4106902, 4106902, 4106902, 4106…</span>
-<span class="co">#&gt; $ id_hex      &lt;chr&gt; "89a804c9593ffff", "89a804ca61bffff", "89a804ca643ffff", "…</span>
-<span class="co">#&gt; $ P001        &lt;int&gt; NA, NA, 25, NA, NA, NA, 28, NA, 37, 50, NA, 48, NA, NA, NA…</span>
-<span class="co">#&gt; $ P002        &lt;int&gt; NA, NA, 21, NA, NA, NA, 24, NA, 33, 43, NA, 40, NA, NA, NA…</span>
-<span class="co">#&gt; $ P003        &lt;int&gt; NA, NA, 3, NA, NA, NA, 4, NA, 5, 8, NA, 7, NA, NA, NA, 0, …</span>
-<span class="co">#&gt; $ P004        &lt;int&gt; NA, NA, 0, NA, NA, NA, 0, NA, 0, 0, NA, 0, NA, NA, NA, 0, …</span>
-<span class="co">#&gt; $ P005        &lt;int&gt; NA, NA, 0, NA, NA, NA, 0, NA, 0, 0, NA, 0, NA, NA, NA, 0, …</span>
-<span class="co">#&gt; $ R001        &lt;dbl&gt; NA, NA, 826.9, NA, NA, NA, 882.4, NA, 770.5, 889.4, NA, 88…</span>
-<span class="co">#&gt; $ R002        &lt;int&gt; NA, NA, 3, NA, NA, NA, 3, NA, 2, 3, NA, 3, NA, NA, NA, 3, …</span>
-<span class="co">#&gt; $ R003        &lt;int&gt; NA, NA, 5, NA, NA, NA, 5, NA, 4, 5, NA, 5, NA, NA, NA, 5, …</span>
-<span class="co">#&gt; $ E001        &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
-<span class="co">#&gt; $ E002        &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
-<span class="co">#&gt; $ E003        &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
-<span class="co">#&gt; $ E004        &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
-<span class="co">#&gt; $ S001        &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
-<span class="co">#&gt; $ S002        &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
-<span class="co">#&gt; $ S003        &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
-<span class="co">#&gt; $ S004        &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
-<span class="co">#&gt; $ mode        &lt;chr&gt; NA, NA, "public_transport", NA, NA, NA, "public_transport"…</span>
-<span class="co">#&gt; $ peak        &lt;int&gt; NA, NA, 1, NA, NA, NA, 1, NA, 1, 1, NA, 1, 1, NA, NA, 1, 1…</span>
-<span class="co">#&gt; $ CMATT15     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMATQ15     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMATD15     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMAST15     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMASB15     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMASM15     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMASA15     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMAET15     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMAEI15     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMAEF15     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMAEM15     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMATT30     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0001, NA, 0.0001, 0.0001, NA…</span>
-<span class="co">#&gt; $ CMATQ30     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0001, NA, 0.0001, 0.0001, NA…</span>
-<span class="co">#&gt; $ CMATD30     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0001, NA, 0.0001, 0.0001, NA…</span>
-<span class="co">#&gt; $ CMAST30     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
-<span class="co">#&gt; $ CMASB30     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
-<span class="co">#&gt; $ CMASM30     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
-<span class="co">#&gt; $ CMASA30     &lt;dbl&gt; NA, NA, 0, NA, NA, NA, 0, NA, 0, 0, NA, 0, 0, NA, NA, 0, 0…</span>
-<span class="co">#&gt; $ CMAET30     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
-<span class="co">#&gt; $ CMAEI30     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
-<span class="co">#&gt; $ CMAEF30     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
-<span class="co">#&gt; $ CMAEM30     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
-<span class="co">#&gt; $ CMATT45     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMATQ45     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMATD45     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMAST45     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMASB45     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMASM45     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMASA45     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMAET45     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMAEI45     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMAEF45     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMAEM45     &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ CMATT60     &lt;dbl&gt; NA, NA, 0.0035, NA, NA, NA, 0.0065, NA, 0.0124, 0.0089, NA…</span>
-<span class="co">#&gt; $ CMATQ60     &lt;dbl&gt; NA, NA, 0.0032, NA, NA, NA, 0.0060, NA, 0.0135, 0.0086, NA…</span>
-<span class="co">#&gt; $ CMATD60     &lt;dbl&gt; NA, NA, 0.0039, NA, NA, NA, 0.0069, NA, 0.0135, 0.0096, NA…</span>
-<span class="co">#&gt; $ CMAST60     &lt;dbl&gt; NA, NA, 0.0044, NA, NA, NA, 0.0133, NA, 0.0221, 0.0133, NA…</span>
-<span class="co">#&gt; $ CMASB60     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0136, NA, 0.0272, 0.0136, NA…</span>
-<span class="co">#&gt; $ CMASM60     &lt;dbl&gt; NA, NA, 0.0046, NA, NA, NA, 0.0138, NA, 0.0229, 0.0138, NA…</span>
-<span class="co">#&gt; $ CMASA60     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
-<span class="co">#&gt; $ CMAET60     &lt;dbl&gt; NA, NA, 0.0017, NA, NA, NA, 0.0155, NA, 0.0276, 0.0190, NA…</span>
-<span class="co">#&gt; $ CMAEI60     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0142, NA, 0.0228, 0.0171, NA…</span>
-<span class="co">#&gt; $ CMAEF60     &lt;dbl&gt; NA, NA, 0.0029, NA, NA, NA, 0.0175, NA, 0.0322, 0.0205, NA…</span>
-<span class="co">#&gt; $ CMAEM60     &lt;dbl&gt; NA, NA, 0.0000, NA, NA, NA, 0.0204, NA, 0.0340, 0.0272, NA…</span>
-<span class="co">#&gt; $ CMATT90     &lt;dbl&gt; NA, NA, 0.0640, NA, NA, NA, 0.1059, NA, 0.2062, 0.1846, NA…</span>
-<span class="co">#&gt; $ CMATQ90     &lt;dbl&gt; NA, NA, 0.0644, NA, NA, NA, 0.1069, NA, 0.1934, 0.1884, NA…</span>
-<span class="co">#&gt; $ CMATD90     &lt;dbl&gt; NA, NA, 0.0631, NA, NA, NA, 0.1018, NA, 0.1934, 0.1744, NA…</span>
-<span class="co">#&gt; $ CMAST90     &lt;dbl&gt; NA, NA, 0.0708, NA, NA, NA, 0.1106, NA, 0.1858, 0.1814, NA…</span>
-<span class="co">#&gt; $ CMASB90     &lt;dbl&gt; NA, NA, 0.0612, NA, NA, NA, 0.0952, NA, 0.1293, 0.1497, NA…</span>
-<span class="co">#&gt; $ CMASM90     &lt;dbl&gt; NA, NA, 0.0642, NA, NA, NA, 0.1009, NA, 0.1789, 0.1743, NA…</span>
-<span class="co">#&gt; $ CMASA90     &lt;dbl&gt; NA, NA, 0.0833, NA, NA, NA, 0.1944, NA, 0.2500, 0.3333, NA…</span>
-<span class="co">#&gt; $ CMAET90     &lt;dbl&gt; NA, NA, 0.0777, NA, NA, NA, 0.0898, NA, 0.1036, 0.1123, NA…</span>
-<span class="co">#&gt; $ CMAEI90     &lt;dbl&gt; NA, NA, 0.0741, NA, NA, NA, 0.0798, NA, 0.0798, 0.0997, NA…</span>
-<span class="co">#&gt; $ CMAEF90     &lt;dbl&gt; NA, NA, 0.0848, NA, NA, NA, 0.0994, NA, 0.1170, 0.1170, NA…</span>
-<span class="co">#&gt; $ CMAEM90     &lt;dbl&gt; NA, NA, 0.0680, NA, NA, NA, 0.0884, NA, 0.1156, 0.1020, NA…</span>
-<span class="co">#&gt; $ CMATT120    &lt;dbl&gt; NA, NA, 0.7867, NA, NA, NA, 0.8521, NA, 0.8961, 0.8833, NA…</span>
-<span class="co">#&gt; $ CMATQ120    &lt;dbl&gt; NA, NA, 0.7917, NA, NA, NA, 0.8587, NA, 0.8847, 0.8877, NA…</span>
-<span class="co">#&gt; $ CMATD120    &lt;dbl&gt; NA, NA, 0.7699, NA, NA, NA, 0.8348, NA, 0.8847, 0.8706, NA…</span>
-<span class="co">#&gt; $ CMAST120    &lt;dbl&gt; NA, NA, 0.7168, NA, NA, NA, 0.7566, NA, 0.8053, 0.7876, NA…</span>
-<span class="co">#&gt; $ CMASB120    &lt;dbl&gt; NA, NA, 0.6054, NA, NA, NA, 0.6531, NA, 0.7075, 0.6803, NA…</span>
-<span class="co">#&gt; $ CMASM120    &lt;dbl&gt; NA, NA, 0.7064, NA, NA, NA, 0.7477, NA, 0.7982, 0.7798, NA…</span>
-<span class="co">#&gt; $ CMASA120    &lt;dbl&gt; NA, NA, 1.0000, NA, NA, NA, 1.0000, NA, 1.0000, 1.0000, NA…</span>
-<span class="co">#&gt; $ CMAET120    &lt;dbl&gt; NA, NA, 0.5371, NA, NA, NA, 0.6114, NA, 0.6701, 0.6408, NA…</span>
-<span class="co">#&gt; $ CMAEI120    &lt;dbl&gt; NA, NA, 0.4587, NA, NA, NA, 0.5242, NA, 0.5869, 0.5527, NA…</span>
-<span class="co">#&gt; $ CMAEF120    &lt;dbl&gt; NA, NA, 0.5731, NA, NA, NA, 0.6550, NA, 0.7135, 0.6842, NA…</span>
-<span class="co">#&gt; $ CMAEM120    &lt;dbl&gt; NA, NA, 0.6259, NA, NA, NA, 0.7143, NA, 0.7755, 0.7483, NA…</span>
-<span class="co">#&gt; $ TMIST       &lt;dbl&gt; NA, NA, 58.5583, NA, NA, NA, 48.1750, NA, 47.8833, 41.5667…</span>
-<span class="co">#&gt; $ TMISB       &lt;dbl&gt; NA, NA, 64.2750, NA, NA, NA, 55.0417, NA, 51.7833, 50.6917…</span>
-<span class="co">#&gt; $ TMISM       &lt;dbl&gt; NA, NA, 58.5583, NA, NA, NA, 48.1750, NA, 47.8833, 41.5667…</span>
-<span class="co">#&gt; $ TMISA       &lt;dbl&gt; NA, NA, 87.6500, NA, NA, NA, 82.3500, NA, 76.2500, 76.7167…</span>
-<span class="co">#&gt; $ TMIET       &lt;dbl&gt; NA, NA, 48.6167, NA, NA, NA, 40.8000, NA, 41.1667, 38.1333…</span>
-<span class="co">#&gt; $ TMIEI       &lt;dbl&gt; NA, NA, 60.5750, NA, NA, NA, 53.2000, NA, 49.9000, 44.6750…</span>
-<span class="co">#&gt; $ TMIEF       &lt;dbl&gt; NA, NA, 48.6167, NA, NA, NA, 40.8000, NA, 41.1667, 38.1333…</span>
-<span class="co">#&gt; $ TMIEM       &lt;dbl&gt; NA, NA, 61.1667, NA, NA, NA, 52.7417, NA, 51.0333, 46.9000…</span></code></pre></div>
+<span class="co">#&gt; $ abbrev_muni <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "cur", "cur", "cur", "cur", "cur", "cur", "cur", "cur", "c…</span>
+<span class="co">#&gt; $ name_muni   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Curitiba", "Curitiba", "Curitiba", "Curitiba", "Curitiba"…</span>
+<span class="co">#&gt; $ code_muni   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 4106902, 4106902, 4106902, 4106902, 4106902, 4106902, 4106…</span>
+<span class="co">#&gt; $ id_hex      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "89a804c9593ffff", "89a804ca61bffff", "89a804ca643ffff", "…</span>
+<span class="co">#&gt; $ P001        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, 25, NA, NA, NA, 28, NA, 37, 50, NA, 48, NA, NA, NA…</span>
+<span class="co">#&gt; $ P002        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, 21, NA, NA, NA, 24, NA, 33, 43, NA, 40, NA, NA, NA…</span>
+<span class="co">#&gt; $ P003        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, 3, NA, NA, NA, 4, NA, 5, 8, NA, 7, NA, NA, NA, 0, …</span>
+<span class="co">#&gt; $ P004        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, 0, NA, NA, NA, 0, NA, 0, 0, NA, 0, NA, NA, NA, 0, …</span>
+<span class="co">#&gt; $ P005        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, 0, NA, NA, NA, 0, NA, 0, 0, NA, 0, NA, NA, NA, 0, …</span>
+<span class="co">#&gt; $ R001        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 826.9, NA, NA, NA, 882.4, NA, 770.5, 889.4, NA, 88…</span>
+<span class="co">#&gt; $ R002        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, 3, NA, NA, NA, 3, NA, 2, 3, NA, 3, NA, NA, NA, 3, …</span>
+<span class="co">#&gt; $ R003        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, 5, NA, NA, NA, 5, NA, 4, 5, NA, 5, NA, NA, NA, 5, …</span>
+<span class="co">#&gt; $ E001        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
+<span class="co">#&gt; $ E002        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
+<span class="co">#&gt; $ E003        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
+<span class="co">#&gt; $ E004        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
+<span class="co">#&gt; $ S001        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
+<span class="co">#&gt; $ S002        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
+<span class="co">#&gt; $ S003        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
+<span class="co">#&gt; $ S004        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</span>
+<span class="co">#&gt; $ mode        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> NA, NA, "public_transport", NA, NA, NA, "public_transport"…</span>
+<span class="co">#&gt; $ peak        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> NA, NA, 1, NA, NA, NA, 1, NA, 1, 1, NA, 1, 1, NA, NA, 1, 1…</span>
+<span class="co">#&gt; $ CMATT15     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMATQ15     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMATD15     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMAST15     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMASB15     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMASM15     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMASA15     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMAET15     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMAEI15     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMAEF15     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMAEM15     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMATT30     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0001, NA, 0.0001, 0.0001, NA…</span>
+<span class="co">#&gt; $ CMATQ30     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0001, NA, 0.0001, 0.0001, NA…</span>
+<span class="co">#&gt; $ CMATD30     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0001, NA, 0.0001, 0.0001, NA…</span>
+<span class="co">#&gt; $ CMAST30     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
+<span class="co">#&gt; $ CMASB30     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
+<span class="co">#&gt; $ CMASM30     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
+<span class="co">#&gt; $ CMASA30     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0, NA, NA, NA, 0, NA, 0, 0, NA, 0, 0, NA, NA, 0, 0…</span>
+<span class="co">#&gt; $ CMAET30     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
+<span class="co">#&gt; $ CMAEI30     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
+<span class="co">#&gt; $ CMAEF30     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
+<span class="co">#&gt; $ CMAEM30     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
+<span class="co">#&gt; $ CMATT45     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMATQ45     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMATD45     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMAST45     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMASB45     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMASM45     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMASA45     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMAET45     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMAEI45     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMAEF45     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMAEM45     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
+<span class="co">#&gt; $ CMATT60     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0035, NA, NA, NA, 0.0065, NA, 0.0124, 0.0089, NA…</span>
+<span class="co">#&gt; $ CMATQ60     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0032, NA, NA, NA, 0.0060, NA, 0.0135, 0.0086, NA…</span>
+<span class="co">#&gt; $ CMATD60     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0039, NA, NA, NA, 0.0069, NA, 0.0135, 0.0096, NA…</span>
+<span class="co">#&gt; $ CMAST60     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0044, NA, NA, NA, 0.0133, NA, 0.0221, 0.0133, NA…</span>
+<span class="co">#&gt; $ CMASB60     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0136, NA, 0.0272, 0.0136, NA…</span>
+<span class="co">#&gt; $ CMASM60     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0046, NA, NA, NA, 0.0138, NA, 0.0229, 0.0138, NA…</span>
+<span class="co">#&gt; $ CMASA60     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0000, NA, 0.0000, 0.0000, NA…</span>
+<span class="co">#&gt; $ CMAET60     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0017, NA, NA, NA, 0.0155, NA, 0.0276, 0.0190, NA…</span>
+<span class="co">#&gt; $ CMAEI60     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0142, NA, 0.0228, 0.0171, NA…</span>
+<span class="co">#&gt; $ CMAEF60     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0029, NA, NA, NA, 0.0175, NA, 0.0322, 0.0205, NA…</span>
+<span class="co">#&gt; $ CMAEM60     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0000, NA, NA, NA, 0.0204, NA, 0.0340, 0.0272, NA…</span>
+<span class="co">#&gt; $ CMATT90     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0640, NA, NA, NA, 0.1059, NA, 0.2062, 0.1846, NA…</span>
+<span class="co">#&gt; $ CMATQ90     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0644, NA, NA, NA, 0.1069, NA, 0.1934, 0.1884, NA…</span>
+<span class="co">#&gt; $ CMATD90     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0631, NA, NA, NA, 0.1018, NA, 0.1934, 0.1744, NA…</span>
+<span class="co">#&gt; $ CMAST90     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0708, NA, NA, NA, 0.1106, NA, 0.1858, 0.1814, NA…</span>
+<span class="co">#&gt; $ CMASB90     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0612, NA, NA, NA, 0.0952, NA, 0.1293, 0.1497, NA…</span>
+<span class="co">#&gt; $ CMASM90     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0642, NA, NA, NA, 0.1009, NA, 0.1789, 0.1743, NA…</span>
+<span class="co">#&gt; $ CMASA90     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0833, NA, NA, NA, 0.1944, NA, 0.2500, 0.3333, NA…</span>
+<span class="co">#&gt; $ CMAET90     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0777, NA, NA, NA, 0.0898, NA, 0.1036, 0.1123, NA…</span>
+<span class="co">#&gt; $ CMAEI90     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0741, NA, NA, NA, 0.0798, NA, 0.0798, 0.0997, NA…</span>
+<span class="co">#&gt; $ CMAEF90     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0848, NA, NA, NA, 0.0994, NA, 0.1170, 0.1170, NA…</span>
+<span class="co">#&gt; $ CMAEM90     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.0680, NA, NA, NA, 0.0884, NA, 0.1156, 0.1020, NA…</span>
+<span class="co">#&gt; $ CMATT120    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.7867, NA, NA, NA, 0.8521, NA, 0.8961, 0.8833, NA…</span>
+<span class="co">#&gt; $ CMATQ120    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.7917, NA, NA, NA, 0.8587, NA, 0.8847, 0.8877, NA…</span>
+<span class="co">#&gt; $ CMATD120    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.7699, NA, NA, NA, 0.8348, NA, 0.8847, 0.8706, NA…</span>
+<span class="co">#&gt; $ CMAST120    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.7168, NA, NA, NA, 0.7566, NA, 0.8053, 0.7876, NA…</span>
+<span class="co">#&gt; $ CMASB120    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.6054, NA, NA, NA, 0.6531, NA, 0.7075, 0.6803, NA…</span>
+<span class="co">#&gt; $ CMASM120    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.7064, NA, NA, NA, 0.7477, NA, 0.7982, 0.7798, NA…</span>
+<span class="co">#&gt; $ CMASA120    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 1.0000, NA, NA, NA, 1.0000, NA, 1.0000, 1.0000, NA…</span>
+<span class="co">#&gt; $ CMAET120    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.5371, NA, NA, NA, 0.6114, NA, 0.6701, 0.6408, NA…</span>
+<span class="co">#&gt; $ CMAEI120    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.4587, NA, NA, NA, 0.5242, NA, 0.5869, 0.5527, NA…</span>
+<span class="co">#&gt; $ CMAEF120    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.5731, NA, NA, NA, 0.6550, NA, 0.7135, 0.6842, NA…</span>
+<span class="co">#&gt; $ CMAEM120    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 0.6259, NA, NA, NA, 0.7143, NA, 0.7755, 0.7483, NA…</span>
+<span class="co">#&gt; $ TMIST       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 58.5583, NA, NA, NA, 48.1750, NA, 47.8833, 41.5667…</span>
+<span class="co">#&gt; $ TMISB       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 64.2750, NA, NA, NA, 55.0417, NA, 51.7833, 50.6917…</span>
+<span class="co">#&gt; $ TMISM       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 58.5583, NA, NA, NA, 48.1750, NA, 47.8833, 41.5667…</span>
+<span class="co">#&gt; $ TMISA       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 87.6500, NA, NA, NA, 82.3500, NA, 76.2500, 76.7167…</span>
+<span class="co">#&gt; $ TMIET       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 48.6167, NA, NA, NA, 40.8000, NA, 41.1667, 38.1333…</span>
+<span class="co">#&gt; $ TMIEI       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 60.5750, NA, NA, NA, 53.2000, NA, 49.9000, 44.6750…</span>
+<span class="co">#&gt; $ TMIEF       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 48.6167, NA, NA, NA, 40.8000, NA, 41.1667, 38.1333…</span>
+<span class="co">#&gt; $ TMIEM       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 61.1667, NA, NA, NA, 52.7417, NA, 51.0333, 46.9000…</span></code></pre></div>
 <p>As you can see, a lot of data has been returned from <code><a href="../reference/read_access.html">read_access()</a></code>. The dataframe’s columns can be classified into 4 groups, according to the data they contain: <em>geographic</em>, <em>sociodemographic</em>, <em>land use</em>, and <em>accessibility</em>. The following section explains the contents of each column.</p>
 </div>
-<div id="data-dictionary" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-dictionary" class="anchor"></a>Data dictionary</h2>
-<div id="geographic-variables" class="section level3">
-<h3 class="hasAnchor">
-<a href="#geographic-variables" class="anchor"></a><strong>Geographic</strong> variables</h3>
+<div class="section level2">
+<h2 id="data-dictionary">Data dictionary<a class="anchor" aria-label="anchor" href="#data-dictionary"></a>
+</h2>
+<div class="section level3">
+<h3 id="geographic-variables">
+<strong>Geographic</strong> variables<a class="anchor" aria-label="anchor" href="#geographic-variables"></a>
+</h3>
 <table class="table">
 <thead><tr class="header">
 <th><strong>column</strong></th>
@@ -352,9 +349,10 @@
 </tbody>
 </table>
 </div>
-<div id="sociodemographic-variables" class="section level3">
-<h3 class="hasAnchor">
-<a href="#sociodemographic-variables" class="anchor"></a><strong>Sociodemographic</strong> variables</h3>
+<div class="section level3">
+<h3 id="sociodemographic-variables">
+<strong>Sociodemographic</strong> variables<a class="anchor" aria-label="anchor" href="#sociodemographic-variables"></a>
+</h3>
 <table class="table">
 <thead><tr class="header">
 <th><strong>column</strong></th>
@@ -396,9 +394,10 @@
 </tbody>
 </table>
 </div>
-<div id="land-use-variables" class="section level3">
-<h3 class="hasAnchor">
-<a href="#land-use-variables" class="anchor"></a><strong>Land use</strong> variables</h3>
+<div class="section level3">
+<h3 id="land-use-variables">
+<strong>Land use</strong> variables<a class="anchor" aria-label="anchor" href="#land-use-variables"></a>
+</h3>
 <table class="table">
 <thead><tr class="header">
 <th><strong>column</strong></th>
@@ -456,9 +455,10 @@
 </tbody>
 </table>
 </div>
-<div id="accessibility-variables" class="section level3">
-<h3 class="hasAnchor">
-<a href="#accessibility-variables" class="anchor"></a><strong>Accessibility</strong> variables</h3>
+<div class="section level3">
+<h3 id="accessibility-variables">
+<strong>Accessibility</strong> variables<a class="anchor" aria-label="anchor" href="#accessibility-variables"></a>
+</h3>
 <p>The name of the columns with accessibility estimates are the junction of three components:</p>
 <ol style="list-style-type: decimal">
 <li><p>Indicator</p></li>
@@ -594,9 +594,9 @@
 </table>
 </div>
 </div>
-<div id="next-steps" class="section level2">
-<h2 class="hasAnchor">
-<a href="#next-steps" class="anchor"></a>Next Steps</h2>
+<div class="section level2">
+<h2 id="next-steps">Next Steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
+</h2>
 <p>Now, check the next vignettes for demonstrations on how to use <code>aopdata</code> to produce <a href="landuse_maps.html">land use</a> and <a href="access_maps.html">accessibility</a> maps, as well as to analyse <a href="access_inequality.html">accessibility inequalities</a>.</p>
 </div>
   </div>
@@ -612,11 +612,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Rafael H. M. Pereira, Daniel Herszenhut, Marcus Saraiva, Ipea - Institue for Applied Economic Research.</p>
+  <p></p>
+<p>Developed by Rafael H. M. Pereira, Daniel Herszenhut, Marcus Saraiva, Ipea - Institue for Applied Economic Research.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -624,6 +626,8 @@
 
   
 
+
+  
 
   </body>
 </html>
