@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.3</span>
       </span>
     </div>
 
@@ -214,8 +214,18 @@
 <p><strong>Read <em>accessibility</em> estimates</strong></p>
 <p>To download accessibility estimates, you can use the <code><a href="../reference/read_access.html">read_access()</a></code> function. The example below downloads data on accessibility by walking for the city of Curitiba, in Southern Brazil. The function will download data for the year 2019, which is the one currently available.</p>
 <p><code><a href="../reference/read_access.html">read_access()</a></code> can also download the spatial geometry of each city by setting <code>geometry = TRUE</code>, which can be used to map accessibility levels across the city. Refer to the <a href="landuse_maps.html">mapping population and land use</a> and <a href="access_maps.html">mapping urban accessibility</a> vignettes for examples of how to use the spatial geometry information. For now, we’ll set <code>geometry = FALSE</code> to download a dataframe with no spatial information.</p>
-<p>Let’s check the results:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># load the aopdata package</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/aopdata" class="external-link">aopdata</a></span><span class="op">)</span>
+
+<span class="co"># A dataframe, with no spatial geometry</span>
+<span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Curitiba'</span>, 
+                   mode <span class="op">=</span> <span class="st">'public_transport'</span>, 
+                   year <span class="op">=</span> <span class="fl">2019</span>, 
+                   geometry <span class="op">=</span> <span class="cn">FALSE</span>,
+                   showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<p>Let’s check the results:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">cur</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 4,683</span>
 <span class="co">#&gt; Columns: 96</span>
