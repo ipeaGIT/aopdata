@@ -79,7 +79,7 @@ city. Refer to the [mapping population and land use](landuse_maps.html) and
 to use the spatial geometry information. For now, we'll set `geometry = FALSE` to 
 download a dataframe with no spatial information. 
 
-```{r include=FALSE}
+```{r message=FALSE}
 # load the aopdata package
 library(aopdata)
 
