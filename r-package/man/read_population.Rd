@@ -53,13 +53,13 @@ on a hexagonal grid based on the global H3 index at resolution 9, with a size of
 }
 
 \examples{
-\donttest{
+\dontrun{ if (interactive()) {
 # a single city
 bho <- read_population(city = 'Belo Horizonte', year = 2010, showProgress = FALSE)
 bho <- read_population(city = 'bho', year = 2010, showProgress = FALSE)
 
 # all cities
 all <- read_population(city = 'all', year = 2010)
-}
+}}
 }
 \concept{population data functions}

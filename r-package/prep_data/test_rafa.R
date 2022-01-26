@@ -371,5 +371,5 @@ df <- read_access(city=c('poa'),
                   showProgress = T)
 
 read_population(city=c('poa'))
-read_grid(city=c('poa'))
+read_grid(city='all')
 read_landuse(city=c('poa'))

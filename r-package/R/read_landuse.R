@@ -52,14 +52,14 @@
 #'
 #' @export
 #' @family land use data functions
-#' @examples \donttest{
+#' @examples \dontrun{ if (interactive()) {
 #' # a single city
 #' bho <- read_landuse(city = 'Belo Horizonte', year = 2019, showProgress = FALSE)
 #' bho <- read_landuse(city = 'bho', year = 2019, showProgress = FALSE)
 #'
 #' # all cities
 #' all <- read_landuse(city = 'all', year = 2019)
-#'}
+#'}}
 read_landuse <- function(city='bel', year = 2019, geometry = FALSE, showProgress = TRUE){
 
   # checks

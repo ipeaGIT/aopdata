@@ -65,14 +65,14 @@
 #'
 #' @export
 #' @family accessibility data functions
-#' @examples \donttest{
+#' @examples \dontrun{ if (interactive()) {
 #' # Read accessibility estimates of a single city
 #' df <- read_access(city = 'Fortaleza', mode = 'public_transport', year = 2019, showProgress = FALSE)
 #' df <- read_access(city = 'for', mode = 'public_transport', year = 2019, showProgress = FALSE)
 #'
 #' # Read accessibility estimates for all cities
 #' all <- read_access(city = 'all', mode = 'walk', year = 2019, showProgress = FALSE)
-#'}
+#'}}
 read_access <- function(city, mode = 'walk', peak = TRUE, year = 2019, geometry = FALSE, showProgress = TRUE){
 
   # checks

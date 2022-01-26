@@ -37,14 +37,14 @@
 #'
 #' @export
 #' @family population data functions
-#' @examples \donttest{
+#' @examples \dontrun{ if (interactive()) {
 #' # a single city
 #' bho <- read_population(city = 'Belo Horizonte', year = 2010, showProgress = FALSE)
 #' bho <- read_population(city = 'bho', year = 2010, showProgress = FALSE)
 #'
 #' # all cities
 #' all <- read_population(city = 'all', year = 2010)
-#'}
+#'}}
 read_population <- function(city='bel', year = 2010, geometry = FALSE, showProgress = TRUE){
 
   # checks

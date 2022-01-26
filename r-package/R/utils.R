@@ -146,10 +146,6 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
   msg <- "Problem connecting to data server. Please try it again in a few minutes."
   if (nrow(metadata)==0) { message(msg); return(invisible(NULL)) }
 
-  # # check if download failed 666
-  # msg <- "Problem connecting to data server. Please try it again in a few minutes."
-  # if (nrow(metadata)==0 | is.null(metadata)) { message(msg); return(invisible(NULL)) }
-
   # Select data type
   temp_meta <- subset(metadata, type == t)
 

@@ -23,13 +23,13 @@
 #'
 #' @export
 #' @family spatial data functions
-#' @examples \donttest{
+#' @examples \dontrun{ if (interactive()) {
 #' # Read spatial grid of a single city
 #' nat <- read_grid(city = 'Natal', showProgress = FALSE)
 #'
 #' # Read spatial grid of all cities in the project
 #' # all <- read_grid(city = 'all', showProgress = FALSE)
-#'}
+#'}}
 read_grid <- function(city, showProgress = FALSE){
 
   # checks

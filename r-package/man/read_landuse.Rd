@@ -63,13 +63,13 @@ See documentation 'Details' for the data dictionary.
 }
 
 \examples{
-\donttest{
+\dontrun{ if (interactive()) {
 # a single city
 bho <- read_landuse(city = 'Belo Horizonte', year = 2019, showProgress = FALSE)
 bho <- read_landuse(city = 'bho', year = 2019, showProgress = FALSE)
 
 # all cities
 all <- read_landuse(city = 'all', year = 2019)
-}
+}}
 }
 \concept{land use data functions}
