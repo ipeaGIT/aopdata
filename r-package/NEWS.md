@@ -4,6 +4,17 @@
 
 -------------------------------------------------------
 
+# aopdata v0.2.3
+
+**Minor changes**
+* Download functions should now fail gracefully with an informative message when there is internet connection problems.
+* Remove `crul` from package dependencies.
+* skip examples on CRAN. Examples now only run on interactive R sessions.
+
+
+
+-------------------------------------------------------
+
 # aopdata v0.2.2
 
 **Minor changes**

@@ -364,12 +364,12 @@ test2(2, url_timeout )
 test2(2, url_error )
 
 
-df <- read_access(city=c('poa'),
+df <- read_access(city=c('all'),
                   mode='public_transport',
                   peak = TRUE,
                   year=2019,
                   showProgress = T)
 
-read_population(city=c('poa'))
-read_grid(city='all')
+read_population(city=c('all'))
+read_grid(city='poa')
 read_landuse(city=c('poa'))
