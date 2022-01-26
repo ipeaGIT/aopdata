@@ -140,26 +140,14 @@ junction of three components: 1) Indicator 2) Type of opportunity
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in"><span class="co"># Read accessibility estimates of a single city</span></span>
 <span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">read_access</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using year 2019</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using mode public_transport</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using year 2019</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using year 2010</span>
 <span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">read_access</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'for'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using year 2019</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using mode public_transport</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using year 2019</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using year 2010</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Read accessibility estimates for all cities</span></span>
 <span class="r-in"><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu">read_access</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, mode <span class="op">=</span> <span class="st">'walk'</span>, year <span class="op">=</span> <span class="fl">2019</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using year 2019</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using mode walk</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using year 2019</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Using year 2010</span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
