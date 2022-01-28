@@ -1,10 +1,10 @@
 # aopdata: Data from the Access to Opportunities Project
 <!-- badges: start -->
 [![CRAN/METACRAN Version](https://www.r-pkg.org/badges/version/aopdata)](https://CRAN.R-project.org/package=aopdata)
-[![CRAN/METACRAN Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/aopdata?color=blue)](https://CRAN.R-project.org/package=aopdata)
-[![codecov](https://codecov.io/gh/ipeaGIT/aopdata/branch/main/graph/badge.svg?token=UQZLSRZ02E)](https://codecov.io/gh/ipeaGIT/aopdata)
+[![CRAN/METACRAN Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/aopdata?color=blue)](https://CRAN.R-project.org/package=aopdata)
+[![codecov](https://app.codecov.io/gh/ipeaGIT/aopdata/branch/main/graph/badge.svg?token=UQZLSRZ02E)](https://app.codecov.io/gh/ipeaGIT/aopdata)
 [![R build status](https://github.com/ipeaGIT/aopdata/workflows/R-CMD-check/badge.svg)](https://github.com/ipeaGIT/aopdata/actions)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) 
+
 
 <!-- badges: end -->
 
@@ -70,6 +70,6 @@ all <- read_landuse(city = 'all', year = 2019)
 
 The R package **aopdata** is developed by a team at the Institute for Applied Economic Research (Ipea), Brazil. If you use this package in research publications, please cite it as one of the publications below:
 
-* Pereira, R. H. M., Braga, C. K. V., Serra, Bernardo, & Nadalin, V. (2019). Desigualdades socioespaciais de acesso a oportunidades nas cidades brasileiras, 2019. Texto para Discussão Ipea, 2535. Instituto de Pesquisa Econômica Aplicada (Ipea). Disponível em http://repositorio.ipea.gov.br/handle/11058/9586
+* Pereira, R. H. M., Braga, C. K. V., Serra, Bernardo, & Nadalin, V. (2019). Desigualdades socioespaciais de acesso a oportunidades nas cidades brasileiras, 2019. Texto para Discussão Ipea, 2535. Instituto de Pesquisa Econômica Aplicada (Ipea). Disponível em https://repositorio.ipea.gov.br/handle/11058/9586
 * Pereira, R. H. M.; Braga, C. K. V.; Servo, L. M.; Serra, B.; Amaral, P.; Gouveia, N.; Paez, A. (2021) Geographic access to COVID-19 healthcare in Brazil using a balanced float catchment area approach. Social Science & Medicine. https://doi.org/10.1016/j.socscimed.2021.113773
 

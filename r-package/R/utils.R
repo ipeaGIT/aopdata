@@ -426,9 +426,9 @@ aop_merge <- function(aop_landuse, aop_access){
 #'
 check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'){
 
-  # file_url <- 'http://google.com/'               # ok
-  # file_url <- 'http://www.google.com:81/'   # timeout
-  # file_url <- 'http://httpbin.org/status/300' # error
+  # file_url <- 'https://google.com/'               # ok
+  # file_url <- 'https://www.google.com:81/'   # timeout
+  # file_url <- 'https://httpbin.org/status/300' # error
 
   # check if user has internet connection
   if (!curl::has_internet()) { message("No internet connection.")
