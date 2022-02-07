@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 Spatial distribution of population and activities
 
 
-```{r, message = FALSE}
+```{r, message = FALSE, eval = FALSE}
 # load libraries
 library(aopdata)
 library(data.table)
@@ -29,7 +29,7 @@ library(sf)
 ```
 
 **Download land use data**
-```{r, message = FALSE}
+```{r, message = FALSE, eval = FALSE}
 
 # download aop data
 df <- read_landuse(city='Fortaleza',
@@ -42,7 +42,7 @@ df <- read_landuse(city='Fortaleza',
 **Map Population**
 Spatial distribution population by income decile
 
-```{r, message = FALSE}
+```{r, message = FALSE, eval = FALSE}
 ggplot() +
   geom_sf(data=subset(df, P001>0), aes(fill=P001), color=NA, alpha=.7) +
   scale_fill_distiller(palette = "YlOrRd", direction = 1)+
@@ -65,7 +65,7 @@ ggplot() +
 **Map Schools**
 Spatial distribution of elementary schools
 
-```{r, message = FALSE, eval=FALSE}
+```{r, message = FALSE, eval = FALSE}
 ggplot() +
   geom_sf(data=df, aes(fill=E003), color=NA, alpha=.7) +
   scale_fill_distiller(palette = "YlOrRd", direction = 1)+
@@ -77,7 +77,7 @@ ggplot() +
 **Map Hospitals**
 Spatial distribution of high-complexity health care facilities
 
-```{r, message = FALSE, eval=TRUE}
+```{r, message = FALSE, eval = FALSE}
 ggplot() +
   geom_sf(data=df, aes(fill=S004), color=NA, alpha=.7) +
   scale_fill_distiller(palette = "YlGnBu", direction = 1)+

@@ -29,7 +29,7 @@ in Brazilian cities. You can access more information about the project on the [A
 
 You can install `aopdata` from CRAN, or the development version from GitHub.
 
-```{r, eval = FALSE}
+```{r, message = FALSE, eval = FALSE}
 # CRAN
 install.packages('aopdata')
 
@@ -79,7 +79,7 @@ city. Refer to the [mapping population and land use](landuse_maps.html) and
 to use the spatial geometry information. For now, we'll set `geometry = FALSE` to 
 download a dataframe with no spatial information. 
 
-```{r message=TRUE}
+```{r, message = FALSE, eval = FALSE}
 # load the aopdata package
 library(aopdata)
 
@@ -93,7 +93,7 @@ cur <- read_access(city = 'Curitiba',
 
 Let's check the results:
 
-```{r}
+```{r, message = FALSE, eval = FALSE}
 dplyr::glimpse(cur)
 ```
 
