@@ -8,7 +8,7 @@
 \title{aopdata: Data from the 'Access to Opportunities Project (AOP)'}
 \description{
 Download data from the 'Access to Opportunities Project (AOP)'. The 'aopdata'
-package brings annual estimates of access to employment, health and education
+package brings annual estimates of access to employment, health, and education
 services by transport mode, as well as data on the spatial distribution of
 population, schools and health-care facilities at a fine spatial resolution
 for all cities included in the study. More info on the 'AOP' website \url{https://www.ipea.gov.br/acessooportunidades/en/}.

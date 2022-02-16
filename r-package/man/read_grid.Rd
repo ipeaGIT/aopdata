@@ -4,7 +4,7 @@
 \alias{read_grid}
 \title{Download spatial hexagonal grid H3}
 \usage{
-read_grid(city, showProgress = FALSE)
+read_grid(city = "bel", showProgress = FALSE)
 }
 \arguments{
 \item{city}{Character. A city name or three-letter abbreviation. If
@@ -16,7 +16,7 @@ read_grid(city, showProgress = FALSE)
 An \verb{sf data.frame} object
 }
 \description{
-Results of the AOP project are spatially aggregated on a hexagonal grid based
+Results of the AOP project are spatially aggregated on a hexagonal grid-based
 on the global H3 index at resolution 9, with a size of 357 meters (short
 diagonal) and an area of 0.74 km2. More information about H3 at
 \url{https://h3geo.org/docs/core-library/restable/}.  See documentation
@@ -29,6 +29,32 @@ diagonal) and an area of 0.74 km2. More information about H3 at
    geographic \tab \code{name_muni} \tab City name \cr
    geographic \tab \code{code_muni} \tab 7-digit code of each city \cr
    geographic \tab \code{id_hex} \tab Unique id of hexagonal cell \cr
+}
+}
+
+\section{Cities available}{
+\tabular{ll}{
+   \strong{City name} \tab \strong{Three-letter abbreviation} \cr
+   Belem \tab \code{bel} \cr
+   Belo Horizonte \tab \code{bho} \cr
+   Brasilia \tab \code{bsb} \cr
+   Campinas \tab \code{cam} \cr
+   Campo Grande \tab \code{cgr} \cr
+   Curitiba \tab \code{cur} \cr
+   Duque de Caxias \tab \code{duq} \cr
+   Fortaleza \tab \code{for} \cr
+   Goiania \tab \code{goi} \cr
+   Guarulhos \tab \code{gua} \cr
+   Maceio \tab \code{mac} \cr
+   Manaus \tab \code{man} \cr
+   Natal \tab \code{nat} \cr
+   Porto Alegre \tab \code{poa} \cr
+   Recife \tab \code{rec} \cr
+   Rio de Janeiro \tab \code{rio} \cr
+   Salvador \tab \code{sal} \cr
+   Sao Goncalo \tab \code{sgo} \cr
+   Sao Luis \tab \code{slz} \cr
+   Sao Paulo \tab \code{spo} \cr
 }
 }
 

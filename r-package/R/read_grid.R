@@ -1,7 +1,7 @@
 #' Download spatial hexagonal grid H3
 #'
 #' @description
-#' Results of the AOP project are spatially aggregated on a hexagonal grid based
+#' Results of the AOP project are spatially aggregated on a hexagonal grid-based
 #' on the global H3 index at resolution 9, with a size of 357 meters (short
 #' diagonal) and an area of 0.74 km2. More information about H3 at
 #' \url{https://h3geo.org/docs/core-library/restable/}.  See documentation
@@ -21,6 +21,30 @@
 #' | geographic	| `code_muni`	 | 7-digit code of each city	| |
 #' | geographic	| `id_hex`	   | Unique id of hexagonal cell	|
 #'
+#' # Cities available
+#' |**City name**| **Three-letter abbreviation**|
+#' |-----|-----|
+#' | Belem | `bel` |
+#' | Belo Horizonte | `bho` |
+#' | Brasilia  | `bsb`|
+#' | Campinas  | `cam` |
+#' | Campo Grande | `cgr` |
+#' | Curitiba | `cur`|
+#' | Duque de Caxias | `duq` |
+#' | Fortaleza | `for`|
+#' | Goiania  | `goi` |
+#' | Guarulhos  | `gua`|
+#' | Maceio  | `mac`|
+#' | Manaus  | `man`|
+#' | Natal  | `nat`|
+#' | Porto Alegre | `poa`|
+#' | Recife | `rec` |
+#' | Rio de Janeiro  | `rio`|
+#' | Salvador  | `sal`|
+#' | Sao Goncalo  | `sgo`|
+#' | Sao Luis  | `slz`|
+#' | Sao Paulo  | `spo`|
+#' 
 #' @export
 #' @family spatial data functions
 #' @examples \dontrun{ if (interactive()) {
@@ -30,7 +54,7 @@
 #' # Read spatial grid of all cities in the project
 #' # all <- read_grid(city = 'all', showProgress = FALSE)
 #'}}
-read_grid <- function(city, showProgress = FALSE){
+read_grid <- function(city='bel', showProgress = FALSE){
 
   # checks
   if(! is.logical(showProgress) ){stop("The 'showProgress' argument must either be TRUE or FALSE")}

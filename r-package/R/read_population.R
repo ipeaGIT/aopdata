@@ -35,6 +35,30 @@
 #' | sociodemographic | `R002` | Income quintile group	| 1 (poorest), 2, 3, 4, 5 (richest) |
 #' | sociodemographic | `R003` | Income decile group	| 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) |
 #'
+#' # Cities available
+#' |**City name**| **Three-letter abbreviation**|
+#' |-----|-----|
+#' | Belem | `bel` |
+#' | Belo Horizonte | `bho` |
+#' | Brasilia  | `bsb`|
+#' | Campinas  | `cam` |
+#' | Campo Grande | `cgr` |
+#' | Curitiba | `cur`|
+#' | Duque de Caxias | `duq` |
+#' | Fortaleza | `for`|
+#' | Goiania  | `goi` |
+#' | Guarulhos  | `gua`|
+#' | Maceio  | `mac`|
+#' | Manaus  | `man`|
+#' | Natal  | `nat`|
+#' | Porto Alegre | `poa`|
+#' | Recife | `rec` |
+#' | Rio de Janeiro  | `rio`|
+#' | Salvador  | `sal`|
+#' | Sao Goncalo  | `sgo`|
+#' | Sao Luis  | `slz`|
+#' | Sao Paulo  | `spo`|
+#' 
 #' @export
 #' @family population data functions
 #' @examples \dontrun{ if (interactive()) {

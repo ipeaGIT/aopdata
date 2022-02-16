@@ -2,12 +2,12 @@
 % Please edit documentation in R/utils.R
 \name{download_data}
 \alias{download_data}
-\title{Download data to temporary directory.}
+\title{Download data to a temporary directory.}
 \usage{
 download_data(file_url, progress_bar = showProgress)
 }
 \arguments{
-\item{file_url}{A string with the file_url address of a aop dataset}
+\item{file_url}{A string with the file_url address of aop dataset}
 
 \item{progress_bar}{Logical. Defaults to (TRUE) display progress bar}
 }

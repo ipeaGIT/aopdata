@@ -7,7 +7,7 @@
 load_data(file_url, temps = NULL)
 }
 \arguments{
-\item{file_url}{A string with the file_url address of a aop dataset}
+\item{file_url}{A string with the file_url address of aop dataset}
 
 \item{temps}{The address of a data file stored in tempdir. Defaults to NULL}
 }
