@@ -30,7 +30,7 @@
 #' # Read spatial grid of all cities in the project
 #' # all <- read_grid(city = 'all', showProgress = FALSE)
 #'}}
-read_grid <- function(city, showProgress = FALSE){
+read_grid <- function(city=NULL, showProgress = FALSE){
 
   # checks
   if(! is.logical(showProgress) ){stop("The 'showProgress' argument must either be TRUE or FALSE")}

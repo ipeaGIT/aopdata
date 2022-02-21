@@ -73,7 +73,7 @@
 #' # Read accessibility estimates for all cities
 #' all <- read_access(city = 'all', mode = 'walk', year = 2019, showProgress = FALSE)
 #'}}
-read_access <- function(city, mode = 'walk', peak = TRUE, year = 2019, geometry = FALSE, showProgress = TRUE){
+read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geometry = FALSE, showProgress = TRUE){
 
   # checks
   if(! is.logical(geometry) ){stop("The 'geometry' argument must either be TRUE or FALSE")}

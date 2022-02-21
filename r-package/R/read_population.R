@@ -45,7 +45,7 @@
 #' # all cities
 #' all <- read_population(city = 'all', year = 2010)
 #'}}
-read_population <- function(city='bel', year = 2010, geometry = FALSE, showProgress = TRUE){
+read_population <- function(city=NULL, year = 2010, geometry = FALSE, showProgress = TRUE){
 
   # checks
   if(! is.logical(geometry) ){stop("The 'geometry' argument must either be TRUE or FALSE")}

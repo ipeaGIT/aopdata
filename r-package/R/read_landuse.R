@@ -60,7 +60,7 @@
 #' # all cities
 #' all <- read_landuse(city = 'all', year = 2019)
 #'}}
-read_landuse <- function(city='bel', year = 2019, geometry = FALSE, showProgress = TRUE){
+read_landuse <- function(city=NULL, year = 2019, geometry = FALSE, showProgress = TRUE){
 
   # checks
   if(! is.logical(geometry) ){stop("The 'geometry' argument must either be TRUE or FALSE")}
