@@ -5,7 +5,7 @@
 \title{Download accessibility estimates with population and land use data}
 \usage{
 read_access(
-  city = "bel",
+  city = NULL,
   mode = "walk",
   peak = TRUE,
   year = 2019,

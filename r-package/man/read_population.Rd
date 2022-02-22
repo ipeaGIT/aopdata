@@ -5,7 +5,7 @@
 \title{Download population and socioeconomic data}
 \usage{
 read_population(
-  city = "bel",
+  city = NULL,
   year = 2010,
   geometry = FALSE,
   showProgress = TRUE

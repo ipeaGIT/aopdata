@@ -1,6 +1,12 @@
 # log history of aopdata package development
 
 
+# aopdata v0.2.4 (dev)
+
+**Minor changes**
+
+* `read_` functions now have no default value for the `city` parameter. [Closes #38](https://github.com/ipeaGIT/aopdata/issues/38).
+
 
 -------------------------------------------------------
 

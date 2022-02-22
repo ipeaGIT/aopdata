@@ -4,7 +4,7 @@
 \alias{read_landuse}
 \title{Download land use and population data}
 \usage{
-read_landuse(city = "bel", year = 2019, geometry = FALSE, showProgress = TRUE)
+read_landuse(city = NULL, year = 2019, geometry = FALSE, showProgress = TRUE)
 }
 \arguments{
 \item{city}{Character. A city name or three-letter abbreviation. If
