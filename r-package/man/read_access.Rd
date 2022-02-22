@@ -39,9 +39,9 @@ feature geometry of spatial hexagonal grid H3. See details in
 A \code{data.frame} object
 }
 \description{
-Download annual estimates of access to employment, health and education
+Download annual estimates of access to employment, health, and education
 services by transport mode and time of the day. See documentation 'Details'
-for the data dictionary. The data comes aggregated on a hexagonal grid based
+for the data dictionary. The data comes aggregated on a hexagonal grid-based
 on the global H3 index at resolution 9, with a size of 357 meters (short
 diagonal) and an area of 0.74 km2. More information about H3 at
 \url{https://h3geo.org/docs/core-library/restable/}.
@@ -75,7 +75,7 @@ junction of three components: 1) Indicator 2) Type of opportunity
 
 }
 
-\subsection{3) Time thresold (only applicable to CMA estimates)y}{\tabular{lll}{
+\subsection{3) Time thresold (only applicable to CMA estimates)}{\tabular{lll}{
    \strong{Time thresold} \tab \strong{Description} \tab \strong{Note - Only applicable to:} \cr
    \code{15} \tab Opportunities accessible within 15 min. \tab Active transport modes \cr
    \code{30} \tab Opportunities accessible within 30 min. \tab All transport modes \cr
@@ -83,6 +83,32 @@ junction of three components: 1) Indicator 2) Type of opportunity
    \code{60} \tab Opportunities accessible within 60 min. \tab All transport modes \cr
    \code{90} \tab Opportunities accessible within 90 min. \tab Public transport \cr
    \code{120} \tab Opportunities accessible within 120 min. \tab Public transport \cr
+}
+
+}
+
+\subsection{4) Cities available}{\tabular{lll}{
+   \strong{City name} \tab \strong{Three-letter abbreviation} \tab \strong{Transport modes} \cr
+   Belem \tab \code{bel} \tab Active \cr
+   Belo Horizonte \tab \code{bho} \tab All \cr
+   Brasilia \tab \code{bsb} \tab Active \cr
+   Campinas \tab \code{cam} \tab Active \cr
+   Campo Grande \tab \code{cgr} \tab Active \cr
+   Curitiba \tab \code{cur} \tab Active \cr
+   Duque de Caxias \tab \code{duq} \tab Active \cr
+   Fortaleza \tab \code{for} \tab All \cr
+   Goiania \tab \code{goi} \tab Active \cr
+   Guarulhos \tab \code{gua} \tab Active \cr
+   Maceio \tab \code{mac} \tab Active \cr
+   Manaus \tab \code{man} \tab Active \cr
+   Natal \tab \code{nat} \tab Active \cr
+   Porto Alegre \tab \code{poa} \tab All \cr
+   Recife \tab \code{rec} \tab All \cr
+   Rio de Janeiro \tab \code{rio} \tab All \cr
+   Salvador \tab \code{sal} \tab Active \cr
+   Sao Goncalo \tab \code{sgo} \tab Active \cr
+   Sao Luis \tab \code{slz} \tab Active \cr
+   Sao Paulo \tab \code{spo} \tab All \cr
 }
 
 }

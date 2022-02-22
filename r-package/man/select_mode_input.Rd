@@ -7,7 +7,7 @@
 select_mode_input(temp_meta = temp_meta, mode = NULL)
 }
 \arguments{
-\item{temp_meta}{A dataframe with the file_url addresses of aop datasets}
+\item{temp_meta}{A data.frame with the file_url addresses of aop datasets}
 
 \item{mode}{Transport mode (passed by read_ function)}
 }

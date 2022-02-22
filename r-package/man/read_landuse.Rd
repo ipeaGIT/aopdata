@@ -14,7 +14,7 @@ read_landuse(city = NULL, year = 2019, geometry = FALSE, showProgress = TRUE)
 only year currently available.}
 
 \item{geometry}{Logical. If \code{FALSE} (the default), returns a regular data.table
-of aop data. If \code{TRUE}, returns a an \verb{sf data.frame} with simple
+of aop data. If \code{TRUE}, returns a \verb{sf data.frame} with simple
 feature geometry of spatial hexagonal grid H3. See details in
 \link{read_grid}.}
 
@@ -59,6 +59,32 @@ See documentation 'Details' for the data dictionary.
    land use \tab \code{S002} \tab Number of healthcare facilities - low complexity \tab  \cr
    land use \tab \code{S003} \tab Number of healthcare facilities - medium complexity \tab  \cr
    land use \tab \code{S004} \tab Number of healthcare facilities - high complexity \tab  \cr
+}
+}
+
+\section{Cities available}{
+\tabular{ll}{
+   \strong{City name} \tab \strong{Three-letter abbreviation} \cr
+   Belem \tab \code{bel} \cr
+   Belo Horizonte \tab \code{bho} \cr
+   Brasilia \tab \code{bsb} \cr
+   Campinas \tab \code{cam} \cr
+   Campo Grande \tab \code{cgr} \cr
+   Curitiba \tab \code{cur} \cr
+   Duque de Caxias \tab \code{duq} \cr
+   Fortaleza \tab \code{for} \cr
+   Goiania \tab \code{goi} \cr
+   Guarulhos \tab \code{gua} \cr
+   Maceio \tab \code{mac} \cr
+   Manaus \tab \code{man} \cr
+   Natal \tab \code{nat} \cr
+   Porto Alegre \tab \code{poa} \cr
+   Recife \tab \code{rec} \cr
+   Rio de Janeiro \tab \code{rio} \cr
+   Salvador \tab \code{sal} \cr
+   Sao Goncalo \tab \code{sgo} \cr
+   Sao Luis \tab \code{slz} \cr
+   Sao Paulo \tab \code{spo} \cr
 }
 }
 

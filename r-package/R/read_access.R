@@ -1,9 +1,9 @@
 #' Download accessibility estimates with population and land use data
 #'
 #' @description
-#' Download annual estimates of access to employment, health and education
+#' Download annual estimates of access to employment, health, and education
 #' services by transport mode and time of the day. See documentation 'Details'
-#' for the data dictionary. The data comes aggregated on a hexagonal grid based
+#' for the data dictionary. The data comes aggregated on a hexagonal grid-based
 #' on the global H3 index at resolution 9, with a size of 357 meters (short
 #' diagonal) and an area of 0.74 km2. More information about H3 at
 #' \url{https://h3geo.org/docs/core-library/restable/}.
@@ -53,7 +53,7 @@
 #' | `EF`	| Public schools - elementary schools | |
 #' | `EM`	| Public schools - high schools | |
 #'
-#' ## 3) Time thresold (only applicable to CMA estimates)y
+#' ## 3) Time thresold (only applicable to CMA estimates)
 #' | **Time thresold**|**Description**|**Note - Only applicable to:**|
 #' |-----|-----|-----|
 #' | `15`| Opportunities accessible within 15 min.	| Active transport modes |
@@ -63,6 +63,30 @@
 #' | `90`| Opportunities accessible within 90 min.	| Public transport |
 #' |`120`| Opportunities accessible within 120 min.| Public transport |
 #'
+#'## 4) Cities available
+#' |**City name**| **Three-letter abbreviation**|**Transport modes**|
+#' |-----|-----|-----|
+#' | Belem | `bel` | Active |
+#' | Belo Horizonte | `bho` | All |
+#' | Brasilia  | `bsb`| Active |
+#' | Campinas  | `cam` | Active |
+#' | Campo Grande | `cgr` | Active |
+#' | Curitiba | `cur`| Active |
+#' | Duque de Caxias | `duq` | Active |
+#' | Fortaleza | `for`| All |
+#' | Goiania  | `goi` | Active |
+#' | Guarulhos  | `gua`| Active |
+#' | Maceio  | `mac`| Active |
+#' | Manaus  | `man`| Active |
+#' | Natal  | `nat`| Active |
+#' | Porto Alegre | `poa`| All |
+#' | Recife | `rec` | All |
+#' | Rio de Janeiro  | `rio`| All |
+#' | Salvador  | `sal`| Active |
+#' | Sao Goncalo  | `sgo`| Active |
+#' | Sao Luis  | `slz`| Active |
+#' | Sao Paulo  | `spo`| All |
+#' 
 #' @export
 #' @family accessibility data functions
 #' @examples \dontrun{ if (interactive()) {
@@ -73,6 +97,7 @@
 #' # Read accessibility estimates for all cities
 #' all <- read_access(city = 'all', mode = 'walk', year = 2019, showProgress = FALSE)
 #'}}
+
 read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geometry = FALSE, showProgress = TRUE){
 
   # checks
@@ -89,7 +114,7 @@ read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geom
   # check if download failed
   if (is.null(temp_meta)) { return(invisible(NULL)) }
 
-  message(paste0("Downloading accessibility data from year ", year))
+  message(paste0("Downloading accessibility data from the year ", year))
 
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)
@@ -102,9 +127,10 @@ read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geom
 
   # peak Vs off-peak
     city <- tolower(city)
-    # remove accents
+    # remove accents 
     city <- base::iconv(city, to="ASCII//TRANSLIT")
 
+    
   cities_with_pt <- ( all(city %in% c('for', 'rec', 'bho', 'rio', 'spo', 'cur', 'poa')) |
                     all(city %in% c('fortaleza', 'recife', 'belo horizonte',
                                 'rio de janeiro', 'sao paulo', 'curitiba', 'porto alegre')) )

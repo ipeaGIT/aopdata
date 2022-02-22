@@ -14,7 +14,7 @@
 #' @param year Numeric. A year number in YYYY format. Default set to 2019, the
 #'             only year currently available.
 #' @param geometry Logical. If `FALSE` (the default), returns a regular data.table
-#'                 of aop data. If `TRUE`, returns a an `sf data.frame` with simple
+#'                 of aop data. If `TRUE`, returns a `sf data.frame` with simple
 #'                 feature geometry of spatial hexagonal grid H3. See details in
 #'                 \link{read_grid}.
 #' @param showProgress Logical. Defaults to `TRUE` display progress bar
@@ -50,6 +50,30 @@
 #' | land use         |	`S003` | Number of healthcare facilities - medium complexity | |
 #' | land use         |	`S004` | Number of healthcare facilities - high complexity | |
 #'
+#' # Cities available
+#' |**City name**| **Three-letter abbreviation**|
+#' |-----|-----|
+#' | Belem | `bel` |
+#' | Belo Horizonte | `bho` |
+#' | Brasilia  | `bsb`|
+#' | Campinas  | `cam` |
+#' | Campo Grande | `cgr` |
+#' | Curitiba | `cur`|
+#' | Duque de Caxias | `duq` |
+#' | Fortaleza | `for`|
+#' | Goiania  | `goi` |
+#' | Guarulhos  | `gua`|
+#' | Maceio  | `mac`|
+#' | Manaus  | `man`|
+#' | Natal  | `nat`|
+#' | Porto Alegre | `poa`|
+#' | Recife | `rec` |
+#' | Rio de Janeiro  | `rio`|
+#' | Salvador  | `sal`|
+#' | Sao Goncalo  | `sgo`|
+#' | Sao Luis  | `slz`|
+#' | Sao Paulo  | `spo`|
+#' 
 #' @export
 #' @family land use data functions
 #' @examples \dontrun{ if (interactive()) {
@@ -74,7 +98,7 @@ read_landuse <- function(city=NULL, year = 2019, geometry = FALSE, showProgress 
   # check if download failed
   if (is.null(temp_meta)) { return(invisible(NULL)) }
 
-  message(paste0("Downloading land use data from year ", year))
+  message(paste0("Downloading land use data from the year ", year))
 
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)

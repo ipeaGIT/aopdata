@@ -6,7 +6,7 @@
 #'
 #' @description Subsets the metadata table by 'city'.
 #'
-#' @param temp_meta A dataframe with the file_url addresses of aop datasets
+#' @param temp_meta A data.frame with the file_url addresses of aop datasets
 #' @param city city input (passed from read_ function)
 #'
 #' @return A `data.frame` object with metadata subsetted by 'city'
@@ -61,7 +61,7 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
 #'
 #' @description Subsets the metadata table by 'year'.
 #'
-#' @param temp_meta A dataframe with the file_url addresses of aop datasets
+#' @param temp_meta A data.frame with the file_url addresses of aop datasets
 #' @param year Year of the dataset (passed from read_ function)
 #'
 #' @return A `data.frame` object with metadata subsetted by 'year'
@@ -92,7 +92,7 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
 #'
 #' @description Subsets the metadata table by 'mode'.
 #'
-#' @param temp_meta A dataframe with the file_url addresses of aop datasets
+#' @param temp_meta A data.frame with the file_url addresses of aop datasets
 #' @param mode Transport mode (passed by read_ function)
 #'
 #' @return A `data.frame` object with metadata subsetted by 'mode'
@@ -168,12 +168,12 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 
 
 
-#' Download data to temporary directory.
+#' Download data to a temporary directory.
 #'
 #' @description Save requested data (either an `sf` or a `data.frame`)
 #'              to a temporary directory.
 #'
-#' @param file_url A string with the file_url address of a aop dataset
+#' @param file_url A string with the file_url address of aop dataset
 #' @param progress_bar Logical. Defaults to (TRUE) display progress bar
 #'
 #' @return No visible output. The downloaded file (either an `sf` or a
@@ -303,7 +303,7 @@ download_data <- function(file_url, progress_bar = showProgress){
 #'
 #' @description Reads data from tempdir to global environment.
 #'
-#' @param file_url A string with the file_url address of a aop dataset
+#' @param file_url A string with the file_url address of aop dataset
 #' @param temps The address of a data file stored in tempdir. Defaults to NULL
 #'
 #' @return Returns either an `sf` or a `data.frame`, dependeding of the data set
@@ -356,12 +356,12 @@ load_data <- function(file_url, temps=NULL){
 
 #' Spatial join of AOP data
 #'
-#' @description Merges landuse or access data with H3 grid geometries
+#' @description Merges land use or access data with H3 grid geometries
 #'
 #' @param aop_df A `data.frame` of aop data
 #' @param aop_sf A spatial `sf` of aop data
 #'
-#' @return Returns a `data.frame sf` with access/landuse data and grid geometries
+#' @return Returns a `data.frame sf` with access/land use data and grid geometries
 #' @export
 #' @family support functions
 #'
@@ -415,7 +415,7 @@ aop_merge <- function(aop_landuse, aop_access){
 #' Check internet connection with Ipea server
 #'
 #' @description
-#' Checks if there is internet connection with Ipea server to download aop data.
+#' Checks if there is an internet connection with Ipea server to download aop data.
 #'
 #' @param file_url A string with the file_url address of an aop dataset
 #'
@@ -436,7 +436,7 @@ check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/m
   }
 
   # message
-  msg <- "Problem connecting to data server. Please try it again in a few minutes."
+  msg <- "Problem connecting to the data server. Please try it again in a few minutes."
 
   # test server connection
   x <- try(silent = TRUE,

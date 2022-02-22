@@ -7,7 +7,7 @@
 select_city_input(temp_meta = temp_meta, city = NULL)
 }
 \arguments{
-\item{temp_meta}{A dataframe with the file_url addresses of aop datasets}
+\item{temp_meta}{A data.frame with the file_url addresses of aop datasets}
 
 \item{city}{city input (passed from read_ function)}
 }
