@@ -193,7 +193,7 @@ plot_final <- plot_grid(plot_cima, plot_baixo, ncol = 1)
 # para salvar do exato tamanho que foi salva no td:
 #
 # ggsave(
-#   "resultados/proposta_figura_esquematica_interp_dasim.png",
+#   filename="proposta_figura_esquematica_interp_dasim.png",
 #   plot = plot_final,
 #   width = 4.4,
 #   height = 4,
