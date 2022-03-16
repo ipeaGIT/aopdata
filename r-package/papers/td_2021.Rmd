@@ -69,7 +69,11 @@ f_inc <- ggplot() +
 f_job <- ggplot() +
   geom_sf(data=muni_bh, fill='#ccc8c7', color=NA) +
   geom_sf(data=subset(dados_bh, P001>0), aes(fill = R003), color = NA, alpha = 0.7) +
-  scale_fill_viridis_c(option = 'Inferno', direction = 1, na.value=NA) +
+  # scale_fill_viridis_c(option = 'Inferno', direction = 1, na.value=NA) +
+  viridis::scale_fill_viridis(option = "Inferno"
+                            ,limits = c(0,2000)
+                            ,breaks= c(seq(0,1500,by = 500),2000)
+                            ,labels = c(seq(0,1500,by = 500),"2000 ou mais"))+
   labs(subtitle = "Renda 2010", fill = "Decis de\nrenda") +
   theme_void()
 
