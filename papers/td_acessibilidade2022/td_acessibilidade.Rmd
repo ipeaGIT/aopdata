@@ -1,0 +1,66 @@
+
+---
+title: Distribuição espacial das acessibilidades aos empregos em São Paulo e equipamentos de saúde de alta complexidade mais próximos em Fortaleza
+output:
+  html_document:
+    df_print: paged
+---
+  
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+ collapse = TRUE,
+ comment = "#>",
+ fig.width = 7,
+ fig.height = 5
+ )
+```
+
+As bases de dados estão disponibilizadas publicamente para download no site do Projeto Acesso a Oportunidades, e também por meio do pacote de R *aopdata*. A função `read_access()` permite fazer o download dos dados de acessibilidade cumulativa e tempo mínimo de viagem até a oportunidade mais próxima das 20 maiores cidades do Brasil analisadas no projeto (Código 1). Por enquanto, estão disponíveis apenas os dados do Censo Demografico 2010.
+
+```{r}
+library(aopdata)
+# download dos dados de São Paulo
+df_spo <- read_access(city="Sao Paulo", mode='public_transport', peak=TRUE, year=2019, geometry = TRUE, showProgress = FALSE)
+
+# download dos dados de Fortaleza
+df_for <- read_access(city="Fortaleza", mode='public_transport', peak=TRUE, year=2019, geometry = TRUE, showProgress = FALSE)
+
+```
+
+Para acessar o dicionário de dados da função `read_access()` que contem o nome de cada uma das colunas com as estimativas de acessibilidade, basta utilizar a função `?read_access()`. O dicionário de dados permite distinguir, por exemplo, as colunas com informações de acessibilidade a escolas por nível de ensino e equipamentos de saúde por nivel de complexidade considerando diferentes tempos de viagem. A função `read_access()` possui um parâmetro chamado `geometry`. Quando o usuário executa essa função com o parâmetro `geometry = TRUE`, as funções retornam a base de dados com as informações espaciais da geometria da grade de hexagonos H3, o que permite a criação de mapas para visualizar a distribuição espacial dos dados. As Figuras 1 e 2 ilustram, respectivamente, o mapa de acessibilidade cumulativa em 60 minutos aos empregos em São Paulo por transporte público e os tempos mínimos de viagem em Fortaleza para acessar equipamentos de saúde de alta complexidade mais próximos através do transporte público (Código 2).
+
+
+```{r}
+# carregar biblioteca para visualizar dados
+library(ggplot2)
+library(geobr)
+
+# carregar limites municipais de São Paulo
+lim_spo <- geobr::read_municipality(code_muni = 3550308, showProgress = FALSE)
+
+# carregar limites municipais de Fortaleza
+lim_for <- geobr::read_municipality(code_muni = 2304400, showProgress = FALSE)
+
+
+# Mapa da distribuição espacial das acessibilidades cumulativas aos empregos em São Paulo em 60 minutos de viagem através do sistema de transporte público
+ggplot() +
+ geom_sf(data=subset(df_spo, P001>0 & !is.na(CMATT60)), aes(fill=CMATT60), color=NA, alpha=1) +
+ geom_sf(data = lim_spo, color="black", fill = NA)+
+ scale_fill_distiller(palette = "RdYlBu", direction = 1)+
+ labs(title='Acessibilidade cumulativa aos empregos em 60 minutos de tempo de viagem \npor transporte público em São Paulo', fill="Percentual de empregos acessados") +
+ theme_void()
+
+ggsave(spo.png)
+
+# Mapa de tempo mínimo de viagem em Fortaleza para acessar o equipamento de saúde de alta complexidade mais próximo por transporte público
+ggplot() +
+ geom_sf(data=subset(df_for, P001>0 & !is.na(TMISA)), aes(fill=TMISA), color=NA, alpha=1) +
+  geom_sf(data = lim_for, color="black", fill = NA)+
+ scale_fill_distiller(palette = "RdYlBu", direction = -1)+
+ labs(title='Tempo mínimo de viagem em Fortaleza para acessar o equipamento de \nsaúde de alta complexidade mais próximo por transporte público', fill="Minutos") +
+ theme_void()
+ggsave(for.png)
+```
+
+
+
