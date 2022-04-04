@@ -15,52 +15,184 @@ knitr::opts_chunk$set(
  )
 ```
 
-As bases de dados estão disponibilizadas publicamente para download no site do Projeto Acesso a Oportunidades, e também por meio do pacote de R *aopdata*. A função `read_access()` permite fazer o download dos dados de acessibilidade cumulativa e tempo mínimo de viagem até a oportunidade mais próxima das 20 maiores cidades do Brasil analisadas no projeto (Código 1). Por enquanto, estão disponíveis apenas os dados do Censo Demografico 2010.
 
 ```{r}
+# carregar os pacotes necessários
 library(aopdata)
-# download dos dados de São Paulo
-df_spo <- read_access(city="Sao Paulo", mode='public_transport', peak=TRUE, year=2019, geometry = TRUE, showProgress = FALSE)
-
-# download dos dados de Fortaleza
-df_for <- read_access(city="Fortaleza", mode='public_transport', peak=TRUE, year=2019, geometry = TRUE, showProgress = FALSE)
-
+library(ggplot2)
+library(dplyr)
+library(geobr)
+library(viridisLite)
+library(patchwork)
 ```
 
-Para acessar o dicionário de dados da função `read_access()` que contem o nome de cada uma das colunas com as estimativas de acessibilidade, basta utilizar a função `?read_access()`. O dicionário de dados permite distinguir, por exemplo, as colunas com informações de acessibilidade a escolas por nível de ensino e equipamentos de saúde por nivel de complexidade considerando diferentes tempos de viagem. A função `read_access()` possui um parâmetro chamado `geometry`. Quando o usuário executa essa função com o parâmetro `geometry = TRUE`, as funções retornam a base de dados com as informações espaciais da geometria da grade de hexagonos H3, o que permite a criação de mapas para visualizar a distribuição espacial dos dados. As Figuras 1 e 2 ilustram, respectivamente, o mapa de acessibilidade cumulativa em 60 minutos aos empregos em São Paulo por transporte público e os tempos mínimos de viagem em Fortaleza para acessar equipamentos de saúde de alta complexidade mais próximos através do transporte público (Código 2).
 
 
 ```{r}
-# carregar biblioteca para visualizar dados
-library(ggplot2)
-library(geobr)
+# carregar os dados
 
-# carregar limites municipais de São Paulo
-lim_spo <- geobr::read_municipality(code_muni = 3550308, showProgress = FALSE)
+muni <- "spo"
+muni_name <- "São Paulo"
 
-# carregar limites municipais de Fortaleza
-lim_for <- geobr::read_municipality(code_muni = 2304400, showProgress = FALSE)
+dados_muni_active <- 
+  readRDS('../../../data/acesso_oport/output_base_final/2019/dados2019_AcessOport_access_active_v1.0.rds')
+dados_muni_active <- subset(dados_muni_active, sigla_muni == muni)
+
+dados_muni_tpcar <- 
+  readRDS('../../../data/acesso_oport/output_base_final/2019/dados2019_AcessOport_access_tpcar_v1.0.rds')
+dados_muni_tpcar <- subset(dados_muni_tpcar, sigla_muni == muni)
 
 
-# Mapa da distribuição espacial das acessibilidades cumulativas aos empregos em São Paulo em 60 minutos de viagem através do sistema de transporte público
-ggplot() +
- geom_sf(data=subset(df_spo, P001>0 & !is.na(CMATT60)), aes(fill=CMATT60), color=NA, alpha=1) +
- geom_sf(data = lim_spo, color="black", fill = NA)+
- scale_fill_distiller(palette = "RdYlBu", direction = 1)+
- labs(title='Acessibilidade cumulativa aos empregos em 60 minutos de tempo de viagem \npor transporte público em São Paulo', fill="Percentual de empregos acessados") +
- theme_void()
-
-ggsave(spo.png)
-
-# Mapa de tempo mínimo de viagem em Fortaleza para acessar o equipamento de saúde de alta complexidade mais próximo por transporte público
-ggplot() +
- geom_sf(data=subset(df_for, P001>0 & !is.na(TMISA)), aes(fill=TMISA), color=NA, alpha=1) +
-  geom_sf(data = lim_for, color="black", fill = NA)+
- scale_fill_distiller(palette = "RdYlBu", direction = -1)+
- labs(title='Tempo mínimo de viagem em Fortaleza para acessar o equipamento de \nsaúde de alta complexidade mais próximo por transporte público', fill="Minutos") +
- theme_void()
-ggsave(for.png)
+# download da fronteira do municipio
+muni_outline <- read_municipality()
+muni_outline <- subset(muni_outline, name_muni == muni_name)
 ```
+
+
+## Empregos totais via transporte publico (60 min)
+
+
+```{r}
+dados_muni <- subset(dados_muni_tpcar, pico == 1 & modo == "tp" & CMATT60 > 0)
+
+f_cmatt_tp <-
+ggplot() +
+  geom_sf(data=muni_outline, fill='gray90', color=NA) +
+  geom_sf(data=dados_muni, aes(fill = CMATT60/1000), color = NA, alpha = 0.9) +
+  scale_fill_viridis_c(option = 'E'
+                       ,limits = c(0,3000)
+                       ,breaks= c(seq(0,2500, by = 500),3000)
+                       ,labels = c(seq(0, 2500,by = 500),"3000+")) +
+  labs(subtitle = "Empregos acessíveis em 60 min.\nde viagem via transporte público", 
+       fill = "Empregos\n(x 1.000)") +
+  theme_void()
+
+f_cmatt_tp
+```
+
+
+## Empregos totais a pé - 30 min
+
+```{r}
+dados_muni <- subset(dados_muni_active, pico == 1 & modo == "caminhada" & CMATT30 > 0)
+
+f_cmatt_walk <-
+ggplot() +
+  geom_sf(data=muni_outline, fill='gray90', color=NA) +
+  geom_sf(data=dados_muni, aes(fill = CMATT30/1000), color = NA, alpha = 0.9) +
+  scale_fill_viridis_c(option = 'B', 
+                       direction = 1
+                       ,limits = c(0, 250)
+                       ,breaks= c(seq(0,200, by = 50), 250)
+                       ,labels = c(seq(0, 200,by = 50),"250+")) +
+  labs(subtitle = "Empregos acessíveis em\n30 min. de caminhada", 
+       fill = "Empregos\n(x 1.000)") +
+  theme_void()
+
+
+f_cmatt_walk
+```
+
+
+## Escola de ensino medio mais próxima, de bicicleta (TMI)
+
+```{r}
+dados_muni <- subset(dados_muni_active, pico == 1 & modo == "bicicleta")
+
+f_cmaem_bike <-
+ggplot() +
+  geom_sf(data=muni_outline, fill='gray90', color=NA) +
+  geom_sf(data=dados_muni, aes(fill = CMAMM30), color = NA, alpha = 0.9) +
+  scale_fill_viridis_c(option = 'A',
+                       direction = 1
+                       # ,limits = c(0, 30)
+                       # ,breaks= seq(0,30, by = 10)
+                       # ,labels = c(seq(0, 20, by = 10),"30+"
+                                   # )
+                                   ) +
+  labs(subtitle = "Vagas de ensino médio em\n30 min. de bicicleta", 
+       fill = "Vagas") +
+  theme_void()
+
+f_cmaem_bike
+```
+
+## Saúde de alta complexidade mais próxima (carro)
+
+```{r}
+dados_muni <- subset(dados_muni_tpcar, pico == 1 & modo == "carro")
+dados_muni <- mutate(dados_muni, TMISA = if_else(TMISA >= 30, 30, TMISA))
+
+f_tmisa_carro <-
+ggplot() +
+  geom_sf(data=muni_outline, fill='gray90', color=NA) +
+  geom_sf(data=dados_muni, aes(fill = TMISA), color = NA, alpha = 0.9) +
+  scale_fill_viridis_c(option = 'C',
+                       direction = -1
+                       ,limits = c(0, 30)
+                       ,breaks= seq(0,30, by = 5)
+                       ,labels = c(seq(0, 25, by = 5),"30+")
+                                   ) +
+  labs(subtitle = "Tempo de viagem até o \nhospital mais próximo, de carro", 
+       fill = "Tempo\n(minutos)") +
+  theme_void()
+
+f_tmisa_carro
+```
+
+
+## Quantidade de idosos em meia hora (CMP)
+
+
+
+
+## CRAS mais próximo via Transporte Público 
+
+```{r}
+dados_muni <- subset(dados_muni_tpcar, pico == 1 & modo == "tp" )
+dados_muni <- mutate(dados_muni, TMICT = if_else(TMICT >= 60, 60, TMICT))
+
+f_tmict_tp <-
+ggplot() +
+  geom_sf(data=muni_outline, fill='gray90', color=NA) +
+  geom_sf(data=dados_muni, aes(fill = TMICT), color = NA, alpha = 0.9) +
+  scale_fill_viridis_c(option = 'C', direction = -1
+                       # ,limits = c(0,3000)
+                       # ,breaks= c(seq(0,2500, by = 500),3000)
+                       # ,labels = c(seq(0, 2500,by = 500),"3000+")
+                       ) +
+  labs(subtitle = "CRAS mais próximo,\nvia transporte público", 
+       fill = "Tempo\n(minutos)") +
+  theme_void()
+
+
+f_tmict_tp
+```
+
+## Mapa composto
+
+```{r}
+# final figure
+fig_final <- f_cmatt_tp + f_cmatt_walk + f_cmaem_bike + f_tmisa_carro + f_tmict_tp +
+  plot_layout(ncol =2)
+```
+
+
+```{r}
+fig_final
+```
+
+
+```{r}
+# save
+ggsave(fig_final, filename = 'fig_access.png', dpi=300,
+       width = 15, height = 23, units = 'cm')
+
+
+```
+
+
+
 
 
 
