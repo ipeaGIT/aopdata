@@ -63,7 +63,7 @@ ggplot() +
                        ,limits = c(0,3000)
                        ,breaks= c(seq(0,2500, by = 500),3000)
                        ,labels = c(seq(0, 2500,by = 500),"3000+")) +
-  labs(subtitle = "Empregos acessíveis em até\n60 minutos de viagem via\ntransporte público", 
+  labs(subtitle = "Empregos acessíveis em até\n60 minutos de viagem por\ntransporte público", 
        fill = "Empregos\n(x 1.000)") +
   theme_void()
 
@@ -133,7 +133,7 @@ ggplot() +
                        ,breaks= seq(0,30, by = 5)
                        ,labels = c(seq(0, 25, by = 5),"30+")
                                    ) +
-  labs(subtitle = "Tempo de viagem até o \nhospital mais próximo, de carro", 
+  labs(subtitle = "Tempo de viagem até o \nhospital mais próximo de carro", 
        fill = "Tempo\n(minutos)") +
   theme_void()
 
@@ -178,7 +178,7 @@ ggplot() +
   geom_sf(data=muni_outline, fill='gray90', color=NA) +
   geom_sf(data=dados_muni, aes(fill = TMICT), color = NA, alpha = 0.9) +
   scale_fill_viridis_c(option = 'C', direction = -1) +
-  labs(subtitle = "CRAS mais próximo,\nvia transporte público", 
+  labs(subtitle = "CRAS mais próximo\npor transporte público", 
        fill = "Tempo\n(minutos)") +
   theme_void()
 
@@ -202,9 +202,10 @@ fig_final
 ```{r}
 # save
 ggsave(fig_final, filename = 'fig_access.png', dpi=300,
-       width = 15, height = 23, units = 'cm')
+       width = 16, height = 25, units = 'cm')
 
-
+ggsave(fig_final, filename = 'fig_access.pdf', dpi=300,
+       width = 16, height = 25, units = 'cm')
 ```
 
 
