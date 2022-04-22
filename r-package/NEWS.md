@@ -7,16 +7,16 @@
 
 * New data sets:
   * Year coverage
-    - Access and Land use data sets now cover years 2017, 2018 and 2019
+    - Access and Land use data sets now cover years **2017, 2018 and 2019**
 
   * New cities
-  - Data for Goiania now covers the entire metro area of Goiania
+    - Data for Goiania now covers the entire **metro area of Goiania**
 
   * New modes
-    - Access data now bring accessibility estimates by car
+    - Access data now bring accessibility estimates by **car**
 
   * New activities
-    - Land use and access data now bring data for centers for social assistance (CRAS)
+    - Land use and access data now bring data for **centers for social assistance (CRAS)**
     - Population data sets with minor spatial corrections to smooth spatial distributions
 
 
