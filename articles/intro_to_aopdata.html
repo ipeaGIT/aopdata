@@ -285,21 +285,49 @@
 </tr>
 <tr class="even">
 <td><code>P004</code></td>
-<td>Number of indiginous residents</td>
+<td>Number of indigenous residents</td>
 </tr>
 <tr class="odd">
 <td><code>P005</code></td>
-<td>Number of asian-descendents residents</td>
+<td>Number of asian-descendent residents</td>
 </tr>
 <tr class="even">
+<td><code>P010</code></td>
+<td>Number of residents with age between 0 and 5</td>
+</tr>
+<tr class="odd">
+<td><code>P011</code></td>
+<td>Number of residents with age between 6 and 14</td>
+</tr>
+<tr class="even">
+<td><code>P012</code></td>
+<td>Number of residents with age between 15 and 18</td>
+</tr>
+<tr class="odd">
+<td><code>P013</code></td>
+<td>Number of residents with age between 19 and 24</td>
+</tr>
+<tr class="even">
+<td><code>P014</code></td>
+<td>Number of residents with age between 25 and 39</td>
+</tr>
+<tr class="odd">
+<td><code>P015</code></td>
+<td>Number of residents with age between 40 and 69</td>
+</tr>
+<tr class="even">
+<td><code>P016</code></td>
+<td>Number of residents with age 70 or more</td>
+</tr>
+<tr class="odd">
 <td><code>R001</code></td>
 <td>Average household income per capita</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>R002</code></td>
 <td>Income quintile group</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>R003</code></td>
 <td>Income decile group</td>
 </tr>
@@ -322,11 +350,11 @@
 </tr>
 <tr class="even">
 <td><code>T002</code></td>
-<td>Total number of formal jobs with primary education</td>
+<td>Number of formal jobs with primary education or lower</td>
 </tr>
 <tr class="odd">
 <td><code>T003</code></td>
-<td>Number of formal jobs with secundary education</td>
+<td>Number of formal jobs with secondary education</td>
 </tr>
 <tr class="even">
 <td><code>T004</code></td>
@@ -349,6 +377,22 @@
 <td>Number of public schools - high schools</td>
 </tr>
 <tr class="odd">
+<td><code>M001</code></td>
+<td>Total number of kids enrolled in public schools</td>
+</tr>
+<tr class="even">
+<td><code>M002</code></td>
+<td>Number of kids enrolled in public schools - early childhood</td>
+</tr>
+<tr class="odd">
+<td><code>M003</code></td>
+<td>Number of kids enrolled in public schools - elementary schools</td>
+</tr>
+<tr class="even">
+<td><code>M004</code></td>
+<td>Number of kids enrolled in public schools - high schools</td>
+</tr>
+<tr class="odd">
 <td><code>S001</code></td>
 <td>Total number of healthcare facilities</td>
 </tr>
@@ -363,6 +407,10 @@
 <tr class="even">
 <td><code>S004</code></td>
 <td>Number of healthcare facilities - high complexity</td>
+</tr>
+<tr class="odd">
+<td><code>C001</code></td>
+<td>Number of centers for social assistance (CRAS)</td>
 </tr>
 </tbody>
 </table>
@@ -392,15 +440,20 @@
 <tbody>
 <tr class="odd">
 <td><code>CMA</code></td>
-<td>Cumulative opportunity measure (active)</td>
-<td></td>
+<td>Active cumulative opportunity measure</td>
+<td>The number of opportunities one can access from a given origin</td>
 </tr>
 <tr class="even">
+<td><code>CMP</code></td>
+<td>Passive cumulative opportunity measure</td>
+<td>The number of people that can access a given destination</td>
+</tr>
+<tr class="odd">
 <td><code>TMI</code></td>
 <td>Travel time to closest opportunity</td>
 <td>Value = Inf when travel time is longer</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>than 2h (public transport) or 1,5h (walking or bicycle)</td>
 <td></td>
 <td></td>
@@ -409,10 +462,6 @@
 </table>
 <p><strong>2) Type of opportunity</strong></p>
 <table class="table">
-<colgroup>
-<col width="50%">
-<col width="50%">
-</colgroup>
 <thead><tr class="header">
 <th><strong>Indicator</strong></th>
 <th><strong>Description</strong></th>
@@ -423,44 +472,68 @@
 <td>All jobs</td>
 </tr>
 <tr class="even">
-<td><code>TQ</code></td>
-<td>Total jobs with partial match between job education and income quintile</td>
+<td><code>TB</code></td>
+<td>Jobs - primary education or lower)</td>
 </tr>
 <tr class="odd">
-<td><code>TD</code></td>
-<td>Total jobs with partial match between job education and income decile</td>
+<td><code>TM</code></td>
+<td>Jobs - secondary education</td>
 </tr>
 <tr class="even">
+<td><code>TA</code></td>
+<td>Jobs - tertiary education</td>
+</tr>
+<tr class="odd">
 <td><code>ST</code></td>
 <td>All healthcare facilities</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>SB</code></td>
 <td>Healthcare facilities - Low complexity</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>SM</code></td>
 <td>Healthcare facilities - Medium complexity</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>SA</code></td>
 <td>Healthcare facilities - High complexity</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>ET</code></td>
 <td>All public schools</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>EI</code></td>
 <td>Public schools - early childhood</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>EF</code></td>
 <td>Public schools - elementary schools</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>EM</code></td>
 <td>Public schools - high schools</td>
+</tr>
+<tr class="odd">
+<td><code>MT</code></td>
+<td>Kids enrolled in all public schools</td>
+</tr>
+<tr class="even">
+<td><code>MI</code></td>
+<td>Kids enrolled in early childhood</td>
+</tr>
+<tr class="odd">
+<td><code>MF</code></td>
+<td>Kids enrolled in elementary schools</td>
+</tr>
+<tr class="even">
+<td><code>MM</code></td>
+<td>Kids enrolled in high schools</td>
+</tr>
+<tr class="odd">
+<td><code>CT</code></td>
+<td>Centers for social assistance (CRAS)</td>
 </tr>
 </tbody>
 </table>
@@ -475,7 +548,7 @@
 <tr class="odd">
 <td><code>15</code></td>
 <td>Opportunities accessible within 15 min.</td>
-<td>Active transport modes</td>
+<td>All transport modes</td>
 </tr>
 <tr class="even">
 <td><code>30</code></td>
@@ -495,12 +568,12 @@
 <tr class="odd">
 <td><code>90</code></td>
 <td>Opportunities accessible within 90 min.</td>
-<td>Public transport</td>
+<td>Public transport and car</td>
 </tr>
 <tr class="even">
 <td><code>120</code></td>
 <td>Opportunities accessible within 120 min.</td>
-<td>Public transport</td>
+<td>Public transport and car</td>
 </tr>
 </tbody>
 </table>
