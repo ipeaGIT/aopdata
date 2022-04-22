@@ -73,7 +73,7 @@
 #' | Sao Goncalo  | `sgo`|
 #' | Sao Luis  | `slz`|
 #' | Sao Paulo  | `spo`|
-#' 
+#'
 #' @export
 #' @family land use data functions
 #' @examples \dontrun{ if (interactive()) {
@@ -98,7 +98,7 @@ read_landuse <- function(city=NULL, year = 2019, geometry = FALSE, showProgress 
   # check if download failed
   if (is.null(temp_meta)) { return(invisible(NULL)) }
 
-  message(paste0("Downloading land use data from the year ", year))
+  message(paste0("Downloading land use data for the year ", year))
 
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)

@@ -377,6 +377,7 @@ aop_spatial_join <- function(aop_df, aop_sf){
 
   # back to sf
   aop <- sf::st_sf(aop_df)
+  aop <- subset(aop, id_hex != 'a')
 
   return(aop)
 
@@ -404,7 +405,7 @@ aop_merge <- function(aop_landuse, aop_access){
   data.table::setkeyv(aop_access,  c('year', 'abbrev_muni', 'id_hex')) #'name_muni', 'code_muni',
 
   # merge
-  aop <- data.table::merge.data.table(aop_landuse, aop_access, by = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'), all = TRUE)
+  aop <- data.table::merge.data.table(aop_landuse, aop_access, by = c('year', 'abbrev_muni',  'id_hex'), all = TRUE) #'name_muni', 'code_muni',
 
   return(aop)
 }

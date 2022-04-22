@@ -86,13 +86,13 @@
 #' | Sao Goncalo  | `sgo`| Active |
 #' | Sao Luis  | `slz`| Active |
 #' | Sao Paulo  | `spo`| All |
-#' 
+#'
 #' @export
 #' @family accessibility data functions
 #' @examples \dontrun{ if (interactive()) {
 #' # Read accessibility estimates of a single city
 #' df <- read_access(city = 'Fortaleza', mode = 'public_transport', year = 2019, showProgress = FALSE)
-#' df <- read_access(city = 'for', mode = 'public_transport', year = 2019, showProgress = FALSE)
+#' df <- read_access(city = 'Goiania', mode = 'public_transport', year = 2019, showProgress = FALSE)
 #'
 #' # Read accessibility estimates for all cities
 #' all <- read_access(city = 'all', mode = 'walk', year = 2019, showProgress = FALSE)
@@ -127,10 +127,10 @@ read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geom
 
   # peak Vs off-peak
     city <- tolower(city)
-    # remove accents 
+    # remove accents
     city <- base::iconv(city, to="ASCII//TRANSLIT")
 
-    
+
   cities_with_pt <- ( all(city %in% c('for', 'rec', 'bho', 'rio', 'spo', 'cur', 'poa', 'goi')) |
                     all(city %in% c('fortaleza', 'recife', 'belo horizonte',
                                 'rio de janeiro', 'sao paulo', 'curitiba', 'porto alegre', 'goiania')) )
