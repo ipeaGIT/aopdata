@@ -18,10 +18,9 @@ files = list.files("//storage1/geobr/aopdata/data", full.names = T, recursive = 
 # function to update metadata
 update_metadata <- function(f){
   # f <- files[1]  # access
-  # f <- files[80] # grid
-  # f <- files[100] # land_use
-  # f <- files[120] # landuse
-  # f <- files[140] # population
+  # f <- files[210] # grid
+  # f <- files[250] # land_use
+  # f <- files[300] # population
 
   # file index
   i <- qdapRegex::rm_between(f, "/", "/", extract = T)
@@ -44,7 +43,6 @@ update_metadata <- function(f){
 
   if(type=='access'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("https://www.ipea.gov.br/geobr/aopdata/data",type,city,year,mode,name,sep="/") ) }
 
-  if(type=='landuse'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("https://www.ipea.gov.br/geobr/aopdata/data",type,city,year,name,sep="/") ) }
   if(type=='land_use'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("https://www.ipea.gov.br/geobr/aopdata/data",type,city,year,name,sep="/") ) }
 
   if(type=='population'){ metadata[nrow(metadata) + 1,] = list(type,city,year,mode,paste("https://www.ipea.gov.br/geobr/aopdata/data",type,city,year,name,sep="/") ) }
@@ -87,7 +85,7 @@ table(metadata$type )
 table(metadata$year )
 subset(metadata, type=="grid")
 subset(metadata, mode=="bicycle")
-subset(metadata, type=="traveltime")
+subset(metadata, mode=="car")
 
 
 # to avoid conflict with data.table
