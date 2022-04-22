@@ -58,7 +58,7 @@
 #' | Sao Goncalo  | `sgo`|
 #' | Sao Luis  | `slz`|
 #' | Sao Paulo  | `spo`|
-#' 
+#'
 #' @export
 #' @family population data functions
 #' @examples \dontrun{ if (interactive()) {
@@ -83,7 +83,7 @@ read_population <- function(city=NULL, year = 2010, geometry = FALSE, showProgre
   # check if download failed
   if (is.null(temp_meta)) { return(invisible(NULL)) }
 
-  message(paste0("Downloading population data from year ", year))
+  message(paste0("Downloading population data for the year ", year))
 
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)
