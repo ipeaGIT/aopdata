@@ -38,7 +38,7 @@ Ambas as funções `read_population()` e `read_land_use()` possuem um parâmetro
 ```{r}
 library(ggplot2)
 library(geobr)
-library(cowplot)
+library(patchwork)
 library(viridisLite)
 
 ## mapa da distribuição espacial de uso do solo de Belo Horizonte
@@ -79,22 +79,22 @@ f_job <- ggplot() +
 
 f_sau <- ggplot() +
   geom_sf(data=muni_bh, fill='#ccc8c7', color=NA) +
-  geom_sf(data=subset(dados_bh, S001>0), aes(fill = as.factor(S001)), color = NA, alpha = 0.7) +
+  geom_sf(data=subset(dados_bh, S001>0), aes(fill = as.factor(S001)), color = NA, alpha = 0.9) +
   scale_fill_brewer(palette = "YlOrRd", direction = 1, na.value=NA) +
   labs(subtitle = "Estabelecimentos de saúde 2019", fill = "Número abs.") +
   theme_void()
 
 f_edu <- ggplot() +
   geom_sf(data=muni_bh, fill='#ccc8c7', color=NA) +
-  geom_sf(data=subset(dados_bh, E001>0), aes(fill = as.factor(E001)), color = NA, alpha = 0.7) +
+  geom_sf(data=subset(dados_bh, E001>0), aes(fill = as.factor(E001)), color = NA, alpha = 0.9) +
   scale_fill_brewer(palette = "YlOrRd", direction = 1, na.value=NA) +
   labs(subtitle = "Escolas 2019", fill = "Número abs.") +
   theme_void()
 
 f_cra <- ggplot() +
   geom_sf(data=muni_bh, fill='#ccc8c7', color=NA) +
-  geom_sf(data=subset(dados_bh, E001>0), aes(fill = as.factor(E001)), color = NA, alpha = 0.7) +
-  scale_fill_brewer(palette = "YlOrRd", direction = 1, na.value=NA) +
+  geom_sf(data=subset(dados_bh, E001>0), aes(fill = as.factor(E001)), color = NA, alpha = 0.9) +
+  scale_fill_brewer(palette = "YlOrRd", direction = -1, na.value=NA) +
   labs(subtitle = "Escolas 2019", fill = "Número abs.") +
   theme_void()
 
