@@ -1,0 +1,215 @@
+
+---
+title: Distribuição espacial das acessibilidades aos empregos em São Paulo e equipamentos de saúde de alta complexidade mais próximos em Fortaleza
+output:
+  html_document:
+    df_print: paged
+---
+  
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+ collapse = TRUE,
+ comment = "#>",
+ fig.width = 7,
+ fig.height = 5
+ )
+```
+
+
+```{r}
+# carregar os pacotes necessários
+library(aopdata)
+library(ggplot2)
+library(dplyr)
+library(geobr)
+library(viridisLite)
+library(patchwork)
+```
+
+
+
+```{r}
+# carregar os dados
+
+muni <- "spo"
+muni_name <- "São Paulo"
+
+dados_muni_active <- 
+  readRDS('../../../data/acesso_oport/output_base_final/2019/dados2019_AcessOport_access_active_v1.0.rds')
+dados_muni_active <- subset(dados_muni_active, sigla_muni == muni)
+
+dados_muni_tpcar <- 
+  readRDS('../../../data/acesso_oport/output_base_final/2019/dados2019_AcessOport_access_tpcar_v1.0.rds')
+dados_muni_tpcar <- subset(dados_muni_tpcar, sigla_muni == muni)
+
+
+# download da fronteira do municipio
+muni_outline <- read_municipality()
+muni_outline <- subset(muni_outline, name_muni == muni_name)
+```
+
+
+## Empregos totais via transporte publico (60 min)
+
+
+```{r}
+dados_muni <- subset(dados_muni_tpcar, pico == 1 & modo == "tp" & CMATT60 > 0)
+
+f_cmatt_tp <-
+ggplot() +
+  geom_sf(data=muni_outline, fill='gray90', color=NA) +
+  geom_sf(data=dados_muni, aes(fill = CMATT60/1000), color = NA, alpha = 0.9) +
+  scale_fill_viridis_c(option = 'E'
+                       ,limits = c(0,3000)
+                       ,breaks= c(seq(0,2500, by = 500),3000)
+                       ,labels = c(seq(0, 2500,by = 500),"3000+")) +
+  labs(subtitle = "Empregos acessíveis em até\n60 minutos de viagem por\ntransporte público", 
+       fill = "Empregos\n(x 1.000)") +
+  theme_void()
+
+f_cmatt_tp
+```
+
+
+## Empregos totais a pé - 30 min
+
+```{r}
+dados_muni <- subset(dados_muni_active, pico == 1 & modo == "caminhada" & CMATT30 > 0)
+
+f_cmatt_walk <-
+ggplot() +
+  geom_sf(data=muni_outline, fill='gray90', color=NA) +
+  geom_sf(data=dados_muni, aes(fill = CMATT30/1000), color = NA, alpha = 0.9) +
+  scale_fill_viridis_c(option = 'B', 
+                       direction = 1
+                       ,limits = c(0, 250)
+                       ,breaks= c(seq(0,200, by = 50), 250)
+                       ,labels = c(seq(0, 200,by = 50),"250+")) +
+  labs(subtitle = "Empregos acessíveis em até\n30 minutos de caminhada", 
+       fill = "Empregos\n(x 1.000)") +
+  theme_void()
+
+
+f_cmatt_walk
+```
+
+
+## Vagas de ensino medio mais próxima, de bicicleta (TMI)
+
+```{r}
+dados_muni <- subset(dados_muni_active, pico == 1 & modo == "bicicleta")
+
+f_cmaem_bike <-
+ggplot() +
+  geom_sf(data=muni_outline, fill='gray90', color=NA) +
+  geom_sf(data=dados_muni, aes(fill = CMAMM30), color = NA, alpha = 0.9) +
+  scale_fill_viridis_c(option = 'B',
+                       direction = 1
+                       ,limits = c(0, 16000)
+                       # ,breaks= seq(0,30, by = 10)
+                       # ,labels = c(seq(0, 20, by = 10),"30+"
+                                   # )
+                                   ) +
+  labs(subtitle = "Vagas de ensino médio em até\n30 minutos de viagem de bicicleta", 
+       fill = "Vagas") +
+  theme_void()
+
+f_cmaem_bike
+```
+
+## Saúde de alta complexidade mais próxima (carro)
+
+```{r}
+dados_muni <- subset(dados_muni_tpcar, pico == 1 & modo == "carro")
+dados_muni <- mutate(dados_muni, TMISA = if_else(TMISA >= 30, 30, TMISA))
+
+f_tmisa_carro <-
+ggplot() +
+  geom_sf(data=muni_outline, fill='gray90', color=NA) +
+  geom_sf(data=dados_muni, aes(fill = TMISA), color = NA, alpha = 0.9) +
+  scale_fill_viridis_c(option = 'E',
+                       direction = -1
+                       ,limits = c(0, 30)
+                       ,breaks= seq(0,30, by = 5)
+                       ,labels = c(seq(0, 25, by = 5),"30+")
+                                   ) +
+  labs(subtitle = "Tempo de viagem até o \nhospital mais próximo de carro", 
+       fill = "Tempo\n(minutos)") +
+  theme_void()
+
+f_tmisa_carro
+```
+
+
+## Quantidade de crianças em meia hora a pé (CMP)
+
+
+```{r}
+dados_muni <- subset(dados_muni_active, pico == 1 & modo == "caminhada" & CMPP0005I30 > 0)
+
+f_cmp05_walk <-
+ggplot() +
+  geom_sf(data=muni_outline, fill='gray90', color=NA) +
+  geom_sf(data=dados_muni, aes(fill = CMPP0005I30), color = NA, alpha = 0.9) +
+  scale_fill_viridis_c(option = 'D', 
+                       direction = 1
+                       ,limits = c(0, 12000)
+                       # ,breaks= c(seq(0,200, by = 50), 250)
+                       # ,labels = c(seq(0, 200,by = 50),"250+")
+                       ) +
+  labs(subtitle = "Crianças de 0 a 5 anos de idade em até\n30 minutos de caminhada", 
+       fill = "Número de\nCrianças") +
+  theme_void()
+
+
+f_cmp05_walk
+```
+
+
+
+## CRAS mais próximo via Transporte Público 
+
+```{r}
+dados_muni <- subset(dados_muni_tpcar, pico == 1 & modo == "tp" )
+dados_muni <- mutate(dados_muni, TMICT = if_else(TMICT >= 60, 60, TMICT))
+
+f_tmict_tp <-
+ggplot() +
+  geom_sf(data=muni_outline, fill='gray90', color=NA) +
+  geom_sf(data=dados_muni, aes(fill = TMICT), color = NA, alpha = 0.9) +
+  scale_fill_viridis_c(option = 'C', direction = -1) +
+  labs(subtitle = "CRAS mais próximo\npor transporte público", 
+       fill = "Tempo\n(minutos)") +
+  theme_void()
+
+f_tmict_tp
+```
+
+## Mapa composto
+
+```{r}
+# final figure
+fig_final <- f_cmatt_tp + f_cmatt_walk + f_cmaem_bike + f_tmisa_carro + f_tmict_tp + f_cmp05_walk +
+  plot_layout(ncol =2)
+```
+
+
+```{r}
+fig_final
+```
+
+
+```{r}
+# save
+ggsave(fig_final, filename = 'fig_access.png', dpi=300,
+       width = 16, height = 25, units = 'cm')
+
+ggsave(fig_final, filename = 'fig_access.pdf', dpi=300,
+       width = 16, height = 25, units = 'cm')
+```
+
+
+
+
+
+

@@ -114,7 +114,7 @@ read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geom
   # check if download failed
   if (is.null(temp_meta)) { return(invisible(NULL)) }
 
-  message(paste0("Downloading accessibility data from the year ", year))
+  message(paste0("Downloading accessibility data for the year ", year))
 
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)
@@ -131,9 +131,9 @@ read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geom
     city <- base::iconv(city, to="ASCII//TRANSLIT")
 
     
-  cities_with_pt <- ( all(city %in% c('for', 'rec', 'bho', 'rio', 'spo', 'cur', 'poa')) |
+  cities_with_pt <- ( all(city %in% c('for', 'rec', 'bho', 'rio', 'spo', 'cur', 'poa', 'goi')) |
                     all(city %in% c('fortaleza', 'recife', 'belo horizonte',
-                                'rio de janeiro', 'sao paulo', 'curitiba', 'porto alegre')) )
+                                'rio de janeiro', 'sao paulo', 'curitiba', 'porto alegre', 'goiania')) )
 
   if (isFALSE(cities_with_pt) & mode == 'public_transport') {stop("One of the selected cities does not have public transport data for that year.")}
 

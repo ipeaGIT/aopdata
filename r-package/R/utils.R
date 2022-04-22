@@ -400,8 +400,8 @@ aop_merge <- function(aop_landuse, aop_access){
 
   data.table::setDT(aop_landuse)
   data.table::setDT(aop_access)
-  data.table::setkeyv(aop_landuse, c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
-  data.table::setkeyv(aop_access, c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
+  data.table::setkeyv(aop_landuse, c('year', 'abbrev_muni', 'id_hex')) #'name_muni', 'code_muni',
+  data.table::setkeyv(aop_access,  c('year', 'abbrev_muni', 'id_hex')) #'name_muni', 'code_muni',
 
   # merge
   aop <- data.table::merge.data.table(aop_landuse, aop_access, by = c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'), all = TRUE)
