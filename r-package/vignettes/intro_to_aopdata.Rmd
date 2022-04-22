@@ -173,15 +173,14 @@ components:
 |-----|-----|-----|
 |`CMA`| Active cumulative opportunity measure | The number of opportunities one can access from a given origin  |
 |`CMP`| Passive cumulative opportunity measure | The number of people that can access  a given destination |
-|`TMI`| Travel time to closest opportunity | Value = Inf when travel time is longer 
-than 2h (public transport) or 1,5h (walking or bicycle) |
+|`TMI`| Travel time to closest opportunity | Value = Inf when travel time is longer than 2h (public transport) or 1,5h (walking or bicycle) |
 
 **2) Type of opportunity**
 
 |**Indicator**|**Description**|
 |-----|-----|
 | `TT`	| All jobs |
-| `TB`	| Jobs - primary education or lower) |
+| `TB`	| Jobs - primary education or lower |
 | `TM`	| Jobs - secondary education |
 | `TA`	| Jobs - tertiary education |
 | `ST`	| All healthcare facilities |
