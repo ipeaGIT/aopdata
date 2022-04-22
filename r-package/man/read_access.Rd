@@ -52,8 +52,9 @@ junction of three components: 1) Indicator 2) Type of opportunity
 3) Time thresold (if applicable)
 \subsection{1) Indicator}{\tabular{lll}{
    \strong{Indicator} \tab \strong{Description} \tab \strong{Note} \cr
-   \code{CMA} \tab Cumulative opportunity measure (active) \tab  \cr
-   \code{TMI} \tab Travel time to closest opportunity \tab Value = Inf when travel time is longer than 2h (public transport) or 1,5h (walking or bicycle) \cr
+   \code{CMA} \tab Active cumulative opportunity measure \tab The number of opportunities one can access from a given origin \cr
+   \code{CMP} \tab Passive cumulative opportunity measure \tab The number of people that can access  a given destination \cr
+   \code{TMI} \tab Travel time to closest opportunity \tab Value = \code{Inf} when travel time is longer than 2h (public transport, car) or 1,5h (walking or bicycle) \cr
 }
 
 }
@@ -61,8 +62,9 @@ junction of three components: 1) Indicator 2) Type of opportunity
 \subsection{2) Type of opportunity}{\tabular{lll}{
    \strong{Indicator} \tab \strong{Description} \tab \strong{Note} \cr
    \code{TT} \tab All jobs \tab  \cr
-   \code{TQ} \tab Total jobs with partial match between job education and income quintile \tab  \cr
-   \code{TD} \tab Total jobs with partial match between job education and income decile \tab  \cr
+   \code{TB} \tab Jobs - primary education or lower) \tab  \cr
+   \code{TM} \tab Jobs - secondary education \tab  \cr
+   \code{TA} \tab Jobs - tertiary education \tab  \cr
    \code{ST} \tab All healthcare facilities \tab  \cr
    \code{SB} \tab Healthcare facilities - Low complexity \tab  \cr
    \code{SM} \tab Healthcare facilities - Medium complexity \tab  \cr
@@ -71,18 +73,23 @@ junction of three components: 1) Indicator 2) Type of opportunity
    \code{EI} \tab Public schools - early childhood \tab  \cr
    \code{EF} \tab Public schools - elementary schools \tab  \cr
    \code{EM} \tab Public schools - high schools \tab  \cr
+   \code{MT} \tab Kids enrolled in all public schools \tab  \cr
+   \code{MI} \tab Kids enrolled in early childhood \tab  \cr
+   \code{MF} \tab Kids enrolled in elementary schools \tab  \cr
+   \code{MM} \tab Kids enrolled in high schools \tab  \cr
+   \code{CT} \tab Centers for social assistance (CRAS) \tab  \cr
 }
 
 }
 
 \subsection{3) Time thresold (only applicable to CMA estimates)}{\tabular{lll}{
-   \strong{Time thresold} \tab \strong{Description} \tab \strong{Note - Only applicable to:} \cr
-   \code{15} \tab Opportunities accessible within 15 min. \tab Active transport modes \cr
+   \strong{Time thresold} \tab \strong{Description} \tab \strong{Note - applicable to:} \cr
+   \code{15} \tab Opportunities accessible within 15 min. \tab All transport modes \cr
    \code{30} \tab Opportunities accessible within 30 min. \tab All transport modes \cr
    \code{45} \tab Opportunities accessible within 45 min. \tab Active transport modes \cr
    \code{60} \tab Opportunities accessible within 60 min. \tab All transport modes \cr
-   \code{90} \tab Opportunities accessible within 90 min. \tab Public transport \cr
-   \code{120} \tab Opportunities accessible within 120 min. \tab Public transport \cr
+   \code{90} \tab Opportunities accessible within 90 min. \tab Public transport and car \cr
+   \code{120} \tab Opportunities accessible within 120 min. \tab Public transport and car \cr
 }
 
 }
@@ -92,12 +99,12 @@ junction of three components: 1) Indicator 2) Type of opportunity
    Belem \tab \code{bel} \tab Active \cr
    Belo Horizonte \tab \code{bho} \tab All \cr
    Brasilia \tab \code{bsb} \tab Active \cr
-   Campinas \tab \code{cam} \tab Active \cr
+   Campinas \tab \code{cam} \tab All \cr
    Campo Grande \tab \code{cgr} \tab Active \cr
    Curitiba \tab \code{cur} \tab Active \cr
    Duque de Caxias \tab \code{duq} \tab Active \cr
    Fortaleza \tab \code{for} \tab All \cr
-   Goiania \tab \code{goi} \tab Active \cr
+   Goiania \tab \code{goi} \tab All \cr
    Guarulhos \tab \code{gua} \tab Active \cr
    Maceio \tab \code{mac} \tab Active \cr
    Manaus \tab \code{man} \tab Active \cr

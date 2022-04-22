@@ -35,33 +35,40 @@
 #' ## 1) Indicator
 #' |**Indicator**|**Description**|**Note**|
 #' |-----|-----|-----|
-#' |`CMA`| Cumulative opportunity measure (active) |  |
-#' |`TMI`| Travel time to closest opportunity | Value = Inf when travel time is longer than 2h (public transport) or 1,5h (walking or bicycle) |
-#'
+#' |`CMA`| Active cumulative opportunity measure | The number of opportunities one can access from a given origin  |
+#' |`CMP`| Passive cumulative opportunity measure | The number of people that can access  a given destination |
+#' |`TMI`| Travel time to closest opportunity | Value = `Inf` when travel time is longer than 2h (public transport, car) or 1,5h (walking or bicycle) |
+
 #' ## 2) Type of opportunity
 #' |**Indicator**|**Description**|**Note**|
 #' |-----|-----|-----|
-#' | `TT`	| All jobs | |
-#' | `TQ`	| Total jobs with partial match between job education and income quintile | |
-#' | `TD`	| Total jobs with partial match between job education and income decile | |
-#' | `ST`	| All healthcare facilities | |
-#' | `SB`	| Healthcare facilities - Low complexity | |
-#' | `SM`	| Healthcare facilities - Medium complexity | |
-#' | `SA`	| Healthcare facilities - High complexity | |
-#' | `ET`	| All public schools | |
-#' | `EI`	| Public schools - early childhood | |
-#' | `EF`	| Public schools - elementary schools | |
-#' | `EM`	| Public schools - high schools | |
+#' | `TT` | All jobs |
+#' | `TB` | Jobs - primary education or lower) |
+#' | `TM` | Jobs - secondary education |
+#' | `TA` | Jobs - tertiary education |
+#' | `ST` | All healthcare facilities |
+#' | `SB` | Healthcare facilities - Low complexity |
+#' | `SM` | Healthcare facilities - Medium complexity |
+#' | `SA` | Healthcare facilities - High complexity |
+#' | `ET` | All public schools |
+#' | `EI` | Public schools - early childhood |
+#' | `EF` | Public schools - elementary schools |
+#' | `EM` | Public schools - high schools |
+#' | `MT` | Kids enrolled in all public schools |
+#' | `MI` | Kids enrolled in early childhood |
+#' | `MF` | Kids enrolled in elementary schools |
+#' | `MM` | Kids enrolled in high schools |
+#' | `CT` | Centers for social assistance (CRAS) |
 #'
 #' ## 3) Time thresold (only applicable to CMA estimates)
-#' | **Time thresold**|**Description**|**Note - Only applicable to:**|
+#' | **Time thresold**|**Description**|**Note - applicable to:**|
 #' |-----|-----|-----|
-#' | `15`| Opportunities accessible within 15 min.	| Active transport modes |
+#' | `15`| Opportunities accessible within 15 min.	| All transport modes |
 #' | `30`| Opportunities accessible within 30 min.	| All transport modes |
 #' | `45`| Opportunities accessible within 45 min.	| Active transport modes |
 #' | `60`| Opportunities accessible within 60 min.	| All transport modes |
-#' | `90`| Opportunities accessible within 90 min.	| Public transport |
-#' |`120`| Opportunities accessible within 120 min.| Public transport |
+#' | `90`| Opportunities accessible within 90 min.	| Public transport and car |
+#' |`120`| Opportunities accessible within 120 min.| Public transport and car |
 #'
 #'## 4) Cities available
 #' |**City name**| **Three-letter abbreviation**|**Transport modes**|
@@ -69,12 +76,12 @@
 #' | Belem | `bel` | Active |
 #' | Belo Horizonte | `bho` | All |
 #' | Brasilia  | `bsb`| Active |
-#' | Campinas  | `cam` | Active |
+#' | Campinas  | `cam` | All |
 #' | Campo Grande | `cgr` | Active |
 #' | Curitiba | `cur`| Active |
 #' | Duque de Caxias | `duq` | Active |
 #' | Fortaleza | `for`| All |
-#' | Goiania  | `goi` | Active |
+#' | Goiania  | `goi` | All |
 #' | Guarulhos  | `gua`| Active |
 #' | Maceio  | `mac`| Active |
 #' | Manaus  | `man`| Active |
@@ -131,9 +138,9 @@ read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geom
     city <- base::iconv(city, to="ASCII//TRANSLIT")
 
 
-  cities_with_pt <- ( all(city %in% c('for', 'rec', 'bho', 'rio', 'spo', 'cur', 'poa', 'goi')) |
+  cities_with_pt <- ( all(city %in% c('for', 'rec', 'bho', 'rio', 'spo', 'cur', 'poa', 'goi', 'cam')) |
                     all(city %in% c('fortaleza', 'recife', 'belo horizonte',
-                                'rio de janeiro', 'sao paulo', 'curitiba', 'porto alegre', 'goiania')) )
+                                'rio de janeiro', 'sao paulo', 'curitiba', 'porto alegre', 'goiania', 'campinas')) )
 
   if (isFALSE(cities_with_pt) & mode == 'public_transport') {stop("One of the selected cities does not have public transport data for that year.")}
 

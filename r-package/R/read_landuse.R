@@ -32,23 +32,36 @@
 #' | sociodemographic | `P001` | Total number of residents	| |
 #' | sociodemographic | `P002` | Number of white residents	| |
 #' | sociodemographic | `P003` | Number of black residents	| |
-#' | sociodemographic | `P004` | Number of indiginous residents | |
-#' | sociodemographic | `P005` | Number of asian-descendents residents | |
+#' | sociodemographic | `P004` | Number of indigenous residents | |
+#' | sociodemographic | `P005` | Number of asian-descendent residents | |
+#' | sociodemographic | `P010` | Number of residents with age between 0 and 5	| |
+#' | sociodemographic | `P011` | Number of residents with age between 6 and 14	| |
+#' | sociodemographic | `P012` | Number of residents with age between 15 and 18	| |
+#' | sociodemographic | `P013` | Number of residents with age between 19 and 24	| |
+#' | sociodemographic | `P014` | Number of residents with age between 25 and 39	| |
+#' | sociodemographic | `P015` | Number of residents with age between 40 and 69	| |
+#' | sociodemographic | `P016` | Number of residents with age 70 or more	| |
 #' | sociodemographic | `R001` | Average household income per capita	| R$ (Brazilian Reais), values in 2010 |
 #' | sociodemographic | `R002` | Income quintile group	| 1 (poorest), 2, 3, 4, 5 (richest) |
 #' | sociodemographic | `R003` | Income decile group	| 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) |
 #' | land use         |	`T001` | Total number of formal jobs | |
-#' | land use         |	`T002` | Total number of formal jobs with primary education | |
-#' | land use         |	`T003` | Number of formal jobs with secundary education | |
+#' | land use         |	`T001` | Total number of formal jobs | |
+#' | land use         |	`T002` | Number of formal jobs with primary education or lower| |
+#' | land use         |	`T003` | Number of formal jobs with secondary education | |
 #' | land use         |	`T004` | Number of formal jobs with tertiary education | |
 #' | land use         |	`E001` | Total number of public schools | |
 #' | land use         |	`E002` | Number of public schools - early childhood | |
 #' | land use         |	`E003` | Number of public schools - elementary schools | |
 #' | land use         |	`E004` | Number of public schools - high schools | |
+#' | land use         | `M001` | Total number of kids enrolled in public schools | |
+#' | land use         | `M002` | Number of kids enrolled  in public schools - early childhood | |
+#' | land use         | `M003` | Number of kids enrolled  in public schools - elementary schools | |
+#' | land use         | `M004` | Number of kids enrolled  in public schools - high schools | |
 #' | land use         |	`S001` | Total number of healthcare facilities | |
 #' | land use         |	`S002` | Number of healthcare facilities - low complexity | |
 #' | land use         |	`S003` | Number of healthcare facilities - medium complexity | |
 #' | land use         |	`S004` | Number of healthcare facilities - high complexity | |
+#' | land use         |	`C001` | Number of centers for social assistance (CRAS) | |
 #'
 #' # Cities available
 #' |**City name**| **Three-letter abbreviation**|

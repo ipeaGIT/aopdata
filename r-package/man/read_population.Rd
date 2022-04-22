@@ -44,8 +44,15 @@ on a hexagonal grid based on the global H3 index at resolution 9, with a size of
    sociodemographic \tab \code{P001} \tab Total number of residents \tab  \cr
    sociodemographic \tab \code{P002} \tab Number of white residents \tab  \cr
    sociodemographic \tab \code{P003} \tab Number of black residents \tab  \cr
-   sociodemographic \tab \code{P004} \tab Number of indiginous residents \tab  \cr
-   sociodemographic \tab \code{P005} \tab Number of asian-descendents residents \tab  \cr
+   sociodemographic \tab \code{P004} \tab Number of indigenous residents \tab  \cr
+   sociodemographic \tab \code{P005} \tab Number of asian-descendent residents \tab  \cr
+   sociodemographic \tab \code{P010} \tab Number of residents with age between 0 and 5 \tab  \cr
+   sociodemographic \tab \code{P011} \tab Number of residents with age between 6 and 14 \tab  \cr
+   sociodemographic \tab \code{P012} \tab Number of residents with age between 15 and 18 \tab  \cr
+   sociodemographic \tab \code{P013} \tab Number of residents with age between 19 and 24 \tab  \cr
+   sociodemographic \tab \code{P014} \tab Number of residents with age between 25 and 39 \tab  \cr
+   sociodemographic \tab \code{P015} \tab Number of residents with age between 40 and 69 \tab  \cr
+   sociodemographic \tab \code{P016} \tab Number of residents with age 70 or more \tab  \cr
    sociodemographic \tab \code{R001} \tab Average household income per capita \tab R$ (Brazilian Reais), values in 2010 \cr
    sociodemographic \tab \code{R002} \tab Income quintile group \tab 1 (poorest), 2, 3, 4, 5 (richest) \cr
    sociodemographic \tab \code{R003} \tab Income decile group \tab 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) \cr

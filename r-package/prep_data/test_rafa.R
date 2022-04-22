@@ -254,6 +254,8 @@ devtools::spell_check(pkg = ".", vignettes = TRUE, use_wordlist = TRUE)
 pkgdown::build_site()
 
 
+
+
 ### CMD Check ----------------
 # Check package errors
 
