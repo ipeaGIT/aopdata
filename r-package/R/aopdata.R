@@ -20,5 +20,5 @@
 
 ## quiets concerns of R CMD check re: the .'s that appear in pipelines
 if(getRversion() >= "2.15.1") utils::globalVariables(
-  c('geometry', 'i.geom', 'showProgress', 'type', '.', ':=', '%like%'))
+  c('geometry', 'i.geom', 'id_hex', 'showProgress', 'type', '.', ':=', '%like%'))
 
