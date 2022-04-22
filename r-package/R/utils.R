@@ -102,7 +102,7 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
 select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 
   # NULL
-  if (is.null(mode)){  stop(paste0("Error: Invalid Value to argument 'mode'. It must be one of the following: ",
+  if (is.null(mode)){  stop(paste0("Error: This 'mode' is not available for this 'city' & 'year.' It must be one of the following: ",
                                 paste(unique(temp_meta$mode),collapse = " "))) }
 
   # invalid input
@@ -111,7 +111,7 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
     return(temp_meta) }
 
   # invalid input
-  else { stop(paste0("Error: Invalid Value to argument 'mode'. It must be one of the following: ",
+  else { stop(paste0("Error: This 'mode' is not available for this 'city' & 'year.' It must be one of the following: ",
                      paste(unique(temp_meta$mode), collapse = " ")))
   }
 }
