@@ -23,16 +23,17 @@ knitr::opts_chunk$set(
 
 **Load libraries**
 
-```{r, message = FALSE, eval = FALSE}
+```{r, message = FALSE, eval = TRUE}
 library(aopdata)
 library(sf)
 library(ggplot2)
 library(data.table)
+library(scales)
 ```
 
 **Download accessibility data**
 
-```{r, message = FALSE, eval = FALSE}
+```{r, message = FALSE, eval = TRUE}
 # download aop data
 df <- aopdata::read_access(city='Curitiba',
                        mode='public_transport',
@@ -43,7 +44,7 @@ df <- aopdata::read_access(city='Curitiba',
 ```
 
 **Plot map with spatial distribution of access to job opportunities**
-```{r, message = FALSE, eval = FALSE}
+```{r, message = FALSE, eval = TRUE}
 ggplot() +
   geom_sf(data=df, aes(fill=CMATT60), color=NA, alpha=.9) +
   scale_fill_viridis_c(option = "inferno", labels=scales::percent) +
@@ -56,7 +57,7 @@ ggplot() +
 
 **Map access to Schools**
 
-```{r, message = FALSE, eval = FALSE}
+```{r, message = FALSE, eval = TRUE}
 ggplot() +
   geom_sf(data=df, aes(fill=CMAET30), color=NA, alpha=.7) +
   scale_fill_viridis_c(option = "inferno", labels=scales::percent) +

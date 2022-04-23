@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 Spatial distribution of population
 
 
-```{r, message = FALSE, eval = FALSE}
+```{r, message = FALSE, eval = TRUE}
 # load libraries
 library(aopdata)
 library(data.table)
@@ -31,7 +31,7 @@ library(scales)
 ```
 
 **Download population data**
-```{r, message = FALSE, eval = FALSE}
+```{r, message = FALSE, eval = TRUE}
 
 # download aop data
 df <- read_population(city='Fortaleza',
@@ -44,7 +44,7 @@ df <- read_population(city='Fortaleza',
 **Map Population**
 Spatial distribution of the population
 
-```{r, message = FALSE, eval = FALSE}
+```{r, message = FALSE, eval = TRUE}
 ggplot() +
   geom_sf(data=subset(df, P001>0), aes(fill=P001), color=NA, alpha=.8) +
   scale_fill_distiller(palette = "YlOrRd", direction = 1)+
@@ -56,7 +56,7 @@ ggplot() +
 **Map income levels**
 Spatial distribution population by income decile
 
-```{r, message = FALSE, eval = FALSE}
+```{r, message = FALSE, eval = TRUE}
 ggplot() +
   geom_sf(data=subset(df, !is.na(R002)), aes(fill=factor(R003)), color=NA, alpha=.8) +
   scale_fill_brewer(palette = "RdBu") +
@@ -69,7 +69,7 @@ ggplot() +
 **Map racial groups**
 Spatial distribution population black population
 
-```{r, message = FALSE, eval = FALSE}
+```{r, message = FALSE, eval = TRUE}
 df$prop_black <- df$P003 / df$P001
   
 ggplot() +
