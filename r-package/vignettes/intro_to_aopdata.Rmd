@@ -120,8 +120,15 @@ the contents of each column.
 | `P001` | Total number of residents	|
 | `P002` | Number of white residents	|
 | `P003` | Number of black residents	|
-| `P004` | Number of indiginous residents |
-| `P005` | Number of asian-descendents residents |
+| `P004` | Number of indigenous residents |
+| `P005` | Number of asian-descendent residents |
+| `P010` | Number of residents with age between 0 and 5 
+| `P011` | Number of residents with age between 6 and 14 
+| `P012` | Number of residents with age between 15 and 18
+| `P013` | Number of residents with age between 19 and 24
+| `P014` | Number of residents with age between 25 and 39
+| `P015` | Number of residents with age between 40 and 69
+| `P016` | Number of residents with age 70 or more
 | `R001` | Average household income per capita	| R$ (Brazilian Reais), values in 2010 |
 | `R002` | Income quintile group	| 1 (poorest), 2, 3, 4, 5 (richest) |
 | `R003` | Income decile group	| 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) |
@@ -131,17 +138,22 @@ the contents of each column.
 |**column**|**Description**|**Value**|
 |-----|-----|
 |	`T001` | Total number of formal jobs |
-|	`T002` | Total number of formal jobs with primary education |
-|	`T003` | Number of formal jobs with secundary education |
+|	`T002` | Number of formal jobs with primary education or lower|
+|	`T003` | Number of formal jobs with secondary education |
 |	`T004` | Number of formal jobs with tertiary education |
 |	`E001` | Total number of public schools |
 |	`E002` | Number of public schools - early childhood |
 |	`E003` | Number of public schools - elementary schools |
 |	`E004` | Number of public schools - high schools |
+| `M001` | Total number of kids enrolled in public schools |
+| `M002` | Number of kids enrolled  in public schools - early childhood |
+| `M003` | Number of kids enrolled  in public schools - elementary schools |
+| `M004` | Number of kids enrolled  in public schools - high schools |
 |	`S001` | Total number of healthcare facilities |
 |	`S002` | Number of healthcare facilities - low complexity |
 |	`S003` | Number of healthcare facilities - medium complexity |
 |	`S004` | Number of healthcare facilities - high complexity |
+|	`C001` | Number of centers for social assistance (CRAS) |
 
 
 ### **Accessibility** variables
@@ -159,17 +171,18 @@ components:
 
 |**Indicator**|**Description**|**Note**|
 |-----|-----|-----|
-|`CMA`| Cumulative opportunity measure (active) |  |
-|`TMI`| Travel time to closest opportunity | Value = Inf when travel time is longer 
-than 2h (public transport) or 1,5h (walking or bicycle) |
+|`CMA`| Active cumulative opportunity measure | The number of opportunities one can access from a given origin  |
+|`CMP`| Passive cumulative opportunity measure | The number of people that can access  a given destination |
+|`TMI`| Travel time to closest opportunity | Value = Inf when travel time is longer than 2h (public transport) or 1,5h (walking or bicycle) |
 
 **2) Type of opportunity**
 
 |**Indicator**|**Description**|
 |-----|-----|
 | `TT`	| All jobs |
-| `TQ`	| Total jobs with partial match between job education and income quintile |
-| `TD`	| Total jobs with partial match between job education and income decile |
+| `TB`	| Jobs - primary education or lower |
+| `TM`	| Jobs - secondary education |
+| `TA`	| Jobs - tertiary education |
 | `ST`	| All healthcare facilities |
 | `SB`	| Healthcare facilities - Low complexity |
 | `SM`	| Healthcare facilities - Medium complexity |
@@ -178,17 +191,23 @@ than 2h (public transport) or 1,5h (walking or bicycle) |
 | `EI`	| Public schools - early childhood |
 | `EF`	| Public schools - elementary schools |
 | `EM`	| Public schools - high schools |
+| `MT`	| Kids enrolled in all public schools |
+| `MI`	| Kids enrolled in early childhood |
+| `MF`	| Kids enrolled in elementary schools |
+| `MM`	| Kids enrolled in high schools |
+| `CT`	| Centers for social assistance (CRAS) |
+
 
 **3) Time thresold (only applicable to CMA estimates)**
 
 | **Time thresold**|**Description**|**Note - Only applicable to:**|
 |-----|-----|-----|
-| `15`| Opportunities accessible within 15 min.	| Active transport modes |
+| `15`| Opportunities accessible within 15 min.	| All transport modes |
 | `30`| Opportunities accessible within 30 min.	| All transport modes |
 | `45`| Opportunities accessible within 45 min.	| Active transport modes |
 | `60`| Opportunities accessible within 60 min.	| All transport modes |
-| `90`| Opportunities accessible within 90 min.	| Public transport |
-|`120`| Opportunities accessible within 120 min.| Public transport |
+| `90`| Opportunities accessible within 90 min.	| Public transport and car |
+|`120`| Opportunities accessible within 120 min.| Public transport and car |
 
 ## Next Steps
 

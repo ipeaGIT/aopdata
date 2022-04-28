@@ -42,23 +42,36 @@ See documentation 'Details' for the data dictionary.
    sociodemographic \tab \code{P001} \tab Total number of residents \tab  \cr
    sociodemographic \tab \code{P002} \tab Number of white residents \tab  \cr
    sociodemographic \tab \code{P003} \tab Number of black residents \tab  \cr
-   sociodemographic \tab \code{P004} \tab Number of indiginous residents \tab  \cr
-   sociodemographic \tab \code{P005} \tab Number of asian-descendents residents \tab  \cr
+   sociodemographic \tab \code{P004} \tab Number of indigenous residents \tab  \cr
+   sociodemographic \tab \code{P005} \tab Number of asian-descendent residents \tab  \cr
+   sociodemographic \tab \code{P010} \tab Number of residents with age between 0 and 5 \tab  \cr
+   sociodemographic \tab \code{P011} \tab Number of residents with age between 6 and 14 \tab  \cr
+   sociodemographic \tab \code{P012} \tab Number of residents with age between 15 and 18 \tab  \cr
+   sociodemographic \tab \code{P013} \tab Number of residents with age between 19 and 24 \tab  \cr
+   sociodemographic \tab \code{P014} \tab Number of residents with age between 25 and 39 \tab  \cr
+   sociodemographic \tab \code{P015} \tab Number of residents with age between 40 and 69 \tab  \cr
+   sociodemographic \tab \code{P016} \tab Number of residents with age 70 or more \tab  \cr
    sociodemographic \tab \code{R001} \tab Average household income per capita \tab R$ (Brazilian Reais), values in 2010 \cr
    sociodemographic \tab \code{R002} \tab Income quintile group \tab 1 (poorest), 2, 3, 4, 5 (richest) \cr
    sociodemographic \tab \code{R003} \tab Income decile group \tab 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) \cr
    land use \tab \code{T001} \tab Total number of formal jobs \tab  \cr
-   land use \tab \code{T002} \tab Total number of formal jobs with primary education \tab  \cr
-   land use \tab \code{T003} \tab Number of formal jobs with secundary education \tab  \cr
+   land use \tab \code{T001} \tab Total number of formal jobs \tab  \cr
+   land use \tab \code{T002} \tab Number of formal jobs with primary education or lower \tab  \cr
+   land use \tab \code{T003} \tab Number of formal jobs with secondary education \tab  \cr
    land use \tab \code{T004} \tab Number of formal jobs with tertiary education \tab  \cr
    land use \tab \code{E001} \tab Total number of public schools \tab  \cr
    land use \tab \code{E002} \tab Number of public schools - early childhood \tab  \cr
    land use \tab \code{E003} \tab Number of public schools - elementary schools \tab  \cr
    land use \tab \code{E004} \tab Number of public schools - high schools \tab  \cr
+   land use \tab \code{M001} \tab Total number of kids enrolled in public schools \tab  \cr
+   land use \tab \code{M002} \tab Number of kids enrolled  in public schools - early childhood \tab  \cr
+   land use \tab \code{M003} \tab Number of kids enrolled  in public schools - elementary schools \tab  \cr
+   land use \tab \code{M004} \tab Number of kids enrolled  in public schools - high schools \tab  \cr
    land use \tab \code{S001} \tab Total number of healthcare facilities \tab  \cr
    land use \tab \code{S002} \tab Number of healthcare facilities - low complexity \tab  \cr
    land use \tab \code{S003} \tab Number of healthcare facilities - medium complexity \tab  \cr
    land use \tab \code{S004} \tab Number of healthcare facilities - high complexity \tab  \cr
+   land use \tab \code{C001} \tab Number of centers for social assistance (CRAS) \tab  \cr
 }
 }
 

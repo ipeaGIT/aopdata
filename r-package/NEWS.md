@@ -1,11 +1,29 @@
 # log history of aopdata package development
 
 
-# aopdata v0.2.4 (dev)
+# aopdata v1.0.0 (dev)
+
+**Major changes**
+
+* New data sets:
+  * Year coverage
+    - Access and Land use data sets now cover years **2017, 2018 and 2019**
+
+  * New cities
+    - Data for Goiania now covers the entire **metro area of Goiania**
+
+  * New modes
+    - Access data now bring accessibility estimates by **car**
+
+  * New activities
+    - Land use and access data now bring data for **centers for social assistance (CRAS)**
+    - Population data sets with minor spatial corrections to smooth spatial distributions
+
 
 **Minor changes**
 
 * `read_` functions now have no default value for the `city` parameter. [Closes #38](https://github.com/ipeaGIT/aopdata/issues/38).
+* Fixed `ERROR` message when there is no data for a particular transport mode for an specific city & year.
 
 
 -------------------------------------------------------
