@@ -1,5 +1,7 @@
 ---
 title: 'Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das 20 maiores cidades do Brasil'
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
@@ -40,6 +42,7 @@ library(ggplot2)
 library(geobr)
 library(cowplot)
 library(viridisLite)
+library(patchwork)
 
 ## mapa da distribuição espacial de uso do solo de Belo Horizonte
 
