@@ -106,9 +106,7 @@
 <div class="page-header"><h1 id="aopdata-data-from-the-access-to-opportunities-project">aopdata: Data from the Access to Opportunities Project<a class="anchor" aria-label="anchor" href="#aopdata-data-from-the-access-to-opportunities-project"></a>
 </h1></div>
 <!-- badges: start -->
-
-<!-- badges: end -->
-<p><img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"></p>
+<!-- badges: end --><p><img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"></p>
 <p><strong><code>aopdata</code></strong> is an R package to download data from the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">Access to Opportunities Project (AOP)</a>. The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport accessibility and inequalities in access to opportunities in Brazilian cities.</p>
 <p>The <strong><code>aopdata</code></strong> package brings annual estimates of access to employment, health and education services by transport mode, as well as data on the spatial distribution of population, schools and healthcare facilities at a fine spatial resolution for all cities included in the study. Data for 2019 are already available, and cover accessibility estimates by active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for 7 major cities. For more information on the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">AOP website</a>.</p>
 <div class="section level2">
@@ -143,15 +141,11 @@
 <code class="sourceCode R"><span class="co"># Read specific city</span>
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span><span class="op">)</span></code></pre></div>
 <p>For all of the functions above, note that:</p>
-<ul>
-<li>The <code>city</code> parameter can also be a 3-letter abbreviation of the city.</li>
-</ul>
+<ul><li>The <code>city</code> parameter can also be a 3-letter abbreviation of the city.</li></ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'cur'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span>
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'for'</span><span class="op">)</span></code></pre></div>
-<ul>
-<li>You may also download the data for all cities of the project at once using <code>city = 'all'</code>:</li>
-</ul>
+<ul><li>You may also download the data for all cities of the project at once using <code>city = 'all'</code>:</li></ul>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_landuse.html">read_landuse</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></code></pre></div>
 <hr>
@@ -229,7 +223,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
