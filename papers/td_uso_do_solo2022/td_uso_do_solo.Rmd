@@ -120,6 +120,8 @@ fig2 <- f_pop + f_inc + f_job + f_sau + f_edu + f_cra +
 # save
 ggsave(fig2, filename = 'fig2.png', dpi=300,
        width = 15, height = 23, units = 'cm')
+ggsave(fig2, filename = 'fig2.pdf',
+       width = 15, height = 23, units = 'cm')
 
 fig2
 ```
