@@ -360,3 +360,15 @@ ggsave(fim,
        # file="../publicacoes/2020_access_inequalities_paper/figures/fig0_munis_all_test.png",
        file="papers/td_acessibilidade2022/map_acess_cities.png",
        dpi = 300, width = 20, height = 12, units = "cm")
+ggsave(fim,
+       # file="../publicacoes/2020_access_inequalities_paper/figures/fig0_munis_all_test.png",
+       file="papers/td_acessibilidade2022/map_acess_cities.pdf",
+       width = 20, height = 12, units = "cm")
+ggsave(fim_en,
+       # file="../publicacoes/2020_access_inequalities_paper/figures/fig0_munis_all_test.png",
+       file="papers/td_acessibilidade2022/map_acess_cities_en.png",
+       dpi = 300, width = 20, height = 12, units = "cm")
+ggsave(fim_en,
+       # file="../publicacoes/2020_access_inequalities_paper/figures/fig0_munis_all_test.png",
+       file="papers/td_acessibilidade2022/map_acess_cities_en.pdf",
+       width = 20, height = 12, units = "cm")
