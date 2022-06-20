@@ -187,11 +187,6 @@ a <- function_coverage(fun='check_connection', test_file("tests/testthat/test_ch
   aop_cov
   beepr::beep()
 
-#  covr::codecov( coverage = aop_cov, token ='f09e3b22-d365-4239-8dd3-55a6c921d31b' )
-
-
-
-
 
 ### update package documentation ----------------
 # http://r-pkgs.had.co.nz/release.html#release-check
