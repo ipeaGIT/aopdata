@@ -75,7 +75,7 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
                                    paste(unique(temp_meta$year),collapse = " "))) }
 
   # invalid input
-  else if (year %in% temp_meta$year){
+  else if (year %in% temp_meta$year) {
                                   temp_meta <- temp_meta[ temp_meta$year %in% year, ]
                                   return(temp_meta) }
 
@@ -153,7 +153,7 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
   temp_meta <- select_city_input(temp_meta, city=c)
 
   # select year input
-  if (t %in% c('access','landuse', 'population')) {
+  if (t %in% c('access','land_use', 'population')) {
     temp_meta <- select_year_input(temp_meta, year=y)
   }
 
