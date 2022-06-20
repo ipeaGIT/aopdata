@@ -18,9 +18,17 @@ a <- read_access(city='bho',
                            geometry = F,
                            showProgress = T)
 
-a <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
-a <- read_access(city = c('Fortaleza', 'Recife'), mode = 'public_transport', year = 2019, showProgress = FALSE)
+aop_data19 <- aopdata::read_access(city = "all", mode = "public_transport", year = 2019, geometry = TRUE)
+aop_data18 <- aopdata::read_access(city = "all", mode = "public_transport", year = 2018, geometry = TRUE)
+aop_data17 <- aopdata::read_access(city = "all", mode = "public_transport", year = 2017, geometry = TRUE)
 
+
+aopdata::read_access(city = c('rio', 'bho', 'rec'))
+
+a <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
+a <- read_access(city = c('Fortaleza', 'rio de janeiro'), mode = 'public_transport', year = 2017, showProgress = T)
+head(a)
+unique(a$name_muni)
 table(a$abbrev_muni)
 table(a$mode)
 

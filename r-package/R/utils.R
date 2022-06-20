@@ -23,7 +23,7 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
   if (all(nchar(city)==3)) {
 
       # valid input 'all'
-      if (length(city)==1 & city[1] %in% 'all') { return(temp_meta) }
+      if (any(city =='all')) { return(temp_meta) }
 
       # valid input
       if (all(city %in% temp_meta$city)) { temp_meta <- temp_meta[ temp_meta$city %in% city, ]
@@ -153,7 +153,7 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
   temp_meta <- select_city_input(temp_meta, city=c)
 
   # select year input
-  if (t %in% c('access','landuse', 'land_use', 'population')) {
+  if (t %in% c('access','landuse', 'population')) {
     temp_meta <- select_year_input(temp_meta, year=y)
   }
 
