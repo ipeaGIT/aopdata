@@ -70,6 +70,8 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
 #'
 select_year_input <- function(temp_meta=temp_meta, year=NULL){
 
+  checkmate::assert_numeric(year, finite = TRUE, any.missing = FALSE)
+
   # NULL
   if (is.null(year)){  stop(paste0("Error: Invalid Value to argument 'year'. It must be one of the following: ",
                                    paste(unique(temp_meta$year),collapse = " "))) }
@@ -100,6 +102,8 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
 #' @family support functions
 #'
 select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
+
+  checkmate::assert_string(mode)
 
   # NULL
   if (is.null(mode)){  stop(paste0("Error: This 'mode' is not available for this 'city' & 'year.' It must be one of the following: ",

@@ -108,9 +108,9 @@
 read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geometry = FALSE, showProgress = TRUE){
 
   # checks
-  if(! is.logical(geometry) ){stop("The 'geometry' argument must either be TRUE or FALSE")}
-  if(! is.logical(showProgress) ){stop("The 'showProgress' argument must either be TRUE or FALSE")}
-  if(! is.logical(peak) ){stop("The 'peak' argument must either be TRUE or FALSE")}
+  checkmate::assert_logical(peak)
+  checkmate::assert_logical(geometry)
+  checkmate::assert_logical(showProgress)
 
   # remove accents
   city <- tolower(city)

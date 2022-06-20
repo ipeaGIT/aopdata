@@ -44,7 +44,7 @@
 #' | Sao Goncalo  | `sgo`|
 #' | Sao Luis  | `slz`|
 #' | Sao Paulo  | `spo`|
-#' 
+#'
 #' @export
 #' @family spatial data functions
 #' @examples \dontrun{ if (interactive()) {
@@ -57,9 +57,8 @@
 
 read_grid <- function(city=NULL, showProgress = FALSE){
 
-
   # checks
-  if(! is.logical(showProgress) ){stop("The 'showProgress' argument must either be TRUE or FALSE")}
+  checkmate::assert_logical(showProgress)
 
   # Get metadata with data url addresses
   temp_meta <- select_metadata(t="grid", c=city)
