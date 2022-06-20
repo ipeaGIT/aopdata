@@ -1,5 +1,5 @@
 pandoc: 2.7.3
-pkgdown: 2.0.3
+pkgdown: 2.0.4
 pkgdown_sha: ~
 articles:
   access_inequality: access_inequality.html
@@ -7,5 +7,5 @@ articles:
   intro_to_aopdata: intro_to_aopdata.html
   landuse_maps: landuse_maps.html
   population_maps: population_maps.html
-last_built: 2022-06-06T15:46Z
+last_built: 2022-06-20T00:33Z
 
