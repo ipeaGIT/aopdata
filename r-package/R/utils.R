@@ -23,7 +23,7 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
   if (all(nchar(city)==3)) {
 
       # valid input 'all'
-      if (length(city)==1 & city[1] %in% 'all') { return(temp_meta) }
+      if (any(city =='all')) { return(temp_meta) }
 
       # valid input
       if (all(city %in% temp_meta$city)) { temp_meta <- temp_meta[ temp_meta$city %in% city, ]
@@ -70,12 +70,14 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
 #'
 select_year_input <- function(temp_meta=temp_meta, year=NULL){
 
+  checkmate::assert_numeric(year, finite = TRUE, any.missing = FALSE)
+
   # NULL
   if (is.null(year)){  stop(paste0("Error: Invalid Value to argument 'year'. It must be one of the following: ",
                                    paste(unique(temp_meta$year),collapse = " "))) }
 
   # invalid input
-  else if (year %in% temp_meta$year){
+  else if (year %in% temp_meta$year) {
                                   temp_meta <- temp_meta[ temp_meta$year %in% year, ]
                                   return(temp_meta) }
 
@@ -100,6 +102,8 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
 #' @family support functions
 #'
 select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
+
+  checkmate::assert_string(mode)
 
   # NULL
   if (is.null(mode)){  stop(paste0("Error: This 'mode' is not available for this 'city' & 'year.' It must be one of the following: ",
@@ -153,7 +157,7 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
   temp_meta <- select_city_input(temp_meta, city=c)
 
   # select year input
-  if (t %in% c('access','landuse', 'land_use', 'population')) {
+  if (t %in% c('access','land_use', 'population')) {
     temp_meta <- select_year_input(temp_meta, year=y)
   }
 

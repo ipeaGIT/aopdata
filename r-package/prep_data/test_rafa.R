@@ -18,9 +18,17 @@ a <- read_access(city='bho',
                            geometry = F,
                            showProgress = T)
 
-a <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
-a <- read_access(city = c('Fortaleza', 'Recife'), mode = 'public_transport', year = 2019, showProgress = FALSE)
+aop_data19 <- aopdata::read_access(city = "all", mode = "public_transport", year = 2019, geometry = TRUE)
+aop_data18 <- aopdata::read_access(city = "all", mode = "public_transport", year = 2018, geometry = TRUE)
+aop_data17 <- aopdata::read_access(city = "all", mode = "public_transport", year = 2017, geometry = TRUE)
 
+
+aopdata::read_access(city = c('rio', 'bho', 'rec'))
+
+a <- read_access(city = 'Fortaleza', mode = 'walk', year = 2019, showProgress = FALSE)
+a <- read_access(city = c('Fortaleza', 'rio de janeiro'), mode = 'public_transport', year = 2017, showProgress = T)
+head(a)
+unique(a$name_muni)
 table(a$abbrev_muni)
 table(a$mode)
 
@@ -164,12 +172,12 @@ library(testthat)
 library(aopdata)
 Sys.setenv(NOT_CRAN = "true")
 
-function_coverage(fun='read_grid', test_file("tests/testthat/test_read_grid.R"))
-function_coverage(fun='read_landuse', test_file("tests/testthat/test_read_landuse.R"))
-function_coverage(fun='read_population', test_file("tests/testthat/test_read_population.R"))
-function_coverage(fun='read_access', test_file("tests/testthat/test_read_access.R"))
+a <- function_coverage(fun='read_grid', test_file("tests/testthat/test_read_grid.R"))
+a <- function_coverage(fun='read_landuse', test_file("tests/testthat/test_read_landuse.R"))
+a <- function_coverage(fun='read_population', test_file("tests/testthat/test_read_population.R"))
+a <- function_coverage(fun='read_access', test_file("tests/testthat/test_read_access.R"))
 
-function_coverage(fun='check_connection', test_file("tests/testthat/test_check_connection.R"))
+a <- function_coverage(fun='check_connection', test_file("tests/testthat/test_check_connection.R"))
 
 
 
@@ -178,11 +186,6 @@ function_coverage(fun='check_connection', test_file("tests/testthat/test_check_c
   system.time(  aop_cov <- covr::package_coverage() )
   aop_cov
   beepr::beep()
-
-#  covr::codecov( coverage = aop_cov, token ='f09e3b22-d365-4239-8dd3-55a6c921d31b' )
-
-
-
 
 
 ### update package documentation ----------------
