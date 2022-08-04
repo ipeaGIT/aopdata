@@ -81,11 +81,15 @@ metadata[munis_df, on=c('city' = 'abrev_muni'), name_muni := i.name_muni]
 metadata[, name_muni := tolower(name_muni) ]
 head(metadata)
 
+metadata <- unique(metadata)
+
 table(metadata$type )
 table(metadata$year )
 subset(metadata, type=="grid")
+subset(metadata, type=="land_use")
 subset(metadata, mode=="bicycle")
 subset(metadata, mode=="car")
+subset(metadata, mode=="public_transport")
 
 
 # to avoid conflict with data.table
