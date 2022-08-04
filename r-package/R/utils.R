@@ -373,7 +373,7 @@ aop_spatial_join <- function(aop_df, aop_sf){
 
   data.table::setDT(aop_df)
   data.table::setDT(aop_sf)
-  data.table::setkeyv(aop_df, c('abbrev_muni', 'name_muni', 'code_muni', 'id_hex'))
+  data.table::setkeyv(aop_df, c('id_hex', 'abbrev_muni', 'name_muni', 'code_muni'))
 
   # merge
     # slower # aop <- data.table::merge.data.table(aop_df, aop_sf, by = 'id_hex')
@@ -405,11 +405,12 @@ aop_merge <- function(aop_landuse, aop_access){
 
   data.table::setDT(aop_landuse)
   data.table::setDT(aop_access)
-  data.table::setkeyv(aop_landuse, c('year', 'abbrev_muni', 'id_hex')) #'name_muni', 'code_muni',
-  data.table::setkeyv(aop_access,  c('year', 'abbrev_muni', 'id_hex')) #'name_muni', 'code_muni',
+  data.table::setkeyv(aop_landuse, c("id_hex", "abbrev_muni", "name_muni", "code_muni", "year"))
+  data.table::setkeyv(aop_access,  c("id_hex", "abbrev_muni", "name_muni", "code_muni", "year"))
 
   # merge
-  aop <- data.table::merge.data.table(aop_landuse, aop_access, by = c('year', 'abbrev_muni',  'id_hex'), all = TRUE) #'name_muni', 'code_muni',
+  aop <- data.table::merge.data.table(aop_landuse, aop_access,
+                                      by = c("id_hex", "abbrev_muni", "name_muni", "code_muni", "year"), all = TRUE) #'name_muni', 'code_muni',
 
   return(aop)
 }

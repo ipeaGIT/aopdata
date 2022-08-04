@@ -1,7 +1,7 @@
 Package: aopdata
 Title: Data from the 'Access to Opportunities Project (AOP)'
-Version: 0.2.999
-Date: 2022-06-19
+Version: 0.2.9999
+Date: 2022-08-04
 Authors@R: c(
              person(given="Rafael H. M.", family="Pereira", email="rafa.pereira.br@gmail.com", role="cre", comment = c(ORCID = "0000-0003-2125-7465")),
              person(given="Rafael H. M.", family="Pereira", email="rafa.pereira.br@gmail.com", role="aut", comment = c(ORCID = "0000-0003-2125-7465")),
@@ -40,5 +40,5 @@ Imports:
       sf (>= 0.9-3),
       utils
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 VignetteBuilder: knitr
