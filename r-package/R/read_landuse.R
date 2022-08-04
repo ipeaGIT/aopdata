@@ -124,7 +124,8 @@ read_landuse <- function(city=NULL, year = 2019, geometry = FALSE, showProgress 
 
   # Download and merge population data
   aop_population <- read_population(city=city, showProgress = showProgress)
-  aop <- data.table::merge.data.table(aop_population, aop_landuse, by = c('year', 'abbrev_muni', 'name_muni', 'code_muni', 'id_hex'), all = TRUE)
+  aop_population[, year := NULL]
+  aop <- data.table::merge.data.table(aop_population, aop_landuse, by = c('id_hex', 'abbrev_muni', 'name_muni', 'code_muni'), all = TRUE)
 
   # with Vs without spatial data
   if(geometry == FALSE){
