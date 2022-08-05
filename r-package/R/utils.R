@@ -147,8 +147,7 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
   metadata <- as.data.frame(aopdata::download_metadata())
 
   # check if download failed
-  msg <- "Problem connecting to data server. Please try it again in a few minutes."
-  if (nrow(metadata)==0) { message(msg); return(invisible(NULL)) }
+  if (nrow(metadata)==0) { return(invisible(NULL)) }
 
   # Select data type
   temp_meta <- subset(metadata, type == t)
