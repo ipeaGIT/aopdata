@@ -1,8 +1,5 @@
 on:
   push:
-    paths:
-      - r-package/**
-      - README.md
     branches:
       - main
 
@@ -51,12 +48,6 @@ jobs:
         shell: Rscript {0}
         working-directory: r-package
 
-      - name: Copy README.md to r-package/index.md
-        run: cp README.md r-package/index.md
-
-      - name: Update r-package/index.md figures source
-        run: sed -i 's/\"r-package\//\"/g' r-package/index.md
-
       - name: Install package
         run: R CMD INSTALL .
         working-directory: r-package
@@ -65,4 +56,4 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          Rscript -e 'pkgdown::deploy_to_branch(pkg = "./r-package", new_process = FALSE)'
+          Rscript -e 'pkgdown::deploy_to_branch(pkg = "./r-package", new_process = FALSE, examples = FALSE)'
