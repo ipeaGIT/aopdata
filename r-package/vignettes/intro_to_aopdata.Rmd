@@ -1,5 +1,5 @@
 ---
-title: "Introduction to `aopdata`"
+title: "Introduction to aopdata"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 urlcolor: blue
@@ -16,13 +16,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette introduces the **`aopdata`** package, lists the cities for which data are available for download, and presents the data dictionary.
+This vignette introduces the **`aopdata`** package.
 
-**`aopdata`** is an R package that makes it easy to download data from the 
-[Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/). 
-AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) 
-that aims to study transport accessibility and inequalities in access to opportunities 
-in Brazilian cities. You can access more information about the project on the [AOP website](https://www.ipea.gov.br/acessooportunidades/en/).
+**`aopdata`** is an R package to download data from the [Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/). The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport access to opportunities in Brazilian cities. 
+
+The **`aopdata`** package brings annual estimates of access to employment, health, education and social protection services by transport mode at a fine spatial resolution for the 20 largest cities in Brazil. The package also brings  data on the spatial distribution of population by sex, race, income and age, as well as the distribution of jobs, schools, healthcare facilities and social assistance reference centers.
+
+Data for 2017, 2018 and 2019 are already available, and cover accessibility estimates by car and active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for over 9 major cities. For more information on the [AOP website](https://www.ipea.gov.br/acessooportunidades/en/).
 
 
 ## Installation
@@ -34,188 +34,126 @@ You can install `aopdata` from CRAN, or the development version from GitHub.
 install.packages('aopdata')
 
 # github
-devtools::install_github("ipeaGIT/aopdata", subdir = "r-package")
+  utils::remove.packages('aopdata')
+  devtools::install_github("ipeaGIT/aopdata", subdir = "r-package")
+
 ```
 
-## Usage
+## Overview of the package
+The **aopdata** package includes five core functions.
 
-After installation, you can easily download accessibility estimates, as well as 
-population and land use data, from 20 major Brazilian cities. Those cities are:
+- `read_population()` - Download population data
+- `read_landuse()` - Download landuse data
+- `read_access()` - Download accessibility estimates
+- `aopdata_dictionary()` - Opens aopdata data dictionary on a web browser
+- `read_grid()` - Download the H3 hexagonal spatial grid
 
-| **Abbreviation** | **City Name**       |
-|--------------|-----------------|
-| bel          | Belem           |
-| bho          | Belo Horizonte  |
-| bsb          | Brasilia        |
-| cam          | Campinas        |
-| cgr          | Campo Grande    |
-| cur          | Curitiba        |
-| duq          | Duque de Caxias |
-| for          | Fortaleza       |
-| goi          | Goiania         |
-| gua          | Guarulhos       |
-| mac          | Maceio          |
-| man          | Manaus          |
-| nat          | Natal           |
-| poa          | Porto Alegre    |
-| rec          | Recife          |
-| rio          | Rio de Janeiro  |
-| sal          | Salvador        |
-| sgo          | Sao Gonçalo     |
-| slz          | Sao Luis        |
-| spo          | Sao Paulo       |
+For a detailed explanations of these functions, check the **vignettes**:
+- [Mapping urban accessibility](access_maps.html)
+- [Mapping population data](population_maps.html)
+- [Mapping land use data](landuse_maps.html)
+- [Analyzing inequality in access to opportunities](access_inequality.html)
 
-**Read *accessibility* estimates**
+## Basic Usage
 
-To download accessibility estimates, you can use the `read_access()` function. The
-example below downloads data on accessibility by walking for the city of Curitiba, 
-in Southern Brazil. The function will download data for the year 2019, which is the 
-one currently available.
-
-`read_access()` can also download the spatial geometry of each city by setting
-`geometry = TRUE`, which can be used to map accessibility levels across the
-city. Refer to the [mapping population and land use](landuse_maps.html) and
-[mapping urban accessibility](access_maps.html) vignettes for examples of how
-to use the spatial geometry information. For now, we'll set `geometry = FALSE` to 
-download a dataframe with no spatial information. 
-
+First, you need to load the package.
 ```{r, message = FALSE, eval = FALSE}
-# load the aopdata package
 library(aopdata)
 
-# A dataframe, with no spatial geometry
-cur <- read_access(city = 'Curitiba', 
-                   mode = 'public_transport', 
-                   year = 2019, 
-                   geometry = FALSE,
-                   showProgress = FALSE)
 ```
 
-Let's check the results:
+### Data dictionary
+
+The dictionary of data columns is presented in the documentation of each function. However, you can also open the data dictionary on a web browser by running:
 
 ```{r, message = FALSE, eval = FALSE}
-dplyr::glimpse(cur)
+# for English
+aopdata_dictionary(lang = 'en')
+
+# for Portuguese
+aopdata_dictionary(lang = 'pt')
 ```
 
-As you can see, a lot of data has been returned from `read_access()`. The dataframe's
-columns can be classified into 4 groups, according to the data they contain: _geographic_,
-_sociodemographic_, _land use_, and _accessibility_. The following section explains 
-the contents of each column.
-
-## Data dictionary
-
-### **Geographic** variables
-
-|**column**|**Description**|**Value**|
-|-----|-----|
-| `abbrev_muni`|	Abbreviation of city name (3 letters)	|
-| `name_muni`  | City name	|
-| `code_muni`	 | 7-digit code of each city	|
-| `id_hex`	   | Unique id of hexagonal cell	|
-
-### **Sociodemographic** variables
-
-|**column**|**Description**|**Value**|
-|-----|-----|
-| `P001` | Total number of residents	|
-| `P002` | Number of white residents	|
-| `P003` | Number of black residents	|
-| `P004` | Number of indigenous residents |
-| `P005` | Number of asian-descendent residents |
-| `P010` | Number of residents with age between 0 and 5 
-| `P011` | Number of residents with age between 6 and 14 
-| `P012` | Number of residents with age between 15 and 18
-| `P013` | Number of residents with age between 19 and 24
-| `P014` | Number of residents with age between 25 and 39
-| `P015` | Number of residents with age between 40 and 69
-| `P016` | Number of residents with age 70 or more
-| `R001` | Average household income per capita	| R$ (Brazilian Reais), values in 2010 |
-| `R002` | Income quintile group	| 1 (poorest), 2, 3, 4, 5 (richest) |
-| `R003` | Income decile group	| 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) |
-
-### **Land use** variables
-
-|**column**|**Description**|**Value**|
-|-----|-----|
-|	`T001` | Total number of formal jobs |
-|	`T002` | Number of formal jobs with primary education or lower|
-|	`T003` | Number of formal jobs with secondary education |
-|	`T004` | Number of formal jobs with tertiary education |
-|	`E001` | Total number of public schools |
-|	`E002` | Number of public schools - early childhood |
-|	`E003` | Number of public schools - elementary schools |
-|	`E004` | Number of public schools - high schools |
-| `M001` | Total number of kids enrolled in public schools |
-| `M002` | Number of kids enrolled  in public schools - early childhood |
-| `M003` | Number of kids enrolled  in public schools - elementary schools |
-| `M004` | Number of kids enrolled  in public schools - high schools |
-|	`S001` | Total number of healthcare facilities |
-|	`S002` | Number of healthcare facilities - low complexity |
-|	`S003` | Number of healthcare facilities - medium complexity |
-|	`S004` | Number of healthcare facilities - high complexity |
-|	`C001` | Number of centers for social assistance (CRAS) |
 
 
-### **Accessibility** variables
+### Accessibility estimates
 
-The name of the columns with accessibility estimates are the junction of three 
-components: 
+The `read_access()` function downloads accessibility estimates for a given `city`, `mode` and `year`. For the sake of convenience, this function will also automatically download the population and land use data for the cities selected. Note that accessibility estimates are available for peak and off-peak periods for `public_transport`and `car` modes.
 
-1) Indicator 
+```{r, message = FALSE, eval = FALSE}
+# Download accessibility, population and land use data
+cur <- read_access(
+          city = 'Curitiba', 
+          mode = 'public_transport', 
+          peak = TRUE,
+          year = 2019
+          )
+```
 
-2) Type of opportunity 
+You many also set the parameter `geometry = TRUE` so that functions return a spatial `sf` object with the geometries of the H3 spatial grid.
 
-3) Time thresold (if applicable)
-
-**1) Indicator**
-
-|**Indicator**|**Description**|**Note**|
-|-----|-----|-----|
-|`CMA`| Active cumulative opportunity measure | The number of opportunities one can access from a given origin  |
-|`CMP`| Passive cumulative opportunity measure | The number of people that can access  a given destination |
-|`TMI`| Travel time to closest opportunity | Value = Inf when travel time is longer than 2h (public transport) or 1,5h (walking or bicycle) |
-
-**2) Type of opportunity**
-
-|**Indicator**|**Description**|
-|-----|-----|
-| `TT`	| All jobs |
-| `TB`	| Jobs - primary education or lower |
-| `TM`	| Jobs - secondary education |
-| `TA`	| Jobs - tertiary education |
-| `ST`	| All healthcare facilities |
-| `SB`	| Healthcare facilities - Low complexity |
-| `SM`	| Healthcare facilities - Medium complexity |
-| `SA`	| Healthcare facilities - High complexity |
-| `ET`	| All public schools |
-| `EI`	| Public schools - early childhood |
-| `EF`	| Public schools - elementary schools |
-| `EM`	| Public schools - high schools |
-| `MT`	| Kids enrolled in all public schools |
-| `MI`	| Kids enrolled in early childhood |
-| `MF`	| Kids enrolled in elementary schools |
-| `MM`	| Kids enrolled in high schools |
-| `CT`	| Centers for social assistance (CRAS) |
+```{r, message = FALSE, eval = FALSE}
+# Download accessibility, population and land use data
+cur <- read_access(
+          city = 'Curitiba', 
+          mode = 'public_transport', 
+          peak = TRUE,
+          year = 2019,
+          geometry = TRUE
+          )
+```
 
 
-**3) Time thresold (only applicable to CMA estimates)**
+### Population and land use data
 
-| **Time thresold**|**Description**|**Note - Only applicable to:**|
-|-----|-----|-----|
-| `15`| Opportunities accessible within 15 min.	| All transport modes |
-| `30`| Opportunities accessible within 30 min.	| All transport modes |
-| `45`| Opportunities accessible within 45 min.	| Active transport modes |
-| `60`| Opportunities accessible within 60 min.	| All transport modes |
-| `90`| Opportunities accessible within 90 min.	| Public transport and car |
-|`120`| Opportunities accessible within 120 min.| Public transport and car |
+In case you are only interested in using the population and land use data generated by the Access to Opportunities Project, you can download these data sets separately. Please note that the population available comes from the latest Brazilian 2010 census, while land use data cna be downloaded for 2017, 2018 or 2019.
 
-## Next Steps
+```{r, message = FALSE, eval = FALSE}
+# Land use data
+lu_for <- read_landuse(
+                city = 'Fortaleza', 
+                year = 2019,
+                geometry = TRUE
+                )
 
-Now, check the next vignettes for demonstrations on how to use `aopdata` to produce 
-[land use](landuse_maps.html) and [accessibility](access_maps.html) maps, as well 
-as to analzse [accessibility inequalities](access_inequality.html).
+# Population data
+pop_for <- read_population(
+                city = 'Fortaleza', 
+                year = 2010,
+                geometry = TRUE
+                )
+```
 
+### Read only spatial grid data
 
+In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the `read_grid()` function.
 
+```{r, message = FALSE, eval = FALSE}
+h3_for <- read_grid(city = 'Fortaleza')
 
+```
 
+### Note
+In all of the functions above, note that:
+
+- The `city` parameter can also be a 3-letter abbreviation of the city.
+```{r, message = FALSE, eval = FALSE}
+df <- read_access(city = 'cur', mode = 'public_transport', year = 2019)
+df <- read_grid(city = 'for')
+```
+- You may also download the data for all cities of the project at once using `city = 'all'`:
+```{r, message = FALSE, eval = FALSE}
+all <- read_landuse(city = 'all', year = 2019)
+
+```
+
+# Acknowledgement <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/ipea_logo.png?raw=true" alt="ipea" width="300">
+
+The R package **aopdata** is developed by a team at the Institute for Applied Economic Research (Ipea), Brazil.
+
+# Citation 
+
+If you use this package in your own work, please cite it as one of the publications below:
+
+**Population and land use data**
+* Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. *Texto para Discussão 2772*. Ipea - Instituto de Pesquisa Econômica Aplicada. Available at http://repositorio.ipea.gov.br/handle/11058/11225
