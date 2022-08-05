@@ -1,12 +1,14 @@
 on:
   push:
+    paths:
+      - r-package/**
     branches:
       - main
-      - master
   pull_request:
+    paths:
+      - r-package/**
     branches:
       - main
-      - master
 
 name: test-coverage
 
@@ -28,6 +30,7 @@ jobs:
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           saveRDS(pak::pkg_deps("local::.", dependencies = TRUE), ".github/r-depends.rds")
         shell: Rscript {0}
+        working-directory: r-package
 
       - name: Restore R package cache
         uses: actions/cache@v2
@@ -44,13 +47,16 @@ jobs:
           pak::local_system_requirements(execute = TRUE)
           pak::pkg_system_requirements("covr", execute = TRUE)
         shell: Rscript {0}
+        working-directory: r-package
 
       - name: Install dependencies
         run: |
           pak::local_install_dev_deps(upgrade = TRUE)
           pak::pkg_install("covr")
         shell: Rscript {0}
+        working-directory: r-package
 
       - name: Test coverage
         run: covr::codecov(quiet = FALSE)
         shell: Rscript {0}
+        working-directory: r-package
