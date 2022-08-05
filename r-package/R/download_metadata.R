@@ -2,7 +2,7 @@
 #'
 #' @return A `data.frame` object with metadata and url of data sets
 #'
-#' @export
+#' @keywords internal
 #' @family general support functions
 #' @examples \dontrun{ if (interactive()) {
 #' df <- download_metadata()

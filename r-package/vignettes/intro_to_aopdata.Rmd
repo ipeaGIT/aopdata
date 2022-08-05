@@ -147,8 +147,7 @@ all <- read_landuse(city = 'all', year = 2019)
 
 ```
 
-# Acknowledgement <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/ipea_logo.png?raw=true" alt="ipea" width="300">
-
+# Acknowledgement 
 The R package **aopdata** is developed by a team at the Institute for Applied Economic Research (Ipea), Brazil.
 
 # Citation 
@@ -156,4 +155,5 @@ The R package **aopdata** is developed by a team at the Institute for Applied Ec
 If you use this package in your own work, please cite it as one of the publications below:
 
 **Population and land use data**
-* Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. *Texto para Discussão 2772*. Ipea - Instituto de Pesquisa Econômica Aplicada. Available at http://repositorio.ipea.gov.br/handle/11058/11225
+
+- Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. *Texto para Discussão 2772*. Ipea - Instituto de Pesquisa Econômica Aplicada. Available at http://repositorio.ipea.gov.br/handle/11058/11225
