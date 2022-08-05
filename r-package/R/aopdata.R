@@ -15,6 +15,7 @@
 #'
 #' @importFrom data.table setDT := %like%
 #' @importFrom utils globalVariables head tail
+#' @keywords internal
 "_PACKAGE"
 
 
