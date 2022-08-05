@@ -441,7 +441,7 @@ check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/m
   }
 
   # message
-  msg <- "Problem connecting to the data server. Please try it again in a few minutes."
+  msg <- "Problem connecting to data server. Please try again in a few minutes."
 
   # test server connection
   x <- try(silent = TRUE,

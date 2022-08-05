@@ -169,14 +169,13 @@ rm_accent <- function(str, pattern="all") {
 
 library(covr)
 library(testthat)
-library(aopdata)
 Sys.setenv(NOT_CRAN = "true")
 
 a <- function_coverage(fun='read_grid', test_file("tests/testthat/test_read_grid.R"))
 a <- function_coverage(fun='read_landuse', test_file("tests/testthat/test_read_landuse.R"))
 a <- function_coverage(fun='read_population', test_file("tests/testthat/test_read_population.R"))
 a <- function_coverage(fun='read_access', test_file("tests/testthat/test_read_access.R"))
-
+a <- function_coverage(fun='aopdata_dictionary', test_file("tests/testthat/test_aopdata_dictionary.R"))
 a <- function_coverage(fun='check_connection', test_file("tests/testthat/test_check_connection.R"))
 
 

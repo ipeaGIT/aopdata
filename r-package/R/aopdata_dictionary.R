@@ -23,7 +23,11 @@
 aopdata_dictionary <- function(lang='en'){
 
   # checks
-  checkmate::assert_string(lang, pattern = 'en|pt')
+  checkmate::assert_string(lang, pattern = 'en|pt', null.ok = FALSE)
+
+  # test server connection
+  check_con <- check_connection('https://ipeagit.github.io/aopdata')
+  if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
 
   if(lang=='en'){ utils::browseURL("https://ipeagit.github.io/aopdata/articles/data_dic_en.html") }
   if(lang=='pt'){ utils::browseURL("https://ipeagit.github.io/aopdata/articles/data_dic_pt.html") }
