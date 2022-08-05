@@ -1,5 +1,5 @@
 ---
-title: 'Data dictionary'
+title: 'Data dictionary [EN]'
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 urlcolor: blue

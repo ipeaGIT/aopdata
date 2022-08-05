@@ -1,10 +1,10 @@
 ---
-title: 'Dicionário de dados'
+title: 'Dicionário de dados [PT]'
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 urlcolor: blue
 vignette: >
-  %\VignetteIndexEntry{Data dictionary [PT]} 
+  %\VignetteIndexEntry{Dicionário de dados [PT]} 
   %\VignetteEngine{knitr::rmarkdown} 
   \usepackage[utf8]{inputenc}
 ---
