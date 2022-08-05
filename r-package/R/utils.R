@@ -10,7 +10,7 @@
 #' @param city city input (passed from read_ function)
 #'
 #' @return A `data.frame` object with metadata subsetted by 'city'
-#' @export
+#' @keywords internal
 #' @family support functions
 #'
 select_city_input <- function(temp_meta=temp_meta, city=NULL){
@@ -65,7 +65,7 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
 #' @param year Year of the dataset (passed from read_ function)
 #'
 #' @return A `data.frame` object with metadata subsetted by 'year'
-#' @export
+#' @keywords internal
 #' @family support functions
 #'
 select_year_input <- function(temp_meta=temp_meta, year=NULL){
@@ -98,7 +98,7 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
 #' @param mode Transport mode (passed by read_ function)
 #'
 #' @return A `data.frame` object with metadata subsetted by 'mode'
-#' @export
+#' @keywords internal
 #' @family support functions
 #'
 select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
@@ -136,7 +136,7 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 #'
 #' @return A `data.frame` object with metadata subsetted by data type,
 #'        'city', 'year' and 'mode'
-#' @export
+#' @keywords internal
 #' @family support functions
 #' @examples \donttest{
 #' df <- download_metadata()
@@ -181,7 +181,7 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 #'
 #' @return No visible output. The downloaded file (either an `sf` or a
 #'         `data.frame`) is saved to a temporary directory.
-#' @export
+#' @keywords internal
 #' @family support functions
 #'
 download_data <- function(file_url, progress_bar = showProgress){
@@ -311,7 +311,7 @@ download_data <- function(file_url, progress_bar = showProgress){
 #'
 #' @return Returns either an `sf` or a `data.frame`, depending of the data set
 #'         that was downloaded
-#' @export
+#' @keywords internal
 #' @family support functions
 #'
 load_data <- function(file_url, temps=NULL){
@@ -365,7 +365,7 @@ load_data <- function(file_url, temps=NULL){
 #' @param aop_sf A spatial `sf` of aop data
 #'
 #' @return Returns a `data.frame sf` with access/land use data and grid geometries
-#' @export
+#' @keywords internal
 #' @family support functions
 #'
 aop_spatial_join <- function(aop_df, aop_sf){
@@ -397,7 +397,7 @@ aop_spatial_join <- function(aop_df, aop_sf){
 #' @param aop_access A `data.table` of aop access data
 #'
 #' @return Returns a `data.table` with landuse and access data
-#' @export
+#' @keywords internal
 #' @family support functions
 #'
 aop_merge <- function(aop_landuse, aop_access){
@@ -426,7 +426,7 @@ aop_merge <- function(aop_landuse, aop_access){
 #'
 #' @return Logical. `TRUE` if url is working, `FALSE` if not.
 #'
-#' @export
+#' @keywords internal
 #' @family support functions
 #'
 check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'){

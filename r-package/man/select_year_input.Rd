@@ -30,3 +30,4 @@ Other support functions:
 \code{\link{select_mode_input}()}
 }
 \concept{support functions}
+\keyword{internal}
