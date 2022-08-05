@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.9999</span>
       </span>
     </div>
 
@@ -61,6 +61,12 @@
     </li>
     <li>
       <a href="../articles/access_maps.html">Mapping urban accessibility</a>
+    </li>
+    <li>
+      <a href="../articles/data_dic_en.html">Data dictionary [EN]</a>
+    </li>
+    <li>
+      <a href="../articles/data_dic_pt.html">Dicionário de dados [PT]</a>
     </li>
     <li>
       <a href="../articles/intro_to_aopdata.html">Introduction to `aopdata`</a>
@@ -100,9 +106,9 @@
       <h1 data-toc-skip>Introduction to <code>aopdata</code>
 </h1>
             
-            <h4 data-toc-skip class="date">2022-06-20</h4>
+            <h4 data-toc-skip class="date">2022-08-05</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/tree/main/r-package/../vignettes/intro_to_aopdata.Rmd" class="external-link"><code>../vignettes/intro_to_aopdata.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/blob/HEAD/../vignettes/intro_to_aopdata.Rmd" class="external-link"><code>../vignettes/intro_to_aopdata.Rmd</code></a></small>
       <div class="hidden name"><code>intro_to_aopdata.Rmd</code></div>
 
     </div>
@@ -116,11 +122,11 @@
 </h2>
 <p>You can install <code>aopdata</code> from CRAN, or the development version from GitHub.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># CRAN</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'aopdata'</span><span class="op">)</span>
-
-<span class="co"># github</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ipeaGIT/aopdata"</span>, subdir <span class="op">=</span> <span class="st">"r-package"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># CRAN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'aopdata'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># github</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ipeaGIT/aopdata"</span>, subdir <span class="op">=</span> <span class="st">"r-package"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
@@ -218,18 +224,18 @@
 <p>To download accessibility estimates, you can use the <code><a href="../reference/read_access.html">read_access()</a></code> function. The example below downloads data on accessibility by walking for the city of Curitiba, in Southern Brazil. The function will download data for the year 2019, which is the one currently available.</p>
 <p><code><a href="../reference/read_access.html">read_access()</a></code> can also download the spatial geometry of each city by setting <code>geometry = TRUE</code>, which can be used to map accessibility levels across the city. Refer to the <a href="landuse_maps.html">mapping population and land use</a> and <a href="access_maps.html">mapping urban accessibility</a> vignettes for examples of how to use the spatial geometry information. For now, we’ll set <code>geometry = FALSE</code> to download a dataframe with no spatial information.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># load the aopdata package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/aopdata" class="external-link">aopdata</a></span><span class="op">)</span>
-
-<span class="co"># A dataframe, with no spatial geometry</span>
-<span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Curitiba'</span>, 
-                   mode <span class="op">=</span> <span class="st">'public_transport'</span>, 
-                   year <span class="op">=</span> <span class="fl">2019</span>, 
-                   geometry <span class="op">=</span> <span class="cn">FALSE</span>,
-                   showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># load the aopdata package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/aopdata" class="external-link">aopdata</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># A dataframe, with no spatial geometry</span></span>
+<span><span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Curitiba'</span>, </span>
+<span>                   mode <span class="op">=</span> <span class="st">'public_transport'</span>, </span>
+<span>                   year <span class="op">=</span> <span class="fl">2019</span>, </span>
+<span>                   geometry <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                   showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>Let’s check the results:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">cur</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">cur</span><span class="op">)</span></span></code></pre></div>
 <p>As you can see, a lot of data has been returned from <code><a href="../reference/read_access.html">read_access()</a></code>. The dataframe’s columns can be classified into 4 groups, according to the data they contain: <em>geographic</em>, <em>sociodemographic</em>, <em>land use</em>, and <em>accessibility</em>. The following section explains the contents of each column.</p>
 </div>
 <div class="section level2">
@@ -601,7 +607,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

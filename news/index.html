@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.9999</span>
       </span>
     </div>
 
@@ -36,6 +36,12 @@
     </li>
     <li>
       <a href="../articles/access_maps.html">Mapping urban accessibility</a>
+    </li>
+    <li>
+      <a href="../articles/data_dic_en.html">Data dictionary [EN]</a>
+    </li>
+    <li>
+      <a href="../articles/data_dic_pt.html">Dicionário de dados [PT]</a>
     </li>
     <li>
       <a href="../articles/intro_to_aopdata.html">Introduction to `aopdata`</a>
@@ -66,7 +72,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
       <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href="https://github.com/ipeaGIT/aopdata/tree/main/r-package/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/ipeaGIT/aopdata/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
@@ -84,7 +90,7 @@
 </ul></li>
 </ul></li></ul><p><strong>Minor changes</strong></p>
 <ul><li>
-<code>read_</code> functions now have no default value for the <code>city</code> parameter. <a href="https://github.com/ipeaGIT/aopdata/issues/38" class="external-link">Closes #38</a>.</li>
+<code>read_</code> functions now have no default value for the <code>city</code> parameter. <a href="https://github.com/ipeaGIT/aopdata/issues/38" class="external-link">Closes </a><a href="https://github.com/ipeaGIT/aopdata/issues/38" class="external-link">#38</a>.</li>
 <li>Fixed <code>ERROR</code> message when there is no data for a particular transport mode for an specific city &amp; year.</li>
 </ul><hr></div>
     <div class="section level2">
@@ -93,16 +99,16 @@
 <hr></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.2" id="aopdata-v022">aopdata v0.2.2<small>2021-04-30</small><a class="anchor" aria-label="anchor" href="#aopdata-v022"></a></h2>
-<p><strong>Minor changes</strong> * Adds <code>crul</code> as a package dependency. Now aoptadata fails gracefully when there is internet connection problems. Closes #32. * <code>showProgress</code> now sets to <code>FALSE</code> in all tests, examples and vignettes. Closes #32. * skip tests on CRAN. Tests are run only locally</p>
+<p><strong>Minor changes</strong> * Adds <code>crul</code> as a package dependency. Now aoptadata fails gracefully when there is internet connection problems. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/32" class="external-link">#32</a>. * <code>showProgress</code> now sets to <code>FALSE</code> in all tests, examples and vignettes. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/32" class="external-link">#32</a>. * skip tests on CRAN. Tests are run only locally</p>
 <hr></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.1" id="aopdata-v021">aopdata v0.2.1<small>2021-04-07</small><a class="anchor" aria-label="anchor" href="#aopdata-v021"></a></h2>
-<p><strong>Minor changes</strong> * Allow for user to download data few selected cities. Closes #29 * Fix progress bar even when showProgress = F. Closes #30 * Fix encoding issues using <code>base::iconv(city, to="ASCII//TRANSLIT")</code>. Closes #31</p>
+<p><strong>Minor changes</strong> * Allow for user to download data few selected cities. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/29" class="external-link">#29</a> * Fix progress bar even when showProgress = F. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/30" class="external-link">#30</a> * Fix encoding issues using <code>base::iconv(city, to="ASCII//TRANSLIT")</code>. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/31" class="external-link">#31</a></p>
 <hr></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.0" id="aopdata-v020">aopdata v0.2.0<small>2021-03-31</small><a class="anchor" aria-label="anchor" href="#aopdata-v020"></a></h2>
-<p><strong>Major changes</strong> * New function read_population. Closes #21 * New parameter <code>peak</code> added to <code><a href="../reference/read_access.html">read_access()</a></code> function. Closes #17 * New internal support function <code>is_online()</code> to alert for possible internet connection problem. Closes #26 * Chache downloaded data in tempdir. Closes #28</p>
-<p><strong>Minor changes</strong> * Downloads two or more cities at the same time. Closes #3.</p>
+<p><strong>Major changes</strong> * New function read_population. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/21" class="external-link">#21</a> * New parameter <code>peak</code> added to <code><a href="../reference/read_access.html">read_access()</a></code> function. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/17" class="external-link">#17</a> * New internal support function <code>is_online()</code> to alert for possible internet connection problem. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/26" class="external-link">#26</a> * Chache downloaded data in tempdir. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/28" class="external-link">#28</a></p>
+<p><strong>Minor changes</strong> * Downloads two or more cities at the same time. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/3" class="external-link">#3</a>.</p>
 <hr></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.0" id="aopdata-v010">aopdata v0.1.0<small>2021-03-08</small><a class="anchor" aria-label="anchor" href="#aopdata-v010"></a></h2>
@@ -121,7 +127,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

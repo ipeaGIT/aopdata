@@ -22,7 +22,7 @@ https://h3geo.org/docs/core-library/restable/."><meta property="og:image" conten
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.9999</span>
       </span>
     </div>
 
@@ -41,6 +41,12 @@ https://h3geo.org/docs/core-library/restable/."><meta property="og:image" conten
     </li>
     <li>
       <a href="../articles/access_maps.html">Mapping urban accessibility</a>
+    </li>
+    <li>
+      <a href="../articles/data_dic_en.html">Data dictionary [EN]</a>
+    </li>
+    <li>
+      <a href="../articles/data_dic_pt.html">Dicionário de dados [PT]</a>
     </li>
     <li>
       <a href="../articles/intro_to_aopdata.html">Introduction to `aopdata`</a>
@@ -71,7 +77,7 @@ https://h3geo.org/docs/core-library/restable/."><meta property="og:image" conten
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Download accessibility estimates with population and land use data</h1>
-    <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/tree/main/r-package/R/read_access.R" class="external-link"><code>R/read_access.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/blob/HEAD/R/read_access.R" class="external-link"><code>R/read_access.R</code></a></small>
     <div class="hidden name"><code>read_access.Rd</code></div>
     </div>
 
@@ -85,14 +91,14 @@ diagonal) and an area of 0.74 km2. More information about H3 at
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">read_access</span><span class="op">(</span>
-  city <span class="op">=</span> <span class="cn">NULL</span>,
-  mode <span class="op">=</span> <span class="st">"walk"</span>,
-  peak <span class="op">=</span> <span class="cn">TRUE</span>,
-  year <span class="op">=</span> <span class="fl">2019</span>,
-  geometry <span class="op">=</span> <span class="cn">FALSE</span>,
-  showProgress <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_access</span><span class="op">(</span></span>
+<span>  city <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  mode <span class="op">=</span> <span class="st">"walk"</span>,</span>
+<span>  peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">2019</span>,</span>
+<span>  geometry <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  showProgress <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -138,19 +144,20 @@ feature geometry of spatial hexagonal grid H3. See details in
     </div>
     <div id="data-dictionary-">
     <h2>Data dictionary:</h2>
-    <p>The name of the columns with accessibility estimates are the
-junction of three components: 1) Indicator 2) Type of opportunity
-3) Time thresold (if applicable)</p><div class="section">
-<h3 id="-indicator">1) Indicator<a class="anchor" aria-label="anchor" href="#-indicator"></a></h3>
-<table class="table table"><tr><td><strong>Indicator</strong></td><td><strong>Description</strong></td><td><strong>Note</strong></td></tr><tr><td><code>CMA</code></td><td>Active cumulative opportunity measure</td><td>The number of opportunities one can access from a given origin</td></tr><tr><td><code>CMP</code></td><td>Passive cumulative opportunity measure</td><td>The number of people that can access  a given destination</td></tr><tr><td><code>TMI</code></td><td>Travel time to closest opportunity</td><td>Value = <code>Inf</code> when travel time is longer than 2h (public transport, car) or 1,5h (walking or bicycle)</td></tr></table></div>
+    
+<table class="table table"><tr><td>data_type</td><td>column</td><td>description</td><td>values</td></tr><tr><td>temporal</td><td>year</td><td>Year of reference</td><td></td></tr><tr><td>transport</td><td>mode</td><td>Transport mode</td><td>walk; bicycle; public_transport; car</td></tr><tr><td>transport</td><td>peak</td><td>Peak and off-peak</td><td>1 (peak); 0 (off-peak)</td></tr></table><p>The name of the columns with accessibility estimates are the junction of
+three components: 1) Type of accessibility indicator 2) Type of opportunity /
+population 3) Time thresold</p><div class="section">
+<h3 id="-type-of-accessibility-indicator">1) Type of accessibility indicator<a class="anchor" aria-label="anchor" href="#-type-of-accessibility-indicator"></a></h3>
+<table class="table table"><tr><td>Indicator</td><td>Description</td><td>Observation</td></tr><tr><td>CMA</td><td>Cumulative opportunity measure (active)</td><td></td></tr><tr><td>CMP</td><td>Cumulative opportunity measure (passive)</td><td></td></tr><tr><td>TMI</td><td>Travel time to closest opportunity</td><td>Value = Inf when travel time is longer than 2h (public transport or car) or 1,5h (walking or bicycle)</td></tr></table></div>
 
 <div class="section">
-<h3 id="-type-of-opportunity">2) Type of opportunity<a class="anchor" aria-label="anchor" href="#-type-of-opportunity"></a></h3>
-<table class="table table"><tr><td><strong>Indicator</strong></td><td><strong>Description</strong></td><td><strong>Note</strong></td></tr><tr><td><code>TT</code></td><td>All jobs</td><td></td></tr><tr><td><code>TB</code></td><td>Jobs - primary education or lower)</td><td></td></tr><tr><td><code>TM</code></td><td>Jobs - secondary education</td><td></td></tr><tr><td><code>TA</code></td><td>Jobs - tertiary education</td><td></td></tr><tr><td><code>ST</code></td><td>All healthcare facilities</td><td></td></tr><tr><td><code>SB</code></td><td>Healthcare facilities - Low complexity</td><td></td></tr><tr><td><code>SM</code></td><td>Healthcare facilities - Medium complexity</td><td></td></tr><tr><td><code>SA</code></td><td>Healthcare facilities - High complexity</td><td></td></tr><tr><td><code>ET</code></td><td>All public schools</td><td></td></tr><tr><td><code>EI</code></td><td>Public schools - early childhood</td><td></td></tr><tr><td><code>EF</code></td><td>Public schools - elementary schools</td><td></td></tr><tr><td><code>EM</code></td><td>Public schools - high schools</td><td></td></tr><tr><td><code>MT</code></td><td>Kids enrolled in all public schools</td><td></td></tr><tr><td><code>MI</code></td><td>Kids enrolled in early childhood</td><td></td></tr><tr><td><code>MF</code></td><td>Kids enrolled in elementary schools</td><td></td></tr><tr><td><code>MM</code></td><td>Kids enrolled in high schools</td><td></td></tr><tr><td><code>CT</code></td><td>Centers for social assistance (CRAS)</td><td></td></tr></table></div>
+<h3 id="-type-of-opportunity-population">2) Type of opportunity / population<a class="anchor" aria-label="anchor" href="#-type-of-opportunity-population"></a></h3>
+<table class="table table"><tr><td>Type of opportunity</td><td>Description</td><td>Observation: available in combination with</td></tr><tr><td>TT</td><td>All jobs</td><td>CMA indicator</td></tr><tr><td>TB</td><td>Jobs with primary education</td><td>CMA indicator</td></tr><tr><td>TM</td><td>Jobs with secundary education</td><td>CMA indicator</td></tr><tr><td>TA</td><td>Jobs with tertiary education</td><td>CMA indicator</td></tr><tr><td>ST</td><td>All healthcare facilities</td><td>CMA and TMI indicators</td></tr><tr><td>SB</td><td>Healthcare facilities - Low complexity</td><td>CMA and TMI indicators</td></tr><tr><td>SM</td><td>Healthcare facilities - Medium complexity</td><td>CMA and TMI indicators</td></tr><tr><td>SA</td><td>Healthcare facilities - High complexity</td><td>CMA and TMI indicators</td></tr><tr><td>ET</td><td>All public schools</td><td>CMA and TMI indicators</td></tr><tr><td>EI</td><td>Public schools - early childhood</td><td>CMA and TMI indicators</td></tr><tr><td>EF</td><td>Public schools - elementary schools</td><td>CMA and TMI indicators</td></tr><tr><td>EM</td><td>Public schools - high schools</td><td>CMA and TMI indicators</td></tr><tr><td>MT</td><td>All school enrollments</td><td>CMA and TMI indicators</td></tr><tr><td>MI</td><td>School enrollments - early childhood</td><td>CMA and TMI indicators</td></tr><tr><td>MF</td><td>School enrollments - elementary schools</td><td>CMA and TMI indicators</td></tr><tr><td>MM</td><td>School enrollments - high schools</td><td>CMA and TMI indicators</td></tr><tr><td>CT</td><td>All Social Assistance Reference Centers (CRAS)</td><td>CMA and TMI indicators</td></tr></table><table class="table table"><tr><td>People</td><td>Description</td><td>Observation: available in combination with</td></tr><tr><td>PT</td><td>All population</td><td>CMP indicator</td></tr><tr><td>PH</td><td>Men</td><td>CMP indicator</td></tr><tr><td>PM</td><td>Women</td><td>CMP indicator</td></tr><tr><td>PB</td><td>White population</td><td>CMP indicator</td></tr><tr><td>PA</td><td>Asian-descendent population</td><td>CMP indicator</td></tr><tr><td>PI</td><td>Indiginous population</td><td>CMP indicator</td></tr><tr><td>PN</td><td>Back population</td><td>CMP indicator</td></tr><tr><td>P0005I</td><td>Population between 0 and 5 years old</td><td>CMP indicator</td></tr><tr><td>P0614I</td><td>Population between 6 and 14 years old</td><td>CMP indicator</td></tr><tr><td>P1518I</td><td>Population between 15 and 18 years old</td><td>CMP indicator</td></tr><tr><td>P1924I</td><td>Population between 19 and 24 years old</td><td>CMP indicator</td></tr><tr><td>P2539I</td><td>Population between 25 and 39 years old</td><td>CMP indicator</td></tr><tr><td>P4069I</td><td>Population between 40 and 69 years old</td><td>CMP indicator</td></tr><tr><td>P70I</td><td>Population with 70 years old or more</td><td>CMP indicator</td></tr></table></div>
 
 <div class="section">
-<h3 id="-time-thresold-only-applicable-to-cma-estimates-">3) Time thresold (only applicable to CMA estimates)<a class="anchor" aria-label="anchor" href="#-time-thresold-only-applicable-to-cma-estimates-"></a></h3>
-<table class="table table"><tr><td><strong>Time thresold</strong></td><td><strong>Description</strong></td><td><strong>Note - applicable to:</strong></td></tr><tr><td><code>15</code></td><td>Opportunities accessible within 15 min.</td><td>All transport modes</td></tr><tr><td><code>30</code></td><td>Opportunities accessible within 30 min.</td><td>All transport modes</td></tr><tr><td><code>45</code></td><td>Opportunities accessible within 45 min.</td><td>Active transport modes</td></tr><tr><td><code>60</code></td><td>Opportunities accessible within 60 min.</td><td>All transport modes</td></tr><tr><td><code>90</code></td><td>Opportunities accessible within 90 min.</td><td>Public transport and car</td></tr><tr><td><code>120</code></td><td>Opportunities accessible within 120 min.</td><td>Public transport and car</td></tr></table></div>
+<h3 id="-time-thresold-only-applicable-to-cma-and-cmp-estimates-">3) Time thresold (only applicable to CMA and CMP estimates)<a class="anchor" aria-label="anchor" href="#-time-thresold-only-applicable-to-cma-and-cmp-estimates-"></a></h3>
+<table class="table table"><tr><td>Time thresold</td><td>Description</td><td>Observation: only applicable to</td></tr><tr><td>15</td><td>Opportunities accessible within 15 min.</td><td>Active transport modes</td></tr><tr><td>30</td><td>Opportunities accessible within 30 min.</td><td>All transport modes</td></tr><tr><td>45</td><td>Opportunities accessible within 45 min.</td><td>Active transport modes</td></tr><tr><td>60</td><td>Opportunities accessible within 60 min.</td><td>All transport modes</td></tr><tr><td>90</td><td>Opportunities accessible within 90 min.</td><td>Public transport and car</td></tr><tr><td>120</td><td>Opportunities accessible within 120 min.</td><td>Public transport and car</td></tr></table></div>
 
 <div class="section">
 <h3 id="-cities-available">4) Cities available<a class="anchor" aria-label="anchor" href="#-cities-available"></a></h3>
@@ -160,15 +167,14 @@ junction of three components: 1) Indicator 2) Type of opportunity
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Read accessibility estimates of a single city</span></span>
-<span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">read_access</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">read_access</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Goiania'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Read accessibility estimates for all cities</span></span>
-<span class="r-in"><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu">read_access</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, mode <span class="op">=</span> <span class="st">'walk'</span>, year <span class="op">=</span> <span class="fl">2019</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co"># Read accessibility estimates of a single city</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">read_access</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">read_access</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Goiania'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Read accessibility estimates for all cities</span></span>
+<span><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu">read_access</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, mode <span class="op">=</span> <span class="st">'walk'</span>, year <span class="op">=</span> <span class="fl">2019</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -182,7 +188,7 @@ junction of three components: 1) Indicator 2) Type of opportunity
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

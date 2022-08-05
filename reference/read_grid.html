@@ -21,7 +21,7 @@ https://h3geo.org/docs/core-library/restable/.  See documentation
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.9999</span>
       </span>
     </div>
 
@@ -40,6 +40,12 @@ https://h3geo.org/docs/core-library/restable/.  See documentation
     </li>
     <li>
       <a href="../articles/access_maps.html">Mapping urban accessibility</a>
+    </li>
+    <li>
+      <a href="../articles/data_dic_en.html">Data dictionary [EN]</a>
+    </li>
+    <li>
+      <a href="../articles/data_dic_pt.html">Dicionário de dados [PT]</a>
     </li>
     <li>
       <a href="../articles/intro_to_aopdata.html">Introduction to `aopdata`</a>
@@ -70,7 +76,7 @@ https://h3geo.org/docs/core-library/restable/.  See documentation
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Download spatial hexagonal grid H3</h1>
-    <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/tree/main/r-package/R/read_grid.R" class="external-link"><code>R/read_grid.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/blob/HEAD/R/read_grid.R" class="external-link"><code>R/read_grid.R</code></a></small>
     <div class="hidden name"><code>read_grid.Rd</code></div>
     </div>
 
@@ -83,7 +89,7 @@ diagonal) and an area of 0.74 km2. More information about H3 at
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">read_grid</span><span class="op">(</span>city <span class="op">=</span> <span class="cn">NULL</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_grid</span><span class="op">(</span>city <span class="op">=</span> <span class="cn">NULL</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -106,7 +112,7 @@ diagonal) and an area of 0.74 km2. More information about H3 at
     <div id="data-dictionary-">
     <h2>Data dictionary:</h2>
     
-<table class="table table"><tr><td><strong>Data type</strong></td><td><strong>column</strong></td><td><strong>Description</strong></td></tr><tr><td>geographic</td><td><code>abbrev_muni</code></td><td>Abbreviation of city name (3 letters)</td></tr><tr><td>geographic</td><td><code>name_muni</code></td><td>City name</td></tr><tr><td>geographic</td><td><code>code_muni</code></td><td>7-digit code of each city</td></tr><tr><td>geographic</td><td><code>id_hex</code></td><td>Unique id of hexagonal cell</td></tr></table></div>
+<table class="table table"><tr><td><strong>Data type</strong></td><td><strong>column</strong></td><td><strong>Description</strong></td></tr><tr><td>geographic</td><td><code>id_hex</code></td><td>Unique id of hexagonal cell</td></tr><tr><td>geographic</td><td><code>abbrev_muni</code></td><td>Abbreviation of city name (3 letters)</td></tr><tr><td>geographic</td><td><code>name_muni</code></td><td>City name</td></tr><tr><td>geographic</td><td><code>code_muni</code></td><td>7-digit code of each city</td></tr></table></div>
     <div id="cities-available">
     <h2>Cities available</h2>
     
@@ -114,14 +120,13 @@ diagonal) and an area of 0.74 km2. More information about H3 at
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Read spatial grid of a single city</span></span>
-<span class="r-in"><span class="va">nat</span> <span class="op">&lt;-</span> <span class="fu">read_grid</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Natal'</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Read spatial grid of all cities in the project</span></span>
-<span class="r-in"><span class="co"># all &lt;- read_grid(city = 'all', showProgress = FALSE)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co"># Read spatial grid of a single city</span></span>
+<span><span class="va">nat</span> <span class="op">&lt;-</span> <span class="fu">read_grid</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Natal'</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Read spatial grid of all cities in the project</span></span>
+<span><span class="co"># all &lt;- read_grid(city = 'all', showProgress = FALSE)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -135,7 +140,7 @@ diagonal) and an area of 0.74 km2. More information about H3 at
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

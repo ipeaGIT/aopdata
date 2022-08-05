@@ -20,7 +20,7 @@ https://h3geo.org/docs/core-library/restable/."><meta property="og:image" conten
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">aopdata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.9999</span>
       </span>
     </div>
 
@@ -39,6 +39,12 @@ https://h3geo.org/docs/core-library/restable/."><meta property="og:image" conten
     </li>
     <li>
       <a href="../articles/access_maps.html">Mapping urban accessibility</a>
+    </li>
+    <li>
+      <a href="../articles/data_dic_en.html">Data dictionary [EN]</a>
+    </li>
+    <li>
+      <a href="../articles/data_dic_pt.html">Dicionário de dados [PT]</a>
     </li>
     <li>
       <a href="../articles/intro_to_aopdata.html">Introduction to `aopdata`</a>
@@ -69,7 +75,7 @@ https://h3geo.org/docs/core-library/restable/."><meta property="og:image" conten
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Download population and socioeconomic data</h1>
-    <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/tree/main/r-package/R/read_population.R" class="external-link"><code>R/read_population.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/blob/HEAD/R/read_population.R" class="external-link"><code>R/read_population.R</code></a></small>
     <div class="hidden name"><code>read_population.Rd</code></div>
     </div>
 
@@ -81,12 +87,12 @@ on a hexagonal grid based on the global H3 index at resolution 9, with a size of
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">read_population</span><span class="op">(</span>
-  city <span class="op">=</span> <span class="cn">NULL</span>,
-  year <span class="op">=</span> <span class="fl">2010</span>,
-  geometry <span class="op">=</span> <span class="cn">FALSE</span>,
-  showProgress <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">read_population</span><span class="op">(</span></span>
+<span>  city <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">2010</span>,</span>
+<span>  geometry <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  showProgress <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -121,7 +127,7 @@ feature geometry of spatial hexagonal grid H3. See details in
     <div id="data-dictionary-">
     <h2>Data dictionary:</h2>
     
-<table class="table table"><tr><td><strong>Data type</strong></td><td><strong>column</strong></td><td><strong>Description</strong></td><td><strong>Value</strong></td></tr><tr><td>geographic</td><td><code>abbrev_muni</code></td><td>Abbreviation of city name (3 letters)</td><td></td></tr><tr><td>geographic</td><td><code>name_muni</code></td><td>City name</td><td></td></tr><tr><td>geographic</td><td><code>code_muni</code></td><td>7-digit code of each city</td><td></td></tr><tr><td>geographic</td><td><code>id_hex</code></td><td>Unique id of hexagonal cell</td><td></td></tr><tr><td>sociodemographic</td><td><code>P001</code></td><td>Total number of residents</td><td></td></tr><tr><td>sociodemographic</td><td><code>P002</code></td><td>Number of white residents</td><td></td></tr><tr><td>sociodemographic</td><td><code>P003</code></td><td>Number of black residents</td><td></td></tr><tr><td>sociodemographic</td><td><code>P004</code></td><td>Number of indigenous residents</td><td></td></tr><tr><td>sociodemographic</td><td><code>P005</code></td><td>Number of asian-descendent residents</td><td></td></tr><tr><td>sociodemographic</td><td><code>P010</code></td><td>Number of residents with age between 0 and 5</td><td></td></tr><tr><td>sociodemographic</td><td><code>P011</code></td><td>Number of residents with age between 6 and 14</td><td></td></tr><tr><td>sociodemographic</td><td><code>P012</code></td><td>Number of residents with age between 15 and 18</td><td></td></tr><tr><td>sociodemographic</td><td><code>P013</code></td><td>Number of residents with age between 19 and 24</td><td></td></tr><tr><td>sociodemographic</td><td><code>P014</code></td><td>Number of residents with age between 25 and 39</td><td></td></tr><tr><td>sociodemographic</td><td><code>P015</code></td><td>Number of residents with age between 40 and 69</td><td></td></tr><tr><td>sociodemographic</td><td><code>P016</code></td><td>Number of residents with age 70 or more</td><td></td></tr><tr><td>sociodemographic</td><td><code>R001</code></td><td>Average household income per capita</td><td>R$ (Brazilian Reais), values in 2010</td></tr><tr><td>sociodemographic</td><td><code>R002</code></td><td>Income quintile group</td><td>1 (poorest), 2, 3, 4, 5 (richest)</td></tr><tr><td>sociodemographic</td><td><code>R003</code></td><td>Income decile group</td><td>1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest)</td></tr></table></div>
+<table class="table table"><tr><td>data_type</td><td>column</td><td>description</td><td>values</td></tr><tr><td>temporal</td><td>year</td><td>Year of reference</td><td></td></tr><tr><td>geographic</td><td>id_hex</td><td>Unique id of hexagonal cell</td><td></td></tr><tr><td>geographic</td><td>abbrev_muni</td><td>Abbreviation of city name (3 letters)</td><td></td></tr><tr><td>geographic</td><td>name_muni</td><td>City name</td><td></td></tr><tr><td>geographic</td><td>code_muni</td><td>7-digit code of each city</td><td></td></tr><tr><td>sociodemographic</td><td>P001</td><td>Total number of residents</td><td></td></tr><tr><td>sociodemographic</td><td>P002</td><td>Number of white residents</td><td></td></tr><tr><td>sociodemographic</td><td>P003</td><td>Number of black residents</td><td></td></tr><tr><td>sociodemographic</td><td>P004</td><td>Number of indiginous residents</td><td></td></tr><tr><td>sociodemographic</td><td>P005</td><td>Number of asian-descendents residents</td><td></td></tr><tr><td>sociodemographic</td><td>P006</td><td>Number of men</td><td></td></tr><tr><td>sociodemographic</td><td>P007</td><td>Number of women</td><td></td></tr><tr><td>sociodemographic</td><td>P010</td><td>Number of people between 0 and 5 years old</td><td></td></tr><tr><td>sociodemographic</td><td>P011</td><td>Number of people between 6 and 14 years old</td><td></td></tr><tr><td>sociodemographic</td><td>P012</td><td>Number of people between 15 and 18 years old</td><td></td></tr><tr><td>sociodemographic</td><td>P013</td><td>Number of people between 19 and 24 years old</td><td></td></tr><tr><td>sociodemographic</td><td>P014</td><td>Number of people between 25 and 39 years old</td><td></td></tr><tr><td>sociodemographic</td><td>P015</td><td>Number of people between 40 and 69 years old</td><td></td></tr><tr><td>sociodemographic</td><td>P016</td><td>Number of people with 70 years old or more</td><td></td></tr><tr><td>sociodemographic</td><td>R001</td><td>Average household income per capita</td><td>R$ (Brazilian Reais), values in 2010</td></tr><tr><td>sociodemographic</td><td>R002</td><td>Income quintile group</td><td>1 (poorest), 2, 3, 4, 5 (richest)</td></tr><tr><td>sociodemographic</td><td>R003</td><td>Income decile group</td><td>1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest)</td></tr></table></div>
     <div id="cities-available">
     <h2>Cities available</h2>
     
@@ -129,15 +135,14 @@ feature geometry of spatial hexagonal grid H3. See details in
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># a single city</span></span>
-<span class="r-in"><span class="va">bho</span> <span class="op">&lt;-</span> <span class="fu">read_population</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Belo Horizonte'</span>, year <span class="op">=</span> <span class="fl">2010</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">bho</span> <span class="op">&lt;-</span> <span class="fu">read_population</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'bho'</span>, year <span class="op">=</span> <span class="fl">2010</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># all cities</span></span>
-<span class="r-in"><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu">read_population</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, year <span class="op">=</span> <span class="fl">2010</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co"># a single city</span></span>
+<span><span class="va">bho</span> <span class="op">&lt;-</span> <span class="fu">read_population</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Belo Horizonte'</span>, year <span class="op">=</span> <span class="fl">2010</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">bho</span> <span class="op">&lt;-</span> <span class="fu">read_population</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'bho'</span>, year <span class="op">=</span> <span class="fl">2010</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># all cities</span></span>
+<span><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu">read_population</span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, year <span class="op">=</span> <span class="fl">2010</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
     </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -151,7 +156,7 @@ feature geometry of spatial hexagonal grid H3. See details in
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
