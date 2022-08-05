@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Introduction to `aopdata` • aopdata</title>
+<title>Introduction to aopdata • aopdata</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to `aopdata`">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to aopdata">
 <meta property="og:description" content="aopdata">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -69,7 +69,7 @@
       <a href="../articles/data_dic_pt.html">Dicionário de dados [PT]</a>
     </li>
     <li>
-      <a href="../articles/intro_to_aopdata.html">Introduction to `aopdata`</a>
+      <a href="../articles/intro_to_aopdata.html">Introduction to aopdata</a>
     </li>
     <li>
       <a href="../articles/landuse_maps.html">Mapping land use data</a>
@@ -103,8 +103,7 @@
       </header><script src="intro_to_aopdata_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Introduction to <code>aopdata</code>
-</h1>
+      <h1 data-toc-skip>Introduction to aopdata</h1>
             
             <h4 data-toc-skip class="date">2022-08-05</h4>
       
@@ -115,478 +114,133 @@
 
     
     
-<p>This vignette introduces the <strong><code>aopdata</code></strong> package, lists the cities for which data are available for download, and presents the data dictionary.</p>
-<p><strong><code>aopdata</code></strong> is an R package that makes it easy to download data from the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">Access to Opportunities Project (AOP)</a>. AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) that aims to study transport accessibility and inequalities in access to opportunities in Brazilian cities. You can access more information about the project on the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">AOP website</a>.</p>
-<div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h2>
+<p>This vignette introduces the <strong><code>aopdata</code></strong> package.</p>
+<p><strong><code>aopdata</code></strong> is an R package to download data from the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">Access to Opportunities Project (AOP)</a>. The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport access to opportunities in Brazilian cities.</p>
+<p>The <strong><code>aopdata</code></strong> package brings annual estimates of access to employment, health, education and social protection services by transport mode at a fine spatial resolution for the 20 largest cities in Brazil. The package also brings data on the spatial distribution of population by sex, race, income and age, as well as the distribution of jobs, schools, healthcare facilities and social assistance reference centers.</p>
+<p>Data for 2017, 2018 and 2019 are already available, and cover accessibility estimates by car and active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for over 9 major cities. For more information on the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">AOP website</a>.</p>
+<div class="section level3">
+<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h3>
 <p>You can install <code>aopdata</code> from CRAN, or the development version from GitHub.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># CRAN</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'aopdata'</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># github</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ipeaGIT/aopdata"</span>, subdir <span class="op">=</span> <span class="st">"r-package"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">utils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/utils/remove.packages.html" class="external-link">remove.packages</a></span><span class="op">(</span><span class="st">'aopdata'</span><span class="op">)</span></span>
+<span>  <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"ipeaGIT/aopdata"</span>, subdir <span class="op">=</span> <span class="st">"r-package"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
-</h2>
-<p>After installation, you can easily download accessibility estimates, as well as population and land use data, from 20 major Brazilian cities. Those cities are:</p>
-<table class="table">
-<thead><tr class="header">
-<th><strong>Abbreviation</strong></th>
-<th><strong>City Name</strong></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>bel</td>
-<td>Belem</td>
-</tr>
-<tr class="even">
-<td>bho</td>
-<td>Belo Horizonte</td>
-</tr>
-<tr class="odd">
-<td>bsb</td>
-<td>Brasilia</td>
-</tr>
-<tr class="even">
-<td>cam</td>
-<td>Campinas</td>
-</tr>
-<tr class="odd">
-<td>cgr</td>
-<td>Campo Grande</td>
-</tr>
-<tr class="even">
-<td>cur</td>
-<td>Curitiba</td>
-</tr>
-<tr class="odd">
-<td>duq</td>
-<td>Duque de Caxias</td>
-</tr>
-<tr class="even">
-<td>for</td>
-<td>Fortaleza</td>
-</tr>
-<tr class="odd">
-<td>goi</td>
-<td>Goiania</td>
-</tr>
-<tr class="even">
-<td>gua</td>
-<td>Guarulhos</td>
-</tr>
-<tr class="odd">
-<td>mac</td>
-<td>Maceio</td>
-</tr>
-<tr class="even">
-<td>man</td>
-<td>Manaus</td>
-</tr>
-<tr class="odd">
-<td>nat</td>
-<td>Natal</td>
-</tr>
-<tr class="even">
-<td>poa</td>
-<td>Porto Alegre</td>
-</tr>
-<tr class="odd">
-<td>rec</td>
-<td>Recife</td>
-</tr>
-<tr class="even">
-<td>rio</td>
-<td>Rio de Janeiro</td>
-</tr>
-<tr class="odd">
-<td>sal</td>
-<td>Salvador</td>
-</tr>
-<tr class="even">
-<td>sgo</td>
-<td>Sao Gonçalo</td>
-</tr>
-<tr class="odd">
-<td>slz</td>
-<td>Sao Luis</td>
-</tr>
-<tr class="even">
-<td>spo</td>
-<td>Sao Paulo</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Read <em>accessibility</em> estimates</strong></p>
-<p>To download accessibility estimates, you can use the <code><a href="../reference/read_access.html">read_access()</a></code> function. The example below downloads data on accessibility by walking for the city of Curitiba, in Southern Brazil. The function will download data for the year 2019, which is the one currently available.</p>
-<p><code><a href="../reference/read_access.html">read_access()</a></code> can also download the spatial geometry of each city by setting <code>geometry = TRUE</code>, which can be used to map accessibility levels across the city. Refer to the <a href="landuse_maps.html">mapping population and land use</a> and <a href="access_maps.html">mapping urban accessibility</a> vignettes for examples of how to use the spatial geometry information. For now, we’ll set <code>geometry = FALSE</code> to download a dataframe with no spatial information.</p>
+<div class="section level3">
+<h3 id="overview-of-the-package">Overview of the package<a class="anchor" aria-label="anchor" href="#overview-of-the-package"></a>
+</h3>
+<p>The <strong>aopdata</strong> package includes five core functions.</p>
+<ul>
+<li>
+<code><a href="../reference/read_population.html">read_population()</a></code> - Download population data</li>
+<li>
+<code><a href="../reference/read_landuse.html">read_landuse()</a></code> - Download landuse data</li>
+<li>
+<code><a href="../reference/read_access.html">read_access()</a></code> - Download accessibility estimates</li>
+<li>
+<code><a href="../reference/aopdata_dictionary.html">aopdata_dictionary()</a></code> - Opens aopdata data dictionary on a web browser</li>
+<li>
+<code><a href="../reference/read_grid.html">read_grid()</a></code> - Download the H3 hexagonal spatial grid</li>
+</ul>
+<p>For a detailed explanations of these functions, check the <strong>vignettes</strong>: - <a href="access_maps.html">Mapping urban accessibility</a> - <a href="population_maps.html">Mapping population data</a> - <a href="landuse_maps.html">Mapping land use data</a> - <a href="access_inequality.html">Analyzing inequality in access to opportunities</a></p>
+</div>
+<div class="section level3">
+<h3 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
+</h3>
+<p>First, you need to load the package.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># load the aopdata package</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/aopdata" class="external-link">aopdata</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># A dataframe, with no spatial geometry</span></span>
-<span><span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Curitiba'</span>, </span>
-<span>                   mode <span class="op">=</span> <span class="st">'public_transport'</span>, </span>
-<span>                   year <span class="op">=</span> <span class="fl">2019</span>, </span>
-<span>                   geometry <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>                   showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p>Let’s check the results:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ipeaGIT/aopdata" class="external-link">aopdata</a></span><span class="op">)</span></span></code></pre></div>
+<div class="section level4">
+<h4 id="data-dictionary">Data dictionary<a class="anchor" aria-label="anchor" href="#data-dictionary"></a>
+</h4>
+<p>The dictionary of data columns is presented in the documentation of each function. However, you can also open the data dictionary on a web browser by running:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">cur</span><span class="op">)</span></span></code></pre></div>
-<p>As you can see, a lot of data has been returned from <code><a href="../reference/read_access.html">read_access()</a></code>. The dataframe’s columns can be classified into 4 groups, according to the data they contain: <em>geographic</em>, <em>sociodemographic</em>, <em>land use</em>, and <em>accessibility</em>. The following section explains the contents of each column.</p>
+<code class="sourceCode R"><span><span class="co"># for English</span></span>
+<span><span class="fu"><a href="../reference/aopdata_dictionary.html">aopdata_dictionary</a></span><span class="op">(</span>lang <span class="op">=</span> <span class="st">'en'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># for Portuguese</span></span>
+<span><span class="fu"><a href="../reference/aopdata_dictionary.html">aopdata_dictionary</a></span><span class="op">(</span>lang <span class="op">=</span> <span class="st">'pt'</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="data-dictionary">Data dictionary<a class="anchor" aria-label="anchor" href="#data-dictionary"></a>
-</h2>
-<div class="section level3">
-<h3 id="geographic-variables">
-<strong>Geographic</strong> variables<a class="anchor" aria-label="anchor" href="#geographic-variables"></a>
-</h3>
-<table class="table">
-<thead><tr class="header">
-<th><strong>column</strong></th>
-<th><strong>Description</strong></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>abbrev_muni</code></td>
-<td>Abbreviation of city name (3 letters)</td>
-</tr>
-<tr class="even">
-<td><code>name_muni</code></td>
-<td>City name</td>
-</tr>
-<tr class="odd">
-<td><code>code_muni</code></td>
-<td>7-digit code of each city</td>
-</tr>
-<tr class="even">
-<td><code>id_hex</code></td>
-<td>Unique id of hexagonal cell</td>
-</tr>
-</tbody>
-</table>
+<div class="section level4">
+<h4 id="accessibility-estimates">Accessibility estimates<a class="anchor" aria-label="anchor" href="#accessibility-estimates"></a>
+</h4>
+<p>The <code><a href="../reference/read_access.html">read_access()</a></code> function downloads accessibility estimates for a given <code>city</code>, <code>mode</code> and <code>year</code>. For the sake of convenience, this function will also automatically download the population and land use data for the cities selected. Note that accessibility estimates are available for peak and off-peak periods for <code>public_transport</code>and <code>car</code> modes.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Download accessibility, population and land use data</span></span>
+<span><span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span></span>
+<span>          city <span class="op">=</span> <span class="st">'Curitiba'</span>, </span>
+<span>          mode <span class="op">=</span> <span class="st">'public_transport'</span>, </span>
+<span>          peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>          year <span class="op">=</span> <span class="fl">2019</span></span>
+<span>          <span class="op">)</span></span></code></pre></div>
+<p>You many also set the parameter <code>geometry = TRUE</code> so that functions return a spatial <code>sf</code> object with the geometries of the H3 spatial grid.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Download accessibility, population and land use data</span></span>
+<span><span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span></span>
+<span>          city <span class="op">=</span> <span class="st">'Curitiba'</span>, </span>
+<span>          mode <span class="op">=</span> <span class="st">'public_transport'</span>, </span>
+<span>          peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>          year <span class="op">=</span> <span class="fl">2019</span>,</span>
+<span>          geometry <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>          <span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="sociodemographic-variables">
-<strong>Sociodemographic</strong> variables<a class="anchor" aria-label="anchor" href="#sociodemographic-variables"></a>
-</h3>
-<table class="table">
-<thead><tr class="header">
-<th><strong>column</strong></th>
-<th><strong>Description</strong></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>P001</code></td>
-<td>Total number of residents</td>
-</tr>
-<tr class="even">
-<td><code>P002</code></td>
-<td>Number of white residents</td>
-</tr>
-<tr class="odd">
-<td><code>P003</code></td>
-<td>Number of black residents</td>
-</tr>
-<tr class="even">
-<td><code>P004</code></td>
-<td>Number of indigenous residents</td>
-</tr>
-<tr class="odd">
-<td><code>P005</code></td>
-<td>Number of asian-descendent residents</td>
-</tr>
-<tr class="even">
-<td><code>P010</code></td>
-<td>Number of residents with age between 0 and 5</td>
-</tr>
-<tr class="odd">
-<td><code>P011</code></td>
-<td>Number of residents with age between 6 and 14</td>
-</tr>
-<tr class="even">
-<td><code>P012</code></td>
-<td>Number of residents with age between 15 and 18</td>
-</tr>
-<tr class="odd">
-<td><code>P013</code></td>
-<td>Number of residents with age between 19 and 24</td>
-</tr>
-<tr class="even">
-<td><code>P014</code></td>
-<td>Number of residents with age between 25 and 39</td>
-</tr>
-<tr class="odd">
-<td><code>P015</code></td>
-<td>Number of residents with age between 40 and 69</td>
-</tr>
-<tr class="even">
-<td><code>P016</code></td>
-<td>Number of residents with age 70 or more</td>
-</tr>
-<tr class="odd">
-<td><code>R001</code></td>
-<td>Average household income per capita</td>
-</tr>
-<tr class="even">
-<td><code>R002</code></td>
-<td>Income quintile group</td>
-</tr>
-<tr class="odd">
-<td><code>R003</code></td>
-<td>Income decile group</td>
-</tr>
-</tbody>
-</table>
+<div class="section level4">
+<h4 id="population-and-land-use-data">Population and land use data<a class="anchor" aria-label="anchor" href="#population-and-land-use-data"></a>
+</h4>
+<p>In case you are only interested in using the population and land use data generated by the Access to Opportunities Project, you can download these data sets separately. Please note that the population available comes from the latest Brazilian 2010 census, while land use data cna be downloaded for 2017, 2018 or 2019.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Land use data</span></span>
+<span><span class="va">lu_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_landuse.html">read_landuse</a></span><span class="op">(</span></span>
+<span>                city <span class="op">=</span> <span class="st">'Fortaleza'</span>, </span>
+<span>                year <span class="op">=</span> <span class="fl">2019</span>,</span>
+<span>                geometry <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>                <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Population data</span></span>
+<span><span class="va">pop_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_population.html">read_population</a></span><span class="op">(</span></span>
+<span>                city <span class="op">=</span> <span class="st">'Fortaleza'</span>, </span>
+<span>                year <span class="op">=</span> <span class="fl">2010</span>,</span>
+<span>                geometry <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>                <span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="land-use-variables">
-<strong>Land use</strong> variables<a class="anchor" aria-label="anchor" href="#land-use-variables"></a>
-</h3>
-<table class="table">
-<thead><tr class="header">
-<th><strong>column</strong></th>
-<th><strong>Description</strong></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>T001</code></td>
-<td>Total number of formal jobs</td>
-</tr>
-<tr class="even">
-<td><code>T002</code></td>
-<td>Number of formal jobs with primary education or lower</td>
-</tr>
-<tr class="odd">
-<td><code>T003</code></td>
-<td>Number of formal jobs with secondary education</td>
-</tr>
-<tr class="even">
-<td><code>T004</code></td>
-<td>Number of formal jobs with tertiary education</td>
-</tr>
-<tr class="odd">
-<td><code>E001</code></td>
-<td>Total number of public schools</td>
-</tr>
-<tr class="even">
-<td><code>E002</code></td>
-<td>Number of public schools - early childhood</td>
-</tr>
-<tr class="odd">
-<td><code>E003</code></td>
-<td>Number of public schools - elementary schools</td>
-</tr>
-<tr class="even">
-<td><code>E004</code></td>
-<td>Number of public schools - high schools</td>
-</tr>
-<tr class="odd">
-<td><code>M001</code></td>
-<td>Total number of kids enrolled in public schools</td>
-</tr>
-<tr class="even">
-<td><code>M002</code></td>
-<td>Number of kids enrolled in public schools - early childhood</td>
-</tr>
-<tr class="odd">
-<td><code>M003</code></td>
-<td>Number of kids enrolled in public schools - elementary schools</td>
-</tr>
-<tr class="even">
-<td><code>M004</code></td>
-<td>Number of kids enrolled in public schools - high schools</td>
-</tr>
-<tr class="odd">
-<td><code>S001</code></td>
-<td>Total number of healthcare facilities</td>
-</tr>
-<tr class="even">
-<td><code>S002</code></td>
-<td>Number of healthcare facilities - low complexity</td>
-</tr>
-<tr class="odd">
-<td><code>S003</code></td>
-<td>Number of healthcare facilities - medium complexity</td>
-</tr>
-<tr class="even">
-<td><code>S004</code></td>
-<td>Number of healthcare facilities - high complexity</td>
-</tr>
-<tr class="odd">
-<td><code>C001</code></td>
-<td>Number of centers for social assistance (CRAS)</td>
-</tr>
-</tbody>
-</table>
+<div class="section level4">
+<h4 id="read-only-spatial-grid-data">Read only spatial grid data<a class="anchor" aria-label="anchor" href="#read-only-spatial-grid-data"></a>
+</h4>
+<p>In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the <code><a href="../reference/read_grid.html">read_grid()</a></code> function.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h3_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="accessibility-variables">
-<strong>Accessibility</strong> variables<a class="anchor" aria-label="anchor" href="#accessibility-variables"></a>
-</h3>
-<p>The name of the columns with accessibility estimates are the junction of three components:</p>
-<ol style="list-style-type: decimal">
-<li><p>Indicator</p></li>
-<li><p>Type of opportunity</p></li>
-<li><p>Time thresold (if applicable)</p></li>
-</ol>
-<p><strong>1) Indicator</strong></p>
-<table class="table">
-<colgroup>
-<col width="33%">
-<col width="33%">
-<col width="33%">
-</colgroup>
-<thead><tr class="header">
-<th><strong>Indicator</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Note</strong></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>CMA</code></td>
-<td>Active cumulative opportunity measure</td>
-<td>The number of opportunities one can access from a given origin</td>
-</tr>
-<tr class="even">
-<td><code>CMP</code></td>
-<td>Passive cumulative opportunity measure</td>
-<td>The number of people that can access a given destination</td>
-</tr>
-<tr class="odd">
-<td><code>TMI</code></td>
-<td>Travel time to closest opportunity</td>
-<td>Value = Inf when travel time is longer than 2h (public transport) or 1,5h (walking or bicycle)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>2) Type of opportunity</strong></p>
-<table class="table">
-<thead><tr class="header">
-<th><strong>Indicator</strong></th>
-<th><strong>Description</strong></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>TT</code></td>
-<td>All jobs</td>
-</tr>
-<tr class="even">
-<td><code>TB</code></td>
-<td>Jobs - primary education or lower</td>
-</tr>
-<tr class="odd">
-<td><code>TM</code></td>
-<td>Jobs - secondary education</td>
-</tr>
-<tr class="even">
-<td><code>TA</code></td>
-<td>Jobs - tertiary education</td>
-</tr>
-<tr class="odd">
-<td><code>ST</code></td>
-<td>All healthcare facilities</td>
-</tr>
-<tr class="even">
-<td><code>SB</code></td>
-<td>Healthcare facilities - Low complexity</td>
-</tr>
-<tr class="odd">
-<td><code>SM</code></td>
-<td>Healthcare facilities - Medium complexity</td>
-</tr>
-<tr class="even">
-<td><code>SA</code></td>
-<td>Healthcare facilities - High complexity</td>
-</tr>
-<tr class="odd">
-<td><code>ET</code></td>
-<td>All public schools</td>
-</tr>
-<tr class="even">
-<td><code>EI</code></td>
-<td>Public schools - early childhood</td>
-</tr>
-<tr class="odd">
-<td><code>EF</code></td>
-<td>Public schools - elementary schools</td>
-</tr>
-<tr class="even">
-<td><code>EM</code></td>
-<td>Public schools - high schools</td>
-</tr>
-<tr class="odd">
-<td><code>MT</code></td>
-<td>Kids enrolled in all public schools</td>
-</tr>
-<tr class="even">
-<td><code>MI</code></td>
-<td>Kids enrolled in early childhood</td>
-</tr>
-<tr class="odd">
-<td><code>MF</code></td>
-<td>Kids enrolled in elementary schools</td>
-</tr>
-<tr class="even">
-<td><code>MM</code></td>
-<td>Kids enrolled in high schools</td>
-</tr>
-<tr class="odd">
-<td><code>CT</code></td>
-<td>Centers for social assistance (CRAS)</td>
-</tr>
-</tbody>
-</table>
-<p><strong>3) Time thresold (only applicable to CMA estimates)</strong></p>
-<table class="table">
-<thead><tr class="header">
-<th><strong>Time thresold</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Note - Only applicable to:</strong></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>15</code></td>
-<td>Opportunities accessible within 15 min.</td>
-<td>All transport modes</td>
-</tr>
-<tr class="even">
-<td><code>30</code></td>
-<td>Opportunities accessible within 30 min.</td>
-<td>All transport modes</td>
-</tr>
-<tr class="odd">
-<td><code>45</code></td>
-<td>Opportunities accessible within 45 min.</td>
-<td>Active transport modes</td>
-</tr>
-<tr class="even">
-<td><code>60</code></td>
-<td>Opportunities accessible within 60 min.</td>
-<td>All transport modes</td>
-</tr>
-<tr class="odd">
-<td><code>90</code></td>
-<td>Opportunities accessible within 90 min.</td>
-<td>Public transport and car</td>
-</tr>
-<tr class="even">
-<td><code>120</code></td>
-<td>Opportunities accessible within 120 min.</td>
-<td>Public transport and car</td>
-</tr>
-</tbody>
-</table>
+<div class="section level4">
+<h4 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a>
+</h4>
+<p>In all of the functions above, note that:</p>
+<ul>
+<li>The <code>city</code> parameter can also be a 3-letter abbreviation of the city.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'cur'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'for'</span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>You may also download the data for all cities of the project at once using <code>city = 'all'</code>:</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_landuse.html">read_landuse</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
-<h2 id="next-steps">Next Steps<a class="anchor" aria-label="anchor" href="#next-steps"></a>
+<h2 id="acknowledgement">Acknowledgement <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/ipea_logo.png?raw=true" alt="ipea" width="300"><a class="anchor" aria-label="anchor" href="#acknowledgement"></a>
 </h2>
-<p>Now, check the next vignettes for demonstrations on how to use <code>aopdata</code> to produce <a href="landuse_maps.html">land use</a> and <a href="access_maps.html">accessibility</a> maps, as well as to analzse <a href="access_inequality.html">accessibility inequalities</a>.</p>
+<p>The R package <strong>aopdata</strong> is developed by a team at the Institute for Applied Economic Research (Ipea), Brazil.</p>
+</div>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>If you use this package in your own work, please cite it as one of the publications below:</p>
+<p><strong>Population and land use data</strong> * Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. <em>Texto para Discussão 2772</em>. Ipea - Instituto de Pesquisa Econômica Aplicada. Available at <a href="http://repositorio.ipea.gov.br/handle/11058/11225" class="external-link uri">http://repositorio.ipea.gov.br/handle/11058/11225</a></p>
 </div>
   </div>
 
