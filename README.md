@@ -10,10 +10,11 @@
 
 <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"> 
 
-**`aopdata`** is an R package to download data from the [Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/). The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport accessibility and inequalities in access to opportunities in Brazilian cities. 
+**`aopdata`** is an R package to download data from the [Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/). The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport access to opportunities in Brazilian cities. 
 
-The **`aopdata`** package brings annual estimates of access to employment, health and education services by transport mode, as well as data on the spatial distribution of population, schools and healthcare facilities at a fine spatial resolution for all cities included in the study. Data for 2019 are already available, and cover accessibility estimates by active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for 7 major cities. For more information on the [AOP website](https://www.ipea.gov.br/acessooportunidades/en/).
+The **`aopdata`** package brings annual estimates of access to employment, health, education and social protection services by transport mode at a fine spatial resolution for the 20 largest cities in Brazil. The package also brings  data on the spatial distribution of population by sex, race, income and age, as well as the distribution of jobs, schools, healthcare facilities and social assistance reference centers.
 
+Data for 2017, 2018 and 2019 are already available, and cover accessibility estimates by car and active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for over 9 major cities. For more information on the [AOP website](https://www.ipea.gov.br/acessooportunidades/en/).
 
 
 ## Installation R
@@ -22,37 +23,105 @@ The **`aopdata`** package brings annual estimates of access to employment, healt
 # From CRAN
   install.packages("aopdata")
   library(aopdata)
-  
-```
 
-# Basic Usage
-
-**Read *accessibility* estimates**
-```R
-# Just a data.frame, without spatial geometry
-cur <- read_access(city = 'Curitiba', mode = 'walk', year = 2019)
-
-# An sf dataframe, with spatial geometry
-cur <- read_access(city = 'Curitiba', mode = 'walk', year = 2019, geometry = TRUE)
-
-```
-**Read only population and land use data**
-```R
-# Just a data.frame, without spatial geometry
-df <- read_landuse(city = 'Fortaleza', year = 2019)
-
-# An sf dataframe, with spatial geometry
-df <- read_landuse(city = 'Fortaleza', year = 2019, geometry = TRUE)
+# or use the development version with latest features
+  utils::remove.packages('aopdata')
+  devtools::install_github("ipeaGIT/aopdata", subdir = "r-package")
+  library(aopdata)
 
 ```
 
-**Read only the spatial grid**
-```R
-# Read specific city
-df <- read_grid(city = 'Fortaleza')
+
+## Overview of the package
+The **aopdata** package includes five core functions.
+
+- `read_population()` - Download population data
+- `read_landuse()` - Download landuse data
+- `read_access()` - Download accessibility estimates
+- `aopdata_dictionary()` - Opens aopdata data dictionary on a web browser
+- `read_grid()` - Download the H3 hexagonal spatial grid
+
+For a detailed explanations of these functions, check the **vignettes**:
+- [Mapping urban accessibility](https://ipeagit.github.io/aopdata/articles/access_maps.html)
+- [Mapping population data](https://ipeagit.github.io/aopdata/articles/population_maps.html)
+- [Mapping land use data](https://ipeagit.github.io/aopdata/articles/landuse_maps.html)
+- [Analyzing inequality in access to opportunities](https://ipeagit.github.io/aopdata/articles/access_inequality.html)
+
+
+## Basic Usage
+
+#### Data dictionary
+
+The dictionary of data columns is presented in the documentation of each function. However, you can also open the data dictionary on a web browser by running:
+
+```{R}
+# for English
+aopdata_dictionary(lang = 'en')
+
+# for Portuguese
+aopdata_dictionary(lang = 'pt')
 ```
 
-For all of the functions above, note that:
+
+#### Accessibility estimates
+
+The `read_access()` function downloads accessibility estimates for a given `city`, `mode` and `year`. For the sake of convenience, this function will also automatically download the population and land use data for the cities selected. Note that accessibility estimates are available for peak and off-peak periods for `public_transport`and `car` modes.
+
+```{R}
+# Download accessibility, population and land use data
+cur <- read_access(
+          city = 'Curitiba', 
+          mode = 'public_transport', 
+          peak = TRUE,
+          year = 2019
+          )
+```
+
+You many also set the parameter `geometry = TRUE` so that functions return a spatial `sf` object with the geometries of the H3 spatial grid.
+
+```{R}
+# Download accessibility, population and land use data
+cur <- read_access(
+          city = 'Curitiba', 
+          mode = 'public_transport', 
+          peak = TRUE,
+          year = 2019,
+          geometry = TRUE
+          )
+```
+
+
+#### Population and land use data
+
+In case you are only interested in using the population and land use data generated by the Access to Opportunities Project, you can download these data sets separately. Please note that the population available comes from the latest Brazilian 2010 census, while land use data cna be downloaded for 2017, 2018 or 2019.
+
+```{R}
+# Land use data
+lu_for <- read_landuse(
+                city = 'Fortaleza', 
+                year = 2019,
+                geometry = TRUE
+                )
+
+# Population data
+pop_for <- read_population(
+                city = 'Fortaleza', 
+                year = 2010,
+                geometry = TRUE
+                )
+```
+
+#### Read only spatial grid data
+
+In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the `read_grid()` function.
+
+```{R}
+h3_for <- read_grid(city = 'Fortaleza')
+
+```
+
+#### Note
+In all of the functions above, note that:
 
 - The `city` parameter can also be a 3-letter abbreviation of the city.
 ```R
@@ -60,16 +129,19 @@ df <- read_access(city = 'cur', mode = 'public_transport', year = 2019)
 df <- read_grid(city = 'for')
 ```
 - You may also download the data for all cities of the project at once using `city = 'all'`:
-```R
+```{R}
 all <- read_landuse(city = 'all', year = 2019)
+
 ```
 
------
+# Acknowledgement <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/ipea_logo.png?raw=true" alt="ipea" width="300">
 
-# Citation <img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/ipea_logo.png?raw=true" alt="ipea" width="300">
+The R package **aopdata** is developed by a team at the Institute for Applied Economic Research (Ipea), Brazil.
 
-The R package **aopdata** is developed by a team at the Institute for Applied Economic Research (Ipea), Brazil. If you use this package in research publications, please cite it as one of the publications below:
+# Citation 
 
-* Pereira, R. H. M., Braga, C. K. V., Serra, Bernardo, & Nadalin, V. (2019). Desigualdades socioespaciais de acesso a oportunidades nas cidades brasileiras, 2019. Texto para Discussão Ipea, 2535. Instituto de Pesquisa Econômica Aplicada (Ipea). Disponível em http://repositorio.ipea.gov.br/handle/11058/9586
-* Pereira, R. H. M.; Braga, C. K. V.; Servo, L. M.; Serra, B.; Amaral, P.; Gouveia, N.; Paez, A. (2021) Geographic access to COVID-19 healthcare in Brazil using a balanced float catchment area approach. Social Science & Medicine. https://doi.org/10.1016/j.socscimed.2021.113773
+If you use this package in your own work, please cite it as one of the publications below:
+
+**Population and land use data**
+* Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. *Texto para Discussão 2772*. Ipea - Instituto de Pesquisa Econômica Aplicada. Available at http://repositorio.ipea.gov.br/handle/11058/11225
 
