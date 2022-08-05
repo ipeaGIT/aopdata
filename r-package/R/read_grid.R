@@ -16,10 +16,10 @@
 #' # Data dictionary:
 #' |**Data type**|**column**|**Description**|
 #' |-----|-----|-----|
+#' | geographic	| `id_hex`	   | Unique id of hexagonal cell	|
 #' | geographic	| `abbrev_muni`| Abbreviation of city name (3 letters)	|
 #' | geographic	| `name_muni`  | City name	|
 #' | geographic	| `code_muni`	 | 7-digit code of each city	| |
-#' | geographic	| `id_hex`	   | Unique id of hexagonal cell	|
 #'
 #' # Cities available
 #' |**City name**| **Three-letter abbreviation**|

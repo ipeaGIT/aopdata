@@ -28,47 +28,74 @@
 #'
 #' @details
 #' # Data dictionary:
-#' The name of the columns with accessibility estimates are the
-#' junction of three components: 1) Indicator 2) Type of opportunity
-#' 3) Time thresold (if applicable)
+#'  |    data_type	   |    column   |     description   | values |
+#'  |------------------|-------------|-------------------|---------|
+#'  | temporal	       | year        | Year of reference | |
+#'  | transport	       | mode        | Transport mode | walk; bicycle; public_transport; car |
+#'  | transport	       | peak        | Peak and off-peak | 1 (peak); 0 (off-peak) |
 #'
-#' ## 1) Indicator
-#' |**Indicator**|**Description**|**Note**|
-#' |-----|-----|-----|
-#' |`CMA`| Active cumulative opportunity measure | The number of opportunities one can access from a given origin  |
-#' |`CMP`| Passive cumulative opportunity measure | The number of people that can access  a given destination |
-#' |`TMI`| Travel time to closest opportunity | Value = `Inf` when travel time is longer than 2h (public transport, car) or 1,5h (walking or bicycle) |
-
-#' ## 2) Type of opportunity
-#' |**Indicator**|**Description**|**Note**|
-#' |-----|-----|-----|
-#' | `TT` | All jobs |
-#' | `TB` | Jobs - primary education or lower) |
-#' | `TM` | Jobs - secondary education |
-#' | `TA` | Jobs - tertiary education |
-#' | `ST` | All healthcare facilities |
-#' | `SB` | Healthcare facilities - Low complexity |
-#' | `SM` | Healthcare facilities - Medium complexity |
-#' | `SA` | Healthcare facilities - High complexity |
-#' | `ET` | All public schools |
-#' | `EI` | Public schools - early childhood |
-#' | `EF` | Public schools - elementary schools |
-#' | `EM` | Public schools - high schools |
-#' | `MT` | Kids enrolled in all public schools |
-#' | `MI` | Kids enrolled in early childhood |
-#' | `MF` | Kids enrolled in elementary schools |
-#' | `MM` | Kids enrolled in high schools |
-#' | `CT` | Centers for social assistance (CRAS) |
+#' The name of the columns with accessibility estimates are the junction of
+#' three components: 1) Type of accessibility indicator 2) Type of opportunity /
+#' population 3) Time thresold
 #'
-#' ## 3) Time thresold (only applicable to CMA estimates)
-#' | **Time thresold**|**Description**|**Note - applicable to:**|
-#' |-----|-----|-----|
-#' | `15`| Opportunities accessible within 15 min.	| All transport modes |
-#' | `30`| Opportunities accessible within 30 min.	| All transport modes |
-#' | `45`| Opportunities accessible within 45 min.	| Active transport modes |
-#' | `60`| Opportunities accessible within 60 min.	| All transport modes |
-#' | `90`| Opportunities accessible within 90 min.	| Public transport and car |
-#' |`120`| Opportunities accessible within 120 min.| Public transport and car |
+#'### 1) Type of accessibility indicator
+#'
+#' | Indicator |      Description                                         | Observation         |
+#' |-----------|--------------------------------------------------------|-------------------|
+#' | CMA	      | Cumulative opportunity measure (active)  | |
+#' | CMP	      | Cumulative opportunity measure (passive) | |
+#' | TMI       | Travel time to closest opportunity       | Value = Inf when travel time is longer than 2h (public transport or car) or 1,5h (walking or bicycle) |
+#'
+#'
+#'### 2) Type of opportunity / population
+#' | Type of opportunity	| Description	| Observation: available in combination with  |
+#' |---------------------|-------------|---------------------------------------------|
+#' | TT	| All jobs | CMA indicator |
+#' | TB	| Jobs with primary education | CMA indicator |
+#' | TM	| Jobs with secundary education | CMA indicator |
+#' | TA	| Jobs with tertiary education | CMA indicator |
+#' | ST	| All healthcare facilities | CMA and TMI indicators |
+#' | SB	| Healthcare facilities - Low complexity | CMA and TMI indicators |
+#' | SM	| Healthcare facilities - Medium complexity | CMA and TMI indicators |
+#' | SA	| Healthcare facilities - High complexity | CMA and TMI indicators |
+#' | ET	| All public schools | CMA and TMI indicators |
+#' | EI	| Public schools - early childhood | CMA and TMI indicators |
+#' | EF	| Public schools - elementary schools | CMA and TMI indicators |
+#' | EM	| Public schools - high schools | CMA and TMI indicators |
+#' | MT	| All school enrollments | CMA and TMI indicators |
+#' | MI	| School enrollments - early childhood | CMA and TMI indicators |
+#' | MF	| School enrollments - elementary schools | CMA and TMI indicators |
+#' | MM	| School enrollments - high schools | CMA and TMI indicators |
+#' | CT	| All Social Assistance Reference Centers (CRAS) | CMA and TMI indicators |
+#'
+#' | People      	| Description	 | Observation: available in combination with |
+#' |---------------|--------------|--------------------------------------------|
+#' | PT     |	All population | CMP indicator |
+#' | PH     |	Men | CMP indicator |
+#' | PM     |	Women | CMP indicator |
+#' | PB     |	White population | CMP indicator |
+#' | PA     |	Asian-descendent population | CMP indicator |
+#' | PI     |	Indiginous population | CMP indicator |
+#' | PN     |	Back population | CMP indicator |
+#' | P0005I |	Population between 0 and 5 years old | CMP indicator |
+#' | P0614I |	Population between 6 and 14 years old | CMP indicator |
+#' | P1518I |	Population between 15 and 18 years old | CMP indicator |
+#' | P1924I |	Population between 19 and 24 years old | CMP indicator |
+#' | P2539I |	Population between 25 and 39 years old | CMP indicator |
+#' | P4069I |	Population between 40 and 69 years old | CMP indicator |
+#' | P70I   |	Population with 70 years old or more | CMP indicator |
+#'
+#'
+#' ### 3) Time thresold (only applicable to CMA and CMP estimates)
+#' | Time thresold	| Description	 | Observation: only applicable to |
+#' |---------------|--------------|----------------------------|
+#' | 15	| Opportunities accessible within 15 min.  | Active transport modes   |
+#' | 30	| Opportunities accessible within 30 min.  | All transport modes      |
+#' | 45	| Opportunities accessible within 45 min.  | Active transport modes   |
+#' | 60	| Opportunities accessible within 60 min.  | All transport modes      |
+#' | 90	| Opportunities accessible within 90 min.  | Public transport and car |
+#' | 120	| Opportunities accessible within 120 min. | Public transport and car |
+#'
 #'
 #'## 4) Cities available
 #' |**City name**| **Three-letter abbreviation**|**Transport modes**|

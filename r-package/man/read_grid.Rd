@@ -25,10 +25,10 @@ diagonal) and an area of 0.74 km2. More information about H3 at
 \section{Data dictionary:}{
 \tabular{lll}{
    \strong{Data type} \tab \strong{column} \tab \strong{Description} \cr
+   geographic \tab \code{id_hex} \tab Unique id of hexagonal cell \cr
    geographic \tab \code{abbrev_muni} \tab Abbreviation of city name (3 letters) \cr
    geographic \tab \code{name_muni} \tab City name \cr
    geographic \tab \code{code_muni} \tab 7-digit code of each city \cr
-   geographic \tab \code{id_hex} \tab Unique id of hexagonal cell \cr
 }
 }
 

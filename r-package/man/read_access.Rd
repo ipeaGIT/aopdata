@@ -47,49 +47,74 @@ diagonal) and an area of 0.74 km2. More information about H3 at
 \url{https://h3geo.org/docs/core-library/restable/}.
 }
 \section{Data dictionary:}{
-The name of the columns with accessibility estimates are the
-junction of three components: 1) Indicator 2) Type of opportunity
-3) Time thresold (if applicable)
-\subsection{1) Indicator}{\tabular{lll}{
-   \strong{Indicator} \tab \strong{Description} \tab \strong{Note} \cr
-   \code{CMA} \tab Active cumulative opportunity measure \tab The number of opportunities one can access from a given origin \cr
-   \code{CMP} \tab Passive cumulative opportunity measure \tab The number of people that can access  a given destination \cr
-   \code{TMI} \tab Travel time to closest opportunity \tab Value = \code{Inf} when travel time is longer than 2h (public transport, car) or 1,5h (walking or bicycle) \cr
+\tabular{llll}{
+   data_type \tab column \tab description \tab values \cr
+   temporal \tab year \tab Year of reference \tab  \cr
+   transport \tab mode \tab Transport mode \tab walk; bicycle; public_transport; car \cr
+   transport \tab peak \tab Peak and off-peak \tab 1 (peak); 0 (off-peak) \cr
+}
+
+
+The name of the columns with accessibility estimates are the junction of
+three components: 1) Type of accessibility indicator 2) Type of opportunity /
+population 3) Time thresold
+\subsection{1) Type of accessibility indicator}{\tabular{lll}{
+   Indicator \tab Description \tab Observation \cr
+   CMA \tab Cumulative opportunity measure (active) \tab  \cr
+   CMP \tab Cumulative opportunity measure (passive) \tab  \cr
+   TMI \tab Travel time to closest opportunity \tab Value = Inf when travel time is longer than 2h (public transport or car) or 1,5h (walking or bicycle) \cr
 }
 
 }
 
-\subsection{2) Type of opportunity}{\tabular{lll}{
-   \strong{Indicator} \tab \strong{Description} \tab \strong{Note} \cr
-   \code{TT} \tab All jobs \tab  \cr
-   \code{TB} \tab Jobs - primary education or lower) \tab  \cr
-   \code{TM} \tab Jobs - secondary education \tab  \cr
-   \code{TA} \tab Jobs - tertiary education \tab  \cr
-   \code{ST} \tab All healthcare facilities \tab  \cr
-   \code{SB} \tab Healthcare facilities - Low complexity \tab  \cr
-   \code{SM} \tab Healthcare facilities - Medium complexity \tab  \cr
-   \code{SA} \tab Healthcare facilities - High complexity \tab  \cr
-   \code{ET} \tab All public schools \tab  \cr
-   \code{EI} \tab Public schools - early childhood \tab  \cr
-   \code{EF} \tab Public schools - elementary schools \tab  \cr
-   \code{EM} \tab Public schools - high schools \tab  \cr
-   \code{MT} \tab Kids enrolled in all public schools \tab  \cr
-   \code{MI} \tab Kids enrolled in early childhood \tab  \cr
-   \code{MF} \tab Kids enrolled in elementary schools \tab  \cr
-   \code{MM} \tab Kids enrolled in high schools \tab  \cr
-   \code{CT} \tab Centers for social assistance (CRAS) \tab  \cr
+\subsection{2) Type of opportunity / population}{\tabular{lll}{
+   Type of opportunity \tab Description \tab Observation: available in combination with \cr
+   TT \tab All jobs \tab CMA indicator \cr
+   TB \tab Jobs with primary education \tab CMA indicator \cr
+   TM \tab Jobs with secundary education \tab CMA indicator \cr
+   TA \tab Jobs with tertiary education \tab CMA indicator \cr
+   ST \tab All healthcare facilities \tab CMA and TMI indicators \cr
+   SB \tab Healthcare facilities - Low complexity \tab CMA and TMI indicators \cr
+   SM \tab Healthcare facilities - Medium complexity \tab CMA and TMI indicators \cr
+   SA \tab Healthcare facilities - High complexity \tab CMA and TMI indicators \cr
+   ET \tab All public schools \tab CMA and TMI indicators \cr
+   EI \tab Public schools - early childhood \tab CMA and TMI indicators \cr
+   EF \tab Public schools - elementary schools \tab CMA and TMI indicators \cr
+   EM \tab Public schools - high schools \tab CMA and TMI indicators \cr
+   MT \tab All school enrollments \tab CMA and TMI indicators \cr
+   MI \tab School enrollments - early childhood \tab CMA and TMI indicators \cr
+   MF \tab School enrollments - elementary schools \tab CMA and TMI indicators \cr
+   MM \tab School enrollments - high schools \tab CMA and TMI indicators \cr
+   CT \tab All Social Assistance Reference Centers (CRAS) \tab CMA and TMI indicators \cr
+}
+\tabular{lll}{
+   People \tab Description \tab Observation: available in combination with \cr
+   PT \tab All population \tab CMP indicator \cr
+   PH \tab Men \tab CMP indicator \cr
+   PM \tab Women \tab CMP indicator \cr
+   PB \tab White population \tab CMP indicator \cr
+   PA \tab Asian-descendent population \tab CMP indicator \cr
+   PI \tab Indiginous population \tab CMP indicator \cr
+   PN \tab Back population \tab CMP indicator \cr
+   P0005I \tab Population between 0 and 5 years old \tab CMP indicator \cr
+   P0614I \tab Population between 6 and 14 years old \tab CMP indicator \cr
+   P1518I \tab Population between 15 and 18 years old \tab CMP indicator \cr
+   P1924I \tab Population between 19 and 24 years old \tab CMP indicator \cr
+   P2539I \tab Population between 25 and 39 years old \tab CMP indicator \cr
+   P4069I \tab Population between 40 and 69 years old \tab CMP indicator \cr
+   P70I \tab Population with 70 years old or more \tab CMP indicator \cr
 }
 
 }
 
-\subsection{3) Time thresold (only applicable to CMA estimates)}{\tabular{lll}{
-   \strong{Time thresold} \tab \strong{Description} \tab \strong{Note - applicable to:} \cr
-   \code{15} \tab Opportunities accessible within 15 min. \tab All transport modes \cr
-   \code{30} \tab Opportunities accessible within 30 min. \tab All transport modes \cr
-   \code{45} \tab Opportunities accessible within 45 min. \tab Active transport modes \cr
-   \code{60} \tab Opportunities accessible within 60 min. \tab All transport modes \cr
-   \code{90} \tab Opportunities accessible within 90 min. \tab Public transport and car \cr
-   \code{120} \tab Opportunities accessible within 120 min. \tab Public transport and car \cr
+\subsection{3) Time thresold (only applicable to CMA and CMP estimates)}{\tabular{lll}{
+   Time thresold \tab Description \tab Observation: only applicable to \cr
+   15 \tab Opportunities accessible within 15 min. \tab Active transport modes \cr
+   30 \tab Opportunities accessible within 30 min. \tab All transport modes \cr
+   45 \tab Opportunities accessible within 45 min. \tab Active transport modes \cr
+   60 \tab Opportunities accessible within 60 min. \tab All transport modes \cr
+   90 \tab Opportunities accessible within 90 min. \tab Public transport and car \cr
+   120 \tab Opportunities accessible within 120 min. \tab Public transport and car \cr
 }
 
 }
