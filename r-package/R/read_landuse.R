@@ -33,7 +33,7 @@
 #' | sociodemographic | P001        | Total number of residents | |
 #' | sociodemographic | P002        | Number of white residents | |
 #' | sociodemographic | P003        | Number of black residents | |
-#' | sociodemographic | P004        | Number of indiginous residents | |
+#' | sociodemographic | P004        | Number of indigenous residents | |
 #' | sociodemographic | P005        | Number of asian-descendents residents | |
 #' | sociodemographic | P006        | Number of men | |
 #' | sociodemographic | P007        | Number of women | |
@@ -49,7 +49,7 @@
 #' | sociodemographic | R003        | Income decile group | 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) |
 #' | land use	        | T001        | Total number of formal jobs | |
 #' | land use	        | T002        | Number of formal jobs with primary education | |
-#' | land use	        | T003        | Number of formal jobs with secundary education | |
+#' | land use	        | T003        | Number of formal jobs with secondary education | |
 #' | land use	        | T004        | Number of formal jobs with tertiary education | |
 #' | land use	        | E001        | Total number of public schools | |
 #' | land use	        | E002        | Number of public schools - early childhood | |

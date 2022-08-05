@@ -30,7 +30,7 @@
 #' | sociodemographic | P001       | Total number of residents | |
 #' | sociodemographic | P002       | Number of white residents | |
 #' | sociodemographic | P003       | Number of black residents | |
-#' | sociodemographic | P004       | Number of indiginous residents | |
+#' | sociodemographic | P004       | Number of indigenous residents | |
 #' | sociodemographic | P005       | Number of asian-descendents residents | |
 #' | sociodemographic | P006       | Number of men | |
 #' | sociodemographic | P007       | Number of women | |

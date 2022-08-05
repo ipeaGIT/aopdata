@@ -2,6 +2,7 @@
 
 export(aop_merge)
 export(aop_spatial_join)
+export(aopdata_dictionary)
 export(check_connection)
 export(download_data)
 export(download_metadata)

@@ -38,7 +38,7 @@ Authors:
 
 Other contributors:
 \itemize{
-  \item Ipea - Institue for Applied Economic Research [copyright holder, funder]
+  \item Ipea - Institute for Applied Economic Research [copyright holder, funder]
 }
 
 }

@@ -57,7 +57,7 @@ diagonal) and an area of 0.74 km2. More information about H3 at
 
 The name of the columns with accessibility estimates are the junction of
 three components: 1) Type of accessibility indicator 2) Type of opportunity /
-population 3) Time thresold
+population 3) Time threshold
 \subsection{1) Type of accessibility indicator}{\tabular{lll}{
    Indicator \tab Description \tab Observation \cr
    CMA \tab Cumulative opportunity measure (active) \tab  \cr
@@ -71,7 +71,7 @@ population 3) Time thresold
    Type of opportunity \tab Description \tab Observation: available in combination with \cr
    TT \tab All jobs \tab CMA indicator \cr
    TB \tab Jobs with primary education \tab CMA indicator \cr
-   TM \tab Jobs with secundary education \tab CMA indicator \cr
+   TM \tab Jobs with secondary education \tab CMA indicator \cr
    TA \tab Jobs with tertiary education \tab CMA indicator \cr
    ST \tab All healthcare facilities \tab CMA and TMI indicators \cr
    SB \tab Healthcare facilities - Low complexity \tab CMA and TMI indicators \cr
@@ -94,7 +94,7 @@ population 3) Time thresold
    PM \tab Women \tab CMP indicator \cr
    PB \tab White population \tab CMP indicator \cr
    PA \tab Asian-descendent population \tab CMP indicator \cr
-   PI \tab Indiginous population \tab CMP indicator \cr
+   PI \tab Indigenous population \tab CMP indicator \cr
    PN \tab Back population \tab CMP indicator \cr
    P0005I \tab Population between 0 and 5 years old \tab CMP indicator \cr
    P0614I \tab Population between 6 and 14 years old \tab CMP indicator \cr
@@ -107,8 +107,8 @@ population 3) Time thresold
 
 }
 
-\subsection{3) Time thresold (only applicable to CMA and CMP estimates)}{\tabular{lll}{
-   Time thresold \tab Description \tab Observation: only applicable to \cr
+\subsection{3) Time threshold (only applicable to CMA and CMP estimates)}{\tabular{lll}{
+   Time threshold \tab Description \tab Observation: only applicable to \cr
    15 \tab Opportunities accessible within 15 min. \tab Active transport modes \cr
    30 \tab Opportunities accessible within 30 min. \tab All transport modes \cr
    45 \tab Opportunities accessible within 45 min. \tab Active transport modes \cr

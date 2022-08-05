@@ -34,7 +34,7 @@
 * Download functions should now fail gracefully with an informative message when there are internet connection problems.
 * Remove `crul` from package dependencies.
 * skip examples on CRAN. Examples now only run on interactive R sessions.
-* update links from http to htpps
+* update links from http to https
 
 
 -------------------------------------------------------

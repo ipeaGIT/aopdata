@@ -12,7 +12,7 @@ load_data(file_url, temps = NULL)
 \item{temps}{The address of a data file stored in tempdir. Defaults to NULL}
 }
 \value{
-Returns either an \code{sf} or a \code{data.frame}, dependeding of the data set
+Returns either an \code{sf} or a \code{data.frame}, depending of the data set
 that was downloaded
 }
 \description{
@@ -22,6 +22,7 @@ Reads data from tempdir to global environment.
 Other support functions: 
 \code{\link{aop_merge}()},
 \code{\link{aop_spatial_join}()},
+\code{\link{aopdata_dictionary}()},
 \code{\link{check_connection}()},
 \code{\link{download_data}()},
 \code{\link{select_city_input}()},

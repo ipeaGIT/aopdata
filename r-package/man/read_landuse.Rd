@@ -43,7 +43,7 @@ See documentation 'Details' for the data dictionary.
    sociodemographic \tab P001 \tab Total number of residents \tab  \cr
    sociodemographic \tab P002 \tab Number of white residents \tab  \cr
    sociodemographic \tab P003 \tab Number of black residents \tab  \cr
-   sociodemographic \tab P004 \tab Number of indiginous residents \tab  \cr
+   sociodemographic \tab P004 \tab Number of indigenous residents \tab  \cr
    sociodemographic \tab P005 \tab Number of asian-descendents residents \tab  \cr
    sociodemographic \tab P006 \tab Number of men \tab  \cr
    sociodemographic \tab P007 \tab Number of women \tab  \cr
@@ -59,7 +59,7 @@ See documentation 'Details' for the data dictionary.
    sociodemographic \tab R003 \tab Income decile group \tab 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) \cr
    land use \tab T001 \tab Total number of formal jobs \tab  \cr
    land use \tab T002 \tab Number of formal jobs with primary education \tab  \cr
-   land use \tab T003 \tab Number of formal jobs with secundary education \tab  \cr
+   land use \tab T003 \tab Number of formal jobs with secondary education \tab  \cr
    land use \tab T004 \tab Number of formal jobs with tertiary education \tab  \cr
    land use \tab E001 \tab Total number of public schools \tab  \cr
    land use \tab E002 \tab Number of public schools - early childhood \tab  \cr

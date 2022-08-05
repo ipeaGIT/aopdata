@@ -30,7 +30,7 @@ knitr::opts_chunk$set(
 | sociodemographic | P001        | Total number of residents | |
 | sociodemographic | P002        | Number of white residents | |
 | sociodemographic | P003        | Number of black residents | |
-| sociodemographic | P004        | Number of indiginous residents | |
+| sociodemographic | P004        | Number of Indigenous residents | |
 | sociodemographic | P005        | Number of asian-descendents residents | |
 | sociodemographic | P006        | Number of men | |
 | sociodemographic | P007        | Number of women | |
@@ -46,7 +46,7 @@ knitr::opts_chunk$set(
 | sociodemographic | R003        | Income decile group | 1 (poorest), 2, 3, 4, 5, 6, 7, 8, 9, 10 (richest) |
 | land use	       | T001        | Total number of formal jobs | |
 | land use	       | T002        | Number of formal jobs with primary education | |
-| land use	       | T003        | Number of formal jobs with secundary education | |
+| land use	       | T003        | Number of formal jobs with secuodary education | |
 | land use	       | T004        | Number of formal jobs with tertiary education | |
 | land use	       | E001        | Total number of public schools | |
 | land use	       | E002        | Number of public schools - early childhood | |
@@ -68,7 +68,7 @@ knitr::opts_chunk$set(
 # Accessibility indicators
 
 #### Organization of the columns with accessibility estimates
-The name of the columns with accessibility estimates are the junction of three components: 1) Type of accessibility indicator 2) Type of opportunity / population 3) Time thresold
+The name of the columns with accessibility estimates are the junction of three components: 1) Type of accessibility indicator 2) Type of opportunity / population 3) Time threshold
 
 ### 1) Type of accessibility indicator
 
@@ -85,7 +85,7 @@ The name of the columns with accessibility estimates are the junction of three c
 |---------------------|-------------|---------------------------------------------|
 | TT	| All jobs | CMA indicator |
 | TB	| Jobs with primary education | CMA indicator |
-| TM	| Jobs with secundary education | CMA indicator |
+| TM	| Jobs with secuodary education | CMA indicator |
 | TA	| Jobs with tertiary education | CMA indicator |
 | ST	| All healthcare facilities | CMA and TMI indicators |
 | SB	| Healthcare facilities - Low complexity | CMA and TMI indicators |
@@ -108,7 +108,7 @@ The name of the columns with accessibility estimates are the junction of three c
 | PM     |	Women | CMP indicator |
 | PB     |	White population | CMP indicator |
 | PA     |	Asian-descendent population | CMP indicator |
-| PI     |	Indiginous population | CMP indicator |
+| PI     |	Indigenous population | CMP indicator |
 | PN     |	Back population | CMP indicator |
 | P0005I |	Population between 0 and 5 years old | CMP indicator |
 | P0614I |	Population between 6 and 14 years old | CMP indicator |
@@ -119,8 +119,8 @@ The name of the columns with accessibility estimates are the junction of three c
 | P70I   |	Population with 70 years old or more | CMP indicator |
 
 
-### 3) Time thresold (only applicable to CMA and CMP estimates)
-| Time thresold	| Description	 | Observation: only applicable to |
+### 3) Time threshold (only applicable to CMA and CMP estimates)
+| Time threshold	| Description	 | Observation: only applicable to |
 |---------------|--------------|----------------------------|
 | 15	| Opportunities accessible within 15 min.  | Active transport modes   |
 | 30	| Opportunities accessible within 30 min.  | All transport modes      |
@@ -130,9 +130,9 @@ The name of the columns with accessibility estimates are the junction of three c
 | 120	| Opportunities accessible within 120 min. | Public transport and car |
 
 
-# Exemples	
-- **CMAEF30**:	Numer of elementary schools accessible within 30 minutes
-- **TMISB**:	Travel time from to the closest healthcare facility with low complextiy services
+# Examples	
+- **CMAEF30**:	Number of elementary schools accessible within 30 minutes
+- **TMISB**:	Travel time from to the closest healthcare facility with low complexity services
 - **CMPPM60**: Number of women who can access a given hexagon cell in under 60 minutes
 
 

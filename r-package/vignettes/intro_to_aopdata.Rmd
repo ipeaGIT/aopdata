@@ -213,7 +213,7 @@ components:
 
 Now, check the next vignettes for demonstrations on how to use `aopdata` to produce 
 [land use](landuse_maps.html) and [accessibility](access_maps.html) maps, as well 
-as to analyse [accessibility inequalities](access_inequality.html).
+as to analzse [accessibility inequalities](access_inequality.html).
 
 
 

@@ -309,7 +309,7 @@ download_data <- function(file_url, progress_bar = showProgress){
 #' @param file_url A string with the file_url address of aop dataset
 #' @param temps The address of a data file stored in tempdir. Defaults to NULL
 #'
-#' @return Returns either an `sf` or a `data.frame`, dependeding of the data set
+#' @return Returns either an `sf` or a `data.frame`, depending of the data set
 #'         that was downloaded
 #' @export
 #' @family support functions

@@ -36,7 +36,7 @@
 #'
 #' The name of the columns with accessibility estimates are the junction of
 #' three components: 1) Type of accessibility indicator 2) Type of opportunity /
-#' population 3) Time thresold
+#' population 3) Time threshold
 #'
 #'### 1) Type of accessibility indicator
 #'
@@ -52,7 +52,7 @@
 #' |---------------------|-------------|---------------------------------------------|
 #' | TT	| All jobs | CMA indicator |
 #' | TB	| Jobs with primary education | CMA indicator |
-#' | TM	| Jobs with secundary education | CMA indicator |
+#' | TM	| Jobs with secondary education | CMA indicator |
 #' | TA	| Jobs with tertiary education | CMA indicator |
 #' | ST	| All healthcare facilities | CMA and TMI indicators |
 #' | SB	| Healthcare facilities - Low complexity | CMA and TMI indicators |
@@ -75,7 +75,7 @@
 #' | PM     |	Women | CMP indicator |
 #' | PB     |	White population | CMP indicator |
 #' | PA     |	Asian-descendent population | CMP indicator |
-#' | PI     |	Indiginous population | CMP indicator |
+#' | PI     |	Indigenous population | CMP indicator |
 #' | PN     |	Back population | CMP indicator |
 #' | P0005I |	Population between 0 and 5 years old | CMP indicator |
 #' | P0614I |	Population between 6 and 14 years old | CMP indicator |
@@ -86,8 +86,8 @@
 #' | P70I   |	Population with 70 years old or more | CMP indicator |
 #'
 #'
-#' ### 3) Time thresold (only applicable to CMA and CMP estimates)
-#' | Time thresold	| Description	 | Observation: only applicable to |
+#' ### 3) Time threshold (only applicable to CMA and CMP estimates)
+#' | Time threshold	| Description	 | Observation: only applicable to |
 #' |---------------|--------------|----------------------------|
 #' | 15	| Opportunities accessible within 15 min.  | Active transport modes   |
 #' | 30	| Opportunities accessible within 30 min.  | All transport modes      |

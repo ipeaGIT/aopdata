@@ -45,7 +45,7 @@ on a hexagonal grid based on the global H3 index at resolution 9, with a size of
    sociodemographic \tab P001 \tab Total number of residents \tab  \cr
    sociodemographic \tab P002 \tab Number of white residents \tab  \cr
    sociodemographic \tab P003 \tab Number of black residents \tab  \cr
-   sociodemographic \tab P004 \tab Number of indiginous residents \tab  \cr
+   sociodemographic \tab P004 \tab Number of indigenous residents \tab  \cr
    sociodemographic \tab P005 \tab Number of asian-descendents residents \tab  \cr
    sociodemographic \tab P006 \tab Number of men \tab  \cr
    sociodemographic \tab P007 \tab Number of women \tab  \cr
