@@ -1,12 +1,14 @@
 on:
   push:
+    paths:
+      - r-package/**
     branches:
       - main
-      - master
   pull_request:
+    paths:
+      - r-package/**
     branches:
       - main
-      - master
 
 name: test-coverage
 
