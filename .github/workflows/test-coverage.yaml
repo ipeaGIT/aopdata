@@ -2,11 +2,13 @@ on:
   push:
     paths:
       - r-package/**
+      - .github/workflows/test-coverage.yaml
     branches:
       - main
   pull_request:
     paths:
       - r-package/**
+      - .github/workflows/test-coverage.yaml
     branches:
       - main
 
@@ -28,7 +30,7 @@ jobs:
       - name: Install pak and query dependencies
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-          saveRDS(pak::pkg_deps("local::.", dependencies = TRUE), ".github/r-depends.rds")
+          saveRDS(pak::pkg_deps("local::.", dependencies = TRUE), "../.github/r-depends.rds")
         shell: Rscript {0}
         working-directory: r-package
 
