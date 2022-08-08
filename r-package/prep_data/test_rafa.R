@@ -178,6 +178,7 @@ a <- function_coverage(fun='read_access', test_file("tests/testthat/test_read_ac
 a <- function_coverage(fun='aopdata_dictionary', test_file("tests/testthat/test_aopdata_dictionary.R"))
 a <- function_coverage(fun='check_connection', test_file("tests/testthat/test_check_connection.R"))
 
+zeroCov <- covr::zero_coverage(a)
 
 
 # update Package coverage

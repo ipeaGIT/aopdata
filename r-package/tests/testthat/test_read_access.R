@@ -14,6 +14,8 @@ testthat::skip_on_cran()
     expect_true(is(  read_access(city='nat', geometry = FALSE, showProgress = FALSE), 'data.frame'))
     expect_true(is(  read_access(city='nat', geometry = FALSE, peak=FALSE, showProgress = FALSE), 'data.frame'))
     expect_true(is(  read_access(city='nat', geometry = FALSE, peak=FALSE, showProgress = FALSE), 'data.frame'))
+    expect_true(is(  read_access(city='nat', geometry = FALSE, mode='car', peak=FALSE, showProgress = FALSE), 'data.frame'))
+    expect_true(is(  read_access(city='all', geometry = FALSE, peak=FALSE, showProgress = FALSE), 'data.frame'))
   })
 
 

@@ -64,7 +64,7 @@ read_grid <- function(city=NULL, showProgress = FALSE){
   temp_meta <- select_metadata(t="grid", c=city)
 
   # check if download failed
-  if (is.null(temp_meta)) { return(invisible(NULL)) }
+  if (is.null(temp_meta)) { return(invisible(NULL)) } # nocov
 
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)
@@ -73,7 +73,7 @@ read_grid <- function(city=NULL, showProgress = FALSE){
   aop_sf <- download_data(file_url, progress_bar = showProgress)
 
   # check if download failed
-  if (is.null(aop_sf)) { return(invisible(NULL)) }
+  if (is.null(aop_sf)) { return(invisible(NULL)) } # nocov
 
   return(aop_sf)
 }

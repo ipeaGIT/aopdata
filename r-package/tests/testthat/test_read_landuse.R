@@ -10,6 +10,7 @@ testthat::skip_on_cran()
     expect_true(is(  read_landuse(city='nat', geometry = TRUE, showProgress = FALSE), 'sf'))
     expect_true(is(  read_landuse(city='nat', geometry = FALSE, showProgress = FALSE), 'data.frame'))
     expect_true(is(  read_landuse(city='nat', geometry = FALSE, showProgress = FALSE), 'data.frame'))
+    expect_true(is(  read_landuse(city='all', geometry = FALSE, showProgress = FALSE), 'data.frame'))
   })
 
 ### expected errors and messages ----------------

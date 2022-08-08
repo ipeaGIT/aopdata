@@ -1,5 +1,4 @@
 ############# Support functions for aop
-# nocov start
 
 
 #' Select city input
@@ -429,7 +428,7 @@ aop_merge <- function(aop_landuse, aop_access){
 #' @keywords internal
 #' @family support functions
 #'
-check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'){
+check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'){ # nocov start
 
   # file_url <- 'https://google.com/'               # ok
   # file_url <- 'https://www.google.com:81/'   # timeout
@@ -468,6 +467,4 @@ check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/m
     return(FALSE)
   }
 
-}
-
-# nocov end
+} # nocov end
