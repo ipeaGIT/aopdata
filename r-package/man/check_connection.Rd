@@ -21,7 +21,6 @@ Checks if there is an internet connection with Ipea server to download aop data.
 Other support functions: 
 \code{\link{aop_merge}()},
 \code{\link{aop_spatial_join}()},
-\code{\link{aopdata_dictionary}()},
 \code{\link{download_data}()},
 \code{\link{load_data}()},
 \code{\link{select_city_input}()},

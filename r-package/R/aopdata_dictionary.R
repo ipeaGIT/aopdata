@@ -9,17 +9,16 @@
 #'
 #' @return  Opens aopdata data dictionary on a web browser
 #'
-#' @export
-#' @family support functions
-#' @examples \dontrun{ if (interactive()) {
+#' @family Data dictionary
+#' @examplesIf identical(tolower(Sys.getenv("NOT_CRAN")), "true")
 #'
 #' # Data dictionary in English
 #' aopdata_dictionary(lang='en')
 #'
-#' #' # Data dictionary in Portuguese
+#' # Data dictionary in Portuguese
 #' aopdata_dictionary(lang='pt')
 #'
-#'}}
+#' @export
 aopdata_dictionary <- function(lang='en'){
 
   # checks

@@ -32,7 +32,6 @@ df <- download_metadata()
 Other support functions: 
 \code{\link{aop_merge}()},
 \code{\link{aop_spatial_join}()},
-\code{\link{aopdata_dictionary}()},
 \code{\link{check_connection}()},
 \code{\link{download_data}()},
 \code{\link{load_data}()},
