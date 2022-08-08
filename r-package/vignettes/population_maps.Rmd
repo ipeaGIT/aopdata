@@ -37,8 +37,8 @@ library(scales)
 # download aop data
 df <- read_population(city='Fortaleza',
                       year=2010,
-                      geometry = T,
-                      showProgress = F)
+                      geometry = TRUE,
+                      showProgress = FALSE)
 
 ```
 

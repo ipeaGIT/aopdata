@@ -115,14 +115,16 @@ In case you are only interested in using the population and land use data genera
 lnu_for <- read_landuse(
                 city = 'Fortaleza', 
                 year = 2019,
-                geometry = TRUE
+                geometry = TRUE,
+                showProgress = FALSE
                 )
 
 # Population data
 pop_for <- read_population(
                 city = 'Fortaleza', 
                 year = 2010,
-                geometry = TRUE
+                geometry = TRUE,
+                showProgress = FALSE
                 )
 ```
 
@@ -131,7 +133,7 @@ pop_for <- read_population(
 In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the `read_grid()` function.
 
 ```{r, message = FALSE, eval = TRUE}
-h3_for <- read_grid(city = 'Fortaleza')
+h3_for <- read_grid(city = 'Fortaleza', showProgress = FALSE)
 
 head(h3_for)
 ```
@@ -141,8 +143,13 @@ In all of the functions above, note that:
 
 - The `city` parameter can also be a 3-letter abbreviation of the city.
 ```{r, message = FALSE, eval = TRUE}
-df <- read_access(city = 'cur', mode = 'public_transport', year = 2019)
-df <- read_grid(city = 'for')
+df <- read_access(city = 'cur', 
+                  mode = 'public_transport', 
+                  year = 2019,
+                  peak = TRUE,
+                  showProgress = FALSE)
+
+df <- read_grid(city = 'for', showProgress = FALSE)
 ```
 
 - You may also download the data for all cities of the project at once using `city = 'all'`:

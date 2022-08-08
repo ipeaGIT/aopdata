@@ -39,9 +39,9 @@ library(scales)
 df <- aopdata::read_access(city='Curitiba',
                        mode='public_transport',
                       year=2019,
-                      peak = F,
-                      geometry = T,
-                      showProgress = F)
+                      peak = FALSE,
+                      geometry = TRUE,
+                      showProgress = FALSE)
 ```
 
 **Plot map with spatial distribution of access to job opportunities**
