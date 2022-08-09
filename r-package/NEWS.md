@@ -3,7 +3,7 @@
 **Major changes**
 
 - New function `aopdata_dictionary()` to aopdata data dictionary on a web browser.
-
+- All data sets are now simultaneously stored on github and on Ipea's server. For now, the package only downloads the data from github. In the future, we could add Ipea's server as a backup link, so that the package would try to download the data from Ipea's server in case the github link is off line for some reason. For users, the effect of this change is that the package is much more stable and less vulnerable to instabilities in Ipea's data server connection.
 - New data sets:
   - Year coverage
     - Access and Land use data sets now cover years **2017, 2018 and 2019**
@@ -23,8 +23,6 @@
 
 - `read_` functions now have no default value for the `city` parameter. [Closes #38](https://github.com/ipeaGIT/aopdata/issues/38).
 - Fixed `ERROR` message when there is no data for a particular transport mode for an specific city & year.
-
-
 
 
 
