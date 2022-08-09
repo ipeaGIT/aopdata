@@ -2,19 +2,16 @@
 % Please edit documentation in R/download_metadata.R
 \name{download_metadata}
 \alias{download_metadata}
-\title{Support function to download metadata internally used in 'aopdata'}
+\title{Support function to download metadata internally used in aopdata}
 \usage{
 download_metadata()
 }
-\value{
-A \code{data.frame} object with metadata and url of data sets
-}
 \description{
-Support function to download metadata internally used in 'aopdata'
+Support function to download metadata internally used in aopdata
 }
 \examples{
 \dontrun{ if (interactive()) {
 df <- download_metadata()
 }}
 }
-\concept{general support functions}
+\keyword{internal}

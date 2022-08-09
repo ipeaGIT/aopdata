@@ -1,6 +1,3 @@
-############# Support functions for aop
-
-
 #' Select city input
 #'
 #' @description Subsets the metadata table by 'city'.
@@ -10,7 +7,6 @@
 #'
 #' @return A `data.frame` object with metadata subsetted by 'city'
 #' @keywords internal
-#' @family support functions
 #'
 select_city_input <- function(temp_meta=temp_meta, city=NULL){
 
@@ -65,7 +61,6 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
 #'
 #' @return A `data.frame` object with metadata subsetted by 'year'
 #' @keywords internal
-#' @family support functions
 #'
 select_year_input <- function(temp_meta=temp_meta, year=NULL){
 
@@ -98,7 +93,6 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
 #'
 #' @return A `data.frame` object with metadata subsetted by 'mode'
 #' @keywords internal
-#' @family support functions
 #'
 select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 
@@ -121,8 +115,6 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 
 
 
-
-
 #' Select metadata
 #'
 #' @description Subsets the metadata table by data 'type', 'city', 'year' and
@@ -136,14 +128,11 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 #' @return A `data.frame` object with metadata subsetted by data type,
 #'        'city', 'year' and 'mode'
 #' @keywords internal
-#' @family support functions
-#' @examples \donttest{
-#' df <- download_metadata()
-#' }
+#'
 select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 
 # download metadata
-  metadata <- as.data.frame(aopdata::download_metadata())
+  metadata <- as.data.frame(download_metadata())
 
   # check if download failed
   if (nrow(metadata)==0) { return(invisible(NULL)) }
@@ -181,7 +170,6 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 #' @return No visible output. The downloaded file (either an `sf` or a
 #'         `data.frame`) is saved to a temporary directory.
 #' @keywords internal
-#' @family support functions
 #'
 download_data <- function(file_url, progress_bar = showProgress){
 
@@ -311,7 +299,6 @@ download_data <- function(file_url, progress_bar = showProgress){
 #' @return Returns either an `sf` or a `data.frame`, depending of the data set
 #'         that was downloaded
 #' @keywords internal
-#' @family support functions
 #'
 load_data <- function(file_url, temps=NULL){
 
@@ -365,7 +352,6 @@ load_data <- function(file_url, temps=NULL){
 #'
 #' @return Returns a `data.frame sf` with access/land use data and grid geometries
 #' @keywords internal
-#' @family support functions
 #'
 aop_spatial_join <- function(aop_df, aop_sf){
 
@@ -397,7 +383,6 @@ aop_spatial_join <- function(aop_df, aop_sf){
 #'
 #' @return Returns a `data.table` with landuse and access data
 #' @keywords internal
-#' @family support functions
 #'
 aop_merge <- function(aop_landuse, aop_access){
 
@@ -426,7 +411,6 @@ aop_merge <- function(aop_landuse, aop_access){
 #' @return Logical. `TRUE` if url is working, `FALSE` if not.
 #'
 #' @keywords internal
-#' @family support functions
 #'
 check_connection <- function(file_url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'){ # nocov start
 

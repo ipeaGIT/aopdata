@@ -1,13 +1,10 @@
-#' Support function to download metadata internally used in 'aopdata'
+#' Support function to download metadata internally used in aopdata
 #'
-#' @return A `data.frame` object with metadata and url of data sets
-#'
-#' @export
-#' @family general support functions
+#' @keywords internal
 #' @examples \dontrun{ if (interactive()) {
 #' df <- download_metadata()
-#'}}
-download_metadata <- function(){
+#' }}
+download_metadata <- function(){ # nocov start
 
   # create tempfile to save metadata
   tempf <- file.path(tempdir(), "metadata_aopdata.csv")
@@ -29,4 +26,5 @@ download_metadata <- function(){
  # read metadata
   metadata <- data.table::fread(tempf, stringsAsFactors=FALSE)
   return(metadata)
-  }
+
+}  # nocov end

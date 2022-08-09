@@ -31,13 +31,14 @@ Useful links:
 
 Authors:
 \itemize{
-  \item Rafael H. M. Pereira \email{rafa.pereira.br@gmail.com} (\href{https://orcid.org/0000-0003-2125-7465}{ORCID})
   \item Daniel Herszenhut \email{dhersz@gmail.com} (\href{https://orcid.org/0000-0001-8066-1105}{ORCID})
   \item Marcus Saraiva \email{marcus.saraiva@gmail.com} (\href{https://orcid.org/0000-0001-6218-2338}{ORCID})
 }
 
 Other contributors:
 \itemize{
+  \item Carlos Kaue Vieira Braga \email{kaue@kauebraga.dev} (\href{https://orcid.org/0000-0002-6104-7297}{ORCID}) [contributor]
+  \item Diego Bogado Tomasiello \email{diegobt86@gmail.com} [contributor]
   \item Ipea - Institute for Applied Economic Research [copyright holder, funder]
 }
 

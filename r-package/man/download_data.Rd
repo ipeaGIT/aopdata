@@ -19,16 +19,4 @@ No visible output. The downloaded file (either an \code{sf} or a
 Save requested data (either an \code{sf} or a \code{data.frame})
 to a temporary directory.
 }
-\seealso{
-Other support functions: 
-\code{\link{aop_merge}()},
-\code{\link{aop_spatial_join}()},
-\code{\link{check_connection}()},
-\code{\link{load_data}()},
-\code{\link{select_city_input}()},
-\code{\link{select_metadata}()},
-\code{\link{select_mode_input}()},
-\code{\link{select_year_input}()}
-}
-\concept{support functions}
 \keyword{internal}

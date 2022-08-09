@@ -17,16 +17,4 @@ A \code{data.frame} object with metadata subsetted by 'city'
 \description{
 Subsets the metadata table by 'city'.
 }
-\seealso{
-Other support functions: 
-\code{\link{aop_merge}()},
-\code{\link{aop_spatial_join}()},
-\code{\link{check_connection}()},
-\code{\link{download_data}()},
-\code{\link{load_data}()},
-\code{\link{select_metadata}()},
-\code{\link{select_mode_input}()},
-\code{\link{select_year_input}()}
-}
-\concept{support functions}
 \keyword{internal}
