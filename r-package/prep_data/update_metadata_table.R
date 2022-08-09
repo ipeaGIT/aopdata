@@ -4,23 +4,48 @@ library(qdapRegex)
 library(data.table)
 library(pbapply)
 library(dplyr)
+library(piggyback)
 
-######### Etapa 1 - bases padrao ( geo/ano/arquivo) ----------------------
 
+
+######### Etapa 1 - create github release where data will be uploaded to ----------------------
+
+usethis::edit_r_environ()
+Sys.setenv(GITHUB_PAT="xxxxxxx")
+
+# create new release
+pb_new_release("ipeaGIT/aopdata", "v1.0.0")
+
+
+
+######### Etapa 2 - list alll files  ----------------------
 
 # create empty metadata
 metadata <- data.frame(matrix(ncol = 5, nrow = 0))
-colnames(metadata) <- c("type","city","year","mode","download_path")
+colnames(metadata) <- c("type","city","year","mode","download_path2")
 
 # list all files
 files = list.files("//storage1/geobr/aopdata/data", full.names = T, recursive = T)
+
+
+
+######### Etapa 3 - upload data to github  ----------------------
+
+# upload data
+piggyback::pb_upload(files,
+                     repo = "ipeaGIT/aopdata",
+                     tag = "v1.0.0")
+
+
+
+######### Etapa 4 - create/update metadata table ( geo/ano/arquivo) ----------------------
 
 # function to update metadata
 update_metadata <- function(f){
   # f <- files[1]  # access
   # f <- files[210] # grid
-  # f <- files[250] # land_use
-  # f <- files[300] # population
+  # f <- files[200] # land_use
+  # f <- files[250] # population
 
   # file index
   i <- qdapRegex::rm_between(f, "/", "/", extract = T)
@@ -79,9 +104,49 @@ munis_df <- dplyr::tribble(
 # add name muni
 metadata[munis_df, on=c('city' = 'abrev_muni'), name_muni := i.name_muni]
 metadata[, name_muni := tolower(name_muni) ]
+
+# add file name
+metadata[, file_name := basename(download_path2)]
+
+# order by file_name
+metadata <- unique(metadata)
+metadata <- metadata[order(file_name)]
 head(metadata)
 
-metadata <- unique(metadata)
+
+
+
+
+######### Etapa 5 - add github url paths ----------------------
+
+# get url to all data files on github repo release
+github_liks <- pb_download_url(repo = "ipeaGIT/aopdata",
+                               tag = "v1.0.0")
+
+# ignore urls to metadata and package binaries
+github_liks <- github_liks[ ! (github_liks %like% 'metadata.csv') ]
+github_liks <- github_liks[ ! (github_liks %like% '.tar.gz') ]
+
+
+# add url paths from github to metadata
+metadata[, download_path := github_liks ]
+
+
+### check if both url likns correspond to the same files
+metadata[, check := basename(download_path) == basename(download_path2)]
+
+sum(metadata$check) == nrow(metadata)
+metadata$check <- NULL
+metadata$file_name <- NULL
+
+# reorder columns
+setcolorder(metadata, c("type", "city", "year", "mode", "download_path", "download_path2", "name_muni"))
+
+######### Etapa 5 - check and save metadata ----------------------
+
+
+# to avoid conflict with data.table
+metadata <- as.data.frame(metadata)
 
 table(metadata$type )
 table(metadata$year )
@@ -92,15 +157,14 @@ subset(metadata, mode=="car")
 subset(metadata, mode=="public_transport")
 
 
-# to avoid conflict with data.table
-metadata <- as.data.frame(metadata)
-
-
-
-# save updated metadata table
+# save updated metadata table to Ipea server
 # data.table::fwrite(metadata,"//storage1/geobr/aopdata/metadata/metadata.csv")
 
+# upload updated metadata table github
+temp_dir <- tempdir()
+data.table::fwrite(metadata, paste0(temp_dir,'./metadata.csv'))
 
+piggyback::pb_upload(paste0(temp_dir,'./metadata.csv'),
+                     repo = "ipeaGIT/aopdata",
+                     tag = "v1.0.0")
 
-
-subset(meta_data, type == 'grid')
