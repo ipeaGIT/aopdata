@@ -7,7 +7,7 @@
 select_year_input(temp_meta = temp_meta, year = NULL)
 }
 \arguments{
-\item{temp_meta}{A data.frame with the file_url addresses of aop datasets}
+\item{temp_meta}{A data.frame with the url addresses of aop datasets}
 
 \item{year}{Year of the dataset (passed from read_ function)}
 }
