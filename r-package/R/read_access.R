@@ -8,21 +8,16 @@
 #' diagonal) and an area of 0.74 km2. More information about H3 at
 #' \url{https://h3geo.org/docs/core-library/restable/}.
 #'
-#' @param city Character. A city name or three-letter abbreviation. If
-#'             `city="all"`, results for all cities are loaded.
+#' @template city
 #' @param mode Character. A transport mode. Modes available include
 #'             'public_transport', 'bicycle', or 'walk' (the default).
 #' @param peak Logical. If `TRUE` (the default), returns accessibility estimates
 #'             during peak time, between 6am and 8am. If `FALSE`, returns
 #'             accessibility during off-peak, between 2pm and 4am. This argument
-#'             only takes effect when `mode = public_transport`.
-#' @param year Numeric. A year number in YYYY format. Default set to 2019, the
-#'             only year currently available.
-#' @param geometry Logical. If `FALSE` (the default), returns a regular data.table
-#'                 of aop data. If `TRUE`, returns a an `sf data.frame` with simple
-#'                 feature geometry of spatial hexagonal grid H3. See details in
-#'                 \link{read_grid}.
-#' @param showProgress Logical. Defaults to `TRUE` display progress bar
+#'             only takes effect when `mode` is either `car` or `public_transport`.
+#' @template year
+#' @template geometry
+#' @template showProgress
 #'
 #' @return A `data.frame` object
 #'
@@ -196,12 +191,18 @@ read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geom
 
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)
+  file_url2 <- as.character(temp_meta$download_path2)
 
   # download files
   aop_access <- download_data(file_url, progress_bar = showProgress)
 
-  # check if download failed
-  if (is.null(aop_access)) { return(invisible(NULL)) }
+  # if download from github fails, try downloading data from ipea
+  if (is.null(aop_access)) {
+    aop_access <- download_data(file_url2, progress_bar = showProgress)
+
+    # check if download failed
+    if (is.null(aop_access)) { return(invisible(NULL)) } # nocov
+  }
 
 
   # peak Vs off-peak

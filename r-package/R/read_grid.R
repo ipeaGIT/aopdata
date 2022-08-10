@@ -7,9 +7,8 @@
 #' \url{https://h3geo.org/docs/core-library/restable/}.  See documentation
 #' 'Details' for the data dictionary.
 #'
-#' @param city Character. A city name or three-letter abbreviation. If
-#'             `city="all"`, results for all cities are loaded.
-#' @param showProgress Logical. Defaults to `TRUE` display progress bar
+#' @template city
+#' @template showProgress
 #'
 #' @return An `sf data.frame` object
 #' @details
@@ -68,12 +67,19 @@ read_grid <- function(city=NULL, showProgress = FALSE){
 
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)
+  file_url2 <- as.character(temp_meta$download_path2)
 
   # download files
   aop_sf <- download_data(file_url, progress_bar = showProgress)
 
-  # check if download failed
-  if (is.null(aop_sf)) { return(invisible(NULL)) } # nocov
+  # if download from github fails, try downloading data from ipea
+  if (is.null(aop_sf)) {
+    aop_sf <- download_data(file_url2, progress_bar = showProgress)
+
+    # check if download failed
+    if (is.null(aop_sf)) { return(invisible(NULL)) } # nocov
+  }
+
 
   return(aop_sf)
 }

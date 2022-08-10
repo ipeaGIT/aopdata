@@ -9,15 +9,10 @@
 #'
 #' See documentation 'Details' for the data dictionary.
 #'
-#' @param city Character. A city name or three-letter abbreviation. If
-#'             `city="all"`, results for all cities are loaded.
-#' @param year Numeric. A year number in YYYY format. Default set to 2019, the
-#'             only year currently available.
-#' @param geometry Logical. If `FALSE` (the default), returns a regular data.table
-#'                 of aop data. If `TRUE`, returns a `sf data.frame` with simple
-#'                 feature geometry of spatial hexagonal grid H3. See details in
-#'                 \link{read_grid}.
-#' @param showProgress Logical. Defaults to `TRUE` display progress bar
+#' @template city
+#' @template year
+#' @template geometry
+#' @template showProgress
 #'
 #' @return A `data.frame` object or an `sf data.frame` object
 #'
@@ -117,12 +112,18 @@ read_landuse <- function(city=NULL, year = 2019, geometry = FALSE, showProgress 
 
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path)
+  file_url2 <- as.character(temp_meta$download_path2)
 
   # download files
   aop_landuse <- download_data(file_url, progress_bar = showProgress)
 
-  # check if download failed
-  if (is.null(aop_landuse)) { return(invisible(NULL)) }
+  # if download from github fails, try downloading data from ipea
+  if (is.null(aop_landuse)) {
+    aop_landuse <- download_data(file_url2, progress_bar = showProgress)
+
+    # check if download failed
+    if (is.null(aop_landuse)) { return(invisible(NULL)) } # nocov
+  }
 
   # Download and merge population data
   aop_population <- read_population(city=city, showProgress = showProgress)

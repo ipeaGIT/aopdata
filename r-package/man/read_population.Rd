@@ -13,17 +13,16 @@ read_population(
 }
 \arguments{
 \item{city}{Character. A city name or three-letter abbreviation. If
-\code{city="all"}, results for all cities are loaded.}
+\code{city="all"}, the function returns data for all cities.}
 
-\item{year}{Numeric. A year number in YYYY format. Default set to 2019, the
-only year currently available.}
+\item{year}{Numeric. A year number in YYYY format. Defaults to 2019.}
 
 \item{geometry}{Logical. If \code{FALSE} (the default), returns a regular data.table
-of aop data. If \code{TRUE}, returns a an \verb{sf data.frame} with simple
+of aop data. If \code{TRUE}, returns an \verb{sf data.frame} with simple
 feature geometry of spatial hexagonal grid H3. See details in
 \link{read_grid}.}
 
-\item{showProgress}{Logical. Defaults to \code{TRUE} display progress bar}
+\item{showProgress}{Logical. Defaults to \code{TRUE} display progress bar.}
 }
 \value{
 A \code{data.frame} object or an \verb{sf data.frame} object
