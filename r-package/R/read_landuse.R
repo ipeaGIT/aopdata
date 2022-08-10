@@ -1,13 +1,12 @@
 #' Download land use and population data
 #'
 #' @description
-#' Download data on the spatial distribution of population, schools and
-#' healthcare facilities at a fine spatial resolution for cities included in the
-#' study. The data comes aggregated on a hexagonal grid based on the global H3
-#' index at resolution 9, with a size of 357 meters (short diagonal) and an area
-#' of 0.74 km2. More information about H3 at \url{https://h3geo.org/docs/core-library/restable/}.
-#'
-#' See documentation 'Details' for the data dictionary.
+#' Download data on the spatial distribution of population, jobs, schools,
+#' health care and social assitance facilities at a fine spatial resolution for
+#' the cities included in the AOP project. See the documentation 'Details' for
+#' the data dictionary. The data set reports information for each  heaxgon in a
+#' H3 spatial grid at resolution 9, with a side of 174 meters and an area of
+#' 0.10 km2. More information about H3 at \url{https://h3geo.org/docs/core-library/restable/}.
 #'
 #' @template city
 #' @template year
@@ -18,8 +17,8 @@
 #'
 #' @details
 #' # Data dictionary:
-#' |    data_type	    |    column   |     description   | values |
-#' |------------------|-------------|-------------------|---------|
+#' |  **data_type**   |  **column** |   **description** |**values**|
+#' |------------------|-------------|-------------------|----------|
 #' | temporal	        | year        | Year of reference | |
 #' | geographic	      | id_hex      | Unique id of hexagonal cell | |
 #' | geographic	      | abbrev_muni | Abbreviation of city name (3 letters) | |
@@ -86,14 +85,14 @@
 #'
 #' @export
 #' @family land use data functions
-#' @examples \dontrun{ if (interactive()) {
+#' @examplesIf identical(tolower(Sys.getenv("NOT_CRAN")), "true")
 #' # a single city
 #' bho <- read_landuse(city = 'Belo Horizonte', year = 2019, showProgress = FALSE)
 #' bho <- read_landuse(city = 'bho', year = 2019, showProgress = FALSE)
 #'
 #' # all cities
 #' all <- read_landuse(city = 'all', year = 2019)
-#'}}
+#'
 read_landuse <- function(city=NULL, year = 2019, geometry = FALSE, showProgress = TRUE){
 
   # checks

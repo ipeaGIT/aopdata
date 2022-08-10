@@ -38,16 +38,16 @@ feature geometry of spatial hexagonal grid H3. See details in
 A \code{data.frame} object
 }
 \description{
-Download annual estimates of access to employment, health, and education
-services by transport mode and time of the day. See documentation 'Details'
-for the data dictionary. The data comes aggregated on a hexagonal grid-based
-on the global H3 index at resolution 9, with a size of 357 meters (short
-diagonal) and an area of 0.74 km2. More information about H3 at
-\url{https://h3geo.org/docs/core-library/restable/}.
+Download estimates of access to employment, health, education and social
+assistance services by transport mode and time of the day for the cities
+included in the AOP project. See the documentation 'Details' for the data
+dictionary. The data set reports information for each heaxgon in a H3 spatial
+grid at resolution 9, with a side of 174 meters and an area of 0.10 km2. More
+information about H3 at \url{https://h3geo.org/docs/core-library/restable/}.
 }
 \section{Data dictionary:}{
 \tabular{llll}{
-   data_type \tab column \tab description \tab values \cr
+   \strong{data_type} \tab \strong{column} \tab \strong{description} \tab \strong{values} \cr
    temporal \tab year \tab Year of reference \tab  \cr
    transport \tab mode \tab Transport mode \tab walk; bicycle; public_transport; car \cr
    transport \tab peak \tab Peak and off-peak \tab 1 (peak); 0 (off-peak) \cr
@@ -58,7 +58,7 @@ The name of the columns with accessibility estimates are the junction of
 three components: 1) Type of accessibility indicator 2) Type of opportunity /
 population 3) Time threshold
 \subsection{1) Type of accessibility indicator}{\tabular{lll}{
-   Indicator \tab Description \tab Observation \cr
+   \strong{Indicator} \tab \strong{Description} \tab \strong{Observation} \cr
    CMA \tab Cumulative opportunity measure (active) \tab  \cr
    CMP \tab Cumulative opportunity measure (passive) \tab  \cr
    TMI \tab Travel time to closest opportunity \tab Value = Inf when travel time is longer than 2h (public transport or car) or 1,5h (walking or bicycle) \cr
@@ -67,7 +67,7 @@ population 3) Time threshold
 }
 
 \subsection{2) Type of opportunity / population}{\tabular{lll}{
-   Type of opportunity \tab Description \tab Observation: available in combination with \cr
+   \strong{Type of opportunity} \tab \strong{Description} \tab \strong{Observation: available in combination with} \cr
    TT \tab All jobs \tab CMA indicator \cr
    TB \tab Jobs with primary education \tab CMA indicator \cr
    TM \tab Jobs with secondary education \tab CMA indicator \cr
@@ -87,7 +87,7 @@ population 3) Time threshold
    CT \tab All Social Assistance Reference Centers (CRAS) \tab CMA and TMI indicators \cr
 }
 \tabular{lll}{
-   People \tab Description \tab Observation: available in combination with \cr
+   \strong{People} \tab \strong{Description} \tab \strong{Observation: available in combination with} \cr
    PT \tab All population \tab CMP indicator \cr
    PH \tab Men \tab CMP indicator \cr
    PM \tab Women \tab CMP indicator \cr
@@ -107,7 +107,7 @@ population 3) Time threshold
 }
 
 \subsection{3) Time threshold (only applicable to CMA and CMP estimates)}{\tabular{lll}{
-   Time threshold \tab Description \tab Observation: only applicable to \cr
+   \strong{Time threshold} \tab **Description	** \tab \strong{Observation: only applicable to} \cr
    15 \tab Opportunities accessible within 15 min. \tab Active transport modes \cr
    30 \tab Opportunities accessible within 30 min. \tab All transport modes \cr
    45 \tab Opportunities accessible within 45 min. \tab Active transport modes \cr
@@ -146,13 +146,13 @@ population 3) Time threshold
 }
 
 \examples{
-\dontrun{ if (interactive()) {
+\dontshow{if (identical(tolower(Sys.getenv("NOT_CRAN")), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Read accessibility estimates of a single city
 df <- read_access(city = 'Fortaleza', mode = 'public_transport', year = 2019, showProgress = FALSE)
 df <- read_access(city = 'Goiania', mode = 'public_transport', year = 2019, showProgress = FALSE)
 
 # Read accessibility estimates for all cities
 all <- read_access(city = 'all', mode = 'walk', year = 2019, showProgress = FALSE)
-}}
+\dontshow{\}) # examplesIf}
 }
 \concept{accessibility data functions}

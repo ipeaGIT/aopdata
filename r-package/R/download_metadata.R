@@ -1,9 +1,7 @@
 #' Support function to download metadata internally used in aopdata
 #'
 #' @keywords internal
-#' @examples \dontrun{ if (interactive()) {
-#' df <- download_metadata()
-#' }}
+#'
 download_metadata <- function(){ # nocov start
 
   # create tempfile to save metadata

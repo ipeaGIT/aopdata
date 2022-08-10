@@ -9,9 +9,4 @@ download_metadata()
 \description{
 Support function to download metadata internally used in aopdata
 }
-\examples{
-\dontrun{ if (interactive()) {
-df <- download_metadata()
-}}
-}
 \keyword{internal}

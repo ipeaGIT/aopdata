@@ -28,14 +28,15 @@ feature geometry of spatial hexagonal grid H3. See details in
 A \code{data.frame} object or an \verb{sf data.frame} object
 }
 \description{
-Download population and socioeconomic data from the Brazilian Census aggregated
-on a hexagonal grid based on the global H3 index at resolution 9, with a size of
-357 meters (short diagonal) and an area of 0.74 km2. More information about H3 at
-\url{https://h3geo.org/docs/core-library/restable/}.
+Download population and socioeconomic data from the Brazilian Census at a fine
+spatial resolution for the cities included in the AOP project. See the
+documentation 'Details' for the data dictionary. The data set reports
+information for each heaxgon in a H3 spatial grid at resolution 9, with a
+side of 174 meters and an area of 0.10 km2. More information about H3 at \url{https://h3geo.org/docs/core-library/restable/}.
 }
 \section{Data dictionary:}{
 \tabular{llll}{
-   data_type \tab column \tab description \tab values \cr
+   \strong{data_type} \tab \strong{column} \tab \strong{description} \tab \strong{values} \cr
    temporal \tab year \tab Year of reference \tab  \cr
    geographic \tab id_hex \tab Unique id of hexagonal cell \tab  \cr
    geographic \tab abbrev_muni \tab Abbreviation of city name (3 letters) \tab  \cr
@@ -88,13 +89,13 @@ on a hexagonal grid based on the global H3 index at resolution 9, with a size of
 }
 
 \examples{
-\dontrun{ if (interactive()) {
+\dontshow{if (identical(tolower(Sys.getenv("NOT_CRAN")), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # a single city
 bho <- read_population(city = 'Belo Horizonte', year = 2010, showProgress = FALSE)
 bho <- read_population(city = 'bho', year = 2010, showProgress = FALSE)
 
 # all cities
 all <- read_population(city = 'all', year = 2010)
-}}
+\dontshow{\}) # examplesIf}
 }
 \concept{population data functions}

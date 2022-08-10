@@ -7,11 +7,12 @@
 \alias{aopdata-package}
 \title{aopdata: Data from the 'Access to Opportunities Project (AOP)'}
 \description{
-Download data from the 'Access to Opportunities Project (AOP)'. The 'aopdata'
-package brings annual estimates of access to employment, health, and education
-services by transport mode, as well as data on the spatial distribution of
-population, schools and health-care facilities at a fine spatial resolution
-for all cities included in the study. More info on the 'AOP' website \url{https://www.ipea.gov.br/acessooportunidades/en/}.
+Download data from the 'Access to Opportunities Project (AOP)'. The aopdata
+package brings annual estimates of access to employment, health, education
+and social assistance services by transport mode,  as well as data  on the
+spatial distribution of population, jobs,  health care, schools and social
+assistance facilities at a fine spatial resolution for all cities included in
+the project. More  info on the AOP website \url{https://www.ipea.gov.br/acessooportunidades/en/}.
 }
 \section{Usage}{
 
@@ -33,12 +34,13 @@ Authors:
 \itemize{
   \item Daniel Herszenhut \email{dhersz@gmail.com} (\href{https://orcid.org/0000-0001-8066-1105}{ORCID})
   \item Marcus Saraiva \email{marcus.saraiva@gmail.com} (\href{https://orcid.org/0000-0001-6218-2338}{ORCID})
+  \item Carlos Kaue Vieira Braga \email{kaue@kauebraga.dev} (\href{https://orcid.org/0000-0002-6104-7297}{ORCID})
 }
 
 Other contributors:
 \itemize{
-  \item Carlos Kaue Vieira Braga \email{kaue@kauebraga.dev} (\href{https://orcid.org/0000-0002-6104-7297}{ORCID}) [contributor]
   \item Diego Bogado Tomasiello \email{diegobt86@gmail.com} [contributor]
+  \item Jo?o Bazzo \email{joao.bazzo@gmail.com} [contributor]
   \item Ipea - Institute for Applied Economic Research [copyright holder, funder]
 }
 

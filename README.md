@@ -12,7 +12,7 @@
 
 **`aopdata`** is an R package to download data from the [Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/). The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport access to opportunities in Brazilian cities. 
 
-The **`aopdata`** package brings annual estimates of access to employment, health, education and social protection services by transport mode at a fine spatial resolution for the 20 largest cities in Brazil. The package also brings  data on the spatial distribution of population by sex, race, income and age, as well as the distribution of jobs, schools, healthcare facilities and social assistance reference centers.
+The **`aopdata`** package brings annual estimates of access to employment, health, education and social protection services by transport mode at a fine spatial resolution for the 20 largest cities in Brazil. The package also brings  data on the spatial distribution of population by sex, race, income and age, as well as the distribution of jobs, schools, health care facilities and social assistance reference centers.
 
 Data for 2017, 2018 and 2019 are already available, and cover accessibility estimates by car and active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for over 9 major cities. For more information on the [AOP website](https://www.ipea.gov.br/acessooportunidades/en/).
 

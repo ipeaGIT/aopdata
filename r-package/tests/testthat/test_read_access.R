@@ -10,12 +10,17 @@ testthat::skip_on_cran()
     # testthat::expect_output(object = read_access(city='nat', year=2019))
     # testthat::expect_output(object = read_access(city='nat', geometry = TRUE))
 
+    expect_true(is(  read_access(city='all', geometry = FALSE, peak=FALSE, showProgress = FALSE), 'data.frame'))
     expect_true(is(  read_access(city='nat', geometry = TRUE, showProgress = FALSE), 'sf'))
     expect_true(is(  read_access(city='nat', geometry = FALSE, showProgress = FALSE), 'data.frame'))
     expect_true(is(  read_access(city='nat', geometry = FALSE, peak=FALSE, showProgress = FALSE), 'data.frame'))
     expect_true(is(  read_access(city='nat', geometry = FALSE, peak=FALSE, showProgress = FALSE), 'data.frame'))
     expect_true(is(  read_access(city='nat', geometry = FALSE, mode='car', peak=FALSE, showProgress = FALSE), 'data.frame'))
-    expect_true(is(  read_access(city='all', geometry = FALSE, peak=FALSE, showProgress = FALSE), 'data.frame'))
+    expect_true(is(  read_access(city='poa', geometry = FALSE, mode='public_transport', peak=FALSE, showProgress = FALSE), 'data.frame'))
+    expect_true(is(  read_access(city='poa', geometry = FALSE, mode='public_transport', peak=TRUE, showProgress = FALSE), 'data.frame'))
+    expect_true(is(  read_access(city='poa', geometry = FALSE, mode='public_transport', peak=TRUE, showProgress = FALSE, year=2018), 'data.frame'))
+    expect_true(is(  read_access(city='poa', geometry = FALSE, mode='public_transport', peak=TRUE, showProgress = FALSE, year=2017), 'data.frame'))
+    expect_true(is(  read_access(city='porto alegre', geometry = FALSE, mode='public_transport', peak=TRUE, showProgress = FALSE), 'data.frame'))
   })
 
 
@@ -56,8 +61,11 @@ test_that("read_access errors and messages", {
   testthat::expect_error(read_access(city = 'rec', year=1500, showProgress = FALSE))
 
    # Wrong mode
+   testthat::expect_error( read_access(city='natal', mode= 'public_transport', geometry = FALSE, showProgress = FALSE) )
    testthat::expect_error( read_access(city=c('nat', 'poa'), mode= 'public_transport', geometry = FALSE, showProgress = FALSE) )
    testthat::expect_error( read_access(city='nat', mode= 'public_transport', geometry = FALSE, showProgress = FALSE) )
+   testthat::expect_error( read_access(city='nat', mode= 'public_transport', geometry = FALSE, showProgress = FALSE, year=2018) )
+   testthat::expect_error( read_access(city='nat', mode= 'public_transport', geometry = FALSE, showProgress = FALSE, year=2017) )
 
     # Wrong geometry, peak, showProgress
    testthat::expect_error(read_access(city = 'rec', year=2019, geometry = 'aaa'))

@@ -187,6 +187,10 @@ zeroCov <- covr::zero_coverage(a)
   aop_cov
   beepr::beep()
 
+  zeroCov <- covr::zero_coverage(aop_cov)
+
+  aopdata Coverage: 76.36%
+
 
 ### update package documentation ----------------
 # http://r-pkgs.had.co.nz/release.html#release-check

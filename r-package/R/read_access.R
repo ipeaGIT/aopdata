@@ -1,12 +1,12 @@
 #' Download accessibility estimates with population and land use data
 #'
 #' @description
-#' Download annual estimates of access to employment, health, and education
-#' services by transport mode and time of the day. See documentation 'Details'
-#' for the data dictionary. The data comes aggregated on a hexagonal grid-based
-#' on the global H3 index at resolution 9, with a size of 357 meters (short
-#' diagonal) and an area of 0.74 km2. More information about H3 at
-#' \url{https://h3geo.org/docs/core-library/restable/}.
+#' Download estimates of access to employment, health, education and social
+#' assistance services by transport mode and time of the day for the cities
+#' included in the AOP project. See the documentation 'Details' for the data
+#' dictionary. The data set reports information for each heaxgon in a H3 spatial
+#' grid at resolution 9, with a side of 174 meters and an area of 0.10 km2. More
+#' information about H3 at \url{https://h3geo.org/docs/core-library/restable/}.
 #'
 #' @template city
 #' @param mode Character. A transport mode. Modes available include
@@ -23,11 +23,11 @@
 #'
 #' @details
 #' # Data dictionary:
-#'  |    data_type	   |    column   |     description   | values |
-#'  |------------------|-------------|-------------------|---------|
-#'  | temporal	       | year        | Year of reference | |
-#'  | transport	       | mode        | Transport mode | walk; bicycle; public_transport; car |
-#'  | transport	       | peak        | Peak and off-peak | 1 (peak); 0 (off-peak) |
+#' |  **data_type**  |  **column** |   **description** |**values**|
+#' |-----------------|-------------|-------------------|----------|
+#' | temporal	       | year        | Year of reference | |
+#' | transport	     | mode        | Transport mode | walk; bicycle; public_transport; car |
+#' | transport	     | peak        | Peak and off-peak | 1 (peak); 0 (off-peak) |
 #'
 #' The name of the columns with accessibility estimates are the junction of
 #' three components: 1) Type of accessibility indicator 2) Type of opportunity /
@@ -35,16 +35,16 @@
 #'
 #'### 1) Type of accessibility indicator
 #'
-#' | Indicator |      Description                                         | Observation         |
-#' |-----------|--------------------------------------------------------|-------------------|
-#' | CMA	      | Cumulative opportunity measure (active)  | |
-#' | CMP	      | Cumulative opportunity measure (passive) | |
-#' | TMI       | Travel time to closest opportunity       | Value = Inf when travel time is longer than 2h (public transport or car) or 1,5h (walking or bicycle) |
+#' |**Indicator**| **Description**                          | **Observation** |
+#' |-------------|------------------------------------------|-----------------|
+#' | CMA	       | Cumulative opportunity measure (active)  | |
+#' | CMP	       | Cumulative opportunity measure (passive) | |
+#' | TMI         | Travel time to closest opportunity       | Value = Inf when travel time is longer than 2h (public transport or car) or 1,5h (walking or bicycle) |
 #'
 #'
 #'### 2) Type of opportunity / population
-#' | Type of opportunity	| Description	| Observation: available in combination with  |
-#' |---------------------|-------------|---------------------------------------------|
+#' |**Type of opportunity**|**Description**|**Observation: available in combination with**|
+#' |-----------------------|---------------|----------------------------------------------|
 #' | TT	| All jobs | CMA indicator |
 #' | TB	| Jobs with primary education | CMA indicator |
 #' | TM	| Jobs with secondary education | CMA indicator |
@@ -63,32 +63,32 @@
 #' | MM	| School enrollments - high schools | CMA and TMI indicators |
 #' | CT	| All Social Assistance Reference Centers (CRAS) | CMA and TMI indicators |
 #'
-#' | People      	| Description	 | Observation: available in combination with |
-#' |---------------|--------------|--------------------------------------------|
-#' | PT     |	All population | CMP indicator |
-#' | PH     |	Men | CMP indicator |
-#' | PM     |	Women | CMP indicator |
-#' | PB     |	White population | CMP indicator |
-#' | PA     |	Asian-descendent population | CMP indicator |
-#' | PI     |	Indigenous population | CMP indicator |
-#' | PN     |	Back population | CMP indicator |
-#' | P0005I |	Population between 0 and 5 years old | CMP indicator |
-#' | P0614I |	Population between 6 and 14 years old | CMP indicator |
-#' | P1518I |	Population between 15 and 18 years old | CMP indicator |
-#' | P1924I |	Population between 19 and 24 years old | CMP indicator |
-#' | P2539I |	Population between 25 and 39 years old | CMP indicator |
-#' | P4069I |	Population between 40 and 69 years old | CMP indicator |
-#' | P70I   |	Population with 70 years old or more | CMP indicator |
+#' |**People**|**Description**|**Observation: available in combination with**|
+#' |----------|---------------|----------------------------------------------|
+#' | PT      |	All population | CMP indicator |
+#' | PH      |	Men | CMP indicator |
+#' | PM      |	Women | CMP indicator |
+#' | PB      |	White population | CMP indicator |
+#' | PA      |	Asian-descendent population | CMP indicator |
+#' | PI      |	Indigenous population | CMP indicator |
+#' | PN      |	Back population | CMP indicator |
+#' | P0005I  |	Population between 0 and 5 years old | CMP indicator |
+#' | P0614I  |	Population between 6 and 14 years old | CMP indicator |
+#' | P1518I  |	Population between 15 and 18 years old | CMP indicator |
+#' | P1924I  |	Population between 19 and 24 years old | CMP indicator |
+#' | P2539I  |	Population between 25 and 39 years old | CMP indicator |
+#' | P4069I  |	Population between 40 and 69 years old | CMP indicator |
+#' | P70I    |	Population with 70 years old or more | CMP indicator |
 #'
 #'
 #' ### 3) Time threshold (only applicable to CMA and CMP estimates)
-#' | Time threshold	| Description	 | Observation: only applicable to |
-#' |---------------|--------------|----------------------------|
-#' | 15	| Opportunities accessible within 15 min.  | Active transport modes   |
-#' | 30	| Opportunities accessible within 30 min.  | All transport modes      |
-#' | 45	| Opportunities accessible within 45 min.  | Active transport modes   |
-#' | 60	| Opportunities accessible within 60 min.  | All transport modes      |
-#' | 90	| Opportunities accessible within 90 min.  | Public transport and car |
+#' |**Time threshold**|**Description	**|**Observation: only applicable to**|
+#' |------------------|-----------------|-----------------------------------|
+#' | 15	  | Opportunities accessible within 15 min.  | Active transport modes   |
+#' | 30	  | Opportunities accessible within 30 min.  | All transport modes      |
+#' | 45	  | Opportunities accessible within 45 min.  | Active transport modes   |
+#' | 60	  | Opportunities accessible within 60 min.  | All transport modes      |
+#' | 90	  | Opportunities accessible within 90 min.  | Public transport and car |
 #' | 120	| Opportunities accessible within 120 min. | Public transport and car |
 #'
 #'
@@ -118,14 +118,14 @@
 #'
 #' @export
 #' @family accessibility data functions
-#' @examples \dontrun{ if (interactive()) {
+#' @examplesIf identical(tolower(Sys.getenv("NOT_CRAN")), "true")
 #' # Read accessibility estimates of a single city
 #' df <- read_access(city = 'Fortaleza', mode = 'public_transport', year = 2019, showProgress = FALSE)
 #' df <- read_access(city = 'Goiania', mode = 'public_transport', year = 2019, showProgress = FALSE)
 #'
 #' # Read accessibility estimates for all cities
 #' all <- read_access(city = 'all', mode = 'walk', year = 2019, showProgress = FALSE)
-#'}}
+#'
 
 read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geometry = FALSE, showProgress = TRUE){
 
