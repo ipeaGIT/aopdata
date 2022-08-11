@@ -434,7 +434,7 @@ check_connection <- function(url = 'https://www.ipea.gov.br/geobr/aopdata/metada
            httr::GET(url, # timeout(5),
                      config = httr::config(ssl_verifypeer = FALSE)))
   # link offline
-  if (class(x)=="try-error") {
+  if (is(x)=="try-error") {
     if(isFALSE(silent)){ message( msg ) }
     return(FALSE)
   }
