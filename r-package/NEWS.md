@@ -2,7 +2,7 @@
 
 **Major changes**
 
-- New function `aopdata_dictionary()` to aopdata data dictionary on a web browser.
+- New function `aopdata_dictionary()` to open the aopdata data dictionary on a web browser.
 - All data sets are now simultaneously stored on github and on Ipea's server. The package now downloads the data from github. In case the github link is off line for some reason, then the package tries to download the data from Ipea's server. For users, the effect of this change is that the package is much more stable and less vulnerable to instabilities in Ipea's data server connection.
 - New data sets:
   - Year coverage
@@ -12,7 +12,7 @@
     - Data for Goiania now covers the entire **metro area of Goiania** in 2019.
 
   - New modes
-    - Access data now bring accessibility estimates by **car**
+    - Access data now bring accessibility estimates by **car** in 2019
 
   - New activities
     - Land use and access data now bring data for **centers for social assistance (CRAS)**
