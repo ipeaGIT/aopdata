@@ -316,70 +316,22 @@ Encoding(grid_state_correspondence_table$name_uf)
 Encoding(grid_state_correspondence_table$name_uf) <- "ASCII"
 grid_state_correspondence_table
 
+
+
+
+# submit to CRAN -----------------
+usethis::use_cran_comments('teste 2222, , asdadsad')
+
+
+Sys.setenv(NOT_CRAN = "true")
+devtools::submit_cran()
+
+
+
 # build binary --------------------------------
 
  system("R CMD build . --resave-data") # build tar.gz
  # devtools::build(pkg = ".", binary = T, manual=T) # build .zip
 
 
-library(aopdata)
 
-url_ok <- 'http://google.com/'
-url_timeout <- 'http://www.google.com:81/'
-url_error <- 'http://httpbin.org/status/300'
-
-test1 <- function(x, url){
-
-  check_con <- aopdata::check_connection(url)
-  if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
-
-  x <- x+2
-  return(x)
-}
-
-# this should work and return output.
-test(2, url_ok )
-
-# these should NOT work and return a message.
-test(2, url_timeout )
-test(2, url_error )
-
-
-library(aopdata)
-d <- read_population(city = 'bel', year = 2010, geometry = F, showProgress = T)
-d <- read_landuse(city = 'bel',  geometry = F, showProgress = T)
-d <- read_access(city = 'bel',  geometry = F, showProgress = T)
-
-d <- read_grid(city = c('bel','bho'), showProgress=T)
-
-
-inception <- function(url){
-
-  check_con <- aopdata::check_connection(url)
-  if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
-
-}
-
-test2 <- function(x, url){
-
-a <- inception(url)
-  x <- x+2
-  return(x)
-}
-
-inception(url_ok)
-
-test2(2, url_ok )
-test2(2, url_timeout )
-test2(2, url_error )
-
-
-df <- read_access(city=c('all'),
-                  mode='public_transport',
-                  peak = TRUE,
-                  year=2019,
-                  showProgress = T)
-
-read_population(city=c('all'))
-read_grid(city='poa')
-read_landuse(city=c('poa'))

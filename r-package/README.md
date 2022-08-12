@@ -3,8 +3,8 @@
 [![CRAN/METACRAN Version](https://www.r-pkg.org/badges/version/aopdata)](https://CRAN.R-project.org/package=aopdata)
 [![CRAN/METACRAN Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/aopdata?color=blue)](https://CRAN.R-project.org/package=aopdata)
 [![Codecov test coverage](https://codecov.io/gh/ipeaGIT/aopdata/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ipeaGIT/aopdata?branch=main)
-[![R build status](https://github.com/ipeaGIT/aopdata/workflows/R-CMD-check/badge.svg)](https://github.com/ipeaGIT/aopdata/actions)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental) 
+[![cmd check](https://github.com/ipeaGIT/aopdata/workflows/R-CMD-check/badge.svg)](https://github.com/ipeaGIT/aopdata/actions)
+[![status](https://img.shields.io/badge/status-active-brightgreen.svg)](https://img.shields.io/badge/status-active-brightgreen.svg) 
 
 <!-- badges: end -->
 
@@ -17,7 +17,7 @@ The **`aopdata`** package brings annual estimates of access to employment, healt
 Data for 2017, 2018 and 2019 are already available, and cover accessibility estimates by car and active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for over 9 major cities. For more information on the [AOP website](https://www.ipea.gov.br/acessooportunidades/en/).
 
 
-## Installation R
+## Installation
 
 ```R
 # From CRAN

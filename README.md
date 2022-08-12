@@ -17,7 +17,7 @@ The **`aopdata`** package brings annual estimates of access to employment, healt
 Data for 2017, 2018 and 2019 are already available, and cover accessibility estimates by car and active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for over 9 major cities. For more information on the [AOP website](https://www.ipea.gov.br/acessooportunidades/en/).
 
 
-## Installation R
+## Installation
 
 ```R
 # From CRAN

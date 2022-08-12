@@ -40,7 +40,7 @@ Authors:
 Other contributors:
 \itemize{
   \item Diego Bogado Tomasiello \email{diegobt86@gmail.com} [contributor]
-  \item Jo?o Bazzo \email{joao.bazzo@gmail.com} [contributor]
+  \item Joao Bazzo \email{joao.bazzo@gmail.com} [contributor]
   \item Ipea - Institute for Applied Economic Research [copyright holder, funder]
 }
 
