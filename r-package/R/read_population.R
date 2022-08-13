@@ -92,19 +92,13 @@ read_population <- function(city=NULL, year = 2010, geometry = FALSE, showProgre
   message(paste0("Downloading population data for the year ", year))
 
   # list paths of files to download
-  file_url <- as.character(temp_meta$download_path)
-  file_url2 <- as.character(temp_meta$download_path2)
+  file_url <- as.character(temp_meta$download_path2)
 
   # download files
   aop_population <- download_data(file_url, progress_bar = showProgress)
 
-  # if download from github fails, try downloading data from ipea
-  if (is.null(aop_population)) {
-    aop_population <- download_data(file_url2, progress_bar = showProgress)
-
-    # check if download failed
-    if (is.null(aop_population)) { return(invisible(NULL)) } # nocov
-  }
+  # check if download failed
+  if (is.null(aop_population)) { return(invisible(NULL)) }
 
   # with Vs without spatial data
   if(geometry == FALSE){
