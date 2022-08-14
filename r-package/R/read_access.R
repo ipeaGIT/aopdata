@@ -190,20 +190,13 @@ read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geom
   }
 
   # list paths of files to download
-  file_url <- as.character(temp_meta$download_path)
-  file_url2 <- as.character(temp_meta$download_path2)
+  file_url <- as.character(temp_meta$download_path2)
 
   # download files
   aop_access <- download_data(file_url, progress_bar = showProgress)
 
-  # if download from github fails, try downloading data from ipea
-  if (is.null(aop_access)) {
-    aop_access <- download_data(file_url2, progress_bar = showProgress)
-
-    # check if download failed
-    if (is.null(aop_access)) { return(invisible(NULL)) } # nocov
-  }
-
+  # check if download failed
+  if (is.null(aop_access)) { return(invisible(NULL)) } # nocov
 
   # peak Vs off-peak
   if(peak==FALSE & mode == 'public_transport' & cities_with_pt_check){

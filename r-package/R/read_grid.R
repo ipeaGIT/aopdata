@@ -65,20 +65,13 @@ read_grid <- function(city=NULL, showProgress = FALSE){
   if (is.null(temp_meta)) { return(invisible(NULL)) } # nocov
 
   # list paths of files to download
-  file_url <- as.character(temp_meta$download_path)
-  file_url2 <- as.character(temp_meta$download_path2)
+  file_url <- as.character(temp_meta$download_path2)
 
   # download files
   aop_sf <- download_data(file_url, progress_bar = showProgress)
 
-  # if download from github fails, try downloading data from ipea
-  if (is.null(aop_sf)) {
-    aop_sf <- download_data(file_url2, progress_bar = showProgress)
-
-    # check if download failed
-    if (is.null(aop_sf)) { return(invisible(NULL)) } # nocov
-  }
-
+  # check if download failed
+  if (is.null(aop_sf)) { return(invisible(NULL)) } # nocov
 
   return(aop_sf)
 }

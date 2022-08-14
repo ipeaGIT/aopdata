@@ -1,4 +1,11 @@
-# aopdata v1.0.0 (dev version)
+# aopdata v1.0.09 (dev version)
+
+**Minor changes**
+- Remove code redundancy from main read_ and download function
+
+
+
+# aopdata v1.0.0
 
 **Major changes**
 

@@ -110,19 +110,13 @@ read_landuse <- function(city=NULL, year = 2019, geometry = FALSE, showProgress 
   message(paste0("Downloading land use data for the year ", year))
 
   # list paths of files to download
-  file_url <- as.character(temp_meta$download_path)
-  file_url2 <- as.character(temp_meta$download_path2)
+  file_url <- as.character(temp_meta$download_path2)
 
   # download files
   aop_landuse <- download_data(file_url, progress_bar = showProgress)
 
-  # if download from github fails, try downloading data from ipea
-  if (is.null(aop_landuse)) {
-    aop_landuse <- download_data(file_url2, progress_bar = showProgress)
-
-    # check if download failed
-    if (is.null(aop_landuse)) { return(invisible(NULL)) } # nocov
-  }
+  # check if download failed
+  if (is.null(aop_landuse)) { return(invisible(NULL)) } # nocov
 
   # Download and merge population data
   aop_population <- read_population(city=city, showProgress = showProgress)

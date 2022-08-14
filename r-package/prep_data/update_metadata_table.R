@@ -18,7 +18,7 @@ pb_new_release("ipeaGIT/aopdata", "v1.0.0")
 
 
 
-######### Etapa 2 - list alll files  ----------------------
+######### Etapa 2 - list all files  ----------------------
 
 # create empty metadata
 metadata <- data.frame(matrix(ncol = 5, nrow = 0))
@@ -142,8 +142,10 @@ metadata$file_name <- NULL
 # reorder columns
 setcolorder(metadata, c("type", "city", "year", "mode", "download_path", "download_path2", "name_muni"))
 
-######### Etapa 5 - check and save metadata ----------------------
 
+
+
+######### Etapa 6 - check and save metadata ----------------------
 
 # to avoid conflict with data.table
 metadata <- as.data.frame(metadata)

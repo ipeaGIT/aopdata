@@ -24,8 +24,8 @@ head(df_grid)
 
 # rename columns
 setDT(df_grid)
-data.table::setnames(df_grid, 'sigla_muni' , 'abbrev_muni')
-data.table::setnames(df_grid, 'nome_muni' , 'name_muni')
+# data.table::setnames(df_grid, 'sigla_muni' , 'abbrev_muni')
+# data.table::setnames(df_grid, 'nome_muni' , 'name_muni')
 # data.table::setnames(df_grid, 'cod_muni',  'code_muni')
 
 
@@ -54,6 +54,8 @@ save_gpkg <- function(city){ # city='bho'
 # save
 pblapply(X=unique(spatial_df$abbrev_muni), FUN=save_gpkg)
 
+# salve all cities in one file
+st_write(spatial_df, 'aop_hex_grid_v2.gpkg', overwrite=T)
 
 
 
@@ -75,14 +77,13 @@ save_pop_landuse <- function(f){ # f = file_pop_landuse[1]
   # rename columns and drop geometry
   setDT(df_pop_landuse)
   df_pop_landuse[, geometry := NULL ]
-  data.table::setnames(df_pop_landuse, 'sigla_muni' , 'abbrev_muni')
-  data.table::setnames(df_pop_landuse, 'nome_muni' , 'name_muni')
+  # data.table::setnames(df_pop_landuse, 'sigla_muni' , 'abbrev_muni')
+  # data.table::setnames(df_pop_landuse, 'nome_muni' , 'name_muni')
   # data.table::setnames(df_pop_landuse, 'ano',  'year')
 
   # determine year
   year <- stringi::stri_extract_last_regex(f, "\\d{4}")
   df_pop_landuse[, year := year ]
-  df_pop_landuse[, ano := NULL ]
   head(df_pop_landuse)
 
   # sort and remove duplicates
@@ -93,11 +94,11 @@ save_pop_landuse <- function(f){ # f = file_pop_landuse[1]
   columns_pop <- c('year', 'id_hex', 'abbrev_muni', 'name_muni', 'code_muni','P001','P002','P003','P004','P005','P006','P007','P010','P011','P012','P013','P014','P015','P016','R001','R002','R003')
   columns_landuse <- c('year','id_hex', 'abbrev_muni', 'name_muni', 'code_muni','T001','T002','T003','T004','E001','E002','E003','E004','M001','M002','M003','M004','S001','S002','S003','S004','C001')
 
-
-  # fun
+  # create dirs to save the data
   dir.create(path = paste0('./data/population'))
   dir.create(path = paste0('./data/land_use'))
 
+  # fun to save data by city an year
   save_pop_landuse_csv <- function(city){ # city='for'
 
     # separate pop and land use data
@@ -114,8 +115,24 @@ save_pop_landuse <- function(f){ # f = file_pop_landuse[1]
     fwrite(temp_pop, paste0('./data/population/', city, '/',2010,'/population_',2010,'_',city,'.csv'))
     fwrite(temp_landuse, paste0('./data/land_use/', city, '/',year,'/landuse_',year,'_',city,'.csv'))
   }
-
   lapply(X=unique(df_pop_landuse$abbrev_muni), FUN=save_pop_landuse_csv)
+
+
+  # fun to save data for all cities by year
+  save_each_year_csv <- function(year){ # year='2017'
+
+    # separate pop and land use data
+    temp_pop <- df_pop_landuse[ year  == year, ..columns_pop]
+    temp_landuse <- df_pop_landuse[ year  == year, ..columns_landuse]
+
+    # update pop year
+    temp_pop[, year := 2010]
+
+    fwrite(temp_pop, 'aop_population_2010_v2.csv')
+    fwrite(temp_landuse, paste0('aop_landuse_', year,'_v2.csv'))
+  }
+  lapply(X=unique(df_pop_landuse$year), FUN=save_each_year_csv)
+
 
 }
 
@@ -146,46 +163,60 @@ save_access <- function(f){ # f = file_access[2]
   # rename columns and drop geometry
   setDT(df_access)
   df_access[, geometry := NULL ]
-  data.table::setnames(df_access, 'sigla_muni' , 'abbrev_muni')
-  data.table::setnames(df_access, 'nome_muni' , 'name_muni')
-  data.table::setnames(df_access, 'modo',  'mode')
-  data.table::setnames(df_access, 'pico',  'peak')
-  data.table::setnames(df_access, 'ano',  'year')
   head(df_access)
 
   # recode transport modes
   unique(df_access$mode)
-  setDT(df_access)[, mode := fcase(mode=='bicicleta', 'bicycle',
-                                   mode=='caminhada', 'walk',
-                                   mode=='tp', 'public_transport',
-                                   mode=='carro', 'car')]
+  # setDT(df_access)[, mode := fcase(mode=='bicicleta', 'bicycle',
+  #                                  mode=='caminhada', 'walk',
+  #                                  mode=='tp', 'public_transport',
+  #                                  mode=='carro', 'car')]
 
   # reorder columns
   setcolorder(df_access, neworder = c('year', 'id_hex', 'abbrev_muni', 'name_muni', 'code_muni')) # 'name_muni', 'code_muni',
   head(df_access)
 
 
-  # fun
-  save_acces_csv <- function(city){ # city='for'
+  # # fun to save by city
+  # save_acces_csv <- function(city){ # city='for'
+  #
+  #   message(city)
+  #   temp <- subset(df_access, abbrev_muni  == city)
+  #
+  #   for (i in unique(temp$mode)){ # i = 'car'
+  #
+  #     temp_mode <- subset(temp, mode  == i)
+  #     year <- temp_mode$year[1]
+  #
+  #     if( i == 'car'){year=2019; temp_mode[, year := 2019] }
+  #
+  #     dir.create(path = paste0('./data/access/', city, '/',year,'/', i) ,recursive = T)
+  #     fwrite(temp_mode, paste0('./data/access/', city, '/',year,'/', i,'/access_', year, '_',i,'_',city,'.csv'))
+  #     }
+  # }
+  # lapply(X=unique(df_access$abbrev_muni), FUN=save_acces_csv)
 
-    message(city)
-    temp <- subset(df_access, abbrev_muni  == city)
+  # fun to save by mode, all cities
+  save_acces_year_csv <- function(mode){ # mode='public_transport'
 
-    for (i in unique(temp$mode)){ # i = 'car'
+    year <- unique(df_access$year)
 
-      temp_mode <- subset(temp, mode  == i)
-      year <- temp_mode$year[1]
+    if( mode %in% c('walk', 'bicycle')){
+    fwrite(df_access, paste0('aop_access_active_', year,'_v2.csv'))
+    }
 
-      if( i == 'car'){year=2019; temp_mode[, year := 2019] }
+    if( mode == 'car'){
+      temp_mode <- subset(df_access, mode  == mode)
+      temp_mode[, year := 2019]
+      fwrite(df_access, paste0('aop_access_car_', 2019,'_v2.csv'))
+    }
 
-      dir.create(path = paste0('./data/access/', city, '/',year,'/', i) ,recursive = T)
-      fwrite(temp_mode, paste0('./data/access/', city, '/',year,'/', i,'/access_', year, '_',i,'_',city,'.csv'))
-      }
+    if( mode == 'public_transport'){
+      temp_mode <- subset(df_access, mode  == mode)
+      fwrite(df_access, paste0('aop_access_publictransport_', year,'_v2.csv'))
+    }
   }
-
-
-lapply(X=unique(df_access$abbrev_muni), FUN=save_acces_csv)
-
+  lapply(X=unique(df_access$mode), FUN=save_acces_year_csv)
 
 }
 
