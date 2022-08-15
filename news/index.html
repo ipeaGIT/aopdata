@@ -77,8 +77,10 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.09" id="aopdata-v1009-dev-version">aopdata v1.0.09 (dev version)<a class="anchor" aria-label="anchor" href="#aopdata-v1009-dev-version"></a></h2>
-<p><strong>Minor changes</strong> - Remove code redundancy from main read_ and download function</p>
-</div>
+<p><strong>Minor changes</strong></p>
+<ul><li>Remove code redundancy from main read_ and download function</li>
+<li>Do not throw connection error message in first check</li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.0" id="aopdata-v100">aopdata v1.0.0<small>2022-08-12</small><a class="anchor" aria-label="anchor" href="#aopdata-v100"></a></h2>
 <p><strong>Major changes</strong></p>
@@ -101,46 +103,36 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.3" id="aopdata-v023">aopdata v0.2.3<small>2022-01-28</small><a class="anchor" aria-label="anchor" href="#aopdata-v023"></a></h2>
-<div class="section level3">
-<h3 id="minor-changes-0-2-3">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-0-2-3"></a></h3>
+<p><strong>Minor changes</strong></p>
 <ul><li>Download functions should now fail gracefully with an informative message when there are internet connection problems.</li>
 <li>Remove <code>crul</code> from package dependencies.</li>
 <li>skip examples on CRAN. Examples now only run on interactive R sessions.</li>
 <li>update links from http to https</li>
 </ul></div>
-</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.2" id="aopdata-v022">aopdata v0.2.2<small>2021-04-30</small><a class="anchor" aria-label="anchor" href="#aopdata-v022"></a></h2>
-<div class="section level3">
-<h3 id="minor-changes-0-2-2">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-0-2-2"></a></h3>
+<p><strong>Minor changes</strong></p>
 <ul><li>Adds <code>crul</code> as a package dependency. Now aoptadata fails gracefully when there is internet connection problems. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/32" class="external-link">#32</a>.</li>
 <li>
 <code>showProgress</code> now sets to <code>FALSE</code> in all tests, examples and vignettes. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/32" class="external-link">#32</a>.</li>
 <li>skip tests on CRAN. Tests are run only locally</li>
 </ul></div>
-</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.1" id="aopdata-v021">aopdata v0.2.1<small>2021-04-07</small><a class="anchor" aria-label="anchor" href="#aopdata-v021"></a></h2>
-<div class="section level3">
-<h3 id="minor-changes-0-2-1">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-0-2-1"></a></h3>
+<p><strong>Minor changes</strong></p>
 <ul><li>Allow for user to download data few selected cities. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/29" class="external-link">#29</a></li>
 <li>Fix progress bar even when showProgress = F. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/30" class="external-link">#30</a></li>
 <li>Fix encoding issues using <code>base::iconv(city, to="ASCII//TRANSLIT")</code>. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/31" class="external-link">#31</a></li>
 </ul></div>
-</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.0" id="aopdata-v020">aopdata v0.2.0<small>2021-03-31</small><a class="anchor" aria-label="anchor" href="#aopdata-v020"></a></h2>
-<div class="section level3">
-<h3 id="major-changes-0-2-0">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-0-2-0"></a></h3>
+<p><strong>Major changes</strong></p>
 <ul><li>New function read_population. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/21" class="external-link">#21</a></li>
 <li>New parameter <code>peak</code> added to <code><a href="../reference/read_access.html">read_access()</a></code> function. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/17" class="external-link">#17</a></li>
 <li>New internal support function <code>is_online()</code> to alert for possible internet connection problem. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/26" class="external-link">#26</a></li>
 <li>Chache downloaded data in tempdir. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/28" class="external-link">#28</a></li>
-</ul></div>
-<div class="section level3">
-<h3 id="minor-changes-0-2-0">Minor changes<a class="anchor" aria-label="anchor" href="#minor-changes-0-2-0"></a></h3>
+</ul><p><strong>Minor changes</strong></p>
 <ul><li>Downloads two or more cities at the same time. Closes <a href="https://github.com/ipeaGIT/aopdata/issues/3" class="external-link">#3</a>.</li></ul></div>
-</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.1.0" id="aopdata-v010">aopdata v0.1.0<small>2021-03-08</small><a class="anchor" aria-label="anchor" href="#aopdata-v010"></a></h2>
 <ul><li>First version on CRAN</li></ul></div>
