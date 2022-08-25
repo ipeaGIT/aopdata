@@ -88,7 +88,8 @@ cur <- read_access(
           city = 'Curitiba', 
           mode = 'public_transport', 
           peak = TRUE,
-          year = 2019
+          year = 2019,
+          showProgress = FALSE
           )
 ```
 
