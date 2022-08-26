@@ -4,11 +4,13 @@ on:
   push:
     paths:
       - r-package/**
+      - .github/workflows/R-CMD-CHECK.yaml
     branches:
       - main
   pull_request:
     paths:
       - r-package/**
+      - .github/workflows/R-CMD-CHECK.yaml
     branches:
       - main
 
