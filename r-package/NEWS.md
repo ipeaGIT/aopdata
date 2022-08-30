@@ -4,6 +4,11 @@
 
 - Remove code redundancy from main read_ and download function
 - Do not throw connection error message in first check
+- Improve error message when `mode = car`. Closes #52
+
+
+**Bug fixes**
+- Fixed bug that did not allow one to download access estimates by car in off-peak period. Closes #53
 
 
 

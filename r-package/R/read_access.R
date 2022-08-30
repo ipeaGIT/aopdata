@@ -199,7 +199,8 @@ read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geom
   if (is.null(aop_access)) { return(invisible(NULL)) } # nocov
 
   # peak Vs off-peak
-  if(peak==FALSE & mode == 'public_transport' & cities_with_pt_check){
+  if ((peak==FALSE & mode == 'car') |
+      (peak==FALSE & mode == 'public_transport' & cities_with_pt_check)) {
                   aop_access <- subset(aop_access, peak == 0)
                 } else {
                   aop_access <- subset(aop_access, peak == 1)
