@@ -96,19 +96,15 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
 #'
 select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
 
-  checkmate::assert_string(mode)
+  checkmate::assert_string(mode, null.ok = FALSE)
 
-  # NULL
-  if (is.null(mode)){  stop(paste0("Error: This 'mode' is not available for this 'city' & 'year.' It must be one of the following: ",
-                                paste(unique(temp_meta$mode),collapse = " "))) }
-
-  # invalid input
-  else if (mode %in% temp_meta$mode){ message(paste0("Using mode ", mode))
+  # Valid input
+  if (mode %in% temp_meta$mode) { message(paste0("Using mode ", mode))
     temp_meta <- temp_meta[ temp_meta$mode %in% mode, ]
     return(temp_meta) }
 
   # invalid input
-  else { stop(paste0("Error: This 'mode' is not available for this 'city' & 'year.' It must be one of the following: ",
+  else { stop(paste0("Error: This 'mode' is not available for this 'city' & 'year'. Please try another 'year' or one of the following modes: ",
                      paste(unique(temp_meta$mode), collapse = " ")))
   }
 }
