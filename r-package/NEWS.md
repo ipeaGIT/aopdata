@@ -5,6 +5,7 @@
 - Remove code redundancy from main read_ and download function
 - Do not throw connection error message in first check
 - Improve error message when `mode = car`. Closes #52
+- Added citation file
 
 
 **Bug fixes**

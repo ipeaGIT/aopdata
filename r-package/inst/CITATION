@@ -1,0 +1,28 @@
+citHeader("To cite aopdata in publications use one of the following studies:")
+
+citEntry(entry = "Article",
+        title = "Estimativas de acessibilidade a empregos e serviços públicos via transporte ativo, público e privado nas 20 maiores cidades do Brasil em 2017, 2018, 2019",
+        author = personList(as.person("Rafael H. M. Pereira"), as.person("Carlos Kauê Vieira Braga"), as.person("Daniel Herszenhut"), as.person("Marcus Saraiva"), as.person("Diego Bogado Tomasiello")),
+        journal = "Texto para Discussão",
+        year = "2022",
+        volume = " ",
+        doi = " ",
+        issn = "1415-4765",
+        publisher = "Instituto de Pesquisa Econômica Aplicada (Ipea)",
+
+        textVersion = "Pereira, Rafael H. M. et al. (2022) Estimativas de acessibilidade a empregos e serviços públicos via transporte ativo, público e privado nas 20 maiores cidades do Brasil em 2017, 2018, 2019. Texto para Discussão. Ipea - Instituto de Pesquisa Econômica Aplicada."
+)
+
+
+ citEntry(entry = "Article",
+        title = "Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil",
+        author = personList(as.person("Rafael H. M. Pereira"), as.person("Daniel Herszenhut"), as.person("Carlos Kauê Vieira Braga"), as.person("João Pedro Bazzo"), as.person("João Lucas Albuquerque Oliveira"), as.person("João Pedro Parga"), as.person("Marcus Saraiva"), as.person("Luiz Pedro Silva"), as.person("Diego Bogado Tomasiello"), as.person("Lucas Warwar")),
+        journal = "Texto para Discussão",
+        year = "2022",
+        volume = "2772",
+        doi = "http://dx.doi.org/10.38116/td2772",
+        issn = "1415-4765",
+        publisher = "Instituto de Pesquisa Econômica Aplicada (Ipea)",
+
+        textVersion = "Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. Texto para Discussão 2772. Ipea - Instituto de Pesquisa Econômica Aplicada."
+        )
