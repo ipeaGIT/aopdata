@@ -1,7 +1,7 @@
 Package: aopdata
 Title: Data from the 'Access to Opportunities Project (AOP)'
-Version: 1.0.09
-Date: 2022-08-13
+Version: 1.0.1
+Date: 2022-08-30
 Authors@R: c(
              person(given="Rafael H. M.", family="Pereira", email="rafa.pereira.br@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-2125-7465")),
              person(given="Daniel", family="Herszenhut", email="dhersz@gmail.com", role="aut", comment = c(ORCID = "0000-0001-8066-1105")),

@@ -278,6 +278,8 @@ devtools::check(pkg = ".",  cran = TRUE, env_vars = c(NOT_CRAN = "false"))
 devtools::check_win_release(pkg = ".")
 devtools::check_win_devel(pkg = ".")
 
+rhub::check_for_cran(show_status = FALSE)
+
 beepr::beep()
 
 
@@ -320,10 +322,9 @@ grid_state_correspondence_table
 
 
 # submit to CRAN -----------------
-usethis::use_cran_comments('teste 2222, , asdadsad')
+#usethis::use_cran_comments('teste 2222, , asdadsad')
 
 
-Sys.setenv(NOT_CRAN = "true")
 devtools::submit_cran()
 
 

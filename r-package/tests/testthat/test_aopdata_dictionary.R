@@ -1,9 +1,7 @@
 context("aopdata_dictionary")
 
-# # skip tests because they take too much time
-# skip_if(Sys.getenv("TEST_ONE") != "")
-# testthat::skip_on_cran()
-
+# skip tests because they take too much time
+testthat::skip_on_cran()
 
 
 

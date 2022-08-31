@@ -7,8 +7,8 @@
 - Improve error message when `mode = car`. Closes #52
 - Added citation file
 
-
 **Bug fixes**
+
 - Fixed bug that did not allow one to download access estimates by car in off-peak period. Closes #53
 
 
