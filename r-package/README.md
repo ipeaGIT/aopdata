@@ -144,9 +144,9 @@ If you use this package in your own work, please cite it as one of the publicati
 
 **Population and land use data**
 
-- Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. *Texto para Discussão 2772*. Ipea - Instituto de Pesquisa Econômica Aplicada. Available at http://repositorio.ipea.gov.br/handle/11058/11225
+- Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. *Texto para Discussão 2772*. Ipea - Instituto de Pesquisa Econômica Aplicada. http://dx.doi.org/10.38116/td2772
 
 **Accessibility data**
 
-- Pereira, Rafael H. M. et al. (2022) Estimativas de acessibilidade a empregos e serviços públicos via transporte ativo, público e privado nas 20 maiores cidades do Brasil em 2017, 2018, 2019. *Texto para Discussão*. Ipea - Instituto de Pesquisa Econômica Aplicada. 
+- Pereira, Rafael H. M. et al. (2022) Estimativas de acessibilidade a empregos e serviços públicos via transporte ativo, público e privado nas 20 maiores cidades do Brasil em 2017, 2018, 2019. *Texto para Discussão 2800*. Ipea - Instituto de Pesquisa Econômica Aplicada. http://dx.doi.org/10.38116/td2800
 

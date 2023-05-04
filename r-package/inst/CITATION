@@ -5,11 +5,12 @@ citEntry(entry = "Article",
         author = personList(as.person("Rafael H. M. Pereira"), as.person("Carlos Kauê Vieira Braga"), as.person("Daniel Herszenhut"), as.person("Marcus Saraiva"), as.person("Diego Bogado Tomasiello")),
         journal = "Texto para Discussão",
         year = "2022",
-        volume = " ",
+        volume = "2800",
+        doi = "10.38116/td2800",
         issn = "1415-4765",
         publisher = "Instituto de Pesquisa Econômica Aplicada (Ipea)",
 
-        textVersion = "Pereira, Rafael H. M. et al. (2022) Estimativas de acessibilidade a empregos e serviços públicos via transporte ativo, público e privado nas 20 maiores cidades do Brasil em 2017, 2018, 2019. Texto para Discussão. Ipea - Instituto de Pesquisa Econômica Aplicada."
+        textVersion = "Pereira, Rafael H. M. et al. (2022) Estimativas de acessibilidade a empregos e serviços públicos via transporte ativo, público e privado nas 20 maiores cidades do Brasil em 2017, 2018, 2019. Texto para Discussão 2800. Ipea - Instituto de Pesquisa Econômica Aplicada. http://dx.doi.org/10.38116/td2800"
 )
 
 
@@ -19,8 +20,9 @@ citEntry(entry = "Article",
         journal = "Texto para Discussão",
         year = "2022",
         volume = "2772",
+        doi = "10.38116/td2772",
         issn = "1415-4765",
         publisher = "Instituto de Pesquisa Econômica Aplicada (Ipea)",
 
-        textVersion = "Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. Texto para Discussão 2772. Ipea - Instituto de Pesquisa Econômica Aplicada."
+        textVersion = "Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. Texto para Discussão 2772. Ipea - Instituto de Pesquisa Econômica Aplicada. http://dx.doi.org/10.38116/td2772"
         )
