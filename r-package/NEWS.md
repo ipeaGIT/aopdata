@@ -1,3 +1,10 @@
+# aopdata v1.0.2
+
+**Bug fixes**
+
+- Fixed bug that printed message 'connection fail' in the 1st attenmpt, when it should only print in the 2nd attempt
+
+
 # aopdata v1.0.1
 
 **Minor changes**

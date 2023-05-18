@@ -191,7 +191,7 @@ download_data <- function(url, progress_bar = showProgress){
 
         # if server1 fails, replace url and test connection with server2
         url <- url2
-        check_con <- check_connection(url[1])
+        check_con <- check_connection(url[1], silent = FALSE)
         if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
         }
 
@@ -219,12 +219,12 @@ download_data <- function(url, progress_bar = showProgress){
     }
 
     # test connection with server1
-    check_con <- check_connection(url[1])
+    check_con <- check_connection(url[1], silent = TRUE)
     if (is.null(check_con) | isFALSE(check_con)) {
 
       # if server1 fails, replace url and test connection with server2
       url <- url2
-      check_con <- check_connection(url[1])
+      check_con <- check_connection(url[1], silent = FALSE)
       if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
     }
 

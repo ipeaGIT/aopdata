@@ -1,18 +1,10 @@
--- R CMD check results ----------------------- aopdata 1.0.1 ----
-Duration: 4m 57.1s
+── R CMD check results ───────────────────────────────────────────────── aopdata 1.0.1 ────
+Duration: 16m 25.8s
 
-0 errors v | 0 warnings v | 0 notes v
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
-- fixed invalid DOI link
-
-**Minor changes**
-
-- Remove code redundancy from main read_ and download function
-- Do not throw connection error message in first check
-- Improve error message when `mode = car`. Closes #52
-- Added citation file
+# aopdata v1.0.2
 
 **Bug fixes**
 
-- Fixed bug that did not allow one to download access estimates by car in off-peak period. Closes #53
-
+- Fixed bug that printed message in the 1st attenmpt, when it should only print in the 2nd attempt

@@ -19,7 +19,7 @@ download_metadata <- function(){ # nocov start
     # if connection with github fails, try connection with ipea
     if(is.null(check_con) | isFALSE(check_con)){
       metadata_link <- 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv'
-      check_con <- check_connection(metadata_link)
+      check_con <- check_connection(metadata_link, silent = FALSE)
 
       if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
       }
