@@ -8,3 +8,4 @@ Duration: 16m 25.8s
 **Bug fixes**
 
 - Fixed bug that printed message in the 1st attenmpt, when it should only print in the 2nd attempt
+- updated CITATION file with bibentry()

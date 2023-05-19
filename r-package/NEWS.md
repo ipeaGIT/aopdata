@@ -3,6 +3,7 @@
 **Bug fixes**
 
 - Fixed bug that printed message 'connection fail' in the 1st attenmpt, when it should only print in the 2nd attempt
+- updated CITATION file with bibentry()
 
 
 # aopdata v1.0.1
