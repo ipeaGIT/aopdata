@@ -2,7 +2,7 @@
 
 **Bug fixes**
 
-- Fixed bug that printed message 'connection fail' in the 1st attenmpt, when it should only print in the 2nd attempt
+- Fixed bug that printed message 'connection fail' in the 1st attempt, when it should only print in the 2nd attempt
 - updated CITATION file with bibentry()
 
 
