@@ -186,12 +186,12 @@ download_data <- function(url, progress_bar = showProgress){
     if (!file.exists(temps) | file.info(temps)$size == 0) {
 
       # test connection with server1
-      check_con <- check_connection(url[1], silent = TRUE)
+      try( silent = TRUE, check_con <- check_connection(url[1], silent = TRUE))
       if (is.null(check_con) | isFALSE(check_con)) {
 
         # if server1 fails, replace url and test connection with server2
         url <- url2
-        check_con <- check_connection(url[1], silent = FALSE)
+        try( silent = TRUE, check_con <- check_connection(url[1], silent = FALSE))
         if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
         }
 ### 666 ao inves the checar url acima, tentar o download abaixo.
@@ -199,10 +199,12 @@ download_data <- function(url, progress_bar = showProgress){
 
       ###
       # download data
-      httr::GET(url=url,
+      try( silent = TRUE,
+           httr::GET(url=url,
                 httr::timeout(10), ### 666 add time out to every httr::GET
                 if(isTRUE(progress_bar)){httr::progress()},
                 httr::write_disk(temps, overwrite = T))
+           )
     }
 
     # load gpkg to memory
@@ -223,12 +225,12 @@ download_data <- function(url, progress_bar = showProgress){
     }
 
     # test connection with server1
-    check_con <- check_connection(url[1], silent = TRUE)
+    try( silent = TRUE, check_con <- check_connection(url[1], silent = TRUE))
     if (is.null(check_con) | isFALSE(check_con)) {
 
       # if server1 fails, replace url and test connection with server2
       url <- url2
-      check_con <- check_connection(url[1], silent = FALSE)
+      try( silent = TRUE, check_con <- check_connection(url[1], silent = FALSE))
       if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
     }
 
@@ -241,9 +243,11 @@ download_data <- function(url, progress_bar = showProgress){
       # check if file has not been downloaded already. If not, download it
       if (!file.exists(temps) | file.info(temps)$size == 0) {
         i <- match(c(x),url)
-        httr::GET(url=x, #httr::progress(),
+        try( silent = TRUE,
+             httr::GET(url=x, #httr::progress(),
                   httr::timeout(10),
                   httr::write_disk(temps, overwrite = T))
+             )
         if(isTRUE(progress_bar)){ utils::setTxtProgressBar(pb, i) }
       }
     })
