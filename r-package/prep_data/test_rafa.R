@@ -1,7 +1,17 @@
 #### testing functions of aop
 
+https://cran.r-project.org/web/checks/check_results_aopdata.html
+
+fail gracefully
 
 
+Quitting from lines 37-43 [unnamed-chunk-3] (access_inequality.Rmd)
+Error: processing vignette 'access_inequality.Rmd' failed with diagnostics:
+  Timeout was reached: [www.ipea.gov.br] SSL connection timeout
+--- failed re-building ‘access_inequality.Rmd’
+
+
+aopdata::read_grid(city = 'for')
 
 #library(magrittr)
 library(aopdata)

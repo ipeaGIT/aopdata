@@ -194,9 +194,13 @@ download_data <- function(url, progress_bar = showProgress){
         check_con <- check_connection(url[1], silent = FALSE)
         if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
         }
+### 666 ao inves the checar url acima, tentar o download abaixo.
+### 666 SE der errado, dai tentar no outro link
 
+      ###
       # download data
       httr::GET(url=url,
+                httr::timeout(10), ### 666 add time out to every httr::GET
                 if(isTRUE(progress_bar)){httr::progress()},
                 httr::write_disk(temps, overwrite = T))
     }
@@ -238,6 +242,7 @@ download_data <- function(url, progress_bar = showProgress){
       if (!file.exists(temps) | file.info(temps)$size == 0) {
         i <- match(c(x),url)
         httr::GET(url=x, #httr::progress(),
+                  httr::timeout(10),
                   httr::write_disk(temps, overwrite = T))
         if(isTRUE(progress_bar)){ utils::setTxtProgressBar(pb, i) }
       }
@@ -399,7 +404,8 @@ check_connection <- function(url = 'https://www.ipea.gov.br/geobr/aopdata/metada
 
   # test server connection
   x <- try(silent = TRUE,
-           httr::GET(url, # timeout(5),
+           httr::GET(url,
+                     httr::timeout(10),
                      config = httr::config(ssl_verifypeer = FALSE)))
   # link offline
   if (methods::is(x)=="try-error") {
