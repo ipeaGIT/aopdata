@@ -127,12 +127,16 @@
 #' all <- read_access(city = 'all', mode = 'walk', year = 2019, showProgress = FALSE)
 #'
 
-read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geometry = FALSE, showProgress = TRUE){
+read_access <- function(city = NULL,
+                        mode = 'walk',
+                        peak = TRUE,
+                        year = 2019,
+                        geometry = FALSE,
+                        showProgress = TRUE){
 
   # checks
   checkmate::assert_logical(peak)
   checkmate::assert_logical(geometry)
-  checkmate::assert_logical(showProgress)
 
   # remove accents
   city <- tolower(city)
@@ -193,7 +197,7 @@ read_access <- function(city=NULL, mode = 'walk', peak = TRUE, year = 2019, geom
   file_url <- as.character(temp_meta$download_path2)
 
   # download files
-  aop_access <- download_data(file_url, progress_bar = showProgress)
+  aop_access <- download_data(url = file_url, progress_bar = showProgress)
 
   # check if download failed
   if (is.null(aop_access)) { return(invisible(NULL)) } # nocov

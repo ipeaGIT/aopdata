@@ -169,7 +169,10 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 #'
 download_data <- function(url, progress_bar = showProgress){
 
-  if (!(progress_bar %in% c(T, F))) { stop("Value to argument 'showProgress' has to be either TRUE or FALSE") }
+  # check showProgress input
+  if (!(progress_bar %in% c(TRUE, FALSE))) {
+    stop("Value to argument 'showProgress' has to be either TRUE or FALSE")
+    }
 
   # get backup links
   filenames <- basename(url)
@@ -182,7 +185,7 @@ download_data <- function(url, progress_bar = showProgress){
     # location of temp_file
     temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(url,"/"),tail,n=1L)))
 
-    # check if file has not been downloaded already. If not, download it
+    # if file has not been downloaded already. If not, download it
     if (!file.exists(temps) | file.info(temps)$size == 0) {
 
       # test connection with server1
@@ -209,8 +212,8 @@ download_data <- function(url, progress_bar = showProgress){
     if (any(!file.exists(temps) | file.info(temps)$size == 0)) { return(invisible(NULL)) }
 
     # load gpkg to memory
-    temp_sf <- load_data(temps)
-    return(temp_sf)
+    temp_data <- load_data(temps)
+    return(temp_data)
   }
 
 
@@ -263,8 +266,6 @@ download_data <- function(url, progress_bar = showProgress){
     # load data
     temp_data <- load_data(temps)
     return(temp_data)
-
-
   }
 
 }
@@ -293,25 +294,30 @@ load_data <- function(temps=NULL){
     # read file
     if( fformat=='csv' ){ temp <- data.table::fread(temps) }
     if( fformat=='gpkg' ){ temp <- sf::st_read(temps, quiet=T) }
-    return(temp)
   }
 
+  ### multiple files
   else if (length(temps) > 1) {
 
-    # access csv
+    # csv
     if( fformat=='csv' ){
       files <- lapply(X=temps, FUN= data.table::fread)
       temp <- data.table::rbindlist(files, fill = TRUE)
     }
-
-    # grid geopackage
+    # geopackage
     if( fformat=='gpkg' ){
       files <- lapply(X=temps, FUN= sf::st_read, quiet=T)
       temp <- sf::st_as_sf(data.table::rbindlist(files, fill = TRUE))
     }
-
-    return(temp)
   }
+
+  # check if data was read Ok
+  if (nrow(temp)==0) {
+    message("A file must have been corrupted during download. Please restart your R session and download the data again.")
+    return(invisible(NULL))
+  }
+
+  return(temp)
 
   # load data to memory
   temp_data <- load_data(temps)

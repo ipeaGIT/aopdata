@@ -75,11 +75,13 @@
 #' # all cities
 #' all <- read_population(city = 'all', year = 2010)
 #'
-read_population <- function(city=NULL, year = 2010, geometry = FALSE, showProgress = TRUE){
+read_population <- function(city=NULL,
+                            year = 2010,
+                            geometry = FALSE,
+                            showProgress = TRUE){
 
   # checks
   checkmate::assert_logical(geometry)
-  checkmate::assert_logical(showProgress)
 
   # Get metadata with data url addresses
   temp_meta <- select_metadata(t='population',
@@ -95,7 +97,7 @@ read_population <- function(city=NULL, year = 2010, geometry = FALSE, showProgre
   file_url <- as.character(temp_meta$download_path2)
 
   # download files
-  aop_population <- download_data(file_url, progress_bar = showProgress)
+  aop_population <- download_data(url = file_url, progress_bar = showProgress)
 
   # check if download failed
   if (is.null(aop_population)) { return(invisible(NULL)) }

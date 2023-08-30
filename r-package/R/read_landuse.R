@@ -93,11 +93,13 @@
 #' # all cities
 #' all <- read_landuse(city = 'all', year = 2019)
 #'
-read_landuse <- function(city=NULL, year = 2019, geometry = FALSE, showProgress = TRUE){
+read_landuse <- function(city = NULL,
+                         year = 2019,
+                         geometry = FALSE,
+                         showProgress = TRUE){
 
   # checks
   checkmate::assert_logical(geometry)
-  checkmate::assert_logical(showProgress)
 
   # Get metadata with data url addresses
   temp_meta <- select_metadata(t='land_use',
@@ -113,7 +115,7 @@ read_landuse <- function(city=NULL, year = 2019, geometry = FALSE, showProgress 
   file_url <- as.character(temp_meta$download_path2)
 
   # download files
-  aop_landuse <- download_data(file_url, progress_bar = showProgress)
+  aop_landuse <- download_data(url = file_url, progress_bar = showProgress)
 
   # check if download failed
   if (is.null(aop_landuse)) { return(invisible(NULL)) } # nocov

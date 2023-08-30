@@ -53,7 +53,8 @@
 #' # all <- read_grid(city = 'all', showProgress = FALSE)
 #'
 
-read_grid <- function(city=NULL, showProgress = FALSE){
+read_grid <- function(city = NULL,
+                      showProgress = FALSE){
 
   # checks
   checkmate::assert_logical(showProgress)
@@ -68,7 +69,7 @@ read_grid <- function(city=NULL, showProgress = FALSE){
   file_url <- as.character(temp_meta$download_path2)
 
   # download files
-  aop_sf <- download_data(file_url, progress_bar = showProgress)
+  aop_sf <- download_data(url = file_url, progress_bar = showProgress)
 
   # check if download failed
   if (is.null(aop_sf)) { return(invisible(NULL)) } # nocov
