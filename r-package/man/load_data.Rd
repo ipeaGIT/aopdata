@@ -4,11 +4,9 @@
 \alias{load_data}
 \title{Load data from tempdir to global environment}
 \usage{
-load_data(url, temps = NULL)
+load_data(temps = NULL)
 }
 \arguments{
-\item{url}{A string with the url address of aop dataset}
-
 \item{temps}{The address of a data file stored in tempdir. Defaults to NULL}
 }
 \value{

@@ -21,6 +21,12 @@ library(data.table)
 library(ggplot2)
 library(mapview)
 
+df <- read_access(city = "Fortaleza",
+                  mode = "public_transport",
+                  year = 2019,
+                  showProgress = FALSE)
+
+
 a <- read_access(city='bho',
                            mode='public_transport',
                            year=2019,
@@ -269,8 +275,6 @@ devtools::spell_check(pkg = ".", vignettes = TRUE, use_wordlist = TRUE)
 
 # Run to build the website
 pkgdown::build_site()
-
-
 
 
 ### CMD Check ----------------

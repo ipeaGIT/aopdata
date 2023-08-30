@@ -169,7 +169,7 @@ select_metadata <- function(t=NULL, c=NULL, y=NULL, m=NULL){
 #'
 download_data <- function(url, progress_bar = showProgress){
 
-  if( !(progress_bar %in% c(T, F)) ){ stop("Value to argument 'showProgress' has to be either TRUE or FALSE") }
+  if (!(progress_bar %in% c(T, F))) { stop("Value to argument 'showProgress' has to be either TRUE or FALSE") }
 
   # get backup links
   filenames <- basename(url)
@@ -194,8 +194,6 @@ download_data <- function(url, progress_bar = showProgress){
         try( silent = TRUE, check_con <- check_connection(url[1], silent = FALSE))
         if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
         }
-### 666 ao inves the checar url acima, tentar o download abaixo.
-### 666 SE der errado, dai tentar no outro link
 
       ###
       # download data
@@ -207,8 +205,11 @@ download_data <- function(url, progress_bar = showProgress){
            )
     }
 
+    # if anything fails, return NULL
+    if (any(!file.exists(temps) | file.info(temps)$size == 0)) { return(invisible(NULL)) }
+
     # load gpkg to memory
-    temp_sf <- load_data(url, temps)
+    temp_sf <- load_data(temps)
     return(temp_sf)
   }
 
@@ -231,7 +232,7 @@ download_data <- function(url, progress_bar = showProgress){
       # if server1 fails, replace url and test connection with server2
       url <- url2
       try( silent = TRUE, check_con <- check_connection(url[1], silent = FALSE))
-      if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
+      if (is.null(check_con) | isFALSE(check_con)) { return(invisible(NULL)) }
     }
 
     # download files
@@ -255,9 +256,13 @@ download_data <- function(url, progress_bar = showProgress){
     # closing progress bar
     if(isTRUE(progress_bar)){close(pb)}
 
-    # load gpkg
-    temp_sf <- load_data(url)
-    return(temp_sf)
+    # if anything fails, return NULL
+    temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(url,"/"),tail,n=1L)))
+    if (any(!file.exists(temps) | file.info(temps)$size == 0)) { return(invisible(NULL)) }
+
+    # load data
+    temp_data <- load_data(temps)
+    return(temp_data)
 
 
   }
@@ -270,21 +275,20 @@ download_data <- function(url, progress_bar = showProgress){
 #'
 #' @description Reads data from tempdir to global environment.
 #'
-#' @param url A string with the url address of aop dataset
 #' @param temps The address of a data file stored in tempdir. Defaults to NULL
 #'
 #' @return Returns either an `sf` or a `data.frame`, depending of the data set
 #'         that was downloaded
 #' @keywords internal
 #'
-load_data <- function(url, temps=NULL){
+load_data <- function(temps=NULL){
 
   # check if .csv or geopackage
-  if( url[1] %like% '.csv' ){ fformat<- 'csv'}
-  if( url[1] %like% '.gpkg' ){ fformat<- 'gpkg'}
+  if( temps[1] %like% '.csv' ){ fformat <- 'csv'}
+  if( temps[1] %like% '.gpkg' ){ fformat <- 'gpkg'}
 
   ### one single file
-  if (length(url)==1) {
+  if (length(temps)==1) {
 
     # read file
     if( fformat=='csv' ){ temp <- data.table::fread(temps) }
@@ -292,21 +296,17 @@ load_data <- function(url, temps=NULL){
     return(temp)
   }
 
-  else if (length(url) > 1) {
-
-    # read files and pile them up
-    files <- unlist(lapply(strsplit(url,"/"), tail, n = 1L))
-    files <- paste0(tempdir(),"/",files)
+  else if (length(temps) > 1) {
 
     # access csv
     if( fformat=='csv' ){
-      files <- lapply(X=files, FUN= data.table::fread)
+      files <- lapply(X=temps, FUN= data.table::fread)
       temp <- data.table::rbindlist(files, fill = TRUE)
     }
 
     # grid geopackage
     if( fformat=='gpkg' ){
-      files <- lapply(X=files, FUN= sf::st_read, quiet=T)
+      files <- lapply(X=temps, FUN= sf::st_read, quiet=T)
       temp <- sf::st_as_sf(data.table::rbindlist(files, fill = TRUE))
     }
 
@@ -314,7 +314,7 @@ load_data <- function(url, temps=NULL){
   }
 
   # load data to memory
-  temp_data <- load_data(url, temps)
+  temp_data <- load_data(temps)
   return(temp_data)
 }
 
