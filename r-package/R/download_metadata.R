@@ -39,6 +39,13 @@ download_metadata <- function(){ # nocov start
 
  # read metadata
   metadata <- data.table::fread(tempf, stringsAsFactors=FALSE)
+
+  # check if data was read Ok
+  if (nrow(metadata)==0) {
+    message("A file must have been corrupted during download. Please restart your R session and download the data again.")
+    return(invisible(NULL))
+  }
+
   return(metadata)
 
 }  # nocov end
