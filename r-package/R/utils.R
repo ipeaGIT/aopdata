@@ -204,7 +204,8 @@ download_data <- function(url, progress_bar = showProgress){
            httr::GET(url=url,
                # httr::timeout(10), ### 666 add time out to every httr::GET
                 if(isTRUE(progress_bar)){httr::progress()},
-                httr::write_disk(temps, overwrite = T))
+                httr::write_disk(temps, overwrite = T),
+               config = httr::config(ssl_verifypeer = FALSE))
            )
     }
 
@@ -230,13 +231,13 @@ download_data <- function(url, progress_bar = showProgress){
 
     # test connection with server1
     try( silent = TRUE, check_con <- check_connection(url[1], silent = TRUE))
-    if (is.null(check_con) | isFALSE(check_con)) {
 
-      # if server1 fails, replace url and test connection with server2
-      url <- url2
-      try( silent = TRUE, check_con <- check_connection(url[1], silent = FALSE))
-      if (is.null(check_con) | isFALSE(check_con)) { return(invisible(NULL)) }
-    }
+    # if server1 fails, replace url and test connection with server2
+    if (is.null(check_con) | isFALSE(check_con)) {
+        url <- url2
+        try( silent = TRUE, check_con <- check_connection(url[1], silent = FALSE))
+        if (is.null(check_con) | isFALSE(check_con)) { return(invisible(NULL)) }
+      }
 
     # download files
     lapply(X=url, function(x){
@@ -250,7 +251,8 @@ download_data <- function(url, progress_bar = showProgress){
         try( silent = TRUE,
              httr::GET(url=x, #httr::progress(),
                   # httr::timeout(10),
-                  httr::write_disk(temps, overwrite = T))
+                  httr::write_disk(temps, overwrite = T),
+                  config = httr::config(ssl_verifypeer = FALSE))
              )
         if(isTRUE(progress_bar)){ utils::setTxtProgressBar(pb, i) }
       }

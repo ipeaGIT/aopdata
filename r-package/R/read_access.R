@@ -212,6 +212,11 @@ read_access <- function(city = NULL,
 
  # Download and merge land use data
   aop_landuse <- read_landuse(city=city, year=year, showProgress=showProgress)
+
+  # check if download failed
+  if (is.null(aop_landuse)) { return(invisible(NULL)) }
+
+  # merge
   aop <- aop_merge(aop_landuse, aop_access)
 
   # with Vs without spatial data
@@ -223,6 +228,10 @@ read_access <- function(city = NULL,
 
                         # return sf
                         aop_grid <- read_grid(city=city, showProgress=showProgress)
+
+                        # check if download failed
+                        if (is.null(aop_grid)) { return(invisible(NULL)) }
+
                         aop_sf <- aop_spatial_join(aop, aop_grid)
                         return(aop_sf)
                         }

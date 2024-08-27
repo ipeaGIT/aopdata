@@ -122,6 +122,11 @@ read_landuse <- function(city = NULL,
 
   # Download and merge population data
   aop_population <- read_population(city=city, showProgress = showProgress)
+
+    # check if download failed
+    if (is.null(aop_population)) { return(invisible(NULL)) }
+
+  # merge
   aop_population[, year := NULL]
   aop <- data.table::merge.data.table(aop_population, aop_landuse, by = c('id_hex', 'abbrev_muni', 'name_muni', 'code_muni'), all = TRUE)
 
@@ -134,6 +139,9 @@ read_landuse <- function(city = NULL,
 
                         # return sf
                         aop_grid <- read_grid(city=city, showProgress=showProgress)
+
+                          # check if download failed
+                          if (is.null(aop_grid)) { return(invisible(NULL)) }
 
                         # create function aop_join to bring in land use info
                         aop_sf <- aop_spatial_join(aop, aop_grid)

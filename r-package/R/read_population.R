@@ -75,7 +75,7 @@
 #' # all cities
 #' all <- read_population(city = 'all', year = 2010)
 #'
-read_population <- function(city=NULL,
+read_population <- function(city = NULL,
                             year = 2010,
                             geometry = FALSE,
                             showProgress = TRUE){
@@ -111,6 +111,9 @@ read_population <- function(city=NULL,
 
                         # return sf
                         aop_grid <- read_grid(city=city, showProgress=showProgress)
+
+                          # check if download failed
+                          if (is.null(aop_grid)) { return(invisible(NULL)) }
 
                         # create function aop_join to bring in land use info
                         aop_sf <- aop_spatial_join(aop_population, aop_grid)

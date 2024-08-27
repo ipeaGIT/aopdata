@@ -1,3 +1,10 @@
+# aopdata v1.0.4
+
+
+**Bug fixes**
+
+- Simplified internal functions
+
 # aopdata v1.0.3
 
 **Bug fixes**
