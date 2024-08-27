@@ -1,9 +1,11 @@
 # aopdata v1.0.4
 
 
-**Bug fixes**
+**Minor changes**
 
 - Simplified internal functions
+- Removed dependency on the {httr} package
+- Now using `curl::multi_download()` to download files in parallel
 
 # aopdata v1.0.3
 

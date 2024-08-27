@@ -178,97 +178,33 @@ download_data <- function(url, progress_bar = showProgress){
   filenames <- basename(url)
   url2 <- paste0('https://github.com/ipeaGIT/aopdata/releases/download/v1.0.0/', filenames)
 
-  ## one single file
+  # test connection with server1
+  try( silent = TRUE, check_con <- check_connection(url[1], silent = TRUE))
 
-  if (length(url)==1) {
-
-    # location of temp_file
-    temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(url,"/"),tail,n=1L)))
-
-    # if file has not been downloaded already. If not, download it
-    if (!file.exists(temps) | file.info(temps)$size == 0) {
-
-      # test connection with server1
-      try( silent = TRUE, check_con <- check_connection(url[1], silent = TRUE))
-      if (is.null(check_con) | isFALSE(check_con)) {
-
-        # if server1 fails, replace url and test connection with server2
-        url <- url2
-        try( silent = TRUE, check_con <- check_connection(url[1], silent = FALSE))
-        if(is.null(check_con) | isFALSE(check_con)){ return(invisible(NULL)) }
-        }
-
-      ###
-      # download data
-      try( silent = TRUE,
-           httr::GET(url=url,
-               # httr::timeout(10), ### 666 add time out to every httr::GET
-                if(isTRUE(progress_bar)){httr::progress()},
-                httr::write_disk(temps, overwrite = T),
-               config = httr::config(ssl_verifypeer = FALSE))
-           )
-    }
-
-    # if anything fails, return NULL
-    if (any(!file.exists(temps) | file.info(temps)$size == 0)) { return(invisible(NULL)) }
-
-    # load gpkg to memory
-    temp_data <- load_data(temps)
-    return(temp_data)
+  # if server1 fails, replace url and test connection with server2
+  if (is.null(check_con) | isFALSE(check_con)) {
+      url <- url2
+      try( silent = TRUE, check_con <- check_connection(url[1], silent = FALSE))
+      if (is.null(check_con) | isFALSE(check_con)) { return(invisible(NULL)) }
   }
 
+  # dest files
+  temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(url,"/"),tail,n=1L)))
 
+  # download files
+  downloaded_files <- curl::multi_download(
+    urls = url,
+    destfiles = temps,
+    progress = progress_bar,
+    resume = TRUE
+  )
 
-  ## multiple files
+  # if anything fails, return NULL
+  if (any(!downloaded_files$success)) { return(invisible(NULL)) }
 
-  else if (length(url) > 1) {
-
-    # input for progress bar
-    total <- length(url)
-    if(isTRUE(progress_bar)){
-      pb <- utils::txtProgressBar(min = 0, max = total, style = 3)
-    }
-
-    # test connection with server1
-    try( silent = TRUE, check_con <- check_connection(url[1], silent = TRUE))
-
-    # if server1 fails, replace url and test connection with server2
-    if (is.null(check_con) | isFALSE(check_con)) {
-        url <- url2
-        try( silent = TRUE, check_con <- check_connection(url[1], silent = FALSE))
-        if (is.null(check_con) | isFALSE(check_con)) { return(invisible(NULL)) }
-      }
-
-    # download files
-    lapply(X=url, function(x){
-
-      # location of temp_file
-      temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(x,"/"),tail,n=1L)))
-
-      # check if file has not been downloaded already. If not, download it
-      if (!file.exists(temps) | file.info(temps)$size == 0) {
-        i <- match(c(x),url)
-        try( silent = TRUE,
-             httr::GET(url=x, #httr::progress(),
-                  # httr::timeout(10),
-                  httr::write_disk(temps, overwrite = T),
-                  config = httr::config(ssl_verifypeer = FALSE))
-             )
-        if(isTRUE(progress_bar)){ utils::setTxtProgressBar(pb, i) }
-      }
-    })
-
-    # closing progress bar
-    if(isTRUE(progress_bar)){close(pb)}
-
-    # if anything fails, return NULL
-    temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(url,"/"),tail,n=1L)))
-    if (any(!file.exists(temps) | file.info(temps)$size == 0)) { return(invisible(NULL)) }
-
-    # load data
-    temp_data <- load_data(temps)
-    return(temp_data)
-  }
+  # load data
+  temp_data <- load_data(temps)
+  return(temp_data)
 
 }
 
@@ -398,48 +334,50 @@ aop_merge <- function(aop_landuse, aop_access){
 #'
 #' @keywords internal
 #'
-check_connection <- function(url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv', silent = FALSE){ # nocov start
-
+check_connection <- function(url = 'https://www.ipea.gov.br/geobr/aopdata/metadata/metadata.csv',
+                             silent = FALSE){ # nocov start
   # url <- 'https://google.com/'               # ok
   # url <- 'https://www.google.com:81/'   # timeout
   # url <- 'https://httpbin.org/status/300' # error
 
-  # check if user has internet connection
+  # Check if user has internet connection
   if (!curl::has_internet()) {
-    if(isFALSE(silent)){ message("No internet connection.") }
-
+    if (isFALSE(silent)) {
+      message("No internet connection.")
+    }
     return(FALSE)
   }
 
-  # message
+  # Message for connection issues
   msg <- "Problem connecting to data server. Please try again in a few minutes."
 
-  # test server connection
-  x <- try(silent = TRUE,
-           httr::GET(url,
-                    # httr::timeout(10),
-                     config = httr::config(ssl_verifypeer = FALSE)))
-  # link offline
-  if (methods::is(x)=="try-error") {
-    if(isFALSE(silent)){ message( msg ) }
+  # Test server connection using curl
+  handle <- curl::new_handle(ssl_verifypeer = FALSE)
+  response <- try(curl::curl_fetch_memory(url, handle = handle), silent = TRUE)
+
+  # Check if there was an error during the fetch attempt
+  if (inherits(response, "try-error")) {
+    if (isFALSE(silent)) {
+      message(msg)
+    }
     return(FALSE)
   }
 
-  # link working fine
-  else if ( identical(httr::status_code(x), 200L)) {
+  # Check the status code
+  status_code <- response$status_code
+
+  # Link working fine
+  if (status_code == 200L) {
     return(TRUE)
   }
 
-  # link not working or timeout
-  else if (! identical(httr::status_code(x), 200L)) {
-    if(isFALSE(silent)){ message( msg ) }
-    return(FALSE)
-
-  } else if (httr::http_error(x) == TRUE) {
-    if(isFALSE(silent)){ message( msg ) }
+  # Link not working or timeout
+  if (status_code != 200L) {
+    if (isFALSE(silent)) {
+      message(msg)
+    }
     return(FALSE)
   }
-
 } # nocov end
 
 

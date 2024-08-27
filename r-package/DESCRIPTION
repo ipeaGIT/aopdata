@@ -36,7 +36,6 @@ Imports:
       checkmate,
       curl,
       data.table,
-      httr (>= 1.4.1),
       methods,
       sf (>= 0.9-3),
       utils
