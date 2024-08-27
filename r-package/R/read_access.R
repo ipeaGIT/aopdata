@@ -160,7 +160,7 @@ read_access <- function(city = NULL,
                                m=mode)
 
   # check if download failed
-  if (is.null(temp_meta)) { return(invisible(NULL)) }
+  check_downloaded_obj(temp_meta) # nocov
 
   message(paste0("Downloading accessibility data for the year ", year))
 
@@ -200,7 +200,7 @@ read_access <- function(city = NULL,
   aop_access <- download_data(url = file_url, progress_bar = showProgress)
 
   # check if download failed
-  if (is.null(aop_access)) { return(invisible(NULL)) } # nocov
+  check_downloaded_obj(aop_access) # nocov
 
   # peak Vs off-peak
   if ((peak==FALSE & mode == 'car') |
@@ -214,7 +214,7 @@ read_access <- function(city = NULL,
   aop_landuse <- read_landuse(city=city, year=year, showProgress=showProgress)
 
   # check if download failed
-  if (is.null(aop_landuse)) { return(invisible(NULL)) }
+  check_downloaded_obj(aop_landuse) # nocov
 
   # merge
   aop <- aop_merge(aop_landuse, aop_access)
@@ -230,7 +230,7 @@ read_access <- function(city = NULL,
                         aop_grid <- read_grid(city=city, showProgress=showProgress)
 
                         # check if download failed
-                        if (is.null(aop_grid)) { return(invisible(NULL)) }
+                        check_downloaded_obj(aop_grid) # nocov
 
                         aop_sf <- aop_spatial_join(aop, aop_grid)
                         return(aop_sf)

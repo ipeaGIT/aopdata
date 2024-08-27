@@ -89,7 +89,7 @@ read_population <- function(city = NULL,
                                y=year)
 
   # check if download failed
-  if (is.null(temp_meta)) { return(invisible(NULL)) }
+  check_downloaded_obj(temp_meta) # nocov
 
   message(paste0("Downloading population data for the year ", year))
 
@@ -100,7 +100,7 @@ read_population <- function(city = NULL,
   aop_population <- download_data(url = file_url, progress_bar = showProgress)
 
   # check if download failed
-  if (is.null(aop_population)) { return(invisible(NULL)) }
+  check_downloaded_obj(aop_population) # nocov
 
   # with Vs without spatial data
   if(geometry == FALSE){
@@ -113,7 +113,7 @@ read_population <- function(city = NULL,
                         aop_grid <- read_grid(city=city, showProgress=showProgress)
 
                           # check if download failed
-                          if (is.null(aop_grid)) { return(invisible(NULL)) }
+                          check_downloaded_obj(aop_grid) # nocov
 
                         # create function aop_join to bring in land use info
                         aop_sf <- aop_spatial_join(aop_population, aop_grid)

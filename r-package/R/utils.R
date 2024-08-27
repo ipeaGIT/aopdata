@@ -441,3 +441,23 @@ check_connection <- function(url = 'https://www.ipea.gov.br/geobr/aopdata/metada
   }
 
 } # nocov end
+
+
+
+
+
+#' Check if object has been downloaded/created in global environment
+#'
+#' @param obj Any type of object
+#'
+#' @return Returns `NULL` with an informative message
+#' @keywords internal
+#'
+check_downloaded_obj <- function(obj){
+
+  if (is.null(obj)) {
+    message("No internet connection.")
+    return(invisible(NULL))
+    }
+}
+
