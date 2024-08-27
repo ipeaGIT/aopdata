@@ -1,7 +1,7 @@
 # aopdata: Data from the Access to Opportunities Project
 <!-- badges: start -->
 [![CRAN/METACRAN Version](https://www.r-pkg.org/badges/version/aopdata)](https://CRAN.R-project.org/package=aopdata)
-[![CRAN/METACRAN Total downloads](http://cranlogs.r-pkg.org/badges/grand-total/aopdata?color=blue)](https://CRAN.R-project.org/package=aopdata)
+[![CRAN/METACRAN Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/aopdata?color=blue)](https://CRAN.R-project.org/package=aopdata)
 [![Codecov test coverage](https://codecov.io/gh/ipeaGIT/aopdata/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ipeaGIT/aopdata?branch=main)
 [![cmd check](https://github.com/ipeaGIT/aopdata/workflows/R-CMD-check/badge.svg)](https://github.com/ipeaGIT/aopdata/actions)
 [![status](https://img.shields.io/badge/status-active-brightgreen.svg)](https://img.shields.io/badge/status-active-brightgreen.svg) 
