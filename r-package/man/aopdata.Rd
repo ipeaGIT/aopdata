@@ -3,7 +3,6 @@
 \docType{package}
 \name{aopdata}
 \alias{aopdata}
-\alias{_PACKAGE}
 \alias{aopdata-package}
 \title{aopdata: Data from the 'Access to Opportunities Project (AOP)'}
 \description{
