@@ -1,4 +1,4 @@
-# aopdata v1.0.4
+# aopdata v1.1.0
 
 
 **Minor changes**

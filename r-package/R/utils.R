@@ -178,6 +178,8 @@ download_data <- function(url, progress_bar = showProgress){
   filenames <- basename(url)
   url2 <- paste0('https://github.com/ipeaGIT/aopdata/releases/download/v1.0.0/', filenames)
 
+  #### 66666 utilizar codigo de {geobr} que soh checa internet se file nao estiver local
+
   # test connection with server1
   try( silent = TRUE, check_con <- check_connection(url[1], silent = TRUE))
 
@@ -192,11 +194,13 @@ download_data <- function(url, progress_bar = showProgress){
   temps <- paste0(tempdir(),"/", unlist(lapply(strsplit(url,"/"),tail,n=1L)))
 
   # download files
-  downloaded_files <- curl::multi_download(
-    urls = url,
-    destfiles = temps,
-    progress = progress_bar,
-    resume = TRUE
+  try(silent = TRUE,
+      downloaded_files <- curl::multi_download(
+        urls = url,
+        destfiles = temps,
+        progress = progress_bar,
+        resume = TRUE
+      )
   )
 
   # if anything fails, return NULL

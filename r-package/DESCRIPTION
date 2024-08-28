@@ -1,6 +1,6 @@
 Package: aopdata
 Title: Data from the 'Access to Opportunities Project (AOP)'
-Version: 1.0.3
+Version: 1.1.0
 Authors@R: c(
              person(given="Rafael H. M.", family="Pereira", email="rafa.pereira.br@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-2125-7465")),
              person(given="Daniel", family="Herszenhut", email="dhersz@gmail.com", role="aut", comment = c(ORCID = "0000-0001-8066-1105")),
@@ -17,12 +17,19 @@ Description: Download data from the 'Access to Opportunities Project (AOP)'. The
              health care, schools and social assistance facilities at a fine 
              spatial resolution for all cities included in the project. More 
              info on the 'AOP' website <https://www.ipea.gov.br/acessooportunidades/en/>.
-URL: https://github.com/ipeaGIT/aopdata
+URL: https://ipeagit.github.io/aopdata/, https://github.com/ipeaGIT/aopdata
 BugReports: https://github.com/ipeaGIT/aopdata/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:
     R (>= 3.5.0)
+Imports:
+      checkmate,
+      curl (>= 5.0.0),
+      data.table,
+      methods,
+      sf (>= 0.9-3),
+      utils
 Suggests:
     covr,
     dplyr (>= 0.8-3),
@@ -32,13 +39,6 @@ Suggests:
     scales,
     testthat,
     units
-Imports:
-      checkmate,
-      curl,
-      data.table,
-      methods,
-      sf (>= 0.9-3),
-      utils
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 VignetteBuilder: knitr
