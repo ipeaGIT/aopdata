@@ -49,7 +49,8 @@ jobs:
         with:
           extra-packages: any::rcmdcheck
           needs: check
-        working-directory: r-package
+          working-directory: r-package
 
       - uses: r-lib/actions/check-r-package@v2
-        working-directory: r-package
+        with:
+          working-directory: r-package

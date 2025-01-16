@@ -16,9 +16,9 @@ name: test-coverage
 
 jobs:
   test-coverage:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     env:
-      RSPM: https://packagemanager.rstudio.com/cran/__linux__/bionic/latest
+      RSPM: https://packagemanager.rstudio.com/cran/__linux__/jammy/latest
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
@@ -30,7 +30,7 @@ jobs:
         with:
           extra-packages: any::covr, any::xml2
           needs: coverage
-        working-directory: r-package
+          working-directory: r-package
 
       - name: Test coverage
         run: |

@@ -25,7 +25,7 @@ jobs:
         with:
           extra-packages: any::pkgdown, local::.
           needs: website
-        working-directory: r-package
+          working-directory: r-package
 
       - name: Build and deploy pkgdown site
         run: |
