@@ -1,5 +1,5 @@
 pandoc: 2.7.3
-pkgdown: 2.1.0
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   access_inequality: access_inequality.html
@@ -9,4 +9,7 @@ articles:
   intro_to_aopdata: intro_to_aopdata.html
   landuse_maps: landuse_maps.html
   population_maps: population_maps.html
-last_built: 2024-08-28T01:00Z
+last_built: 2025-01-16T19:11Z
+urls:
+  reference: https://ipeagit.github.io/aopdata/reference
+  article: https://ipeagit.github.io/aopdata/articles
