@@ -51,6 +51,7 @@ jobs:
           plugin: noop
           disable_search: true
           token: ${{ secrets.CODECOV_TOKEN }}
+        working-directory: r-package
 
       - name: Show testthat output
         if: always()
@@ -58,6 +59,7 @@ jobs:
           ## --------------------------------------------------------------------
           find '${{ runner.temp }}/package' -name 'testthat.Rout*' -exec cat '{}' \; || true
         shell: bash
+        working-directory: r-package
 
       - name: Upload test results
         if: failure()
@@ -65,3 +67,4 @@ jobs:
         with:
           name: coverage-test-failures
           path: ${{ runner.temp }}/package
+        working-directory: r-package
