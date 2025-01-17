@@ -1,14 +1,12 @@
-# aopdata: Data from the Access to Opportunities Project
+# aopdata: Data from the Access to Opportunities Project <img align="right" src="r-package/man/figures/logo.png" alt="" width="180"> 
+
 <!-- badges: start -->
 [![CRAN/METACRAN Version](https://www.r-pkg.org/badges/version/aopdata)](https://CRAN.R-project.org/package=aopdata)
 [![CRAN/METACRAN Total downloads](https://cranlogs.r-pkg.org/badges/grand-total/aopdata?color=blue)](https://CRAN.R-project.org/package=aopdata)
 [![Codecov test coverage](https://codecov.io/gh/ipeaGIT/aopdata/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ipeaGIT/aopdata?branch=main)
 [![cmd check](https://github.com/ipeaGIT/aopdata/workflows/R-CMD-check/badge.svg)](https://github.com/ipeaGIT/aopdata/actions)
-[![status](https://img.shields.io/badge/status-active-brightgreen.svg)](https://img.shields.io/badge/status-active-brightgreen.svg) 
-
+[![status](https://img.shields.io/badge/status-active-brightgreen.svg)](https://img.shields.io/badge/status-active-brightgreen.svg)
 <!-- badges: end -->
-
-<img align="right" src="https://github.com/ipeaGIT/aopdata/blob/main/r-package/man/figures/logo.png?raw=true" alt="logo" width="140"> 
 
 **`aopdata`** is an R package to download data from the [Access to Opportunities Project (AOP)](https://www.ipea.gov.br/acessooportunidades/en/). The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport access to opportunities in Brazilian cities. 
 
