@@ -1,6 +1,9 @@
 #' Support function to download metadata internally used in aopdata
 #'
 #' @keywords internal
+#' @examples \dontrun{ if (interactive()) {
+#' df <- download_metadata()
+#' }}
 #'
 download_metadata <- function(){ # nocov start
 
@@ -30,14 +33,21 @@ download_metadata <- function(){ # nocov start
 
     # download metadata to temp file
     try( silent = TRUE,
-         curl::curl_download(
-           url = metadata_link,
-           destfile = tempf
+         downloaded_files <- curl::multi_download(
+           urls = metadata_link,
+           destfiles = tempf,
+           progress = FALSE,
+           resume = TRUE
+
            )
          )
 
-    # if everything fails, return NULL
-    if (!file.exists(tempf) | file.info(tempf)$size == 0) { return(invisible(NULL)) }
+    # if anything fails, return NULL
+    if (any(!downloaded_files$success | is.na(downloaded_files$success))) {
+      msg <- paste("File cached locally seems to be corrupted. Please download it again.")
+      message(msg)
+      return(invisible(NULL))
+    }
   }
 
  # read metadata

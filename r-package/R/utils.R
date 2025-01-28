@@ -178,8 +178,6 @@ download_data <- function(url, progress_bar = showProgress){
   filenames <- basename(url)
   url2 <- paste0('https://github.com/ipeaGIT/aopdata/releases/download/v1.0.0/', filenames)
 
-  #### 66666 utilizar codigo de {geobr} que soh checa internet se file nao estiver local
-
   # test connection with server1
   try( silent = TRUE, check_con <- check_connection(url[1], silent = TRUE))
 
@@ -204,7 +202,11 @@ download_data <- function(url, progress_bar = showProgress){
   )
 
   # if anything fails, return NULL
-  if (any(!downloaded_files$success)) { return(invisible(NULL)) }
+  if (any(!downloaded_files$success | is.na(downloaded_files$success))) {
+    msg <- paste("File cached locally seems to be corrupted. Please download it again.")
+    message(msg)
+    return(invisible(NULL))
+  }
 
   # load data
   temp_data <- load_data(temps)
@@ -329,7 +331,7 @@ aop_merge <- function(aop_landuse, aop_access){
 #' Check internet connection with Ipea server
 #'
 #' @description
-#' Checks if there is an internet connection with Ipea server to download aop data.
+#' Checks if there is an internet connection with Ipea server.
 #'
 #' @param url A string with the url address of an aop dataset
 #' @param silent Logical. Throw a message when silent is `FALSE` (default)

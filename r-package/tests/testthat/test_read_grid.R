@@ -32,3 +32,29 @@ test_that("read_grid errors and messages", {
   testthat::expect_error( read_grid(city = 'rec', showProgress = NULL))
 
 })
+
+
+
+
+testthat::test_that("gracefully fail if could not download metadata", {
+
+  # meta data
+  testthat::local_mocked_bindings(
+    select_metadata = function(...) { NULL }
+  )
+  testthat::expect_null( read_grid(city='nat') )
+  testthat::expect_message( read_grid(city='nat') )
+})
+
+testthat::test_that("gracefully fail if could not download data", {
+
+  # meta data
+  testthat::local_mocked_bindings(
+    download_data = function(...) { NULL }
+  )
+  testthat::expect_null( read_grid(city='nat') )
+  testthat::expect_message( read_grid(city='nat') )
+})
+
+
+

@@ -64,6 +64,7 @@ read_grid <- function(city = NULL,
 
   # check if download failed
   check_downloaded_obj(temp_meta) # nocov
+  if (is.null(temp_meta)) { return(invisible(NULL)) }
 
   # list paths of files to download
   file_url <- as.character(temp_meta$download_path2)
@@ -73,6 +74,7 @@ read_grid <- function(city = NULL,
 
   # check if download failed
   check_downloaded_obj(aop_sf) # nocov
+  if (is.null(aop_sf)) { return(invisible(NULL)) }
 
   return(aop_sf)
 }

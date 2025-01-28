@@ -85,12 +85,12 @@ The `read_access()` function downloads accessibility estimates for a given `city
 ```{r, message = FALSE, eval = TRUE}
 # Download accessibility, population and land use data
 cur <- read_access(
-          city = 'Curitiba', 
-          mode = 'public_transport', 
-          peak = TRUE,
-          year = 2019,
-          showProgress = FALSE
-          )
+  city = 'Curitiba', 
+  mode = 'public_transport', 
+  peak = TRUE,
+  year = 2019,
+  showProgress = FALSE
+  )
 ```
 
 You many also set the parameter `geometry = TRUE` so that functions return a spatial `sf` object with the geometries of the H3 spatial grid.
@@ -98,12 +98,12 @@ You many also set the parameter `geometry = TRUE` so that functions return a spa
 ```{r, message = FALSE, eval = TRUE}
 # Download accessibility, population and land use data
 cur <- read_access(
-          city = 'Curitiba', 
-          mode = 'public_transport', 
-          peak = TRUE,
-          year = 2019,
-          geometry = TRUE
-          )
+  city = 'Curitiba', 
+  mode = 'public_transport', 
+  peak = TRUE,
+  year = 2019,
+  geometry = TRUE
+  )
 ```
 
 
@@ -114,19 +114,19 @@ In case you are only interested in using the population and land use data genera
 ```{r, message = FALSE, eval = TRUE}
 # Land use data
 lnu_for <- read_landuse(
-                city = 'Fortaleza', 
-                year = 2019,
-                geometry = TRUE,
-                showProgress = FALSE
-                )
+  city = 'Fortaleza', 
+  year = 2019,
+  geometry = TRUE,
+  showProgress = FALSE
+  )
 
 # Population data
 pop_for <- read_population(
-                city = 'Fortaleza', 
-                year = 2010,
-                geometry = TRUE,
-                showProgress = FALSE
-                )
+  city = 'Fortaleza', 
+  year = 2010,
+  geometry = TRUE,
+  showProgress = FALSE
+  )
 ```
 
 ### Read only spatial grid data
@@ -144,11 +144,13 @@ In all of the functions above, note that:
 
 - The `city` parameter can also be a 3-letter abbreviation of the city.
 ```{r, message = FALSE, eval = TRUE}
-df <- read_access(city = 'cur', 
-                  mode = 'public_transport', 
-                  year = 2019,
-                  peak = TRUE,
-                  showProgress = FALSE)
+df <- read_access(
+  city = 'cur', 
+  mode = 'public_transport', 
+  year = 2019,
+  peak = TRUE,
+  showProgress = FALSE
+  )
 
 df <- read_grid(city = 'for', showProgress = FALSE)
 ```
