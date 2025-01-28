@@ -34,7 +34,7 @@ test_that("read_grid errors and messages", {
 })
 
 
-
+### broken internet ----------------
 
 testthat::test_that("gracefully fail if could not download metadata", {
 

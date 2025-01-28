@@ -29,3 +29,48 @@ test_that("read_landuse errors and messages", {
   testthat::expect_error(read_landuse(city = 'rec', year=2019, showProgress = 'aaa'))
 
 })
+
+
+
+
+### broken internet ----------------
+
+testthat::test_that("gracefully fail if could not download metadata", {
+
+  # meta data
+  testthat::local_mocked_bindings(
+    select_metadata = function(...) { NULL }
+  )
+  testthat::expect_null( read_landuse(city='nat') )
+  testthat::expect_message( read_landuse(city='nat') )
+})
+
+testthat::test_that("gracefully fail if could not download data", {
+
+  # meta data
+  testthat::local_mocked_bindings(
+    download_data = function(...) { NULL }
+  )
+  testthat::expect_null( read_landuse(city='nat') )
+  testthat::expect_message( read_landuse(city='nat') )
+})
+
+testthat::test_that("gracefully fail if could not download grid data", {
+
+  # meta data
+  testthat::local_mocked_bindings(
+    read_grid = function(...) { NULL }
+  )
+  testthat::expect_null( read_landuse(city='nat', geometry = TRUE) )
+  testthat::expect_message( read_landuse(city='nat', geometry = TRUE) )
+})
+
+testthat::test_that("gracefully fail if could not download population data", {
+
+  # meta data
+  testthat::local_mocked_bindings(
+    read_population = function(...) { NULL }
+  )
+  testthat::expect_null( read_landuse(city='nat') )
+  testthat::expect_message( read_landuse(city='nat') )
+})

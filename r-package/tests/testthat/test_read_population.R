@@ -29,3 +29,38 @@ test_that("read_population errors and messages", {
   testthat::expect_error(read_population(city = 'rec', year=2010, showProgress = 'aaa'))
 
 })
+
+
+
+
+### broken internet ----------------
+
+testthat::test_that("gracefully fail if could not download metadata", {
+
+  # meta data
+  testthat::local_mocked_bindings(
+    select_metadata = function(...) { NULL }
+  )
+  testthat::expect_null( read_population(city='nat') )
+  testthat::expect_message( read_population(city='nat') )
+})
+
+testthat::test_that("gracefully fail if could not download data", {
+
+  # meta data
+  testthat::local_mocked_bindings(
+    download_data = function(...) { NULL }
+  )
+  testthat::expect_null( read_population(city='nat') )
+  testthat::expect_message( read_population(city='nat') )
+})
+
+testthat::test_that("gracefully fail if could not download grid data", {
+
+  # meta data
+  testthat::local_mocked_bindings(
+    read_grid = function(...) { NULL }
+  )
+  testthat::expect_null( read_population(city='nat', geometry = TRUE) )
+  testthat::expect_message( read_population(city='nat', geometry = TRUE) )
+})
