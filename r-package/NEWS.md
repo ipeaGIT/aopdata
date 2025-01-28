@@ -1,3 +1,10 @@
+# aopdata v1.1.1
+
+**Bug fixes**
+
+- Download functions should now fail gracefully with an informative message when there are internet connection problems. Making sure to propagate the internet connection issue across function levels.
+
+
 # aopdata v1.1.0
 
 **Minor changes**

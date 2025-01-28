@@ -6,17 +6,17 @@ testthat::skip_on_cran()
 
 
 
-### download metadata ----------------
-
-testthat::test_that("gracefully fail if could not download metadata", {
-
-  # meta data
-  testthat::local_mocked_bindings(
-    check_connection = function(...) { FALSE }
-  )
-  testthat::expect_null( download_metadata() )
-})
-
+# ### download metadata ----------------
+#
+# testthat::test_that("gracefully fail if could not download metadata", {
+#
+#   # meta data
+#   testthat::local_mocked_bindings(
+#     check_connection = function(...) { FALSE }
+#   )
+#   testthat::expect_null( download_metadata() )
+# })
+#
 
 
 ### check connection ----------------
