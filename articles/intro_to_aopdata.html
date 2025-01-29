@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">aopdata</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,11 +72,12 @@
 
 
 
-<script src="intro_to_aopdata_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Introduction to aopdata</h1>
             
-            <h4 data-toc-skip class="date">2025-01-16</h4>
+            <h4 data-toc-skip class="date">2025-01-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/blob/main/vignettes/intro_to_aopdata.Rmd" class="external-link"><code>vignettes/intro_to_aopdata.Rmd</code></a></small>
       <div class="d-none name"><code>intro_to_aopdata.Rmd</code></div>
@@ -84,14 +85,30 @@
 
     
     
-<p>This vignette introduces the <strong><code>aopdata</code></strong> package.</p>
-<p><strong><code>aopdata</code></strong> is an R package to download data from the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">Access to Opportunities Project (AOP)</a>. The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport access to opportunities in Brazilian cities.</p>
-<p>The <strong><code>aopdata</code></strong> package brings annual estimates of access to employment, health, education and social protection services by transport mode at a fine spatial resolution for the 20 largest cities in Brazil. The package also brings data on the spatial distribution of population by sex, race, income and age, as well as the distribution of jobs, schools, healthcare facilities and social assistance reference centers.</p>
-<p>Data for 2017, 2018 and 2019 are already available, and cover accessibility estimates by car and active transport modes (walking and cycling) for the 20 largest cities in the country, and by public transport for over 9 major cities. For more information on the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">AOP website</a>.</p>
+<p>This vignette introduces the <strong><code>aopdata</code></strong>
+package.</p>
+<p><strong><code>aopdata</code></strong> is an R package to download
+data from the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">Access to
+Opportunities Project (AOP)</a>. The AOP is a research initiative led by
+the Institute for Applied Economic Research (Ipea) with the aim to study
+transport access to opportunities in Brazilian cities.</p>
+<p>The <strong><code>aopdata</code></strong> package brings annual
+estimates of access to employment, health, education and social
+protection services by transport mode at a fine spatial resolution for
+the 20 largest cities in Brazil. The package also brings data on the
+spatial distribution of population by sex, race, income and age, as well
+as the distribution of jobs, schools, healthcare facilities and social
+assistance reference centers.</p>
+<p>Data for 2017, 2018 and 2019 are already available, and cover
+accessibility estimates by car and active transport modes (walking and
+cycling) for the 20 largest cities in the country, and by public
+transport for over 9 major cities. For more information on the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">AOP
+website</a>.</p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
-<p>You can install <code>aopdata</code> from CRAN, or the development version from GitHub.</p>
+<p>You can install <code>aopdata</code> from CRAN, or the development
+version from GitHub.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># CRAN</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"aopdata"</span><span class="op">)</span></span>
@@ -103,7 +120,8 @@
 <div class="section level3">
 <h3 id="overview-of-the-package">Overview of the package<a class="anchor" aria-label="anchor" href="#overview-of-the-package"></a>
 </h3>
-<p>The <strong>aopdata</strong> package includes five core functions.</p>
+<p>The <strong>aopdata</strong> package includes five core
+functions.</p>
 <ul>
 <li>
 <code><a href="../reference/read_population.html">read_population()</a></code> - Download population data</li>
@@ -112,11 +130,17 @@
 <li>
 <code><a href="../reference/read_access.html">read_access()</a></code> - Download accessibility estimates</li>
 <li>
-<code><a href="../reference/aopdata_dictionary.html">aopdata_dictionary()</a></code> - Opens aopdata data dictionary on a web browser</li>
+<code><a href="../reference/aopdata_dictionary.html">aopdata_dictionary()</a></code> - Opens aopdata data dictionary on
+a web browser</li>
 <li>
-<code><a href="../reference/read_grid.html">read_grid()</a></code> - Download the H3 hexagonal spatial grid</li>
+<code><a href="../reference/read_grid.html">read_grid()</a></code> - Download the H3 hexagonal spatial
+grid</li>
 </ul>
-<p>For a detailed explanations of these functions, check the <strong>vignettes</strong>: - <a href="access_maps.html">Mapping urban accessibility</a> - <a href="population_maps.html">Mapping population data</a> - <a href="landuse_maps.html">Mapping land use data</a> - <a href="access_inequality.html">Analyzing inequality in access to opportunities</a></p>
+<p>For a detailed explanations of these functions, check the
+<strong>vignettes</strong>: - <a href="access_maps.html">Mapping urban
+accessibility</a> - <a href="population_maps.html">Mapping population
+data</a> - <a href="landuse_maps.html">Mapping land use data</a> - <a href="access_inequality.html">Analyzing inequality in access to
+opportunities</a></p>
 </div>
 <div class="section level3">
 <h3 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
@@ -127,7 +151,9 @@
 <div class="section level4">
 <h4 id="data-dictionary">Data dictionary<a class="anchor" aria-label="anchor" href="#data-dictionary"></a>
 </h4>
-<p>The dictionary of data columns is presented in the documentation of each function. However, you can also open the data dictionary on a web browser by running:</p>
+<p>The dictionary of data columns is presented in the documentation of
+each function. However, you can also open the data dictionary on a web
+browser by running:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># for English</span></span>
 <span><span class="fu"><a href="../reference/aopdata_dictionary.html">aopdata_dictionary</a></span><span class="op">(</span>lang <span class="op">=</span> <span class="st">'en'</span><span class="op">)</span></span>
@@ -138,52 +164,66 @@
 <div class="section level4">
 <h4 id="accessibility-estimates">Accessibility estimates<a class="anchor" aria-label="anchor" href="#accessibility-estimates"></a>
 </h4>
-<p>The <code><a href="../reference/read_access.html">read_access()</a></code> function downloads accessibility estimates for a given <code>city</code>, <code>mode</code> and <code>year</code>. For the sake of convenience, this function will also automatically download the population and land use data for the cities selected. Note that accessibility estimates are available for peak and off-peak periods for <code>public_transport</code>and <code>car</code> modes.</p>
+<p>The <code><a href="../reference/read_access.html">read_access()</a></code> function downloads accessibility
+estimates for a given <code>city</code>, <code>mode</code> and
+<code>year</code>. For the sake of convenience, this function will also
+automatically download the population and land use data for the cities
+selected. Note that accessibility estimates are available for peak and
+off-peak periods for <code>public_transport</code>and <code>car</code>
+modes.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Download accessibility, population and land use data</span></span>
 <span><span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span></span>
-<span>          city <span class="op">=</span> <span class="st">'Curitiba'</span>, </span>
-<span>          mode <span class="op">=</span> <span class="st">'public_transport'</span>, </span>
-<span>          peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>          year <span class="op">=</span> <span class="fl">2019</span>,</span>
-<span>          showProgress <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span>          <span class="op">)</span></span></code></pre></div>
-<p>You many also set the parameter <code>geometry = TRUE</code> so that functions return a spatial <code>sf</code> object with the geometries of the H3 spatial grid.</p>
+<span>  city <span class="op">=</span> <span class="st">'Curitiba'</span>, </span>
+<span>  mode <span class="op">=</span> <span class="st">'public_transport'</span>, </span>
+<span>  peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">2019</span>,</span>
+<span>  showProgress <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<p>You many also set the parameter <code>geometry = TRUE</code> so that
+functions return a spatial <code>sf</code> object with the geometries of
+the H3 spatial grid.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Download accessibility, population and land use data</span></span>
 <span><span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span></span>
-<span>          city <span class="op">=</span> <span class="st">'Curitiba'</span>, </span>
-<span>          mode <span class="op">=</span> <span class="st">'public_transport'</span>, </span>
-<span>          peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>          year <span class="op">=</span> <span class="fl">2019</span>,</span>
-<span>          geometry <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>          <span class="op">)</span></span></code></pre></div>
+<span>  city <span class="op">=</span> <span class="st">'Curitiba'</span>, </span>
+<span>  mode <span class="op">=</span> <span class="st">'public_transport'</span>, </span>
+<span>  peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">2019</span>,</span>
+<span>  geometry <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="population-and-land-use-data">Population and land use data<a class="anchor" aria-label="anchor" href="#population-and-land-use-data"></a>
 </h4>
-<p>In case you are only interested in using the population and land use data generated by the Access to Opportunities Project, you can download these data sets separately. Please note that the population available comes from the latest Brazilian 2010 census, while land use data cna be downloaded for 2017, 2018 or 2019.</p>
+<p>In case you are only interested in using the population and land use
+data generated by the Access to Opportunities Project, you can download
+these data sets separately. Please note that the population available
+comes from the latest Brazilian 2010 census, while land use data cna be
+downloaded for 2017, 2018 or 2019.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Land use data</span></span>
 <span><span class="va">lnu_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_landuse.html">read_landuse</a></span><span class="op">(</span></span>
-<span>                city <span class="op">=</span> <span class="st">'Fortaleza'</span>, </span>
-<span>                year <span class="op">=</span> <span class="fl">2019</span>,</span>
-<span>                geometry <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>                showProgress <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span>                <span class="op">)</span></span>
+<span>  city <span class="op">=</span> <span class="st">'Fortaleza'</span>, </span>
+<span>  year <span class="op">=</span> <span class="fl">2019</span>,</span>
+<span>  geometry <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  showProgress <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Population data</span></span>
 <span><span class="va">pop_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_population.html">read_population</a></span><span class="op">(</span></span>
-<span>                city <span class="op">=</span> <span class="st">'Fortaleza'</span>, </span>
-<span>                year <span class="op">=</span> <span class="fl">2010</span>,</span>
-<span>                geometry <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>                showProgress <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span>                <span class="op">)</span></span></code></pre></div>
+<span>  city <span class="op">=</span> <span class="st">'Fortaleza'</span>, </span>
+<span>  year <span class="op">=</span> <span class="fl">2010</span>,</span>
+<span>  geometry <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  showProgress <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="read-only-spatial-grid-data">Read only spatial grid data<a class="anchor" aria-label="anchor" href="#read-only-spatial-grid-data"></a>
 </h4>
-<p>In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the <code><a href="../reference/read_grid.html">read_grid()</a></code> function.</p>
+<p>In case you would like to download only the H3 spatial grid of cities
+in the AOP project, you can use the <code><a href="../reference/read_grid.html">read_grid()</a></code>
+function.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">h3_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
@@ -213,18 +253,22 @@
 </h4>
 <p>In all of the functions above, note that:</p>
 <ul>
-<li>The <code>city</code> parameter can also be a 3-letter abbreviation of the city.</li>
+<li>The <code>city</code> parameter can also be a 3-letter abbreviation
+of the city.</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'cur'</span>, </span>
-<span>                  mode <span class="op">=</span> <span class="st">'public_transport'</span>, </span>
-<span>                  year <span class="op">=</span> <span class="fl">2019</span>,</span>
-<span>                  peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>                  showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span></span>
+<span>  city <span class="op">=</span> <span class="st">'cur'</span>, </span>
+<span>  mode <span class="op">=</span> <span class="st">'public_transport'</span>, </span>
+<span>  year <span class="op">=</span> <span class="fl">2019</span>,</span>
+<span>  peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  showProgress <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'for'</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <ul>
-<li>You may also download the data for all cities of the project at once using <code>city = 'all'</code>:</li>
+<li>You may also download the data for all cities of the project at once
+using <code>city = 'all'</code>:</li>
 </ul>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_landuse.html">read_landuse</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></span></code></pre></div>
@@ -233,20 +277,29 @@
 <div class="section level2">
 <h2 id="acknowledgement">Acknowledgement<a class="anchor" aria-label="anchor" href="#acknowledgement"></a>
 </h2>
-<p>The R package <strong>aopdata</strong> is developed by a team at the Institute for Applied Economic Research (Ipea), Brazil.</p>
+<p>The R package <strong>aopdata</strong> is developed by a team at the
+Institute for Applied Economic Research (Ipea), Brazil.</p>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>If you use this package in your own work, please cite it as one of the publications below:</p>
+<p>If you use this package in your own work, please cite it as one of
+the publications below:</p>
 <p><strong>Population and land use data</strong></p>
 <ul>
-<li>Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. <em>Texto para Discussão 2772</em>. Ipea - Instituto de Pesquisa Econômica Aplicada. Available at <a href="http://repositorio.ipea.gov.br/handle/11058/11225" class="external-link uri">http://repositorio.ipea.gov.br/handle/11058/11225</a>
+<li>Pereira, Rafael H. M. et al. (2022) Distribuição espacial de
+características sociodemográficas e localização de empregos e serviços
+públicos das vinte maiores cidades do Brasil. <em>Texto para Discussão
+2772</em>. Ipea - Instituto de Pesquisa Econômica Aplicada. Available at
+<a href="http://repositorio.ipea.gov.br/handle/11058/11225" class="external-link uri">http://repositorio.ipea.gov.br/handle/11058/11225</a>
 </li>
 </ul>
 <p><strong>Accessibility data</strong></p>
 <ul>
-<li>Pereira, Rafael H. M. et al. (2022) Estimativas de acessibilidade a empregos e serviços públicos via transporte ativo, público e privado nas 20 maiores cidades do Brasil em 2017, 2018, 2019. <em>Texto para Discussão</em>. Ipea - Instituto de Pesquisa Econômica Aplicada.</li>
+<li>Pereira, Rafael H. M. et al. (2022) Estimativas de acessibilidade a
+empregos e serviços públicos via transporte ativo, público e privado nas
+20 maiores cidades do Brasil em 2017, 2018, 2019. <em>Texto para
+Discussão</em>. Ipea - Instituto de Pesquisa Econômica Aplicada.</li>
 </ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

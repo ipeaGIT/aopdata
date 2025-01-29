@@ -1,4 +1,4 @@
-pandoc: 2.7.3
+pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
@@ -9,7 +9,7 @@ articles:
   intro_to_aopdata: intro_to_aopdata.html
   landuse_maps: landuse_maps.html
   population_maps: population_maps.html
-last_built: 2025-01-16T19:11Z
+last_built: 2025-01-29T00:54Z
 urls:
   reference: https://ipeagit.github.io/aopdata/reference
   article: https://ipeagit.github.io/aopdata/articles

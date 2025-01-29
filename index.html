@@ -29,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="index.html">aopdata</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,7 +79,6 @@
 </h1>
 </div>
 <!-- badges: start -->
-<!-- badges: end -->
 
 <p><strong><code>aopdata</code></strong> is an R package to download data from the <a href="https://www.ipea.gov.br/acessooportunidades/en/" class="external-link">Access to Opportunities Project (AOP)</a>. The AOP is a research initiative led by the Institute for Applied Economic Research (Ipea) with the aim to study transport access to opportunities in Brazilian cities.</p>
 <p>The <strong><code>aopdata</code></strong> package brings annual estimates of access to employment, health, education and social protection services by transport mode at a fine spatial resolution for the 20 largest cities in Brazil. The package also brings data on the spatial distribution of population by sex, race, income and age, as well as the distribution of jobs, schools, health care facilities and social assistance reference centers.</p>
@@ -122,68 +121,63 @@
 <h3 id="data-dictionary">Data dictionary<a class="anchor" aria-label="anchor" href="#data-dictionary"></a>
 </h3>
 <p>The dictionary of data columns is presented in the documentation of each function. However, you can also open the data dictionary on a web browser by running:</p>
-<pre class="{r}"><code><span><span class="co"># for English</span></span>
-<span><span class="fu"><a href="reference/aopdata_dictionary.html">aopdata_dictionary</a></span><span class="op">(</span>lang <span class="op">=</span> <span class="st">'en'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># for Portuguese</span></span>
-<span><span class="fu"><a href="reference/aopdata_dictionary.html">aopdata_dictionary</a></span><span class="op">(</span>lang <span class="op">=</span> <span class="st">'pt'</span><span class="op">)</span></span></code></pre>
+<p>```{R} # for English aopdata_dictionary(lang = ‘en’)</p>
 </div>
-<div class="section level3">
-<h3 id="accessibility-estimates">Accessibility estimates<a class="anchor" aria-label="anchor" href="#accessibility-estimates"></a>
-</h3>
-<p>The <code><a href="reference/read_access.html">read_access()</a></code> function downloads accessibility estimates for a given <code>city</code>, <code>mode</code> and <code>year</code>. For the sake of convenience, this function will also automatically download the population and land use data for the cities selected. Note that accessibility estimates are available for peak and off-peak periods for <code>public_transport</code>and <code>car</code> modes.</p>
-<pre class="{r}"><code><span><span class="co"># Download accessibility, population and land use data</span></span>
-<span><span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span></span>
-<span>  city <span class="op">=</span> <span class="st">'Curitiba'</span>,</span>
-<span>  mode <span class="op">=</span> <span class="st">'public_transport'</span>,</span>
-<span>  peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  year <span class="op">=</span> <span class="fl">2019</span></span>
-<span>  <span class="op">)</span></span></code></pre>
+</div>
+</div>
+<div class="section level1">
+<h1 id="for-portuguese">for Portuguese<a class="anchor" aria-label="anchor" href="#for-portuguese"></a>
+</h1>
+<p>aopdata_dictionary(lang = ‘pt’)</p>
+<pre><code>
+
+### Accessibility estimates
+
+The `read_access()` function downloads accessibility estimates for a given `city`, `mode` and `year`. For the sake of convenience, this function will also automatically download the population and land use data for the cities selected. Note that accessibility estimates are available for peak and off-peak periods for `public_transport`and `car` modes.
+
+```{r}
+# Download accessibility, population and land use data
+cur &lt;- read_access(
+  city = 'Curitiba',
+  mode = 'public_transport',
+  peak = TRUE,
+  year = 2019
+  )</code></pre>
 <p>You many also set the parameter <code>geometry = TRUE</code> so that functions return a spatial <code>sf</code> object with the geometries of the H3 spatial grid.</p>
-<pre class="{r}"><code><span><span class="co"># Download accessibility, population and land use data</span></span>
-<span><span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span></span>
-<span>  city <span class="op">=</span> <span class="st">'Curitiba'</span>,</span>
-<span>  mode <span class="op">=</span> <span class="st">'public_transport'</span>,</span>
-<span>  peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  year <span class="op">=</span> <span class="fl">2019</span>,</span>
-<span>  geometry <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span></code></pre>
-</div>
+<p><code>{r} # Download accessibility, population and land use data cur &lt;- read_access(   city = 'Curitiba',    mode = 'public_transport',    peak = TRUE,   year = 2019,   geometry = TRUE   )</code></p>
 <div class="section level3">
 <h3 id="population-and-land-use-data">Population and land use data<a class="anchor" aria-label="anchor" href="#population-and-land-use-data"></a>
 </h3>
 <p>In case you are only interested in using the population and land use data generated by the Access to Opportunities Project, you can download these data sets separately. Please note that the population available comes from the latest Brazilian 2010 census, while land use data cna be downloaded for 2017, 2018 or 2019.</p>
-<pre class="{r}"><code><span><span class="co"># Land use data</span></span>
-<span><span class="va">lu_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_landuse.html">read_landuse</a></span><span class="op">(</span></span>
-<span>  city <span class="op">=</span> <span class="st">'Fortaleza'</span>,</span>
-<span>  year <span class="op">=</span> <span class="fl">2019</span>,</span>
-<span>  geometry <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Population data</span></span>
-<span><span class="va">pop_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_population.html">read_population</a></span><span class="op">(</span></span>
-<span>  city <span class="op">=</span> <span class="st">'Fortaleza'</span>,</span>
-<span>  year <span class="op">=</span> <span class="fl">2010</span>,</span>
-<span>  geometry <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span>  <span class="op">)</span></span></code></pre>
+<p>```{r} # Land use data lu_for &lt;- read_landuse( city = ‘Fortaleza’, year = 2019, geometry = TRUE )</p>
 </div>
-<div class="section level3">
-<h3 id="read-only-spatial-grid-data">Read only spatial grid data<a class="anchor" aria-label="anchor" href="#read-only-spatial-grid-data"></a>
-</h3>
-<p>In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the <code><a href="reference/read_grid.html">read_grid()</a></code> function.</p>
-<pre class="{r}"><code><span><span class="va">h3_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span><span class="op">)</span></span></code></pre>
 </div>
+<div class="section level1">
+<h1 id="population-data">Population data<a class="anchor" aria-label="anchor" href="#population-data"></a>
+</h1>
+<p>pop_for &lt;- read_population( city = ‘Fortaleza’, year = 2010, geometry = TRUE )</p>
+<pre><code>
+### Read only spatial grid data
+
+In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the `read_grid()` function.
+
+```{R}
+h3_for &lt;- read_grid(city = 'Fortaleza')
+</code></pre>
 <div class="section level3">
 <h3 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a>
 </h3>
 <p>In all of the functions above, note that:</p>
-<ul><li>The <code>city</code> parameter can also be a 3-letter abbreviation of the city.</li></ul>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<ul>
+<li>The <code>city</code> parameter can also be a 3-letter abbreviation of the city.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'cur'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'for'</span><span class="op">)</span></span></code></pre></div>
-<ul><li>You may also download the data for all cities of the project at once using <code>city = 'all'</code>:</li></ul>
-<pre class="{r}"><code><span><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_landuse.html">read_landuse</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></span></code></pre>
-</div>
+<ul>
+<li>You may also download the data for all cities of the project at once using <code>city = 'all'</code>: ```{R} all &lt;- read_landuse(city = ‘all’, year = 2019)</li>
+</ul>
+<p>```</p>
 </div>
 </div>
 <div class="section level1">
@@ -196,11 +190,15 @@
 </h1>
 <p>If you use this package in your own work, please cite it as one of the publications below:</p>
 <p><strong>Population and land use data</strong></p>
-<ul><li>Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. <em>Texto para Discussão 2772</em>. Ipea - Instituto de Pesquisa Econômica Aplicada. <a href="http://dx.doi.org/10.38116/td2772" class="external-link uri">http://dx.doi.org/10.38116/td2772</a>
-</li></ul>
+<ul>
+<li>Pereira, Rafael H. M. et al. (2022) Distribuição espacial de características sociodemográficas e localização de empregos e serviços públicos das vinte maiores cidades do Brasil. <em>Texto para Discussão 2772</em>. Ipea - Instituto de Pesquisa Econômica Aplicada. <a href="http://dx.doi.org/10.38116/td2772" class="external-link uri">http://dx.doi.org/10.38116/td2772</a>
+</li>
+</ul>
 <p><strong>Accessibility data</strong></p>
-<ul><li>Pereira, Rafael H. M. et al. (2022) Estimativas de acessibilidade a empregos e serviços públicos via transporte ativo, público e privado nas 20 maiores cidades do Brasil em 2017, 2018, 2019. <em>Texto para Discussão 2800</em>. Ipea - Instituto de Pesquisa Econômica Aplicada. <a href="http://dx.doi.org/10.38116/td2800" class="external-link uri">http://dx.doi.org/10.38116/td2800</a>
-</li></ul>
+<ul>
+<li>Pereira, Rafael H. M. et al. (2022) Estimativas de acessibilidade a empregos e serviços públicos via transporte ativo, público e privado nas 20 maiores cidades do Brasil em 2017, 2018, 2019. <em>Texto para Discussão 2800</em>. Ipea - Instituto de Pesquisa Econômica Aplicada. <a href="http://dx.doi.org/10.38116/td2800" class="external-link uri">http://dx.doi.org/10.38116/td2800</a>
+</li>
+</ul>
 </div>
 
   </main><aside class="col-md-3"><div class="links">
