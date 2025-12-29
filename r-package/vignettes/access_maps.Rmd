@@ -36,12 +36,14 @@ library(scales)
 
 ```{r, message = FALSE, eval = TRUE}
 # download aop data
-df <- aopdata::read_access(city='Curitiba',
-                       mode='public_transport',
-                      year=2019,
-                      peak = FALSE,
-                      geometry = TRUE,
-                      showProgress = FALSE)
+df <- aopdata::read_access(
+  city = 'Curitiba',
+  mode = 'public_transport',
+  year = 2019,
+  peak = FALSE,
+  geometry = TRUE,
+  showProgress = FALSE
+  )
 ```
 
 **Plot map with spatial distribution of access to job opportunities**

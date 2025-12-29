@@ -35,10 +35,12 @@ library(scales)
 ```{r, message = FALSE, eval = TRUE}
 
 # download aop data
-df <- read_population(city='Fortaleza',
-                      year=2010,
-                      geometry = TRUE,
-                      showProgress = FALSE)
+df <- read_population(
+  city = 'Fortaleza',
+  year = 2010,
+  geometry = TRUE,
+  showProgress = FALSE
+  )
 
 ```
 

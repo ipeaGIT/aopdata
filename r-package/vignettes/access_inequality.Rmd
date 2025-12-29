@@ -34,12 +34,13 @@ library(units)
 **Download accessibility data**
 
 ```{r, message = FALSE, eval = TRUE}
-
-df <- read_access(city='Curitiba',
-                   mode='public_transport',
-                   peak = TRUE,
-                   year=2019,
-                   showProgress = FALSE)
+df <- read_access(
+  city = 'Curitiba',
+  mode = 'public_transport',
+  peak = TRUE,
+  year = 2019,
+  showProgress = FALSE
+  )
 ```
 
 
@@ -88,12 +89,12 @@ message( paste0('In less than 60 min. by public transport, the 10% wealthiest po
 # replace Inf travel time with 120
 df[, TMISA := fifelse(TMISA==Inf, 120, TMISA)]
 
-# calculate avarage travel time by race
+# calculate average travel time by race
 df[, .(average = weighted.mean(x=TMISA, w=P001, na.rm=T),
        white   = weighted.mean(x=TMISA, w=P002, na.rm=T),
        black   = weighted.mean(x=TMISA, w=P003, na.rm=T))]
 
-# calculate avarage travel time by income
+# calculate average travel time by income
 temp <- df[, .(average = weighted.mean(x=TMISA, w=P001, na.rm=T)), by=R003]
 temp <- na.omit(temp)
 
