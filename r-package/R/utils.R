@@ -10,9 +10,18 @@
 #'
 select_city_input <- function(temp_meta=temp_meta, city=NULL){
 
+  # cities available
+  cities_available <- paste(unique(temp_meta$name_muni),collapse = " | ")
+  error_msg <- "Data currently available only for the cities: {cities_available}."
+
+
   # NULL or numeric
-  if( !is.character(city) | any(nchar(city)<3) ){stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
-                                paste(unique(temp_meta$name_muni),collapse = " | "))) }
+  if( !is.character(city) | any(nchar(city)<3) ){
+    cli::cli_abort(
+      message = error_msg,
+      call = rlang::caller_env()
+    )
+  }
 
   # 3 letter-abbreviation
   if (all(nchar(city)==3)) {
@@ -26,8 +35,12 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
 
 
       # invalid input
-      else { stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
-                         paste(unique(temp_meta$city), collapse = " | "))) }
+      else {
+        cli::cli_abort(
+          message = error_msg,
+          call = rlang::caller_env()
+        )
+        }
     }
 
 
@@ -44,8 +57,12 @@ select_city_input <- function(temp_meta=temp_meta, city=NULL){
                                       }
 
     # invalid input
-    else { stop(paste0("Error: Invalid Value to argument 'city'. It must be one of the following: ",
-                       paste(unique(temp_meta$name_muni), collapse = " | "))) }
+    else {
+      cli::cli_abort(
+        message = error_msg,
+        call = rlang::caller_env()
+      )
+      }
   }
 }
 
@@ -66,20 +83,21 @@ select_year_input <- function(temp_meta=temp_meta, year=NULL){
 
   checkmate::assert_numeric(year, finite = TRUE, any.missing = FALSE)
 
-  # NULL
-  if (is.null(year)){  stop(paste0("Error: Invalid Value to argument 'year'. It must be one of the following: ",
-                                   paste(unique(temp_meta$year),collapse = " "))) }
+  years_available <- paste(unique(temp_meta$year),collapse = " ")
 
-  # invalid input
-  else if (year %in% temp_meta$year) {
-                                  temp_meta <- temp_meta[ temp_meta$year %in% year, ]
-                                  return(temp_meta) }
-
-  # invalid input
-  else { stop(paste0("Error: Invalid Value to argument 'year'. It must be one of the following: ",
-                         paste(unique(temp_meta$year), collapse = " ")))
+  # valid input
+  if (year %in% temp_meta$year) {
+    temp_meta <- temp_meta[ temp_meta$year %in% year, ]
+    return(temp_meta)
     }
-}
+
+  # invalid input
+    cli::cli_abort(
+      message = "Data currently available only for the years {years_available}.",
+      call = rlang::caller_env()
+    )
+
+  }
 
 
 
@@ -99,14 +117,21 @@ select_mode_input <- function(temp_meta=temp_meta, mode=NULL){
   checkmate::assert_string(mode, null.ok = FALSE)
 
   # Valid input
-  if (mode %in% temp_meta$mode) { message(paste0("Using mode ", mode))
+  if (mode %in% temp_meta$mode) {
+    message(paste0("Using mode ", mode))
     temp_meta <- temp_meta[ temp_meta$mode %in% mode, ]
-    return(temp_meta) }
+    return(temp_meta)
+    }
 
   # invalid input
-  else { stop(paste0("Error: This 'mode' is not available for this 'city' & 'year'. Please try another 'year' or one of the following modes: ",
-                     paste(unique(temp_meta$mode), collapse = " ")))
-  }
+  error_msg <- paste0("Error: This 'mode' is not available for this 'city' & 'year'. Please try another 'year' or one of the following modes: ",
+                      paste(unique(temp_meta$mode), collapse = " "))
+  # invalid input
+  cli::cli_abort(
+    message = error_msg,
+    call = rlang::caller_env()
+  )
+
 }
 
 
@@ -171,7 +196,7 @@ download_data <- function(url, progress_bar = showProgress){
 
   # check showProgress input
   if (!(progress_bar %in% c(TRUE, FALSE))) {
-    stop("Value to argument 'showProgress' has to be either TRUE or FALSE")
+    cli::cli_abort("Value to argument 'showProgress' has to be either TRUE or FALSE")
     }
 
   # get backup links
@@ -349,7 +374,7 @@ check_connection <- function(url = 'https://www.ipea.gov.br/geobr/aopdata/metada
   # Check if user has internet connection
   if (!curl::has_internet()) {
     if (isFALSE(silent)) {
-      message("No internet connection.")
+      cli::cli_alert_danger("No internet connection.")
     }
     return(FALSE)
   }
@@ -364,7 +389,7 @@ check_connection <- function(url = 'https://www.ipea.gov.br/geobr/aopdata/metada
   # Check if there was an error during the fetch attempt
   if (inherits(response, "try-error")) {
     if (isFALSE(silent)) {
-      message(msg)
+      cli::cli_alert_danger(msg)
     }
     return(FALSE)
   }
@@ -380,7 +405,7 @@ check_connection <- function(url = 'https://www.ipea.gov.br/geobr/aopdata/metada
   # Link not working or timeout
   if (status_code != 200L) {
     if (isFALSE(silent)) {
-      message(msg)
+      cli::cli_alert_danger(msg)
     }
     return(FALSE)
   }
@@ -400,7 +425,7 @@ check_connection <- function(url = 'https://www.ipea.gov.br/geobr/aopdata/metada
 check_downloaded_obj <- function(obj){
 
   if (is.null(obj)) {
-    message("No internet connection.")
+    cli::cli_alert_danger("No internet connection.")
     return(invisible(NULL))
     }
 }

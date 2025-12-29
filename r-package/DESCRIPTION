@@ -24,10 +24,12 @@ Encoding: UTF-8
 Depends:
     R (>= 3.5.0)
 Imports:
+      cli,
       checkmate,
       curl (>= 5.0.0),
       data.table,
       methods,
+      rlang,
       sf (>= 0.9-3),
       utils
 Suggests:

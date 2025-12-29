@@ -1,3 +1,14 @@
+# aopdata v1.1.2
+
+**Minor changes**
+
+- Error messages now use {cli}
+
+**Bug fixes**
+
+- Updated version of {rmarkdown}.
+
+
 # aopdata v1.1.1
 
 **Bug fixes**

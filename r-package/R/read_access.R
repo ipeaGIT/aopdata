@@ -187,7 +187,9 @@ read_access <- function(city = NULL,
   cities_with_pt_check <- all(city %in% cities_with_pt )
 
   if (isFALSE(cities_with_pt_check) & mode == 'public_transport') {
-    stop("The only cities with public transport data for the year ", year, " are ", paste(cities_with_pt, collapse = ", "))
+    cities_available <- paste(cities_with_pt, collapse = ", ")
+    error_msg <- "The only cities with public transport data in {year} are: {cities_available}."
+    cli::cli_abort(error_msg)
     }
 
   if (any(city == 'all') & mode=='public_transport') {
