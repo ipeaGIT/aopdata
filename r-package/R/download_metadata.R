@@ -55,7 +55,8 @@ download_metadata <- function(){ # nocov start
 
   # check if data was read Ok
   if (nrow(metadata)==0) {
-    message("A file must have been corrupted during download. Please restart your R session and download the data again.")
+    msg <- "A file must have been corrupted during download. Please restart your R session and download the data again."
+    cli::cli_alert_danger(msg)
     return(invisible(NULL))
   }
 

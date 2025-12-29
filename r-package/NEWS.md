@@ -2,7 +2,8 @@
 
 **Minor changes**
 
-- Error messages now use {cli}
+- Messages and errors now use {cli}
+- Avoid printing internet connection messages twice
 
 **Bug fixes**
 

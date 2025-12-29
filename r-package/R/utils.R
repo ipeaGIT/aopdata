@@ -209,7 +209,7 @@ download_data <- function(url, progress_bar = showProgress){
   # if server1 fails, replace url and test connection with server2
   if (is.null(check_con) | isFALSE(check_con)) {
       url <- url2
-      try( silent = TRUE, check_con <- check_connection(url[1], silent = FALSE))
+      try( silent = TRUE, check_con <- check_connection(url[1], silent = TRUE))
       if (is.null(check_con) | isFALSE(check_con)) { return(invisible(NULL)) }
   }
 
@@ -228,8 +228,8 @@ download_data <- function(url, progress_bar = showProgress){
 
   # if anything fails, return NULL
   if (any(!downloaded_files$success | is.na(downloaded_files$success))) {
-    msg <- paste("File cached locally seems to be corrupted. Please download it again.")
-    message(msg)
+    msg <- "File cached locally seems to be corrupted. Please download it again."
+    cli::cli_alert_danger(msg)
     return(invisible(NULL))
   }
 
@@ -282,7 +282,8 @@ load_data <- function(temps=NULL){
 
   # check if data was read Ok
   if (nrow(temp)==0) {
-    message("A file must have been corrupted during download. Please restart your R session and download the data again.")
+    msg <- "A file must have been corrupted during download. Please restart your R session and download the data again."
+    cli::cli_alert_danger(msg)
     return(invisible(NULL))
   }
 
