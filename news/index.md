@@ -1,0 +1,179 @@
+# Changelog
+
+## aopdata v1.1.2
+
+**Minor changes**
+
+- Messages and errors now use {cli}
+- Avoid printing internet connection messages twice
+
+**Bug fixes**
+
+- Updated version of {rmarkdown}.
+
+## aopdata v1.1.1
+
+CRAN release: 2025-01-28
+
+**Bug fixes**
+
+- Download functions should now fail gracefully with an informative
+  message when there are internet connection problems. Making sure to
+  propagate the internet connection issue across function levels.
+
+## aopdata v1.1.0
+
+CRAN release: 2024-08-27
+
+**Minor changes**
+
+- Simplified internal functions
+- Removed dependency on the {httr} package
+- Now using
+  [`curl::multi_download()`](https://jeroen.r-universe.dev/curl/reference/multi_download.html)
+  to download files in parallel
+
+## aopdata v1.0.3
+
+CRAN release: 2023-08-31
+
+**Bug fixes**
+
+- Simplified internal functions
+- Download functions should now fail gracefully with an informative
+  message when there are internet connection problems. Using a more
+  robust solution now that also accounts for timeout.
+
+## aopdata v1.0.2
+
+CRAN release: 2023-05-19
+
+**Bug fixes**
+
+- Fixed bug that printed message ‘connection fail’ in the 1st attempt,
+  when it should only print in the 2nd attempt
+- updated CITATION file with bibentry()
+
+## aopdata v1.0.1
+
+CRAN release: 2022-08-31
+
+**Minor changes**
+
+- Remove code redundancy from main read\_ and download function
+- Do not throw connection error message in first check
+- Improve error message when `mode = car`. Closes
+  [\#52](https://github.com/ipeaGIT/aopdata/issues/52)
+- Added citation file
+
+**Bug fixes**
+
+- Fixed bug that did not allow one to download access estimates by car
+  in off-peak period. Closes
+  [\#53](https://github.com/ipeaGIT/aopdata/issues/53)
+
+## aopdata v1.0.0
+
+CRAN release: 2022-08-12
+
+**Major changes**
+
+- New function
+  [`aopdata_dictionary()`](https://ipeagit.github.io/aopdata/reference/aopdata_dictionary.md)
+  to open the aopdata data dictionary on a web browser.
+- All data sets are now simultaneously stored on github and on Ipea’s
+  server. The package now downloads the data from github. In case the
+  github link is off line for some reason, then the package tries to
+  download the data from Ipea’s server. For users, the effect of this
+  change is that the package is much more stable and less vulnerable to
+  instabilities in Ipea’s data server connection.
+- New data sets:
+  - Year coverage
+    - Access and Land use data sets now cover years **2017, 2018 and
+      2019**
+  - New cities
+    - Data for Goiania now covers the entire **metro area of Goiania**
+      in 2019.
+  - New modes
+    - Access data now bring accessibility estimates by **car** in 2019
+  - New activities
+    - Land use and access data now bring data for **centers for social
+      assistance (CRAS)**
+    - Population data sets with minor spatial corrections to smooth
+      spatial distributions
+
+**Minor changes**
+
+- `read_` functions now have no default value for the `city` parameter.
+  [Closes](https://github.com/ipeaGIT/aopdata/issues/38)
+  [\#38](https://github.com/ipeaGIT/aopdata/issues/38).
+- Fixed `ERROR` message when there is no data for a particular transport
+  mode for an specific city & year.
+
+## aopdata v0.2.3
+
+CRAN release: 2022-01-28
+
+**Minor changes**
+
+- Download functions should now fail gracefully with an informative
+  message when there are internet connection problems.
+- Remove `crul` from package dependencies.
+- skip examples on CRAN. Examples now only run on interactive R
+  sessions.
+- update links from http to https
+
+## aopdata v0.2.2
+
+CRAN release: 2021-04-30
+
+**Minor changes**
+
+- Adds `crul` as a package dependency. Now aoptadata fails gracefully
+  when there is internet connection problems. Closes
+  [\#32](https://github.com/ipeaGIT/aopdata/issues/32).
+- `showProgress` now sets to `FALSE` in all tests, examples and
+  vignettes. Closes
+  [\#32](https://github.com/ipeaGIT/aopdata/issues/32).
+- skip tests on CRAN. Tests are run only locally
+
+## aopdata v0.2.1
+
+CRAN release: 2021-04-07
+
+**Minor changes**
+
+- Allow for user to download data few selected cities. Closes
+  [\#29](https://github.com/ipeaGIT/aopdata/issues/29)
+- Fix progress bar even when showProgress = F. Closes
+  [\#30](https://github.com/ipeaGIT/aopdata/issues/30)
+- Fix encoding issues using `base::iconv(city, to="ASCII//TRANSLIT")`.
+  Closes [\#31](https://github.com/ipeaGIT/aopdata/issues/31)
+
+## aopdata v0.2.0
+
+CRAN release: 2021-03-31
+
+**Major changes**
+
+- New function read_population. Closes
+  [\#21](https://github.com/ipeaGIT/aopdata/issues/21)
+- New parameter `peak` added to
+  [`read_access()`](https://ipeagit.github.io/aopdata/reference/read_access.md)
+  function. Closes [\#17](https://github.com/ipeaGIT/aopdata/issues/17)
+- New internal support function `is_online()` to alert for possible
+  internet connection problem. Closes
+  [\#26](https://github.com/ipeaGIT/aopdata/issues/26)
+- Cache downloaded data in tempdir. Closes
+  [\#28](https://github.com/ipeaGIT/aopdata/issues/28)
+
+**Minor changes**
+
+- Downloads two or more cities at the same time. Closes
+  [\#3](https://github.com/ipeaGIT/aopdata/issues/3).
+
+## aopdata v0.1.0
+
+CRAN release: 2021-03-08
+
+- First version on CRAN
