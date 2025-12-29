@@ -35,7 +35,7 @@ Suggests:
     dplyr (>= 0.8-3),
     ggplot2 (>= 3.3.1),
     knitr,
-    rmarkdown (>= 2.6),
+    rmarkdown (>= 2.30),
     scales,
     testthat,
     units
