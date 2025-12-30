@@ -11,7 +11,7 @@ library(data.table)
 library(units)
 ```
 
-**Download accessibility data**
+## Download accessibility data
 
 ``` r
 df <- read_access(
@@ -23,10 +23,9 @@ df <- read_access(
   )
 ```
 
-**Inequality in access to job opportunities by income decile**
+## Inequality in access to job opportunities by income decile
 
 ``` r
-
 ggplot() +
   geom_boxplot(data=subset(df, !is.na(R003)),
                aes(x = factor(R003), y=CMATT60/1000, color=factor(R003))) +
@@ -40,7 +39,7 @@ ggplot() +
 
 ![](access_inequality_files/figure-html/unnamed-chunk-4-1.png)
 
-**Palma ratio**
+## Palma ratio
 
 ``` r
 
@@ -56,16 +55,13 @@ palma_ratio
 #> [1] 2.609378
 ```
 
-This means that:
+This means that the 10% wealthiest population could access by public
+transport on average 2.6 times more job opportunites than the 40%
+poorest people in less than 60 min.
+
+## Inequality in travel time to closes hospital
 
 ``` r
-message( paste0('In less than 60 min. by public transport, the 10% wealthiest population could access on average ', round(palma_ratio,1), ' times more job opportunites than the 40% poorest people') )
-```
-
-**Inequality in travel time to closes hospital**
-
-``` r
-
 # replace Inf travel time with 120
 df[, TMISA := fifelse(TMISA==Inf, 120, TMISA)]
 
@@ -87,4 +83,4 @@ ggplot() +
   theme_minimal()
 ```
 
-![](access_inequality_files/figure-html/unnamed-chunk-7-1.png)
+![](access_inequality_files/figure-html/unnamed-chunk-6-1.png)

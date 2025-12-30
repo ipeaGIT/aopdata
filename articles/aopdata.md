@@ -52,15 +52,16 @@ The **aopdata** package includes five core functions.
 - [`read_grid()`](https://ipeagit.github.io/aopdata/reference/read_grid.md) -
   Download the H3 hexagonal spatial grid
 
-For a detailed explanations of these functions, check the
-**vignettes**: - [Mapping urban
-accessibility](https://ipeagit.github.io/aopdata/articles/access_maps.md) -
-[Mapping population
-data](https://ipeagit.github.io/aopdata/articles/population_maps.md) -
-[Mapping land use
-data](https://ipeagit.github.io/aopdata/articles/landuse_maps.md) -
-[Analyzing inequality in access to
-opportunities](https://ipeagit.github.io/aopdata/articles/access_inequality.md)
+For a detailed explanations of these functions, check the **vignettes**:
+
+- [Mapping urban
+  accessibility](https://ipeagit.github.io/aopdata/articles/access_maps.md)
+- [Mapping population
+  data](https://ipeagit.github.io/aopdata/articles/population_maps.md)
+- [Mapping land use
+  data](https://ipeagit.github.io/aopdata/articles/landuse_maps.md)
+- [Analyzing inequality in access to
+  opportunities](https://ipeagit.github.io/aopdata/articles/access_inequality.md)
 
 ### Basic Usage
 
@@ -154,27 +155,6 @@ function.
 
 ``` r
 h3_for <- read_grid(city = 'Fortaleza', showProgress = FALSE)
-
-head(h3_for)
-#> Simple feature collection with 6 features and 4 fields
-#> Geometry type: POLYGON
-#> Dimension:     XY
-#> Bounding box:  xmin: -38.50828 ymin: -3.889301 xmax: -38.4983 ymax: -3.878958
-#> Geodetic CRS:  WGS 84
-#>            id_hex abbrev_muni name_muni code_muni
-#> 1 89801040323ffff         for Fortaleza   2304400
-#> 2 89801040327ffff         for Fortaleza   2304400
-#> 3 8980104032bffff         for Fortaleza   2304400
-#> 4 8980104032fffff         for Fortaleza   2304400
-#> 5 89801040333ffff         for Fortaleza   2304400
-#> 6 89801040337ffff         for Fortaleza   2304400
-#>                             geom
-#> 1 POLYGON ((-38.50232 -3.8858...
-#> 2 POLYGON ((-38.50527 -3.8840...
-#> 3 POLYGON ((-38.49932 -3.8841...
-#> 4 POLYGON ((-38.50227 -3.8824...
-#> 5 POLYGON ((-38.50237 -3.8893...
-#> 6 POLYGON ((-38.50532 -3.8875...
 ```
 
 #### Note

@@ -1,9 +1,5 @@
 # Mapping urban accessibility
 
-Abstract
-
-Mapping urban accessibility
-
 **Load libraries**
 
 ``` r
@@ -14,7 +10,7 @@ library(data.table)
 library(scales)
 ```
 
-**Download accessibility data**
+## Download accessibility data
 
 ``` r
 # download aop data
@@ -28,7 +24,7 @@ df <- aopdata::read_access(
   )
 ```
 
-**Plot map with spatial distribution of access to job opportunities**
+## Map access to job opportunities
 
 ``` r
 ggplot() +
@@ -41,7 +37,7 @@ ggplot() +
 
 ![](access_maps_files/figure-html/unnamed-chunk-4-1.png)
 
-**Map access to Schools**
+## Map access to schools
 
 ``` r
 ggplot() +

@@ -1,6 +1,8 @@
 # Mapping population data
 
-Spatial distribution of population
+Here are a few quick examples to illustrate how you can use the
+{aopdata} package to map the spatial distribution of population in
+Brazilian cities.
 
 ``` r
 # load libraries
@@ -11,7 +13,7 @@ library(sf)
 library(scales)
 ```
 
-**Download population data**
+## Download population data
 
 ``` r
 
@@ -25,7 +27,7 @@ df <- read_population(
 #> Downloading population data for the year 2010
 ```
 
-**Map Population** Spatial distribution of the population
+## Map total population
 
 ``` r
 ggplot() +
@@ -37,7 +39,10 @@ ggplot() +
 
 ![](population_maps_files/figure-html/unnamed-chunk-4-1.png)
 
-**Map income levels** Spatial distribution population by income decile
+## Map population by income levels
+
+Here, we map the spatial distribution population by income decile
+(column `R003`).
 
 ``` r
 ggplot() +
@@ -49,7 +54,9 @@ ggplot() +
 
 ![](population_maps_files/figure-html/unnamed-chunk-5-1.png)
 
-**Map racial groups** Spatial distribution population black population
+## Map population by race
+
+Here, we map the spatial distribution of the black population.
 
 ``` r
 df$prop_black <- df$P003 / df$P001

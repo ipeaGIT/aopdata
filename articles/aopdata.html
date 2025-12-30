@@ -34,15 +34,15 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="active nav-item"><a class="nav-link" href="../articles/aopdata.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="active nav-item dropdown">
+<li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/access_inequality.html">Analyzing inequality in access to opportunities</a></li>
     <li><a class="dropdown-item" href="../articles/access_maps.html">Mapping urban accessibility</a></li>
     <li><a class="dropdown-item" href="../articles/data_dic_en.html">Data dictionary [EN]</a></li>
     <li><a class="dropdown-item" href="../articles/data_dic_pt.html">Dicionário de dados [PT]</a></li>
-    <li><a class="dropdown-item" href="../articles/intro_to_aopdata.html">Introduction to aopdata</a></li>
     <li><a class="dropdown-item" href="../articles/landuse_maps.html">Mapping land use data</a></li>
     <li><a class="dropdown-item" href="../articles/population_maps.html">Mapping population data</a></li>
   </ul>
@@ -76,10 +76,10 @@
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Introduction to aopdata</h1>
             
-            <h4 data-toc-skip class="date">2025-12-29</h4>
+            <h4 data-toc-skip class="date">2025-12-30</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/blob/main/vignettes/intro_to_aopdata.Rmd" class="external-link"><code>vignettes/intro_to_aopdata.Rmd</code></a></small>
-      <div class="d-none name"><code>intro_to_aopdata.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/blob/main/vignettes/aopdata.Rmd" class="external-link"><code>vignettes/aopdata.Rmd</code></a></small>
+      <div class="d-none name"><code>aopdata.Rmd</code></div>
     </div>
 
     
@@ -136,10 +136,14 @@ a web browser</li>
 grid</li>
 </ul>
 <p>For a detailed explanations of these functions, check the
-<strong>vignettes</strong>: - <a href="access_maps.html">Mapping urban
-accessibility</a> - <a href="population_maps.html">Mapping population
-data</a> - <a href="landuse_maps.html">Mapping land use data</a> - <a href="access_inequality.html">Analyzing inequality in access to
-opportunities</a></p>
+<strong>vignettes</strong>:</p>
+<ul>
+<li><a href="access_maps.html">Mapping urban accessibility</a></li>
+<li><a href="population_maps.html">Mapping population data</a></li>
+<li><a href="landuse_maps.html">Mapping land use data</a></li>
+<li><a href="access_inequality.html">Analyzing inequality in access to
+opportunities</a></li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
@@ -224,28 +228,7 @@ downloaded for 2017, 2018 or 2019.</p>
 in the AOP project, you can use the <code><a href="../reference/read_grid.html">read_grid()</a></code>
 function.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">h3_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">h3_for</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Simple feature collection with 6 features and 4 fields</span></span>
-<span><span class="co">#&gt; Geometry type: POLYGON</span></span>
-<span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: -38.50828 ymin: -3.889301 xmax: -38.4983 ymax: -3.878958</span></span>
-<span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
-<span><span class="co">#&gt;            id_hex abbrev_muni name_muni code_muni</span></span>
-<span><span class="co">#&gt; 1 89801040323ffff         for Fortaleza   2304400</span></span>
-<span><span class="co">#&gt; 2 89801040327ffff         for Fortaleza   2304400</span></span>
-<span><span class="co">#&gt; 3 8980104032bffff         for Fortaleza   2304400</span></span>
-<span><span class="co">#&gt; 4 8980104032fffff         for Fortaleza   2304400</span></span>
-<span><span class="co">#&gt; 5 89801040333ffff         for Fortaleza   2304400</span></span>
-<span><span class="co">#&gt; 6 89801040337ffff         for Fortaleza   2304400</span></span>
-<span><span class="co">#&gt;                             geom</span></span>
-<span><span class="co">#&gt; 1 POLYGON ((-38.50232 -3.8858...</span></span>
-<span><span class="co">#&gt; 2 POLYGON ((-38.50527 -3.8840...</span></span>
-<span><span class="co">#&gt; 3 POLYGON ((-38.49932 -3.8841...</span></span>
-<span><span class="co">#&gt; 4 POLYGON ((-38.50227 -3.8824...</span></span>
-<span><span class="co">#&gt; 5 POLYGON ((-38.50237 -3.8893...</span></span>
-<span><span class="co">#&gt; 6 POLYGON ((-38.50532 -3.8875...</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">h3_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span>, showProgress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a>

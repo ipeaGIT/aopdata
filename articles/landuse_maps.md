@@ -1,6 +1,8 @@
 # Mapping land use data
 
-Spatial distribution of activities and urban services
+Here are a few quick examples to illustrate how you can use the
+{aopdata} package to map the spatial distribution of activities and
+urban services in Brazilian cities.
 
 ``` r
 # load libraries
@@ -11,7 +13,7 @@ library(sf)
 library(scales)
 ```
 
-**Download land use data**
+## Download land use data
 
 ``` r
 
@@ -22,7 +24,7 @@ df <- read_landuse(city='Fortaleza',
                    showProgress = F)
 ```
 
-**Map jobs** Spatial distribution of jobs
+## Spatial distribution of jobs
 
 ``` r
 ggplot() +
@@ -34,7 +36,9 @@ ggplot() +
 
 ![](landuse_maps_files/figure-html/unnamed-chunk-4-1.png)
 
-**Map Schools** Spatial distribution of elementary schools
+## Spatial distribution of schools
+
+In this case below, elementary schools with the column`E003`.
 
 ``` r
 ggplot() +
@@ -46,8 +50,10 @@ ggplot() +
 
 ![](landuse_maps_files/figure-html/unnamed-chunk-5-1.png)
 
-**Map Hospitals** Spatial distribution of high-complexity health care
-facilities
+## Spatial distribution of healthcare
+
+In this example, we mape high-complexity health care facilities (column
+`S004`).
 
 ``` r
 ggplot() +
@@ -59,8 +65,7 @@ ggplot() +
 
 ![](landuse_maps_files/figure-html/unnamed-chunk-6-1.png)
 
-**Map Centers for social assistance (CRAS)** Spatial distribution of
-CRAS facilities
+## Map Centers for social assistance (CRAS)
 
 ``` r
 ggplot() +

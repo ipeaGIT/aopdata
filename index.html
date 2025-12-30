@@ -37,6 +37,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="articles/aopdata.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
@@ -45,7 +46,6 @@
     <li><a class="dropdown-item" href="articles/access_maps.html">Mapping urban accessibility</a></li>
     <li><a class="dropdown-item" href="articles/data_dic_en.html">Data dictionary [EN]</a></li>
     <li><a class="dropdown-item" href="articles/data_dic_pt.html">Dicionário de dados [PT]</a></li>
-    <li><a class="dropdown-item" href="articles/intro_to_aopdata.html">Introduction to aopdata</a></li>
     <li><a class="dropdown-item" href="articles/landuse_maps.html">Mapping land use data</a></li>
     <li><a class="dropdown-item" href="articles/population_maps.html">Mapping population data</a></li>
   </ul>
@@ -111,7 +111,13 @@
 <li>
 <code><a href="reference/read_grid.html">read_grid()</a></code> - Download the H3 hexagonal spatial grid</li>
 </ul>
-<p>For a detailed explanations of these functions, check the <strong>vignettes</strong>: - <a href="https://ipeagit.github.io/aopdata/articles/access_maps.html">Mapping urban accessibility</a> - <a href="https://ipeagit.github.io/aopdata/articles/population_maps.html">Mapping population data</a> - <a href="https://ipeagit.github.io/aopdata/articles/landuse_maps.html">Mapping land use data</a> - <a href="https://ipeagit.github.io/aopdata/articles/access_inequality.html">Analyzing inequality in access to opportunities</a></p>
+<p>For a detailed explanations of these functions, check the <strong>vignettes</strong>:</p>
+<ul>
+<li><a href="https://ipeagit.github.io/aopdata/articles/access_maps.html">Mapping urban accessibility</a></li>
+<li><a href="https://ipeagit.github.io/aopdata/articles/population_maps.html">Mapping population data</a></li>
+<li><a href="https://ipeagit.github.io/aopdata/articles/landuse_maps.html">Mapping land use data</a></li>
+<li><a href="https://ipeagit.github.io/aopdata/articles/access_inequality.html">Analyzing inequality in access to opportunities</a></li>
+</ul>
 </div>
 <div class="section level2">
 <h2 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
@@ -120,7 +126,7 @@
 <h3 id="data-dictionary">Data dictionary<a class="anchor" aria-label="anchor" href="#data-dictionary"></a>
 </h3>
 <p>The dictionary of data columns is presented in the documentation of each function. However, you can also open the data dictionary on a web browser by running:</p>
-<p>```{R} # for English aopdata_dictionary(lang = ‘en’)</p>
+<p>```{r} # for English aopdata_dictionary(lang = ‘en’)</p>
 </div>
 </div>
 </div>
@@ -160,7 +166,7 @@ cur &lt;- read_access(
 
 In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the `read_grid()` function.
 
-```{R}
+```{r}
 h3_for &lt;- read_grid(city = 'Fortaleza')
 </code></pre>
 <div class="section level3">
@@ -168,13 +174,9 @@ h3_for &lt;- read_grid(city = 'Fortaleza')
 </h3>
 <p>In all of the functions above, note that:</p>
 <ul>
-<li>The <code>city</code> parameter can also be a 3-letter abbreviation of the city.</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'cur'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'for'</span><span class="op">)</span></span></code></pre></div>
-<ul>
-<li>You may also download the data for all cities of the project at once using <code>city = 'all'</code>: ```{R} all &lt;- read_landuse(city = ‘all’, year = 2019)</li>
+<li>The <code>city</code> parameter can also be a 3-letter abbreviation of the city. <code>{r} df &lt;- read_access(city = 'cur', mode = 'public_transport', year = 2019) df &lt;- read_grid(city = 'for')</code>
+</li>
+<li>You may also download the data for all cities of the project at once using <code>city = 'all'</code>: ```{r} all &lt;- read_landuse(city = ‘all’, year = 2019)</li>
 </ul>
 <p>```</p>
 </div>
