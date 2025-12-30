@@ -51,6 +51,7 @@ The **aopdata** package includes five core functions.
 - `read_grid()` - Download the H3 hexagonal spatial grid
 
 For a detailed explanations of these functions, check the **vignettes**:
+
 - [Mapping urban accessibility](access_maps.html)
 - [Mapping population data](population_maps.html)
 - [Mapping land use data](landuse_maps.html)
@@ -136,7 +137,6 @@ In case you would like to download only the H3 spatial grid of cities in the AOP
 ```{r, message = FALSE, eval = TRUE}
 h3_for <- read_grid(city = 'Fortaleza', showProgress = FALSE)
 
-head(h3_for)
 ```
 
 ### Note
