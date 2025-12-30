@@ -49,6 +49,7 @@ The **aopdata** package includes five core functions.
 - `read_grid()` - Download the H3 hexagonal spatial grid
 
 For a detailed explanations of these functions, check the **vignettes**:
+
 - [Mapping urban accessibility](https://ipeagit.github.io/aopdata/articles/access_maps.html)
 - [Mapping population data](https://ipeagit.github.io/aopdata/articles/population_maps.html)
 - [Mapping land use data](https://ipeagit.github.io/aopdata/articles/landuse_maps.html)
@@ -61,7 +62,7 @@ For a detailed explanations of these functions, check the **vignettes**:
 
 The dictionary of data columns is presented in the documentation of each function. However, you can also open the data dictionary on a web browser by running:
 
-```{R}
+```{r}
 # for English
 aopdata_dictionary(lang = 'en')
 
@@ -122,7 +123,7 @@ pop_for <- read_population(
 
 In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the `read_grid()` function.
 
-```{R}
+```{r}
 h3_for <- read_grid(city = 'Fortaleza')
 
 ```
@@ -131,12 +132,12 @@ h3_for <- read_grid(city = 'Fortaleza')
 In all of the functions above, note that:
 
 - The `city` parameter can also be a 3-letter abbreviation of the city.
-```R
+```{r}
 df <- read_access(city = 'cur', mode = 'public_transport', year = 2019)
 df <- read_grid(city = 'for')
 ```
 - You may also download the data for all cities of the project at once using `city = 'all'`:
-```{R}
+```{r}
 all <- read_landuse(city = 'all', year = 2019)
 
 ```
