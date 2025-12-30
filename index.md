@@ -68,18 +68,22 @@ The dictionary of data columns is presented in the documentation of each
 function. However, you can also open the data dictionary on a web
 browser by running:
 
-\`\`\`{r} \# for English aopdata_dictionary(lang = ‘en’)
+    # for English
+    aopdata_dictionary(lang = 'en')
 
-# for Portuguese
+    # for Portuguese
+    aopdata_dictionary(lang = 'pt')
 
-aopdata_dictionary(lang = ‘pt’)
+### Accessibility estimates
 
+The
+[`read_access()`](https://ipeagit.github.io/aopdata/reference/read_access.md)
+function downloads accessibility estimates for a given `city`, `mode`
+and `year`. For the sake of convenience, this function will also
+automatically download the population and land use data for the cities
+selected. Note that accessibility estimates are available for peak and
+off-peak periods for `public_transport`and `car` modes.
 
-    ### Accessibility estimates
-
-    The `read_access()` function downloads accessibility estimates for a given `city`, `mode` and `year`. For the sake of convenience, this function will also automatically download the population and land use data for the cities selected. Note that accessibility estimates are available for peak and off-peak periods for `public_transport`and `car` modes.
-
-    ```{r}
     # Download accessibility, population and land use data
     cur <- read_access(
       city = 'Curitiba',
@@ -91,7 +95,14 @@ aopdata_dictionary(lang = ‘pt’)
 You many also set the parameter `geometry = TRUE` so that functions
 return a spatial `sf` object with the geometries of the H3 spatial grid.
 
-`{r} # Download accessibility, population and land use data cur <- read_access( city = 'Curitiba', mode = 'public_transport', peak = TRUE, year = 2019, geometry = TRUE )`
+    # Download accessibility, population and land use data
+    cur <- read_access(
+      city = 'Curitiba',
+      mode = 'public_transport',
+      peak = TRUE,
+      year = 2019,
+      geometry = TRUE
+      )
 
 ### Population and land use data
 
@@ -101,19 +112,27 @@ these data sets separately. Please note that the population available
 comes from the latest Brazilian 2010 census, while land use data cna be
 downloaded for 2017, 2018 or 2019.
 
-\`\`\`{r} \# Land use data lu_for \<- read_landuse( city = ‘Fortaleza’,
-year = 2019, geometry = TRUE )
+    # Land use data
+    lu_for <- read_landuse(
+      city = 'Fortaleza',
+      year = 2019,
+      geometry = TRUE
+      )
 
-# Population data
+    # Population data
+    pop_for <- read_population(
+      city = 'Fortaleza',
+      year = 2010,
+      geometry = TRUE
+      )
 
-pop_for \<- read_population( city = ‘Fortaleza’, year = 2010, geometry =
-TRUE )
+### Read only spatial grid data
 
-    ### Read only spatial grid data
+In case you would like to download only the H3 spatial grid of cities in
+the AOP project, you can use the
+[`read_grid()`](https://ipeagit.github.io/aopdata/reference/read_grid.md)
+function.
 
-    In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the `read_grid()` function.
-
-    ```{r}
     h3_for <- read_grid(city = 'Fortaleza')
 
 ### Note
@@ -121,12 +140,18 @@ TRUE )
 In all of the functions above, note that:
 
 - The `city` parameter can also be a 3-letter abbreviation of the city.
-  `{r} df <- read_access(city = 'cur', mode = 'public_transport', year = 2019) df <- read_grid(city = 'for')`
-- You may also download the data for all cities of the project at once
-  using `city = 'all'`: \`\`\`{r} all \<- read_landuse(city = ‘all’,
-  year = 2019)
 
-\`\`\`
+&nbsp;
+
+    df <- read_access(city = 'cur', mode = 'public_transport', year = 2019)
+    df <- read_grid(city = 'for')
+
+- You may also download the data for all cities of the project at once
+  using `city = 'all'`:
+
+&nbsp;
+
+    all <- read_landuse(city = 'all', year = 2019)
 
 # Acknowledgement
 
