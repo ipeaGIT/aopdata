@@ -18,7 +18,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-Spatial distribution of activities and urban services
+Here's a few quick examples to illustrate how you can use the {aopdata} package
+to map the spatial distribution of activities and urban services in Brazilian cities.
 
 
 ```{r, message = FALSE, eval = TRUE}
@@ -30,7 +31,7 @@ library(sf)
 library(scales)
 ```
 
-**Download land use data**
+## Download land use data
 ```{r, message = FALSE, eval = TRUE}
 
 # download aop data
@@ -42,8 +43,8 @@ df <- read_landuse(city='Fortaleza',
 ```
 
 
-**Map jobs**
-Spatial distribution of jobs
+## Spatial distribution of jobs
+
 
 ```{r, message = FALSE, eval = TRUE}
 ggplot() +
@@ -54,8 +55,10 @@ ggplot() +
 
 ```
 
-**Map Schools**
-Spatial distribution of elementary schools
+
+## Spatial distribution of schools
+
+In this case below, elementary schools with the column`E003`.
 
 ```{r, message = FALSE, eval = TRUE}
 ggplot() +
@@ -66,8 +69,9 @@ ggplot() +
 
 ```
 
-**Map Hospitals**
-Spatial distribution of high-complexity health care facilities
+## Spatial distribution of healthcare
+
+In this example, we mape high-complexity health care facilities (column `S004`).
 
 ```{r, message = FALSE, eval = TRUE}
 ggplot() +
@@ -78,8 +82,7 @@ ggplot() +
 
 ```
 
-**Map Centers for social assistance (CRAS)**
-Spatial distribution of CRAS facilities
+## Map Centers for social assistance (CRAS)
 
 ```{r, message = FALSE, eval = TRUE}
 ggplot() +
