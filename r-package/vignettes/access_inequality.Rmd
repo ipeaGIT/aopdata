@@ -31,7 +31,7 @@ library(units)
 ```
 
 
-**Download accessibility data**
+## Download accessibility data
 
 ```{r, message = FALSE, eval = TRUE}
 df <- read_access(
@@ -44,10 +44,9 @@ df <- read_access(
 ```
 
 
-**Inequality in access to job opportunities by income decile**
+## Inequality in access to job opportunities by income decile
 
 ```{r, message = FALSE, eval = TRUE}
-
 ggplot() +
   geom_boxplot(data=subset(df, !is.na(R003)),
                aes(x = factor(R003), y=CMATT60/1000, color=factor(R003))) +
@@ -58,10 +57,9 @@ ggplot() +
   scale_x_discrete(labels=c("D1 Poorest", paste0('D', 2:9), "D10 Wealthiest")) +
   theme_minimal()
 
-
 ```
 
-**Palma ratio**
+## Palma ratio
 
 ```{r, message = FALSE, eval = TRUE}
 
@@ -76,16 +74,15 @@ palma_ratio <- avg_access_10p_wealthiest / avg_access_40p_poorest
 palma_ratio 
 
 ```
-This means that:
+This means that the 10% wealthiest population could access by public transport 
+on average `r round(palma_ratio,1)` times more job opportunites than the 40% 
+poorest people in less than 60 min.
+
+
+
+## Inequality in travel time to closes hospital
+
 ```{r, message = FALSE, eval = TRUE}
-message( paste0('In less than 60 min. by public transport, the 10% wealthiest population could access on average ', round(palma_ratio,1), ' times more job opportunites than the 40% poorest people') )
-```
-
-
-**Inequality in travel time to closes hospital**
-
-```{r, message = FALSE, eval = TRUE}
-
 # replace Inf travel time with 120
 df[, TMISA := fifelse(TMISA==Inf, 120, TMISA)]
 
