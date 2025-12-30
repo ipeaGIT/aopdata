@@ -18,7 +18,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-Spatial distribution of population
+Here are a few quick examples to illustrate how you can use the {aopdata} package
+to map the spatial distribution of population in Brazilian cities.
 
 
 ```{r, message = FALSE, eval = TRUE}
@@ -31,7 +32,7 @@ library(scales)
 
 ```
 
-**Download population data**
+## Download population data
 ```{r, message = TRUE, eval = TRUE}
 
 # download aop data
@@ -44,8 +45,8 @@ df <- read_population(
 
 ```
 
-**Map Population**
-Spatial distribution of the population
+## Map total population
+
 
 ```{r, message = FALSE, eval = TRUE}
 ggplot() +
@@ -56,8 +57,9 @@ ggplot() +
 
 ```
 
-**Map income levels**
-Spatial distribution population by income decile
+## Map population by income levels
+
+Here, we map the spatial distribution population by income decile (column `R003`).
 
 ```{r, message = FALSE, eval = TRUE}
 ggplot() +
@@ -69,8 +71,9 @@ ggplot() +
 ```
 
 
-**Map racial groups**
-Spatial distribution population black population
+## Map population by race
+
+Here, we map the spatial distribution of the black population.
 
 ```{r, message = FALSE, eval = TRUE}
 df$prop_black <- df$P003 / df$P001

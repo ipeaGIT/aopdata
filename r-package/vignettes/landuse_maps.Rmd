@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-Here's a few quick examples to illustrate how you can use the {aopdata} package
+Here are a few quick examples to illustrate how you can use the {aopdata} package
 to map the spatial distribution of activities and urban services in Brazilian cities.
 
 
