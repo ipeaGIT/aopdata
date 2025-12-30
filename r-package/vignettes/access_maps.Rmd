@@ -3,7 +3,6 @@ title: 'Mapping urban accessibility'
 author: "Rafael H. M. Pereira .."
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
-abstract: "Mapping urban accessibility "
 urlcolor: blue
 vignette: >
   %\VignetteIndexEntry{Mapping urban accessibility} 
@@ -32,7 +31,7 @@ library(data.table)
 library(scales)
 ```
 
-**Download accessibility data**
+## Download accessibility data
 
 ```{r, message = FALSE, eval = TRUE}
 # download aop data
@@ -46,7 +45,7 @@ df <- aopdata::read_access(
   )
 ```
 
-**Plot map with spatial distribution of access to job opportunities**
+## Map access to job opportunities
 ```{r, message = FALSE, eval = TRUE}
 ggplot() +
   geom_sf(data=df, aes(fill=CMATT60), color=NA, alpha=.9) +
@@ -58,7 +57,7 @@ ggplot() +
 
 ```
 
-**Map access to Schools**
+## Map access to schools
 
 ```{r, message = FALSE, eval = TRUE}
 ggplot() +
