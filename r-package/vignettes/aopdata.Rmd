@@ -4,7 +4,7 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 urlcolor: blue
 vignette: >
-  %\VignetteIndexEntry{Introduction to `aopdata`}
+  %\VignetteIndexEntry{Introduction to aopdata}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
