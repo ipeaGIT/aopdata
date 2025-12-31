@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Data from the Access to Opportunities Project (AOP) • aopdata</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -30,7 +29,7 @@
 
     <a class="navbar-brand me-2" href="index.html">aopdata</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.1.999</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +38,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="nav-item"><a class="nav-link" href="articles/aopdata.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
@@ -47,7 +47,6 @@
     <li><a class="dropdown-item" href="articles/access_maps.html">Mapping urban accessibility</a></li>
     <li><a class="dropdown-item" href="articles/data_dic_en.html">Data dictionary [EN]</a></li>
     <li><a class="dropdown-item" href="articles/data_dic_pt.html">Dicionário de dados [PT]</a></li>
-    <li><a class="dropdown-item" href="articles/intro_to_aopdata.html">Introduction to aopdata</a></li>
     <li><a class="dropdown-item" href="articles/landuse_maps.html">Mapping land use data</a></li>
     <li><a class="dropdown-item" href="articles/population_maps.html">Mapping population data</a></li>
   </ul>
@@ -113,7 +112,13 @@
 <li>
 <code><a href="reference/read_grid.html">read_grid()</a></code> - Download the H3 hexagonal spatial grid</li>
 </ul>
-<p>For a detailed explanations of these functions, check the <strong>vignettes</strong>: - <a href="https://ipeagit.github.io/aopdata/articles/access_maps.html">Mapping urban accessibility</a> - <a href="https://ipeagit.github.io/aopdata/articles/population_maps.html">Mapping population data</a> - <a href="https://ipeagit.github.io/aopdata/articles/landuse_maps.html">Mapping land use data</a> - <a href="https://ipeagit.github.io/aopdata/articles/access_inequality.html">Analyzing inequality in access to opportunities</a></p>
+<p>For a detailed explanations of these functions, check the <strong>vignettes</strong>:</p>
+<ul>
+<li><a href="https://ipeagit.github.io/aopdata/articles/access_maps.html">Mapping urban accessibility</a></li>
+<li><a href="https://ipeagit.github.io/aopdata/articles/population_maps.html">Mapping population data</a></li>
+<li><a href="https://ipeagit.github.io/aopdata/articles/landuse_maps.html">Mapping land use data</a></li>
+<li><a href="https://ipeagit.github.io/aopdata/articles/access_inequality.html">Analyzing inequality in access to opportunities</a></li>
+</ul>
 </div>
 <div class="section level2">
 <h2 id="basic-usage">Basic Usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
@@ -122,49 +127,57 @@
 <h3 id="data-dictionary">Data dictionary<a class="anchor" aria-label="anchor" href="#data-dictionary"></a>
 </h3>
 <p>The dictionary of data columns is presented in the documentation of each function. However, you can also open the data dictionary on a web browser by running:</p>
-<p>```{R} # for English aopdata_dictionary(lang = ‘en’)</p>
+<pre><code><span><span class="co"># for English</span></span>
+<span><span class="fu"><a href="reference/aopdata_dictionary.html">aopdata_dictionary</a></span><span class="op">(</span>lang <span class="op">=</span> <span class="st">'en'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># for Portuguese</span></span>
+<span><span class="fu"><a href="reference/aopdata_dictionary.html">aopdata_dictionary</a></span><span class="op">(</span>lang <span class="op">=</span> <span class="st">'pt'</span><span class="op">)</span></span></code></pre>
 </div>
-</div>
-</div>
-<div class="section level1">
-<h1 id="for-portuguese">for Portuguese<a class="anchor" aria-label="anchor" href="#for-portuguese"></a>
-</h1>
-<p>aopdata_dictionary(lang = ‘pt’)</p>
-<pre><code>
-
-### Accessibility estimates
-
-The `read_access()` function downloads accessibility estimates for a given `city`, `mode` and `year`. For the sake of convenience, this function will also automatically download the population and land use data for the cities selected. Note that accessibility estimates are available for peak and off-peak periods for `public_transport`and `car` modes.
-
-```{r}
-# Download accessibility, population and land use data
-cur &lt;- read_access(
-  city = 'Curitiba',
-  mode = 'public_transport',
-  peak = TRUE,
-  year = 2019
-  )</code></pre>
+<div class="section level3">
+<h3 id="accessibility-estimates">Accessibility estimates<a class="anchor" aria-label="anchor" href="#accessibility-estimates"></a>
+</h3>
+<p>The <code><a href="reference/read_access.html">read_access()</a></code> function downloads accessibility estimates for a given <code>city</code>, <code>mode</code> and <code>year</code>. For the sake of convenience, this function will also automatically download the population and land use data for the cities selected. Note that accessibility estimates are available for peak and off-peak periods for <code>public_transport</code>and <code>car</code> modes.</p>
+<pre><code><span><span class="co"># Download accessibility, population and land use data</span></span>
+<span><span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span></span>
+<span>  city <span class="op">=</span> <span class="st">'Curitiba'</span>,</span>
+<span>  mode <span class="op">=</span> <span class="st">'public_transport'</span>,</span>
+<span>  peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">2019</span></span>
+<span>  <span class="op">)</span></span></code></pre>
 <p>You many also set the parameter <code>geometry = TRUE</code> so that functions return a spatial <code>sf</code> object with the geometries of the H3 spatial grid.</p>
-<p><code>{r} # Download accessibility, population and land use data cur &lt;- read_access(   city = 'Curitiba',    mode = 'public_transport',    peak = TRUE,   year = 2019,   geometry = TRUE   )</code></p>
+<pre><code><span><span class="co"># Download accessibility, population and land use data</span></span>
+<span><span class="va">cur</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span></span>
+<span>  city <span class="op">=</span> <span class="st">'Curitiba'</span>,</span>
+<span>  mode <span class="op">=</span> <span class="st">'public_transport'</span>,</span>
+<span>  peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">2019</span>,</span>
+<span>  geometry <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  <span class="op">)</span></span></code></pre>
+</div>
 <div class="section level3">
 <h3 id="population-and-land-use-data">Population and land use data<a class="anchor" aria-label="anchor" href="#population-and-land-use-data"></a>
 </h3>
 <p>In case you are only interested in using the population and land use data generated by the Access to Opportunities Project, you can download these data sets separately. Please note that the population available comes from the latest Brazilian 2010 census, while land use data cna be downloaded for 2017, 2018 or 2019.</p>
-<p>```{r} # Land use data lu_for &lt;- read_landuse( city = ‘Fortaleza’, year = 2019, geometry = TRUE )</p>
+<pre><code><span><span class="co"># Land use data</span></span>
+<span><span class="va">lu_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_landuse.html">read_landuse</a></span><span class="op">(</span></span>
+<span>  city <span class="op">=</span> <span class="st">'Fortaleza'</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">2019</span>,</span>
+<span>  geometry <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Population data</span></span>
+<span><span class="va">pop_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_population.html">read_population</a></span><span class="op">(</span></span>
+<span>  city <span class="op">=</span> <span class="st">'Fortaleza'</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">2010</span>,</span>
+<span>  geometry <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  <span class="op">)</span></span></code></pre>
 </div>
+<div class="section level3">
+<h3 id="read-only-spatial-grid-data">Read only spatial grid data<a class="anchor" aria-label="anchor" href="#read-only-spatial-grid-data"></a>
+</h3>
+<p>In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the <code><a href="reference/read_grid.html">read_grid()</a></code> function.</p>
+<pre><code><span><span class="va">h3_for</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'Fortaleza'</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="section level1">
-<h1 id="population-data">Population data<a class="anchor" aria-label="anchor" href="#population-data"></a>
-</h1>
-<p>pop_for &lt;- read_population( city = ‘Fortaleza’, year = 2010, geometry = TRUE )</p>
-<pre><code>
-### Read only spatial grid data
-
-In case you would like to download only the H3 spatial grid of cities in the AOP project, you can use the `read_grid()` function.
-
-```{R}
-h3_for &lt;- read_grid(city = 'Fortaleza')
-</code></pre>
 <div class="section level3">
 <h3 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a>
 </h3>
@@ -172,13 +185,13 @@ h3_for &lt;- read_grid(city = 'Fortaleza')
 <ul>
 <li>The <code>city</code> parameter can also be a 3-letter abbreviation of the city.</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'cur'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></span>
-<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'for'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_access.html">read_access</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'cur'</span>, mode <span class="op">=</span> <span class="st">'public_transport'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_grid.html">read_grid</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'for'</span><span class="op">)</span></span></code></pre>
 <ul>
-<li>You may also download the data for all cities of the project at once using <code>city = 'all'</code>: ```{R} all &lt;- read_landuse(city = ‘all’, year = 2019)</li>
+<li>You may also download the data for all cities of the project at once using <code>city = 'all'</code>:</li>
 </ul>
-<p>```</p>
+<pre><code><span><span class="va">all</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_landuse.html">read_landuse</a></span><span class="op">(</span>city <span class="op">=</span> <span class="st">'all'</span>, year <span class="op">=</span> <span class="fl">2019</span><span class="op">)</span></span></code></pre>
+</div>
 </div>
 </div>
 <div class="section level1">
@@ -231,11 +244,11 @@ h3_for &lt;- read_grid(city = 'Fortaleza')
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Rafael H. M. Pereira <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2125-7465" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Daniel Herszenhut <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-8066-1105" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Marcus Saraiva <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-6218-2338" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Carlos Kaue Vieira Braga <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-6104-7297" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Ipea - Institute for Applied Economic Research <br><small class="roles"> Copyright holder, funder </small>  </li>
+<li>Rafael H. M. Pereira <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-2125-7465" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Daniel Herszenhut <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-8066-1105" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Marcus Saraiva <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-6218-2338" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Carlos Kaue Vieira Braga <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-6104-7297" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Ipea - Institute for Applied Economic Research <br><small class="roles"> Copyright holder, funder </small>   </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -260,7 +273,7 @@ h3_for &lt;- read_grid(city = 'Fortaleza')
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
