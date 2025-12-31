@@ -86,9 +86,19 @@
 #' @export
 #' @family land use data functions
 #' @examplesIf identical(tolower(Sys.getenv("NOT_CRAN")), "true")
-#' # a single city
-#' bho <- read_landuse(city = 'Belo Horizonte', year = 2019, showProgress = FALSE)
-#' bho <- read_landuse(city = 'bho', year = 2019, showProgress = FALSE)
+#' # a single city: pass the city name
+#' bho <- read_landuse(
+#'   city = 'Belo Horizonte',
+#'   year = 2019,
+#'   showProgress = FALSE
+#'   )
+#'
+#' # ... or pass a three-letter abbreviation
+#' bho <- read_landuse(
+#'   city = 'bho',
+#'   year = 2019,
+#'   showProgress = FALSE
+#'   )
 #'
 #' # all cities
 #' all <- read_landuse(city = 'all', year = 2019)

@@ -146,13 +146,22 @@ population 3) Time threshold
 }
 
 \examples{
-\dontshow{if (identical(tolower(Sys.getenv("NOT_CRAN")), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(tolower(Sys.getenv("NOT_CRAN")), "true")) withAutoprint(\{ # examplesIf}
 # Read accessibility estimates of a single city
-df <- read_access(city = 'Fortaleza', mode = 'public_transport', year = 2019, showProgress = FALSE)
-df <- read_access(city = 'Goiania', mode = 'public_transport', year = 2019, showProgress = FALSE)
+df <- read_access(
+  city = 'Fortaleza',
+  mode = 'public_transport',
+  year = 2019,
+  showProgress = FALSE
+)
 
 # Read accessibility estimates for all cities
-all <- read_access(city = 'all', mode = 'walk', year = 2019, showProgress = FALSE)
+all <- read_access(
+  city = 'all',
+  mode = 'walk',
+  year = 2019,
+  showProgress = FALSE
+)
 \dontshow{\}) # examplesIf}
 }
 \concept{accessibility data functions}

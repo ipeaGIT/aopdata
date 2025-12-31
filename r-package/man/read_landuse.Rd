@@ -102,10 +102,20 @@ H3 spatial grid at resolution 9, with a side of 174 meters and an area of
 }
 
 \examples{
-\dontshow{if (identical(tolower(Sys.getenv("NOT_CRAN")), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# a single city
-bho <- read_landuse(city = 'Belo Horizonte', year = 2019, showProgress = FALSE)
-bho <- read_landuse(city = 'bho', year = 2019, showProgress = FALSE)
+\dontshow{if (identical(tolower(Sys.getenv("NOT_CRAN")), "true")) withAutoprint(\{ # examplesIf}
+# a single city: pass the city name
+bho <- read_landuse(
+  city = 'Belo Horizonte',
+  year = 2019,
+  showProgress = FALSE
+  )
+
+# ... or pass a three-letter abbreviation
+bho <- read_landuse(
+  city = 'bho',
+  year = 2019,
+  showProgress = FALSE
+  )
 
 # all cities
 all <- read_landuse(city = 'all', year = 2019)

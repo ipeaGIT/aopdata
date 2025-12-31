@@ -120,13 +120,21 @@
 #' @family accessibility data functions
 #' @examplesIf identical(tolower(Sys.getenv("NOT_CRAN")), "true")
 #' # Read accessibility estimates of a single city
-#' df <- read_access(city = 'Fortaleza', mode = 'public_transport', year = 2019, showProgress = FALSE)
-#' df <- read_access(city = 'Goiania', mode = 'public_transport', year = 2019, showProgress = FALSE)
+#' df <- read_access(
+#'   city = 'Fortaleza',
+#'   mode = 'public_transport',
+#'   year = 2019,
+#'   showProgress = FALSE
+#' )
 #'
 #' # Read accessibility estimates for all cities
-#' all <- read_access(city = 'all', mode = 'walk', year = 2019, showProgress = FALSE)
+#' all <- read_access(
+#'   city = 'all',
+#'   mode = 'walk',
+#'   year = 2019,
+#'   showProgress = FALSE
+#' )
 #'
-
 read_access <- function(city = NULL,
                         mode = 'walk',
                         peak = TRUE,

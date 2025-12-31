@@ -18,7 +18,7 @@ Opens aopdata data dictionary on a web browser. This function requires
 internet connection.
 }
 \examples{
-\dontshow{if (identical(tolower(Sys.getenv("NOT_CRAN")), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (identical(tolower(Sys.getenv("NOT_CRAN")), "true")) withAutoprint(\{ # examplesIf}
 
 # Data dictionary in English
 aopdata_dictionary(lang='en')

@@ -68,9 +68,19 @@
 #' @export
 #' @family population data functions
 #' @examplesIf identical(tolower(Sys.getenv("NOT_CRAN")), "true")
-#' # a single city
-#' bho <- read_population(city = 'Belo Horizonte', year = 2010, showProgress = FALSE)
-#' bho <- read_population(city = 'bho', year = 2010, showProgress = FALSE)
+#' # a single city: pass the city name
+#' bho <- read_population(
+#'   city = 'Belo Horizonte',
+#'   year = 2010,
+#'   showProgress = FALSE
+#'   )
+#'
+#' # ... or pass a three-letter abbreviation
+#' bho <- read_population(
+#'   city = 'bho',
+#'   year = 2010,
+#'   showProgress = FALSE
+#'   )
 #'
 #' # all cities
 #' all <- read_population(city = 'all', year = 2010)

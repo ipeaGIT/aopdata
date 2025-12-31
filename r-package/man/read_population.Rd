@@ -89,10 +89,20 @@ side of 174 meters and an area of 0.10 km2. More information about H3 at \url{ht
 }
 
 \examples{
-\dontshow{if (identical(tolower(Sys.getenv("NOT_CRAN")), "true")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# a single city
-bho <- read_population(city = 'Belo Horizonte', year = 2010, showProgress = FALSE)
-bho <- read_population(city = 'bho', year = 2010, showProgress = FALSE)
+\dontshow{if (identical(tolower(Sys.getenv("NOT_CRAN")), "true")) withAutoprint(\{ # examplesIf}
+# a single city: pass the city name
+bho <- read_population(
+  city = 'Belo Horizonte',
+  year = 2010,
+  showProgress = FALSE
+  )
+
+# ... or pass a three-letter abbreviation
+bho <- read_population(
+  city = 'bho',
+  year = 2010,
+  showProgress = FALSE
+  )
 
 # all cities
 all <- read_population(city = 'all', year = 2010)
