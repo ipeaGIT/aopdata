@@ -32,14 +32,13 @@ library(scales)
 ```
 
 ## Download land use data
-```{r, message = FALSE, eval = FALSE}
+```{r, message = FALSE}
 df <- aopdata::read_landuse(
   city = 'Fortaleza',
   year = 2019,
   geometry = T,
   showProgress = F
 )
-
 ```
 
 
@@ -54,6 +53,7 @@ ggplot() +
   theme_void()
 
 ```
+
 ```{r, message = FALSE, echo = TRUE}
 if (!is.null(df)) {
   ggplot() +
@@ -77,7 +77,7 @@ ggplot() +
   theme_void()
 
 ```
-```{r, message = FALSE, echo = TRUE}
+```{r, message = FALSE, echo = FALSE}
 if (!is.null(df)) {  
   ggplot() +
     geom_sf(data=df, aes(fill=factor(E003)), color=NA, alpha=.9) +
@@ -98,6 +98,7 @@ ggplot() +
   labs(title='Spatial distribution of hospitals', fill="N. of hospitals") +
   theme_void()
 ```
+
 ```{r, message = FALSE, echo = FALSE}
 if (!is.null(df)) {  
   ggplot() +
