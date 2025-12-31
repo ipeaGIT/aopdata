@@ -16,13 +16,14 @@ knitr::opts_chunk$set(
   eval = identical(tolower(Sys.getenv("NOT_CRAN")), "true"),
   out.width = "100%"
 )
+
 ```
 
 Here are a few quick examples to illustrate how you can use the {aopdata} package
 to map the spatial distribution of population in Brazilian cities.
 
 
-```{r, message = FALSE, eval = TRUE}
+```{r, message = FALSE, warning=FALSE}
 # load libraries
 library(aopdata)
 library(data.table)
@@ -34,9 +35,7 @@ library(scales)
 
 ## Download population data
 ```{r, message = TRUE, eval = TRUE}
-
-# download aop data
-df <- read_population(
+df <- aopdata::read_population(
   city = 'Fortaleza',
   year = 2010,
   geometry = TRUE,
@@ -47,8 +46,7 @@ df <- read_population(
 
 ## Map total population
 
-
-```{r, message = FALSE, eval = TRUE}
+```{r, message = FALSE, eval=FALSE}
 ggplot() +
   geom_sf(data=subset(df, P001>0), aes(fill=P001), color=NA, alpha=.8) +
   scale_fill_distiller(palette = "YlOrRd", direction = 1)+
@@ -56,12 +54,22 @@ ggplot() +
   theme_void()
 
 ```
+```{r, message = FALSE, echo=FALSE}
+if (!is.null(df)) {
+  ggplot() +
+    geom_sf(data=subset(df, P001>0), aes(fill=P001), color=NA, alpha=.8) +
+    scale_fill_distiller(palette = "YlOrRd", direction = 1)+
+    labs(title='Population distribution', fill="Total population") +
+    theme_void()
+}
+```
+
 
 ## Map population by income levels
 
 Here, we map the spatial distribution population by income decile (column `R003`).
 
-```{r, message = FALSE, eval = TRUE}
+```{r, eval = FALSE}
 ggplot() +
   geom_sf(data=subset(df, !is.na(R002)), aes(fill=factor(R003)), color=NA, alpha=.8) +
   scale_fill_brewer(palette = "RdBu") +
@@ -70,12 +78,22 @@ ggplot() +
 
 ```
 
+```{r, message=F, echo=FALSE}
+if (!is.null(df)) {
+  ggplot() +
+    geom_sf(data=subset(df, !is.na(R002)), aes(fill=factor(R003)), color=NA, alpha=.8) +
+    scale_fill_brewer(palette = "RdBu") +
+    labs(title='Average household income per capita', fill="Income decile") +
+    theme_void()
+}
+```
+
 
 ## Map population by race
 
 Here, we map the spatial distribution of the black population.
 
-```{r, message = FALSE, eval = TRUE}
+```{r, message = FALSE, eval=FALSE}
 df$prop_black <- df$P003 / df$P001
   
 ggplot() +
@@ -85,4 +103,14 @@ ggplot() +
   theme_void()
 
 ```
-
+```{r, message = FALSE, echo=FALSE}
+if (!is.null(df)) {
+  df$prop_black <- df$P003 / df$P001
+  
+  ggplot() +
+    geom_sf(data=subset(df, P001 >0), aes(fill=prop_black), color=NA, alpha=.8) +
+    scale_fill_distiller(palette = "RdPu", direction = 1, labels = percent)+
+    labs(title='Proportion of black population', fill="Black population") +
+    theme_void()
+}
+```

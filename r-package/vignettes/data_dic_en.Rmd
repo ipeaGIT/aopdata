@@ -18,6 +18,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+Data dictionary in English:
+```{r, message = FALSE, eval = FALSE}
+aopdata_dictionary(lang = 'en')
+```
+
 # General variables (population, land use, transport)
 
 

@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 **Load libraries**
 
-```{r, message = FALSE, eval = TRUE}
+```{r, message = FALSE, eval = TRUE, warning=FALSE}
 library(aopdata)
 library(sf)
 library(ggplot2)
@@ -46,25 +46,42 @@ df <- aopdata::read_access(
 ```
 
 ## Map access to job opportunities
-```{r, message = FALSE, eval = TRUE}
+```{r, message = FALSE, eval = FALSE}
 ggplot() +
   geom_sf(data=df, aes(fill=CMATT60), color=NA, alpha=.9) +
   scale_fill_viridis_c(option = "inferno", labels = scales::comma) +
   labs(title='Number of jobs accessible', fill="Accessibility",
        subtitle='by public transport in less than 60 min.') +
   theme_void()
-
-
+```
+```{r, message = FALSE, echo = FALSE}
+if (!is.null(df)) {
+  ggplot() +
+    geom_sf(data=df, aes(fill=CMATT60), color=NA, alpha=.9) +
+    scale_fill_viridis_c(option = "inferno", labels = scales::comma) +
+    labs(title='Number of jobs accessible', fill="Accessibility",
+         subtitle='by public transport in less than 60 min.') +
+    theme_void()
+}
 ```
 
 ## Map access to schools
 
-```{r, message = FALSE, eval = TRUE}
+```{r, message = FALSE, eval = FALSE}
 ggplot() +
   geom_sf(data=df, aes(fill=CMAET30), color=NA, alpha=.9) +
   scale_fill_viridis_c(option = "cividis", labels=scales::comma) +
     labs(title='Number of schools accessible', fill="Accessibility",
        subtitle='by public transport in less than 30 min.', fill="N. of schools") +
   theme_void()
-
+```
+```{r, message = FALSE, echo = FALSE}
+if (!is.null(df)) {
+  ggplot() +
+    geom_sf(data=df, aes(fill=CMAET30), color=NA, alpha=.9) +
+    scale_fill_viridis_c(option = "cividis", labels=scales::comma) +
+      labs(title='Number of schools accessible', fill="Accessibility",
+         subtitle='by public transport in less than 30 min.', fill="N. of schools") +
+    theme_void()
+}
 ```
