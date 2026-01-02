@@ -36,18 +36,6 @@ ggplot() +
 
 ![](landuse_maps_files/figure-html/unnamed-chunk-4-1.png)
 
-``` r
-if (!is.null(df)) {
-  ggplot() +
-    geom_sf(data=df, aes(fill=T001), color=NA, alpha=.9) +
-    scale_fill_distiller(palette = "YlOrRd", direction = 1) +
-    labs(title='Spatial distribution of jobs', fill="N. of jobs") +
-    theme_void()
-}
-```
-
-![](landuse_maps_files/figure-html/unnamed-chunk-5-1.png)
-
 ## Spatial distribution of schools
 
 In this case below, elementary schools with the column`E003`.
@@ -60,7 +48,7 @@ ggplot() +
   theme_void()
 ```
 
-![](landuse_maps_files/figure-html/unnamed-chunk-7-1.png)
+![](landuse_maps_files/figure-html/unnamed-chunk-5-1.png)
 
 ## Spatial distribution of healthcare
 
@@ -75,7 +63,7 @@ ggplot() +
   theme_void()
 ```
 
-![](landuse_maps_files/figure-html/unnamed-chunk-9-1.png)
+![](landuse_maps_files/figure-html/unnamed-chunk-6-1.png)
 
 ## Map Centers for social assistance (CRAS)
 
@@ -87,4 +75,4 @@ ggplot() +
   theme_void()
 ```
 
-![](landuse_maps_files/figure-html/unnamed-chunk-11-1.png)
+![](landuse_maps_files/figure-html/unnamed-chunk-7-1.png)

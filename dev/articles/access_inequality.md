@@ -37,7 +37,7 @@ ggplot() +
   theme_minimal()
 ```
 
-![](access_inequality_files/figure-html/unnamed-chunk-5-1.png)
+![](access_inequality_files/figure-html/unnamed-chunk-4-1.png)
 
 ## Palma ratio
 
@@ -51,9 +51,8 @@ avg_access_40p_poorest <- df[ R003<=4, weighted.mean(x=CMATT60, w=P001, na.rm=T)
 # Palma ratio
 palma_ratio <- avg_access_10p_wealthiest / avg_access_40p_poorest                
 palma_ratio 
+#> [1] 2.609378
 ```
-
-    #> [1] 2.609378
 
 This means that the 10% wealthiest population could access by public
 transport on average 2.6 times more job opportunites than the 40%
@@ -69,6 +68,9 @@ df[, TMISA := fifelse(TMISA==Inf, 120, TMISA)]
 df[, .(average = weighted.mean(x=TMISA, w=P001, na.rm=T),
        white   = weighted.mean(x=TMISA, w=P002, na.rm=T),
        black   = weighted.mean(x=TMISA, w=P003, na.rm=T))]
+#>    average    white    black
+#>      <num>    <num>    <num>
+#> 1:  37.124 35.75722 43.29197
 
 # calculate average travel time by income
 temp <- df[, .(average = weighted.mean(x=TMISA, w=P001, na.rm=T)), by=R003]
@@ -80,4 +82,4 @@ ggplot() +
   theme_minimal()
 ```
 
-![](access_inequality_files/figure-html/unnamed-chunk-9-1.png)
+![](access_inequality_files/figure-html/unnamed-chunk-6-1.png)

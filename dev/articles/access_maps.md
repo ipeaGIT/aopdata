@@ -35,7 +35,7 @@ ggplot() +
   theme_void()
 ```
 
-![](access_maps_files/figure-html/unnamed-chunk-5-1.png)
+![](access_maps_files/figure-html/unnamed-chunk-4-1.png)
 
 ## Map access to schools
 
@@ -48,4 +48,4 @@ ggplot() +
   theme_void()
 ```
 
-![](access_maps_files/figure-html/unnamed-chunk-7-1.png)
+![](access_maps_files/figure-html/unnamed-chunk-5-1.png)

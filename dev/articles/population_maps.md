@@ -35,7 +35,7 @@ ggplot() +
   theme_void()
 ```
 
-![](population_maps_files/figure-html/unnamed-chunk-5-1.png)
+![](population_maps_files/figure-html/unnamed-chunk-4-1.png)
 
 ## Map population by income levels
 
@@ -50,7 +50,7 @@ ggplot() +
   theme_void()
 ```
 
-![](population_maps_files/figure-html/unnamed-chunk-7-1.png)
+![](population_maps_files/figure-html/unnamed-chunk-5-1.png)
 
 ## Map population by race
 
@@ -66,4 +66,4 @@ ggplot() +
   theme_void()
 ```
 
-![](population_maps_files/figure-html/unnamed-chunk-9-1.png)
+![](population_maps_files/figure-html/unnamed-chunk-6-1.png)
