@@ -23,7 +23,7 @@ Here are a few quick examples to illustrate how you can use the {aopdata} packag
 to map the spatial distribution of population in Brazilian cities.
 
 
-```{r, message = FALSE, warning=FALSE}
+```{r, message = FALSE, warning=FALSE, eval=TRUE}
 # load libraries
 library(aopdata)
 library(data.table)
