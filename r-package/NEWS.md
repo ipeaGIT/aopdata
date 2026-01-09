@@ -7,8 +7,8 @@
 
 **Bug fixes**
 
-- Updated version of {rmarkdown}.
 - Updated vignettes to avoid error in case of eventual internet connection issue.
+- Now using the latest version of {rmarkdown}.
 
 
 # aopdata v1.1.1
