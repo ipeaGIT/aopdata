@@ -101,10 +101,20 @@ A `data.frame` object or an `sf data.frame` object
 ## Examples
 
 ``` r
-# a single city
-bho <- read_population(city = 'Belo Horizonte', year = 2010, showProgress = FALSE)
+# a single city: pass the city name
+bho <- read_population(
+  city = 'Belo Horizonte',
+  year = 2010,
+  showProgress = FALSE
+  )
 #> Downloading population data for the year 2010
-bho <- read_population(city = 'bho', year = 2010, showProgress = FALSE)
+
+# ... or pass a three-letter abbreviation
+bho <- read_population(
+  city = 'bho',
+  year = 2010,
+  showProgress = FALSE
+  )
 #> Downloading population data for the year 2010
 
 # all cities

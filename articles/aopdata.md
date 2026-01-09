@@ -97,7 +97,7 @@ off-peak periods for `public_transport`and `car` modes.
 
 ``` r
 # Download accessibility, population and land use data
-cur <- read_access(
+df <- aopdata::read_access(
   city = 'Curitiba', 
   mode = 'public_transport', 
   peak = TRUE,
@@ -111,7 +111,7 @@ return a spatial `sf` object with the geometries of the H3 spatial grid.
 
 ``` r
 # Download accessibility, population and land use data
-cur <- read_access(
+df <- aopdata::read_access(
   city = 'Curitiba', 
   mode = 'public_transport', 
   peak = TRUE,
@@ -130,7 +130,7 @@ downloaded for 2017, 2018 or 2019.
 
 ``` r
 # Land use data
-lnu_for <- read_landuse(
+df <- aopdata::read_landuse(
   city = 'Fortaleza', 
   year = 2019,
   geometry = TRUE,
@@ -138,7 +138,7 @@ lnu_for <- read_landuse(
   )
 
 # Population data
-pop_for <- read_population(
+df <- aopdata::read_population(
   city = 'Fortaleza', 
   year = 2010,
   geometry = TRUE,
@@ -154,7 +154,7 @@ the AOP project, you can use the
 function.
 
 ``` r
-h3_for <- read_grid(city = 'Fortaleza', showProgress = FALSE)
+h3 <- aopdata::read_grid(city = 'Fortaleza', showProgress = FALSE)
 ```
 
 #### Note
@@ -164,7 +164,7 @@ In all of the functions above, note that:
 - The `city` parameter can also be a 3-letter abbreviation of the city.
 
 ``` r
-df <- read_access(
+df <- aopdata::read_access(
   city = 'cur', 
   mode = 'public_transport', 
   year = 2019,
@@ -172,14 +172,14 @@ df <- read_access(
   showProgress = FALSE
   )
 
-df <- read_grid(city = 'for', showProgress = FALSE)
+df <- aopdata::read_grid(city = 'for', showProgress = FALSE)
 ```
 
 - You may also download the data for all cities of the project at once
   using `city = 'all'`:
 
 ``` r
-all <- read_landuse(city = 'all', year = 2019)
+df <- aopdata::read_landuse(city = 'all', year = 2019)
 ```
 
 ## Acknowledgement

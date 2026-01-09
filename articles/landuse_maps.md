@@ -16,12 +16,12 @@ library(scales)
 ## Download land use data
 
 ``` r
-
-# download aop data
-df <- read_landuse(city='Fortaleza',
-                   year=2019,
-                   geometry = T,
-                   showProgress = F)
+df <- aopdata::read_landuse(
+  city = 'Fortaleza',
+  year = 2019,
+  geometry = T,
+  showProgress = F
+)
 ```
 
 ## Spatial distribution of jobs

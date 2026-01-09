@@ -16,9 +16,7 @@ library(scales)
 ## Download population data
 
 ``` r
-
-# download aop data
-df <- read_population(
+df <- aopdata::read_population(
   city = 'Fortaleza',
   year = 2010,
   geometry = TRUE,

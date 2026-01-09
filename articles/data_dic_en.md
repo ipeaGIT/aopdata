@@ -1,5 +1,11 @@
 # Data dictionary \[EN\]
 
+Data dictionary in English:
+
+``` r
+aopdata_dictionary(lang = 'en')
+```
+
 ## General variables (population, land use, transport)
 
 | data_type        | column      | description                                                | values                                            |

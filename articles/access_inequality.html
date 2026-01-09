@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">aopdata</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +76,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Analyzing inequality in access to opportunities</h1>
             
-            <h4 data-toc-skip class="date">2025-12-30</h4>
+            <h4 data-toc-skip class="date">2026-01-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ipeaGIT/aopdata/blob/main/vignettes/access_inequality.Rmd" class="external-link"><code>vignettes/access_inequality.Rmd</code></a></small>
       <div class="d-none name"><code>access_inequality.Rmd</code></div>
@@ -96,7 +96,7 @@
 <h2 id="download-accessibility-data">Download accessibility data<a class="anchor" aria-label="anchor" href="#download-accessibility-data"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span></span>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">aopdata</span><span class="fu">::</span><span class="fu"><a href="../reference/read_access.html">read_access</a></span><span class="op">(</span></span>
 <span>  city <span class="op">=</span> <span class="st">'Curitiba'</span>,</span>
 <span>  mode <span class="op">=</span> <span class="st">'public_transport'</span>,</span>
 <span>  peak <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -123,8 +123,7 @@
 <h2 id="palma-ratio">Palma ratio<a class="anchor" aria-label="anchor" href="#palma-ratio"></a>
 </h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># average access of the wealthiest 10%</span></span>
+<code class="sourceCode R"><span><span class="co"># average access of the wealthiest 10%</span></span>
 <span><span class="va">avg_access_10p_wealthiest</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span> <span class="va">R003</span><span class="op">==</span><span class="fl">10</span>, <span class="fu"><a href="https://rdrr.io/r/stats/weighted.mean.html" class="external-link">weighted.mean</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">CMATT60</span>, w<span class="op">=</span><span class="va">P001</span>, na.rm<span class="op">=</span><span class="cn">T</span><span class="op">)</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co"># average access of the poorest 40%</span></span>

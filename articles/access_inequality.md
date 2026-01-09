@@ -14,7 +14,7 @@ library(units)
 ## Download accessibility data
 
 ``` r
-df <- read_access(
+df <- aopdata::read_access(
   city = 'Curitiba',
   mode = 'public_transport',
   peak = TRUE,
@@ -42,7 +42,6 @@ ggplot() +
 ## Palma ratio
 
 ``` r
-
 # average access of the wealthiest 10%
 avg_access_10p_wealthiest <- df[ R003==10, weighted.mean(x=CMATT60, w=P001, na.rm=T)]
 

@@ -2,6 +2,8 @@
 
 ## aopdata v1.1.2
 
+CRAN release: 2026-01-09
+
 **Minor changes**
 
 - Messages and errors now use {cli}
@@ -9,7 +11,9 @@
 
 **Bug fixes**
 
-- Updated version of {rmarkdown}.
+- Updated vignettes to avoid error in case of eventual internet
+  connection issue.
+- Now using the latest version of {rmarkdown}.
 
 ## aopdata v1.1.1
 

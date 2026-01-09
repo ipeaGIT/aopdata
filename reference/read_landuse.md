@@ -114,11 +114,21 @@ A `data.frame` object or an `sf data.frame` object
 ## Examples
 
 ``` r
-# a single city
-bho <- read_landuse(city = 'Belo Horizonte', year = 2019, showProgress = FALSE)
+# a single city: pass the city name
+bho <- read_landuse(
+  city = 'Belo Horizonte',
+  year = 2019,
+  showProgress = FALSE
+  )
 #> Downloading land use data for the year 2019
 #> Downloading population data for the year 2010
-bho <- read_landuse(city = 'bho', year = 2019, showProgress = FALSE)
+
+# ... or pass a three-letter abbreviation
+bho <- read_landuse(
+  city = 'bho',
+  year = 2019,
+  showProgress = FALSE
+  )
 #> Downloading land use data for the year 2019
 #> Downloading population data for the year 2010
 

@@ -1,5 +1,11 @@
 # Dicionário de dados \[PT\]
 
+Dicionário de dados em Português:
+
+``` r
+aopdata_dictionary(lang = 'pt')
+```
+
 ## Variáveis gerais (população, uso do solo e transporte)
 
 | tipo_dado        | coluna      | descrição                                                             | valores                                        |

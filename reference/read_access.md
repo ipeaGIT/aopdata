@@ -164,19 +164,24 @@ opportunity / population 3) Time threshold
 
 ``` r
 # Read accessibility estimates of a single city
-df <- read_access(city = 'Fortaleza', mode = 'public_transport', year = 2019, showProgress = FALSE)
-#> Using mode public_transport
-#> Downloading accessibility data for the year 2019
-#> Downloading land use data for the year 2019
-#> Downloading population data for the year 2010
-df <- read_access(city = 'Goiania', mode = 'public_transport', year = 2019, showProgress = FALSE)
+df <- read_access(
+  city = 'Fortaleza',
+  mode = 'public_transport',
+  year = 2019,
+  showProgress = FALSE
+)
 #> Using mode public_transport
 #> Downloading accessibility data for the year 2019
 #> Downloading land use data for the year 2019
 #> Downloading population data for the year 2010
 
 # Read accessibility estimates for all cities
-all <- read_access(city = 'all', mode = 'walk', year = 2019, showProgress = FALSE)
+all <- read_access(
+  city = 'all',
+  mode = 'walk',
+  year = 2019,
+  showProgress = FALSE
+)
 #> Using mode walk
 #> Downloading accessibility data for the year 2019
 #> Downloading land use data for the year 2019
